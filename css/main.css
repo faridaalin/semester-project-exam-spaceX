@@ -1,0 +1,463 @@
+*, html, body {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+}
+
+img {
+  width: 100%;
+}
+
+.bg-parallax {
+  min-height: 100%;
+  position: relative;
+}
+
+.bg-parallax > * {
+  position: relative;
+  z-index: 2;
+}
+
+.bg-parallax:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(53, 52, 52, 0.8);
+}
+
+.bg-home {
+  background: #212020 url(../img/lea-castanie-irQ74aUdmjY-unsplash.jpg) fixed no-repeat center/cover;
+}
+
+header, .next-launch, .countdown {
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+}
+
+.next-launch div {
+  width: 100%;
+}
+
+.next-launch p, span {
+  color: #FC3D21;
+}
+
+.next-launch p {
+  font-size: 14px;
+  font-family: "Oswald", sans-serif;
+  color: #F0F0F0;
+  margin-bottom: -30px;
+  font-weight: 100;
+}
+
+.next-launch span {
+  display: block;
+}
+
+.next-launch .year {
+  font-size: 9rem;
+  letter-spacing: 5px;
+  font-weight: 500;
+}
+
+.next-launch .month {
+  font-size: 22px;
+  text-align: right;
+  font-weight: 400;
+  margin-top: -17px;
+}
+
+.countdown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 80px;
+  margin-top: 28px;
+  width: 300px;
+}
+
+.countdown__counter {
+  display: inline;
+}
+
+.countdown__counter p {
+  font-size: 12px;
+  color: #707070;
+  display: inline;
+}
+
+.countdown__counter span {
+  font-size: 28px;
+  color: #F0F0F0;
+}
+
+.info__name {
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  color: #F0F0F0;
+  font-weight: 300;
+  font-size: 16px;
+}
+
+.info-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.info__text {
+  font-family: "Oswald", sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  color: #707070;
+  width: 100px;
+  text-align: left;
+}
+
+.highlighted {
+  color: #136F68;
+  font-weight: 500;
+}
+
+.hide {
+  height: 0;
+  opacity: 0;
+}
+
+.bg-launches {
+  background: #212020 url(../img/history-in-hd-e5eDHbmHprg-unsplash.jpg) fixed no-repeat center/cover;
+}
+
+.bg-launches:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(41, 41, 41, 0.94);
+}
+
+.launches_container .info__name {
+  font-size: 13px;
+}
+
+.launches_container .info__text {
+  color: #F0F0F0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.location-launches .accordion_btn {
+  background: transparent;
+  color: #F0F0F0;
+}
+
+.location-launches .accordion_btn .cross, .location-launches .accordion_btn .cross:after {
+  background: #F0F0F0;
+}
+
+.location-launches .active {
+  font-weight: 100;
+  font-size: 14px;
+  background: rgba(70, 69, 69, 0.57);
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+}
+
+.location_container {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.location_container .info-container {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 18px 0;
+}
+
+.location_container .info-container .info__text {
+  font-family: "Open Sans", sans-serif;
+  color: #A7A9AC;
+  width: 100%;
+  line-height: 1.8;
+  font-size: 14px;
+  margin: 8px 0;
+}
+
+.location_container [class~='info-container']:last-of-type {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  text-decoration: underline;
+}
+
+header {
+  font-family: "Oswald", sans-serif;
+  position: fixed;
+  top: 38px;
+  width: 99%;
+  z-index: 4;
+}
+
+header .inner-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100vw;
+  padding: 0 36px;
+  position: absolute;
+  z-index: 6;
+}
+
+header .logo {
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  color: #F0F0F0;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+header .hamburger {
+  width: 44px;
+  height: 29px;
+}
+
+header .hamburger span {
+  height: 4px;
+  background: #F0F0F0;
+  display: block;
+  border: none;
+  -webkit-transition: .2s ease-in-out;
+  transition: .2s ease-in-out;
+}
+
+header .hamburger span:nth-child(1) {
+  width: 50%;
+  margin-bottom: 5px;
+}
+
+header .hamburger span:nth-child(2) {
+  width: 90%;
+  margin-bottom: 5px;
+  margin-left: 10%;
+}
+
+header .hamburger span:nth-child(3) {
+  width: 50%;
+  margin-left: 50%;
+}
+
+header .open span:nth-child(1) {
+  width: 100%;
+  -webkit-transform: rotate(45deg) translate(7px, 9px);
+          transform: rotate(45deg) translate(7px, 9px);
+}
+
+header .open span:nth-child(2) {
+  width: 0%;
+  opacity: 0;
+}
+
+header .open span:nth-child(3) {
+  width: 100%;
+  margin: 0;
+  -webkit-transform: rotate(-45deg) translate(4px, -6px);
+          transform: rotate(-45deg) translate(4px, -6px);
+}
+
+header .menu {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: opacity 1s ease-out;
+  transition: opacity 1s ease-out;
+}
+
+header .dropdown {
+  opacity: 1;
+  height: auto;
+  display: block;
+  background: #212020;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 50px;
+  height: 100vh;
+  z-index: 5;
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+
+header .dropdown ul {
+  text-decoration: none;
+  list-style: none;
+  text-align: center;
+  padding-top: 150px;
+}
+
+header .dropdown ul li {
+  padding: 1rem 0;
+  width: 20%;
+  margin: auto;
+}
+
+header .dropdown ul li a {
+  text-decoration: none;
+  color: #F0F0F0;
+  font-weight: 200;
+}
+
+header .dropdown ul li a::after {
+  content: "";
+  height: 2px;
+  width: 100%;
+  background: #FC3D21;
+  display: block;
+  margin-top: 5px;
+}
+
+main {
+  padding-top: 160px;
+  padding-left: 36px;
+  padding-right: 36px;
+}
+
+.footer {
+  height: 86px;
+  margin-top: 86px;
+}
+
+.footer section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer section p {
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  font-weight: 200;
+  font-size: 12px;
+  color: #A7A9AC;
+}
+
+.footer section span {
+  width: 40px;
+  height: 4px;
+  background: #A7A9AC;
+  margin: 5px 0 5px;
+  display: block;
+  margin: 16px 0;
+}
+
+.accordion_btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  height: 64px;
+  background: #A7A9AC;
+  border-radius: 5px;
+  border: none;
+  color: #212020;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 300;
+  padding: 0 8px;
+  margin-bottom: 32px;
+}
+
+.cross-wrapper {
+  padding-top: 8px;
+}
+
+.cross {
+  display: block;
+  background: #525050;
+  width: 16px;
+  height: 2px;
+}
+
+.cross::after {
+  content: "";
+  display: block;
+  background: #525050;
+  width: 16px;
+  height: 2px;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+}
+
+.tab-content, .location-launches__info {
+  max-height: 0;
+  overflow: auto;
+  -webkit-transition: max-height, .3s ease-in-out;
+  transition: max-height, .3s ease-in-out;
+}
+
+[class~='launches_container']:last-of-type {
+  margin-bottom: 90px;
+}
+
+.active {
+  background: transparent;
+  font-weight: 600;
+  color: #FC3D21;
+}
+
+.active .cross::after {
+  background: #FC3D21;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.hr-break {
+  width: 90%;
+  margin: 90px 6% 90px;
+  border: 2px #FC3D21 solid;
+  opacity: 0.65;
+}
+/*# sourceMappingURL=main.css.map */

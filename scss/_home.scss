@@ -1,0 +1,119 @@
+.bg-parallax {
+  min-height: 100%;
+  position: relative;
+
+  &>* {
+    position: relative;
+    z-index: 2;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(53, 52, 52, 0.8);
+  }
+}
+
+.bg-home {
+  background: $color-black url(../img/lea-castanie-irQ74aUdmjY-unsplash.jpg) fixed no-repeat center/cover;
+
+}
+
+header, .next-launch, .countdown {
+  @include primary-font;
+}
+
+.next-launch div {
+  width: 100%;
+}
+
+.next-launch p, span {
+  color: $color-red;
+}
+
+.next-launch p {
+  font-size: 14px;
+  font-family: $font-heading;
+  color: $color-light-grey;
+  margin-bottom: -30px;
+  font-weight: 100;
+}
+
+.next-launch span {
+  display: block;
+}
+
+.next-launch .year{
+  font-size: 9rem;
+  letter-spacing: 5px;
+  font-weight: $medium;
+}
+
+.next-launch .month {
+  font-size: 22px;
+  text-align: right;
+  font-weight: $regular;
+  margin-top: -17px;
+}
+
+.countdown{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 80px;
+  margin-top: 28px;
+  width: 300px;
+
+  &__counter {
+    display: inline;
+  }
+
+  &__counter  p {
+    font-size: 12px;
+    color: $color-medium-grey;
+    display: inline;
+  }
+
+  &__counter span {
+    font-size: 28px;
+    color: $color-light-grey;
+  }
+}
+
+.info__name {
+@include primary-font;
+  color: $color-light-grey;
+  font-weight: $light;
+  font-size: 16px;
+}
+
+.info-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.info__text {
+  font-family: $font-heading;
+  font-weight: $light;
+  font-size: 17px;
+  color: $color-medium-grey;
+  width: 100px;
+  text-align: left;
+}
+
+
+.highlighted {
+  color: $color-green;
+  font-weight: $medium;
+}
+
+.hide {
+height: 0;
+opacity: 0;
+}
+
+

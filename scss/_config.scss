@@ -1,0 +1,39 @@
+*, html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+}
+
+$font-heading: 'Oswald', sans-serif;
+$font-text: 'Open Sans', sans-serif;
+
+@mixin primary-font {
+  font-family: $font-heading;
+  text-transform: uppercase;
+}
+
+$extra-light: 200;
+$light: 300;
+$regular: 400;
+$medium: 500;
+$semibold: 600;
+$bold: 700;
+
+
+$color-black: #212020;
+$color-dark-grey: #A7A9AC;
+$color-medium-grey: #707070;
+$color-light-grey: #F0F0F0;
+$color-red: #FC3D21;
+$color-green: #136F68;
+
+
+img {
+  width: 100%;
+}
+
+
+

@@ -1,0 +1,223 @@
+@import './config';
+@import './home';
+@import './launches';
+
+header {
+  font-family: $font-heading;
+  position: fixed;
+  top: 38px;
+  width: 99%;
+  z-index: 4;
+
+  .inner-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100vw;
+    padding: 0 36px;
+    position: absolute;
+    z-index: 6;
+  }
+
+  .logo {
+    @include primary-font;
+    color: $color-light-grey;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
+
+  .hamburger {
+    width: 44px;
+    height: 29px;
+  }
+
+
+  .hamburger span {
+    height: 4px;
+    background: $color-light-grey;
+    display: block;
+    border: none;
+    transition: .2s ease-in-out;
+  }
+
+  .hamburger span:nth-child(1) {
+    width: 50%;
+    margin-bottom: 5px;
+  }
+
+  .hamburger span:nth-child(2) {
+    width: 90%;
+    margin-bottom: 5px;
+    margin-left: 10%;
+  }
+
+  .hamburger span:nth-child(3) {
+    width: 50%;
+    margin-left: 50%;
+  }
+
+  .open span:nth-child(1){
+    width: 100%;
+    transform: rotate(45deg) translate(7px, 9px)
+  }
+  .open span:nth-child(2){
+    width: 0%;
+    opacity: 0;
+  }
+
+  .open span:nth-child(3){
+    width: 100%;
+    margin: 0;
+    transform: rotate(-45deg) translate(4px, -6px);
+}
+
+  .menu {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: opacity 1s ease-out;
+  }
+  .dropdown {
+    opacity: 1;
+    height: auto;
+    display: block;
+    background: $color-black;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 50px;
+    height: 100vh;
+    z-index: 5;
+    transition: all .5s ease-in-out;
+  }
+
+    .dropdown ul{
+    text-decoration: none;
+    list-style: none;
+    text-align: center;
+    padding-top: 150px;
+  }
+    .dropdown ul li {
+      padding: 1rem 0;
+      width: 20%;
+      margin: auto;
+  }
+    .dropdown ul li a{
+    text-decoration: none;
+    color: $color-light-grey;
+    font-weight: $extra-light;
+  }
+
+  .dropdown ul li a::after {
+    content: "";
+    height: 2px;
+    width: 100%;
+    background:$color-red;
+    display: block;
+    margin-top: 5px;
+
+  }
+
+}
+
+main {
+  padding-top: 160px;
+  padding-left: 36px;
+  padding-right: 36px;
+}
+
+
+.footer {
+  height: 86px;
+  margin-top: 86px;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      @include primary-font;
+      font-weight: $extra-light;
+      font-size: 12px;
+      color: $color-dark-grey;
+    }
+
+    span {
+      width: 40px;
+      height: 4px;
+      background: $color-dark-grey;
+      margin: 5px 0 5px;
+      display: block;
+      margin: 16px 0;
+    }
+  }
+
+}
+
+.accordion_btn {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 64px;
+  background: $color-dark-grey;
+  border-radius: 5px;
+  border: none;
+  color: $color-black;
+  @include primary-font;
+  font-size: 1rem;
+  font-weight: $light;
+  padding: 0 8px;
+  margin-bottom: 32px;
+}
+
+.cross-wrapper {
+  padding-top: 8px;
+}
+
+.cross {
+  display: block;
+  background: #525050;
+  width: 16px;
+  height: 2px;
+}
+
+.cross::after {
+  content: "";
+  display: block;
+  background: #525050;
+  width: 16px;
+  height: 2px;
+  transform: rotate(90deg);
+  transition: .5s ease-in-out;
+}
+
+.tab-content, .location-launches__info {
+  max-height: 0;
+  overflow: auto;
+  transition: max-height, .3s ease-in-out;
+}
+
+[class~='launches_container']:last-of-type  {
+  margin-bottom: 90px;
+}
+
+.active {
+  background: transparent;
+  font-weight: $semibold;
+  color: $color-red;
+}
+
+.active .cross::after{
+  background: $color-red;
+  transform: rotate(180deg);
+}
+
+.hr-break {
+  width: 90%;
+  margin: 90px 6% 90px;
+  border: 2px #FC3D21 solid;
+  opacity: 0.65;
+}
+
+

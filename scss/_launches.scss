@@ -1,0 +1,71 @@
+.bg-launches {
+    background: $color-black url(../img/history-in-hd-e5eDHbmHprg-unsplash.jpg) fixed no-repeat center/cover;
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(41, 41, 41, 0.94);
+    }
+}
+
+.launches_container{
+  .info__name{
+    font-size: 13px;
+  }
+  .info__text {
+    color: $color-light-grey;
+    font-family: $font-text;
+    font-size: 12px;
+    font-weight: $regular;
+  }
+
+}
+
+.location-launches {
+  .accordion_btn {
+    background: transparent;
+    color: $color-light-grey;
+
+    .cross, .cross:after {
+      background: $color-light-grey;
+    }
+
+  }
+}
+
+.location-launches .active {
+  font-weight: 100;
+  font-size: 14px;
+  background: rgba(70, 69, 69, 0.57);
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+}
+
+.location_container {
+  flex-direction: column;
+
+  .info-container {
+    flex-direction: column;
+    margin: 18px 0;
+
+    .info__text {
+      font-family: $font-text;
+      color: $color-dark-grey;
+      width: 100%;
+      line-height: 1.8;
+      font-size: 14px;
+      margin: 8px 0;
+    }
+  }
+
+  [class~='info-container']:last-of-type  {
+    flex-direction: row;
+    text-decoration: underline;
+  }
+}
+
