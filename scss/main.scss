@@ -122,9 +122,13 @@ header {
 
 main {
   padding-top: 160px;
-  padding-left: 36px;
-  padding-right: 36px;
 }
+
+.inner-main {
+  width: 80%;
+  margin: auto;
+}
+
 
 
 .footer {
@@ -189,7 +193,7 @@ main {
   width: 16px;
   height: 2px;
   transform: rotate(90deg);
-  transition: .5s ease-in-out;
+
 }
 
 .tab-content, .location-launches__info {
@@ -211,6 +215,7 @@ main {
 .active .cross::after{
   background: $color-red;
   transform: rotate(180deg);
+  transition: .5s ease-in-out;
 }
 
 .hr-break {

@@ -35,6 +35,25 @@
     }
 
   }
+
+  .accordion_btn:hover {
+    background: rgba(64, 63, 63, 0.7);
+    border-radius: 0;
+    font-size: 18px;
+    transition: all .3s ease-in-out;
+
+  }
+
+  .accordion_btn:hover .cross{
+    width: 18px;
+    height: 3px;
+  }
+
+  .accordion_btn:hover .cross:after{
+    width: 18px;
+    height: 3px;
+    border: none;
+  }
 }
 
 .location-launches .active {

@@ -173,6 +173,25 @@ header, .next-launch, .countdown {
   background: #F0F0F0;
 }
 
+.location-launches .accordion_btn:hover {
+  background: rgba(64, 63, 63, 0.7);
+  border-radius: 0;
+  font-size: 18px;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.location-launches .accordion_btn:hover .cross {
+  width: 18px;
+  height: 3px;
+}
+
+.location-launches .accordion_btn:hover .cross:after {
+  width: 18px;
+  height: 3px;
+  border: none;
+}
+
 .location-launches .active {
   font-weight: 100;
   font-size: 14px;
@@ -348,8 +367,11 @@ header .dropdown ul li a::after {
 
 main {
   padding-top: 160px;
-  padding-left: 36px;
-  padding-right: 36px;
+}
+
+.inner-main {
+  width: 80%;
+  margin: auto;
 }
 
 .footer {
@@ -427,8 +449,6 @@ main {
   height: 2px;
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
-  -webkit-transition: .5s ease-in-out;
-  transition: .5s ease-in-out;
 }
 
 .tab-content, .location-launches__info {
@@ -452,6 +472,8 @@ main {
   background: #FC3D21;
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
 }
 
 .hr-break {
