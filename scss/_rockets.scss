@@ -2,13 +2,14 @@
   background: $color-black url(../img/bantersnaps-5CPIzjWzGxo-unsplash.jpg) fixed no-repeat center/cover;
 
   &:after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
     background: rgba(41, 41, 41, 0.88);
+  }
+  h1 {
+    font-family: $font-heading;
+    color: $color-light-grey;
+    font-weight: $extra-light;
+    font-size: 26px;
+    padding: 72px 0 40px 0;
   }
 }
 
@@ -68,7 +69,8 @@
   .card__title {
     font-family: $font-heading;
     color: $color-red;
-    font-size: 30px;
+    font-weight: $light;
+    font-size: 27px;
     transform: translate(0, 100%) rotate(-90deg);
     transform-origin: 0 0;
     position: absolute;

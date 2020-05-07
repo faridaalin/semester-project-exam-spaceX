@@ -1,0 +1,99 @@
+.bg-contact {
+  background: $color-black url(../img/49235136806_7c0d6391a1_k.jpg) fixed no-repeat center/cover;
+
+  &:after {
+    background: rgba(41, 41, 41, 0.88);
+  }
+}
+
+form {
+  width: 100%;
+  height: 100%;
+
+  fieldset {
+    display: flex;
+    border: none;
+    padding-bottom: 32px;
+
+    label {
+      font-family: $font-text;
+      color: $color-light-grey;
+      padding-bottom: 16px;
+      font-weight: $extra-light;
+    }
+
+    input[type="submit"], input[type="text"], input[type="email"], textarea {
+      width: 100%;
+      border: none;
+      font-size: 16px;
+      padding-left: 6px;
+    }
+
+    input[type="submit"], input[type="text"], input[type="email"] {
+      width: 302px;
+      height: 42px;
+      border-radius: 5px;
+    }
+
+    input[type="submit"], input[type="text"], input[type="email"], textarea {
+      background: #949494;
+    }
+
+     input[type="text"]:hover, input[type="email"]:hover, textarea:hover {
+      background: $color-dark-grey;
+      transition: background 0.3s ease-in-out;
+    }
+
+    input[type="submit"]:hover {
+      background: #b9210b;
+      transition: background 0.3s ease-in-out;
+    }
+
+    textarea {
+      border-radius: 5px;
+      height: 167px;
+      width: 302px;
+    }
+
+    input[type="submit"] {
+      font-size: 16px;
+      border-radius: 5px;
+      text-transform: uppercase;
+      background: $color-red;
+      color: $color-black;
+    }
+
+    .error {
+      font-family: $font-text;
+      color: $color-red;
+      font-size: 13px;
+      padding: 5px 0;
+      display: none;
+    }
+
+  }
+
+
+
+}
+
+.success-message {
+  display: none;
+  h2 {
+    font-family: $font-heading;
+    color: $color-light-grey;
+    font-weight: $extra-light;
+  }
+
+  p {
+    font-family: $font-text;
+    color: $color-light-grey;
+    font-weight: $extra-light;
+    line-height: 1.5;
+  }
+
+ p:nth-child(2) {
+  margin: 40px 0;
+ }
+}
+

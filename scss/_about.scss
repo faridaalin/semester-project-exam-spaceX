@@ -1,0 +1,28 @@
+.bg-about {
+  background: $color-black url(../img/48954138902_c51f6f28a0_k.jpg) fixed no-repeat center/cover;
+
+  &:after {
+    background: rgba(41, 41, 41, 0.88);
+  }
+
+  .about-text {
+    padding-bottom: 245px;
+  }
+
+  .about-text, a {
+    font-family: $font-text;
+    font-size: 15px;
+    color: $color-light-grey;
+    font-weight: $extra-light;
+    line-height: 1.5;
+
+    p {
+      margin-bottom: 22px;
+
+      &:last-child {
+        margin-bottom: 0px;
+      }
+    }
+  }
+
+}

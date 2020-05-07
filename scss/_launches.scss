@@ -2,12 +2,6 @@
     background: $color-black url(../img/history-in-hd-e5eDHbmHprg-unsplash.jpg) fixed no-repeat center/cover;
 
     &:after {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: 100%;
       background: rgba(41, 41, 41, 0.94);
     }
 }

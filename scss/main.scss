@@ -2,6 +2,8 @@
 @import './home';
 @import './launches';
 @import './rockets';
+@import './about';
+@import './contact';
 
 
 
@@ -134,8 +136,8 @@ main {
 
 h1 {
   font-family: $font-heading;
-  color: $color-light-grey;
-  font-weight: $extra-light;
+  color: $color-red;
+  font-weight: $regular;
   font-size: 26px;
   padding: 72px 0 40px 0;
 }

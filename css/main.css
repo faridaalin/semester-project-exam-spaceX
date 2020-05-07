@@ -144,12 +144,6 @@ header, .next-launch, .countdown {
 }
 
 .bg-launches:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
   background: rgba(41, 41, 41, 0.94);
 }
 
@@ -238,13 +232,15 @@ header, .next-launch, .countdown {
 }
 
 .bg-rockets:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
   background: rgba(41, 41, 41, 0.88);
+}
+
+.bg-rockets h1 {
+  font-family: "Oswald", sans-serif;
+  color: #F0F0F0;
+  font-weight: 200;
+  font-size: 26px;
+  padding: 72px 0 40px 0;
 }
 
 .card {
@@ -307,7 +303,8 @@ header, .next-launch, .countdown {
 .card__info .card__title {
   font-family: "Oswald", sans-serif;
   color: #FC3D21;
-  font-size: 30px;
+  font-weight: 300;
+  font-size: 27px;
   -webkit-transform: translate(0, 100%) rotate(-90deg);
           transform: translate(0, 100%) rotate(-90deg);
   -webkit-transform-origin: 0 0;
@@ -342,6 +339,134 @@ header, .next-launch, .countdown {
   display: flex;
   width: 60%;
   margin: auto;
+}
+
+.bg-about {
+  background: #212020 url(../img/48954138902_c51f6f28a0_k.jpg) fixed no-repeat center/cover;
+}
+
+.bg-about:after {
+  background: rgba(41, 41, 41, 0.88);
+}
+
+.bg-about .about-text {
+  padding-bottom: 245px;
+}
+
+.bg-about .about-text, .bg-about a {
+  font-family: "Open Sans", sans-serif;
+  font-size: 15px;
+  color: #F0F0F0;
+  font-weight: 200;
+  line-height: 1.5;
+}
+
+.bg-about .about-text p, .bg-about a p {
+  margin-bottom: 22px;
+}
+
+.bg-about .about-text p:last-child, .bg-about a p:last-child {
+  margin-bottom: 0px;
+}
+
+.bg-contact {
+  background: #212020 url(../img/49235136806_7c0d6391a1_k.jpg) fixed no-repeat center/cover;
+}
+
+.bg-contact:after {
+  background: rgba(41, 41, 41, 0.88);
+}
+
+form {
+  width: 100%;
+  height: 100%;
+}
+
+form fieldset {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: none;
+  padding-bottom: 32px;
+}
+
+form fieldset label {
+  font-family: "Open Sans", sans-serif;
+  color: #F0F0F0;
+  padding-bottom: 16px;
+  font-weight: 200;
+}
+
+form fieldset input[type="submit"], form fieldset input[type="text"], form fieldset input[type="email"], form fieldset textarea {
+  width: 100%;
+  border: none;
+  font-size: 16px;
+  padding-left: 6px;
+}
+
+form fieldset input[type="submit"], form fieldset input[type="text"], form fieldset input[type="email"] {
+  width: 302px;
+  height: 42px;
+  border-radius: 5px;
+}
+
+form fieldset input[type="submit"], form fieldset input[type="text"], form fieldset input[type="email"], form fieldset textarea {
+  background: #949494;
+}
+
+form fieldset input[type="text"]:hover, form fieldset input[type="email"]:hover, form fieldset textarea:hover {
+  background: #A7A9AC;
+  -webkit-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+}
+
+form fieldset input[type="submit"]:hover {
+  background: #b9210b;
+  -webkit-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+}
+
+form fieldset textarea {
+  border-radius: 5px;
+  height: 167px;
+  width: 302px;
+}
+
+form fieldset input[type="submit"] {
+  font-size: 16px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  background: #FC3D21;
+  color: #212020;
+}
+
+form fieldset .error {
+  font-family: "Open Sans", sans-serif;
+  color: #FC3D21;
+  font-size: 13px;
+  padding: 5px 0;
+  display: none;
+}
+
+.success-message {
+  display: none;
+}
+
+.success-message h2 {
+  font-family: "Oswald", sans-serif;
+  color: #F0F0F0;
+  font-weight: 200;
+}
+
+.success-message p {
+  font-family: "Open Sans", sans-serif;
+  color: #F0F0F0;
+  font-weight: 200;
+  line-height: 1.5;
+}
+
+.success-message p:nth-child(2) {
+  margin: 40px 0;
 }
 
 header {
@@ -487,8 +612,8 @@ main {
 
 h1 {
   font-family: "Oswald", sans-serif;
-  color: #F0F0F0;
-  font-weight: 200;
+  color: #FC3D21;
+  font-weight: 400;
   font-size: 26px;
   padding: 72px 0 40px 0;
 }

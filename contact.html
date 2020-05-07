@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about SpaceX launches and rockets">
+  <meta name="keywords" content="SpaceX, Launch, rockets, asteroids">
+  <meta name="author" content="Farida Alin">
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>SpaceX - microsite - Contact</title>
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <div class="inner-header">
+        <span class="logo">Spacex</span>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div class="menu">
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./launches.html">Lanuches</a></li>
+          <li><a href="./rockets.html">Rockets</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main bg-parallax bg-contact">
+    <div class="inner-main">
+
+      <h1>Contact</h1>
+
+      <form action="mailto:test@email.com" method="POST" class="contact-form">
+        <fieldset class="name">
+          <label for="name">Name</label>
+          <input type="text" name="name" id="name">
+          <span class="error error-name">Please enter your name</span>
+        </fieldset>
+        <fieldset class="email">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email">
+          <span class="error error-email">Please enter your email</span>
+          <span class="error error-invalid-email">Please enter a valid email</span>
+        </fieldset>
+        <fieldset class="message">
+          <label for="comment">Message</label>
+          <textarea name="message" id="message"></textarea>
+          <span class="error error-name-message">Please leave me a message</span>
+        </fieldset>
+
+        <fieldset class="sumbit">
+          <input type="submit" value="Send" class="sumbit-btn" id="submit">
+        </fieldset>
+      </form>
+
+      <section class="success-message">
+        <div>
+          <h2>Thank you for your message!</h2>
+          <p>I am happy that you find this project interesting. I’ll get back in touch with you as soon as I can.</p>
+          <p>Have a great day!</p>
+        </div>
+      </section>
+
+      </section>
+
+
+
+      <footer class="footer">
+        <section>
+          <p>&copy; 2020 spaceX Launch site</p>
+          <span></span>
+          <p>Site by Farida Alin</p>
+        </section>
+      </footer>
+
+    </div>
+  </main>
+  <script src="./js/script.js"></script>
+</body>
+
+</html>
