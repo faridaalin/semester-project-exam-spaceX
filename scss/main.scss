@@ -1,6 +1,9 @@
 @import './config';
 @import './home';
 @import './launches';
+@import './rockets';
+
+
 
 header {
   font-family: $font-heading;
@@ -121,7 +124,7 @@ header {
 }
 
 main {
-  padding-top: 160px;
+  padding-top: 90px;
 }
 
 .inner-main {
@@ -129,7 +132,13 @@ main {
   margin: auto;
 }
 
-
+h1 {
+  font-family: $font-heading;
+  color: $color-light-grey;
+  font-weight: $extra-light;
+  font-size: 26px;
+  padding: 72px 0 40px 0;
+}
 
 .footer {
   height: 86px;
