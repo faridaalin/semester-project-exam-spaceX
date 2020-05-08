@@ -1,3 +1,18 @@
+.bg-parallax {
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+
+  }
+}
+
+
 @import './config';
 @import './home';
 @import './launches';
@@ -5,7 +20,9 @@
 @import './about';
 @import './contact';
 
-
+img {
+  width: 100%;
+}
 
 header {
   font-family: $font-heading;
@@ -24,11 +41,12 @@ header {
     z-index: 6;
   }
 
-  .logo {
+  .logo a {
     @include primary-font;
     color: $color-light-grey;
     font-size: 1.2rem;
     letter-spacing: 1px;
+    text-decoration: none;
   }
 
   .hamburger {
@@ -61,65 +79,92 @@ header {
     margin-left: 50%;
   }
 
-  .open span:nth-child(1){
+  .open span:nth-child(1) {
     width: 100%;
     transform: rotate(45deg) translate(7px, 9px)
   }
-  .open span:nth-child(2){
+
+  .open span:nth-child(2) {
     width: 0%;
     opacity: 0;
   }
 
-  .open span:nth-child(3){
+  .open span:nth-child(3) {
     width: 100%;
     margin: 0;
     transform: rotate(-45deg) translate(4px, -6px);
-}
+  }
 
   .menu {
-    opacity: 0;
-    height: 0;
-    overflow: hidden;
-    transition: opacity 1s ease-out;
-  }
-  .dropdown {
-    opacity: 1;
-    height: auto;
-    display: block;
-    background: $color-black;
-    position: absolute;
-    right: 0;
+    position: fixed;
+    top: 0;
     left: 0;
-    top: 50px;
-    height: 100vh;
-    z-index: 5;
-    transition: all .5s ease-in-out;
-  }
-
-    .dropdown ul{
-    text-decoration: none;
-    list-style: none;
-    text-align: center;
-    padding-top: 150px;
-  }
-    .dropdown ul li {
-      padding: 1rem 0;
-      width: 20%;
-      margin: auto;
-  }
-    .dropdown ul li a{
-    text-decoration: none;
-    color: $color-light-grey;
-    font-weight: $extra-light;
-  }
-
-  .dropdown ul li a::after {
-    content: "";
-    height: 2px;
+    bottom: 0;
     width: 100%;
-    background:$color-red;
-    display: block;
-    margin-top: 5px;
+    background: #3a3a3a;
+    visibility: hidden;
+    transform: translateY(-100%);
+    transition: transform .5s ease-in-out;
+
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    &.dropdown {
+      visibility: visible;
+      transform: translateY(0%);
+    }
+
+    &.dropdown li {
+      opacity: 1;
+      transition: opacity 0.7s ease-in;
+    }
+    &.dropdown li:nth-child(1) {
+      transition-delay: 0.2s;
+    }
+    &.dropdown li:nth-child(2) {
+      transition-delay: 0.3s;
+    }
+    &.dropdown li:nth-child(3) {
+      transition-delay: 0.4s;
+    }
+    &.dropdown li:nth-child(4) {
+      transition-delay: 0.5s;
+    }
+    &.dropdown li:nth-child(5) {
+      transition-delay: 0.6s;
+    }
+
+    ul {
+      text-decoration: none;
+      list-style: none;
+      text-align: center;
+
+      li {
+        padding: 1rem 0;
+        opacity: 0;
+      }
+
+
+
+      a {
+        text-decoration: none;
+        color: $color-light-grey;
+        font-weight: $extra-light;
+        border-bottom: 2px solid $color-red;
+        padding-bottom: 5px;
+
+        &:hover {
+          color: $color-red;
+          font-weight: $regular;
+          border-bottom: 2px solid $color-light-grey;
+        }
+      }
+
+
+    }
 
   }
 
@@ -127,11 +172,12 @@ header {
 
 main {
   padding-top: 90px;
-}
-
-.inner-main {
   width: 80%;
   margin: auto;
+  min-height: calc(100vh - 150px);
+  z-index: 4;
+  position: relative;
+    z-index: 2;
 }
 
 h1 {
@@ -140,34 +186,6 @@ h1 {
   font-weight: $regular;
   font-size: 26px;
   padding: 72px 0 40px 0;
-}
-
-.footer {
-  height: 86px;
-  margin-top: 86px;
-
-  section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    p {
-      @include primary-font;
-      font-weight: $extra-light;
-      font-size: 12px;
-      color: $color-dark-grey;
-    }
-
-    span {
-      width: 40px;
-      height: 4px;
-      background: $color-dark-grey;
-      margin: 5px 0 5px;
-      display: block;
-      margin: 16px 0;
-    }
-  }
-
 }
 
 .accordion_btn {
@@ -207,13 +225,14 @@ h1 {
 
 }
 
-.tab-content, .location-launches__info {
+.tab-content,
+.location-launches__info {
   max-height: 0;
   overflow: auto;
   transition: max-height, .3s ease-in-out;
 }
 
-[class~='launches_container']:last-of-type  {
+[class~='launches_container']:last-of-type {
   margin-bottom: 90px;
 }
 
@@ -223,7 +242,7 @@ h1 {
   color: $color-red;
 }
 
-.active .cross::after{
+.active .cross::after {
   background: $color-red;
   transform: rotate(180deg);
   transition: .5s ease-in-out;
@@ -237,3 +256,30 @@ h1 {
 }
 
 
+.footer {
+  padding: 40px 0;
+  position: relative;
+    z-index: 2;
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      @include primary-font;
+      font-weight: $extra-light;
+      font-size: 12px;
+      color: $color-dark-grey;
+    }
+
+    span {
+      width: 40px;
+      height: 4px;
+      background: $color-dark-grey;
+      margin: 5px 0 5px;
+      display: block;
+      margin: 16px 0;
+    }
+  }
+
+}

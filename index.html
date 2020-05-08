@@ -13,12 +13,11 @@
   <title>SpaceX - microsite</title>
 </head>
 
-<body>
-
+<body class="bg-parallax bg-home">
   <header>
     <nav>
       <div class="inner-header">
-        <span class="logo">Spacex</span>
+        <span class="logo"><a href="./index.html">Spacex</a></span>
         <div class="hamburger">
           <span></span>
           <span></span>
@@ -28,18 +27,17 @@
 
       <div class="menu">
         <ul>
-          <li><a href="./index.html">Home</a></li>
-          <li><a href="./launches.html">Lanuches</a></li>
-          <li><a href="./rockets.html">Rockets</a></li>
-          <li><a href="./about.html">About</a></li>
-          <li><a href="./contact.html">Contact</a></li>
+          <li class="nav-link"><a href="./index.html">Home</a></li>
+          <li class="nav-link"><a href="./launches.html">Lanuches</a></li>
+          <li class="nav-link"><a href="./rockets.html">Rockets</a></li>
+          <li class="nav-link"><a href="./about.html">About</a></li>
+          <li class="nav-link"><a href="./contact.html">Contact</a></li>
         </ul>
       </div>
     </nav>
   </header>
 
-  <main class="main bg-parallax bg-home">
-    <div class="inner-main">
+  <main class="main-home">
     <section class="next-launch">
       <div>
         <p>Next Launch</p>
@@ -96,31 +94,27 @@
     </section>
 
     <section class="accordion">
-      <div class="">
-        <label for="tab-details" class="label">Details
-          <div class="cross-wrapper">
-            <span class="cross"></span>
-          </div>
-        </label>
-        <div class="tab-content">
+      <button class="accordion_btn">Details
+        <div class="cross-wrapper">
+          <span class="cross"></span>
+        </div>
+      </button>
+        <div class="tab-content details">
           <p>This mission will launch the sixth batch of operational Starlink satellites, which are expected to be
             version 1.0, from SLC-40, Cape Canaveral AFS. It is the seventh Starlink launch overall. The satellites will
             be delivered to low Earth orbit and will spend a few weeks maneuvering to their operational altitude of 550
             km. The booster for this mission is expected to land on OCISLY.”</p>
         </div>
-      </div>
     </section>
-
-    <footer class="footer">
-      <section>
-        <p>&copy; 2020 spaceX Launch site</p>
-        <span></span>
-        <p>Site by Farida Alin</p>
-      </section>
-    </footer>
-
-  </div>
   </main>
+
+  <footer class="footer">
+    <section class="inner-footer">
+      <p>&copy; 2020 spaceX Launch site</p>
+      <span></span>
+      <p>Site by Farida Alin</p>
+    </section>
+  </footer>
   <script src="./js/script.js"></script>
 </body>
 

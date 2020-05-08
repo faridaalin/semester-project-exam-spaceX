@@ -35,13 +35,18 @@ form {
       border-radius: 5px;
     }
 
-    input[type="submit"], input[type="text"], input[type="email"], textarea {
+     input[type="text"], input[type="email"], textarea {
       background: #949494;
     }
 
      input[type="text"]:hover, input[type="email"]:hover, textarea:hover {
       background: $color-dark-grey;
       transition: background 0.3s ease-in-out;
+    }
+
+    input[type="text"]:focus-within , input[type="email"]:focus-within , textarea:focus-within  {
+      background: #f0f0f0cc;
+
     }
 
     input[type="submit"]:hover {

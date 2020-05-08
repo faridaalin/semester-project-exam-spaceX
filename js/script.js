@@ -38,8 +38,7 @@ accordionBtn.forEach(button => {
 });
 
 /*Form Validation*/
-const form = document.querySelector('.contact-form');
-const submitBtn = document.querySelector('#submit');
+const form = document.querySelector('form');
 
 form.addEventListener("submit", submitContactForm)
 

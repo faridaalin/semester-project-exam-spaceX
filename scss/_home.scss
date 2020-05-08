@@ -1,26 +1,13 @@
-.bg-parallax {
-  min-height: 100%;
-  position: relative;
 
-  &>* {
-    position: relative;
-    z-index: 2;
-  }
-
-  &:after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
+.bg-home {
+  background: $color-black url(../img/lea-castanie-irQ74aUdmjY-unsplash.jpg) fixed no-repeat center/cover;
+  &::after {
     background: rgba(53, 52, 52, 0.8);
   }
 }
 
-.bg-home {
-  background: $color-black url(../img/lea-castanie-irQ74aUdmjY-unsplash.jpg) fixed no-repeat center/cover;
-
+.main-home .accordion_btn{
+ margin-bottom: 0;
 }
 
 header, .next-launch, .countdown {
@@ -111,9 +98,14 @@ header, .next-launch, .countdown {
   font-weight: $medium;
 }
 
-.hide {
-height: 0;
-opacity: 0;
+.details p {
+  font-family: $font-text;
+  font-size: 1rem;
+  color: $color-light-grey;
+  font-weight: $extra-light;
+  height: 100%;
+  line-height: 2;
+  padding-top: 40px;
 }
 
 
