@@ -2,12 +2,84 @@
 .bg-home {
   background: $color-black url(../img/lea-castanie-irQ74aUdmjY-unsplash.jpg) fixed no-repeat center/cover;
   &::after {
-    background: rgba(53, 52, 52, 0.8);
+    background: rgba(53, 52, 52, 0.87);
   }
 }
 
 .main-home .accordion_btn{
  margin-bottom: 0;
+}
+
+.locations {
+  position: absolute;
+    transform: translateY(150%);
+    top: 0;
+    left: 0;
+}
+
+.location-wrapper {
+  display: block;
+  font-family: $font-heading;
+  color: $color-light-grey;
+  font-weight: $extra-light;
+
+  width: 20px;
+  height: 75px;
+
+  .title {
+    width: 100px;
+  }
+
+  .title h3 {
+    font-weight: $extra-light;
+    text-align: center;
+    display:inline-block;
+    transform: rotate(-90deg) translate(-100%, 0);
+    transform-origin: 0 0;
+  }
+
+  .active-location {
+    border-bottom: 2px solid #FC3D21;
+  }
+
+  .location-content {
+    padding-left: 30px;
+    width: 150px;
+    opacity: 0;
+    transition: opacity .3s, padding-left .3s;
+    text-transform: uppercase;
+    font-size: 15px;
+  }
+
+  .area-1 {
+    transform: translateY(-20px);
+  }
+  .area-2 {
+    transform: translateY(-32px);
+  }
+  .area-3 {
+    transform: translateY(-23px);
+  }
+  .area-4 {
+    transform: translateY(8px);
+  }
+}
+
+.location-wrapper-florida {
+  height: 60px;
+}
+
+.location-wrapper-texas {
+  height: 50px;
+}
+
+.location-wrapper-islands {
+height: 100px;
+}
+
+.location-wrapper:hover  .location-content{
+  padding-left: 42px;
+  opacity: 1;
 }
 
 header, .next-launch, .countdown {
@@ -23,7 +95,7 @@ header, .next-launch, .countdown {
 }
 
 .next-launch p {
-  font-size: 14px;
+  font-size: 3.5vw;
   font-family: $font-heading;
   color: $color-light-grey;
   margin-bottom: -30px;
@@ -35,13 +107,12 @@ header, .next-launch, .countdown {
 }
 
 .next-launch .year{
-  font-size: 9rem;
-  letter-spacing: 5px;
+  font-size: 40vw;
   font-weight: $medium;
 }
 
 .next-launch .month {
-  font-size: 22px;
+  font-size: 5.5vw;
   text-align: right;
   font-weight: $regular;
   margin-top: -17px;
@@ -50,24 +121,29 @@ header, .next-launch, .countdown {
 .countdown{
   display: flex;
   justify-content: space-between;
-  margin-bottom: 80px;
-  margin-top: 28px;
-  width: 300px;
+  padding-bottom: 80px;
+  padding-top: 28px;
+  margin: 0 auto;
+  width: 77vw;
 
   &__counter {
     display: inline;
   }
 
   &__counter  p {
-    font-size: 12px;
+    font-size: 3vw;
     color: $color-medium-grey;
     display: inline;
   }
 
   &__counter span {
-    font-size: 28px;
+    font-size: 7vw;
     color: $color-light-grey;
   }
+}
+
+.next-launch-info {
+  padding-bottom: 37px;
 }
 
 .info__name {

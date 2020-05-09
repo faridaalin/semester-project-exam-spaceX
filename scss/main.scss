@@ -1,3 +1,4 @@
+@import './config';
 .bg-parallax {
   position: relative;
 
@@ -12,31 +13,25 @@
   }
 }
 
-
-@import './config';
-@import './home';
-@import './launches';
-@import './rockets';
-@import './about';
-@import './contact';
-
-img {
-  width: 100%;
-}
-
 header {
   font-family: $font-heading;
-  position: fixed;
-  top: 38px;
-  width: 99%;
+  width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-top: 38px;
   z-index: 4;
 
-  .inner-header {
+  nav {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+  }
+  .inner-nav {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    width: 100vw;
-    padding: 0 36px;
+    width: 100%;
     position: absolute;
     z-index: 6;
   }
@@ -156,11 +151,11 @@ header {
         border-bottom: 2px solid $color-red;
         padding-bottom: 5px;
 
-        &:hover {
-          color: $color-red;
-          font-weight: $regular;
-          border-bottom: 2px solid $color-light-grey;
-        }
+        // &:hover {
+        //   color: $color-red;
+        //   font-weight: $regular;
+        //   border-bottom: 2px solid $color-light-grey;
+        // }
       }
 
 
@@ -169,6 +164,19 @@ header {
   }
 
 }
+
+@import './home';
+@import './launches';
+@import './rockets';
+@import './about';
+@import './contact';
+@import './responsive';
+
+img {
+  width: 100%;
+}
+
+
 
 main {
   padding-top: 90px;

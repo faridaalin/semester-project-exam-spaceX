@@ -16,7 +16,7 @@
 <body class="bg-parallax bg-home">
   <header>
     <nav>
-      <div class="inner-header">
+      <div class="inner-nav">
         <span class="logo"><a href="./index.html">Spacex</a></span>
         <div class="hamburger">
           <span></span>
@@ -27,17 +27,75 @@
 
       <div class="menu">
         <ul>
-          <li class="nav-link"><a href="./index.html">Home</a></li>
-          <li class="nav-link"><a href="./launches.html">Lanuches</a></li>
-          <li class="nav-link"><a href="./rockets.html">Rockets</a></li>
-          <li class="nav-link"><a href="./about.html">About</a></li>
-          <li class="nav-link"><a href="./contact.html">Contact</a></li>
+          <li class="nav-link">
+            <span class="circle-short-line"></span>
+            <a href="./index.html">Home</a>
+            <span class="circle"></span>
+            <span class="circle-long-line"></span>
+          </li>
+          <li class="nav-link"><a href="./launches.html">Lanuches</a>
+            <span class="circle"></span>
+            <span class="circle-long-line"></span>
+          </li>
+          <li class="nav-link"><a href="./rockets.html">Rockets</a>
+            <span class="circle"></span>
+            <span class="circle-long-line"></span>
+          </li>
+          <li class="nav-link"><a href="./about.html">About</a>
+            <span class="circle"></span>
+            <span class="circle-long-line"></span>
+          </li>
+          <li class="nav-link"><a href="./contact.html">Contact</a>
+            <span class="circle"></span>
+            <span class="circle-short-line"></span>
+          </li>
         </ul>
       </div>
     </nav>
   </header>
 
   <main class="main-home">
+
+    <aside class="locations">
+      <div class="location-wrapper location-wrapper-california">
+       <div class="title">
+        <h3 class="california">California</h3>
+       </div>
+        <div class="location-content area-1">
+          <p>VAFB SLC 3W</p>
+          <p>VAFB SLC 4E</p>
+        </div>
+      </div>
+
+      <div class="location-wrapper location-wrapper-florida">
+        <div class="title">
+          <h3 class="active-location florida">Florida</h3>
+        </div>
+        <div class="location-content area-2">
+          <p>CCAFS SLC 40</p>
+          <p>KSC LC 39A</p>
+        </div>
+      </div>
+
+      <div class="location-wrapper location-wrapper-texas">
+        <div class="title">
+          <h3 class="texas">Texas</h3>
+        </div>
+        <div class="location-content area-3">
+          <p>STLS</p>
+        </div>
+      </div>
+
+      <div class="location-wrapper location-wrapper-islands">
+        <div class="title">
+          <h3 class="location-title mislands">Marshall Islands</h3>
+        </div>
+        <div class="location-content area-4">
+          <p>Kwajalein Atoll</p>
+        </div>
+      </div>
+    </aside>
+
     <section class="next-launch">
       <div>
         <p>Next Launch</p>
@@ -45,7 +103,6 @@
         <span class="month">04/30</span>
       </div>
     </section>
-
 
     <section>
       <div class="countdown" id="countDown">

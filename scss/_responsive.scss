@@ -1,0 +1,103 @@
+@include media-xl {
+
+  header {
+
+    .hamburger {
+      display: none;
+    }
+
+    .menu {
+      visibility: visible;
+      transform: translate(0px, 0px);
+      background: transparent;
+      position: absolute;
+      width: 108px;
+      height: 290px;
+      right: 0;
+      left: 95%;
+      transform: translateY(150%);
+
+      .nav-link {
+        position: relative;
+        text-align: left;
+        font-size: 1rem;
+        display: flex;
+        justify-content: space-between;
+        opacity: 1;
+
+        .circle {
+          position: absolute;
+          top: 24px;
+          right: -60%;
+          height: 10px;
+          width: 10px;
+          background: $color-dark-grey;
+          display: inline-block;
+          border: none;
+          border-radius: 50%;
+          transition: transform .3s, background .3s;
+
+        }
+        .circle-short-line, .circle-long-line  {
+          content: '';
+          position: absolute;
+          background: $color-dark-grey;
+          width: 4px;
+          height: 32px;
+          top: -19px;
+          right: -55%;
+        }
+
+        .circle-short-line {
+          top: 0%;
+          height: 15px;
+        }
+
+        .circle-long-line {
+          top: 72%;
+        }
+
+        [class~='circle-short-line']:last-of-type {
+          top: 38px;
+        }
+
+        a {
+          border-bottom: none;
+          padding: 0;
+          color: $color-dark-grey;
+          display: inline-block;
+        }
+
+        a:hover {
+          transform: scale(1.2);
+          color: $color-light-grey;
+          transition: transform .3s, color .3s;
+
+        }
+        a:hover + .circle  {
+          transform: translate(0%, -20%) scale(1.5);
+          background: $color-light-grey;
+        }
+
+      }
+
+    }
+
+  }
+
+
+
+  .next-launch .year {
+    font-size: 20vw;
+
+  }
+
+  .next-launch p {
+    font-size: 1.5vw;
+  }
+
+  .next-launch .month {
+    font-size: 2.5vw;
+  }
+
+}
