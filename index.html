@@ -17,7 +17,10 @@
   <header>
     <nav>
       <div class="inner-nav">
-        <span class="logo"><a href="./index.html">Spacex</a></span>
+        <span class="logo">
+          <a href="./index.html">Spacex</a>
+          <p>Learn About SpaceX Launches and Rockets</p>
+        </span>
         <div class="hamburger">
           <span></span>
           <span></span>
@@ -29,7 +32,7 @@
         <ul>
           <li class="nav-link">
             <span class="circle-short-line"></span>
-            <a href="./index.html">Home</a>
+            <a href="./index.html" class="active-link">Home</a>
             <span class="circle"></span>
             <span class="circle-long-line"></span>
           </li>
@@ -54,7 +57,7 @@
     </nav>
   </header>
 
-  <main class="main-home">
+  <main class=" main main-home">
 
     <aside class="locations">
       <div class="location-wrapper location-wrapper-california">
@@ -104,7 +107,7 @@
       </div>
     </section>
 
-    <section>
+    <section class="countdown-wrapper">
       <div class="countdown" id="countDown">
         <div class="countdown__counter">
           <p>Days</p>
@@ -138,31 +141,27 @@
         </div>
 
         <div class="info-container">
-          <p class="info__name">Location</p>
-          <p class="info__text">Kwajalein Atoll</p>
-        </div>
-
-        <div class="info-container">
           <p class=" info__name">Launch Success</p>
           <p class="info__text highlighted">TBD</p>
         </div>
 
       </div>
+
+      <section class="accordion">
+        <button class="accordion_btn">Details
+          <div class="cross-wrapper">
+            <span class="cross"></span>
+          </div>
+        </button>
+          <div class="tab-content details">
+            <p>This mission will launch the sixth batch of operational Starlink satellites, which are expected to be
+              version 1.0, from SLC-40, Cape Canaveral AFS. It is the seventh Starlink launch overall. The satellites will
+              be delivered to low Earth orbit and will spend a few weeks maneuvering to their operational altitude of 550
+              km. The booster for this mission is expected to land on OCISLY.”</p>
+          </div>
+      </section>
     </section>
 
-    <section class="accordion">
-      <button class="accordion_btn">Details
-        <div class="cross-wrapper">
-          <span class="cross"></span>
-        </div>
-      </button>
-        <div class="tab-content details">
-          <p>This mission will launch the sixth batch of operational Starlink satellites, which are expected to be
-            version 1.0, from SLC-40, Cape Canaveral AFS. It is the seventh Starlink launch overall. The satellites will
-            be delivered to low Earth orbit and will spend a few weeks maneuvering to their operational altitude of 550
-            km. The booster for this mission is expected to land on OCISLY.”</p>
-        </div>
-    </section>
   </main>
 
   <footer class="footer">

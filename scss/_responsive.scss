@@ -1,11 +1,25 @@
-@include media-xl {
-
+@include media-lg {
   header {
+    padding: 40px;
+    .logo {
+      a {
+        font-size: 30px;
+      }
+      p {
+        display: block;
+        color: $color-dark-grey;
+        font-size: 16px;
+        font-weight: $light;
+      }
+    }
+
+    nav {
+      width: 100%;
+    }
 
     .hamburger {
       display: none;
     }
-
     .menu {
       visibility: visible;
       transform: translate(0px, 0px);
@@ -13,9 +27,9 @@
       position: absolute;
       width: 108px;
       height: 290px;
-      right: 0;
-      left: 95%;
-      transform: translateY(150%);
+      top: 0;
+      left: 50%;
+      transform: translate(393px, 161%);
 
       .nav-link {
         position: relative;
@@ -28,7 +42,7 @@
         .circle {
           position: absolute;
           top: 24px;
-          right: -60%;
+          right: -62%;
           height: 10px;
           width: 10px;
           background: $color-dark-grey;
@@ -75,29 +89,135 @@
 
         }
         a:hover + .circle  {
-          transform: translate(0%, -20%) scale(1.5);
+          transform: translate(2%, -16%) scale(1.5);
+          background: $color-light-grey;
+        }
+
+        .active-link {
+          transform: scale(1.2);
+          color: $color-light-grey;
+        }
+
+        .active-link  + .circle {
+          transform: translate(2%, -16%) scale(1.5);
           background: $color-light-grey;
         }
 
       }
 
     }
+  }
+.main {
+  padding-top: 150px;
+}
 
+  .main, header {
+    max-width: 1012px;
+    margin: 0 auto;
+
+    .locations {
+      display: block;
+      transform: translateY(150%);
+    }
   }
 
 
 
+  .next-launch div {
+    position: relative;
+  }
+
   .next-launch .year {
-    font-size: 20vw;
+    font-size: 200px;
+    letter-spacing: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 0%);
 
   }
 
   .next-launch p {
-    font-size: 1.5vw;
+    font-size: 16px;
+    transform: translateY(35px);
   }
 
   .next-launch .month {
-    font-size: 2.5vw;
+    font-size: 22px;
+    font-weight: $light;
+    transform: translate(-28px, 295px);
   }
 
+  .next-launch, .next-launch-info, .accordion {
+    width: 492px;
+    margin: 0 auto;
+  }
+  .next-launch-info {
+    padding: 321px 0 0;
+
+    .info-container {
+      padding-bottom: 42px;
+      margin-bottom: 0;
+
+      .info__name {
+        font-size: 18px;
+      }
+
+      .info__text {
+        transform: translateX(-200px);
+        font-size: 19px;
+        color: #8c8a8a;
+      }
+
+    }
+
+
+  }
+  .countdown-wrapper {
+    width: 355px;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    .countdown{
+      width: 100%;
+      margin: 0;
+      padding: 0;
+
+      .countdown__counter span {
+        font-size: 30px;
+      }
+
+      .countdown__counter p {
+        font-size: 17px;
+        color: $color-light-grey;
+        font-weight: $extra-light;
+      }
+    }
+  }
 }
+
+
+
+@include media-xl {
+  header {
+    .menu {
+      transform: translate(532px, 165%);
+
+      .circle {
+        right: 61%;
+      }
+    }
+  }
+  .main, header {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .main {
+    padding-top: 150px;
+
+  }
+
+  }
+
+

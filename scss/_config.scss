@@ -3,9 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-body {
-  // height: 100vh;
-}
+
 
 $font-heading: 'Oswald', sans-serif;
 $font-text: 'Open Sans', sans-serif;
@@ -39,12 +37,12 @@ $color-green: #136F68;
 }
 
 @mixin media-lg {
-  @media screen and (min-width: 856px) {
+  @media screen and (min-width: 1280px) {
     @content;
   }
 }
 @mixin media-xl {
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1368px) {
     @content;
   }
 }

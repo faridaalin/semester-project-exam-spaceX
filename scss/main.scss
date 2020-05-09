@@ -178,14 +178,14 @@ img {
 
 
 
-main {
+.main {
   padding-top: 90px;
   width: 80%;
-  margin: auto;
+  margin: 0 auto;
   min-height: calc(100vh - 150px);
   z-index: 4;
   position: relative;
-    z-index: 2;
+  z-index: 2;
 }
 
 h1 {
@@ -210,6 +210,11 @@ h1 {
   font-weight: $light;
   padding: 0 8px;
   margin-bottom: 32px;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0px 0px 3px 0px #F0F0F0;
+  }
 }
 
 .cross-wrapper {

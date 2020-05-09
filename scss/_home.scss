@@ -6,6 +6,10 @@
   }
 }
 
+header .logo p {
+  display: none;
+}
+
 .main-home .accordion_btn{
  margin-bottom: 0;
 }
@@ -15,6 +19,7 @@
     transform: translateY(150%);
     top: 0;
     left: 0;
+    display: none;
 }
 
 .location-wrapper {
@@ -82,7 +87,7 @@ height: 100px;
   opacity: 1;
 }
 
-header, .next-launch, .countdown {
+.next-launch, .countdown {
   @include primary-font;
 }
 
