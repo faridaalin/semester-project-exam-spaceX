@@ -43,8 +43,9 @@ header .logo p {
     transform-origin: 0 0;
   }
 
-  .active-location {
+  .title .active-location {
     border-bottom: 2px solid #FC3D21;
+    font-weight: $light;
   }
 
   .location-content {
@@ -87,6 +88,9 @@ height: 100px;
   opacity: 1;
 }
 
+.next-launch{
+  transform: translateY(-25px);
+}
 .next-launch, .countdown {
   @include primary-font;
 }
@@ -100,11 +104,13 @@ height: 100px;
 }
 
 .next-launch p {
-  font-size: 3.5vw;
+  font-size: 1rem;
   font-family: $font-heading;
   color: $color-light-grey;
-  margin-bottom: -30px;
+  // margin-bottom: -30px;
   font-weight: 100;
+  display: inline-block;
+  transform: translateY(25px);
 }
 
 .next-launch span {
@@ -114,35 +120,40 @@ height: 100px;
 .next-launch .year{
   font-size: 40vw;
   font-weight: $medium;
+  text-align: center;
 }
 
 .next-launch .month {
-  font-size: 5.5vw;
+  font-size: 1.3rem;
   text-align: right;
   font-weight: $regular;
   margin-top: -17px;
+  display: inline-block;
+  margin-left: 80%;
+}
+
+.countdown-wrapper {
+  padding-bottom: 80px;
+  padding-top: 13px;
 }
 
 .countdown{
   display: flex;
   justify-content: space-between;
-  padding-bottom: 80px;
-  padding-top: 28px;
-  margin: 0 auto;
-  width: 77vw;
 
   &__counter {
-    display: inline;
+    display: block;
+    width: 25%;
   }
 
   &__counter  p {
-    font-size: 3vw;
+    font-size: 12px;
     color: $color-medium-grey;
     display: inline;
   }
 
   &__counter span {
-    font-size: 7vw;
+    font-size: 28px;
     color: $color-light-grey;
   }
 }
@@ -150,6 +161,10 @@ height: 100px;
 .next-launch-info {
   padding-bottom: 37px;
 }
+.next-launch-info .accordion{
+  padding-top: 12px;
+}
+
 
 .info__name {
 @include primary-font;

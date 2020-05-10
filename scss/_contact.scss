@@ -10,8 +10,9 @@ form {
   width: 100%;
   height: 100%;
 
-  fieldset {
+  .fieldset {
     display: flex;
+    flex-direction: column;
     border: none;
     padding-bottom: 32px;
 
@@ -30,7 +31,7 @@ form {
     }
 
     input[type="submit"], input[type="text"], input[type="email"] {
-      width: 302px;
+      width: 100%;
       height: 42px;
       border-radius: 5px;
     }
@@ -57,7 +58,7 @@ form {
     textarea {
       border-radius: 5px;
       height: 167px;
-      width: 302px;
+      width: 100%;
     }
 
     input[type="submit"] {

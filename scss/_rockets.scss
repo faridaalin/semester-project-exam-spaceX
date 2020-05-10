@@ -9,7 +9,7 @@
     color: $color-light-grey;
     font-weight: $extra-light;
     font-size: 26px;
-    padding: 72px 0 40px 0;
+    padding: 38px 0 40px 0;
   }
 }
 
@@ -75,7 +75,7 @@
     transform-origin: 0 0;
     position: absolute;
     bottom: 30%;
-    left: 5%;
+    left: 4%;
   }
 
   .info-container {
@@ -98,4 +98,7 @@
     width: 60%;
     margin: auto;
   }
+  // .devider-1 .info__text, .devider-2 .info__text {
+  //   width: 100%;
+  // }
 }

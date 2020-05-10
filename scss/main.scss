@@ -170,7 +170,7 @@ header {
 @import './rockets';
 @import './about';
 @import './contact';
-@import './responsive';
+
 
 img {
   width: 100%;
@@ -193,7 +193,38 @@ h1 {
   color: $color-red;
   font-weight: $regular;
   font-size: 26px;
-  padding: 72px 0 40px 0;
+  // padding: 72px 0 40px 0;
+  padding: 38px 0 40px 0;
+}
+
+.countdown-wrapper {
+  padding-bottom: 80px;
+  padding-top: 13px;
+}
+
+.countdown{
+  display: flex;
+  justify-content: space-between;
+
+  &__counter {
+    display: block;
+    width: 25%;
+  }
+
+  &__counter  p {
+    font-size: 12px;
+    color: $color-medium-grey;
+    display: inline;
+  }
+
+  &__counter span {
+    font-size: 28px;
+    color: $color-light-grey;
+  }
+}
+
+.all-pages {
+  display: none;
 }
 
 .accordion_btn {
@@ -294,5 +325,6 @@ h1 {
       margin: 16px 0;
     }
   }
-
 }
+
+@import './responsive';

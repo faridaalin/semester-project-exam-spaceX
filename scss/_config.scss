@@ -30,22 +30,47 @@ $color-green: #136F68;
 
 
 
-@mixin media-md {
-  @media screen and (min-width: 629px) {
+@mixin media-s {
+  @media screen and (min-width: 452px) {
     @content;
   }
 }
 
+@mixin media-md {
+  @media screen and (min-width: 512px) {
+    @content;
+  }
+}
+
+@mixin media-md-l {
+  @media screen and (min-width: 672px) {
+    @content;
+  }
+}
+
+@mixin media-md-lg {
+  @media screen and (min-width: 700px) {
+    @content;
+  }
+}
+
+@mixin media-l {
+  @media screen and (min-width: 1024px) {
+    @content;
+  }
+}
+
+
 @mixin media-lg {
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1366px) {
     @content;
   }
 }
-@mixin media-xl {
-  @media screen and (min-width: 1368px) {
-    @content;
-  }
-}
+// @mixin media-xl {
+//   @media screen and (min-width: 1368px) {
+//     @content;
+//   }
+// }
 
 
 

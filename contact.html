@@ -18,7 +18,10 @@
   <header>
     <nav>
       <div class="inner-nav">
-        <div class="logo"><a href="./index.html">Spacex</a></div>
+        <span class="logo">
+          <a href="./index.html">Spacex</a>
+          <p>Learn About SpaceX Launches and Rockets</p>
+        </span>
         <div class="hamburger">
           <span></span>
           <span></span>
@@ -56,27 +59,87 @@
   </header>
 
   <main class="main">
+
+    <section class="countdown-wrapper all-pages">
+      <div class="countdown" id="countDown">
+        <div class="countdown__counter">
+          <p>Days</p>
+          <span id="days">368</span>
+        </div>
+        <div class="countdown__counter">
+          <p>hours</p>
+          <span id="hours">12</span>
+        </div>
+        <div class="countdown__counter">
+          <p>min</p>
+          <span id="min">60</span>
+        </div>
+        <div class="countdown__counter">
+          <p>sec</p>
+          <span class="sec" id="sec">47</span>
+        </div>
+      </div>
+    </section>
       <h1>Contact</h1>
 
+      <aside class="locations">
+        <div class="location-wrapper location-wrapper-california">
+         <div class="title">
+          <h3 class="california">California</h3>
+         </div>
+          <div class="location-content area-1">
+            <p>VAFB SLC 3W</p>
+            <p>VAFB SLC 4E</p>
+          </div>
+        </div>
+
+        <div class="location-wrapper location-wrapper-florida">
+          <div class="title">
+            <h3 class="florida">Florida</h3>
+          </div>
+          <div class="location-content area-2">
+            <p>CCAFS SLC 40</p>
+            <p>KSC LC 39A</p>
+          </div>
+        </div>
+
+        <div class="location-wrapper location-wrapper-texas">
+          <div class="title">
+            <h3 class="texas">Texas</h3>
+          </div>
+          <div class="location-content area-3">
+            <p>STLS</p>
+          </div>
+        </div>
+
+        <div class="location-wrapper location-wrapper-islands">
+          <div class="title">
+            <h3 class="location-title mislands">Marshall Islands</h3>
+          </div>
+          <div class="location-content area-4">
+            <p>Kwajalein Atoll</p>
+          </div>
+        </div>
+      </aside>
       <form action="" method="" class="contact-form">
-        <fieldset class="name">
+        <div class="fieldset name">
           <label for="name">Name</label>
           <input type="text" name="name" id="name">
           <span class="error error-name">Please enter your name</span>
-        </fieldset>
-        <fieldset class="email">
+        </div>
+        <div class="fieldset email">
           <label for="email">Email</label>
           <input type="email" name="email" id="email">
           <span class="error error-email">Please enter your email</span>
           <span class="error error-invalid-email">Please enter a valid email</span>
-        </fieldset>
-        <fieldset class="message">
+        </div>
+        <div class="fieldset message">
           <label for="comment">Message</label>
           <textarea name="message" id="message"></textarea>
           <span class="error error-name-message">Please leave me a message</span>
-        </fieldset>
+        </div>
 
-        <fieldset class="sumbit">
+        <fieldset class="fieldset sumbit">
           <input type="submit" value="Send" class="sumbit-btn" id="submit">
         </fieldset>
       </form>
