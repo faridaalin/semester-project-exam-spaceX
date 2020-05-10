@@ -27,10 +27,12 @@ window.onscroll = function() {
 /*Accordion*/
 const accordionBtn = document.querySelectorAll('.accordion_btn');
 accordionBtn.forEach(button => {
+
   button.addEventListener('click', () => {
     button.classList.toggle('active');
     const tabContent = button.nextElementSibling;
     if(tabContent.style.maxHeight === "") {
+      console.dir(tabContent)
       tabContent.style.maxHeight = tabContent.scrollHeight + "px"
     } else {
       tabContent.style.maxHeight = "";

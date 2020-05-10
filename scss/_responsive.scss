@@ -161,6 +161,7 @@
       height: 290px;
       top: 0;
       left: 50%;
+      transition: none;
       // transform: translate(393px, 145%);
       transform: translate(444px, 146%);
 
@@ -264,7 +265,7 @@
   }
 
   .next-launch-info .accordion {
-    padding-top: 0;
+    padding-top: 20px;
   }
 
   .next-launch div {
@@ -276,20 +277,20 @@
     letter-spacing: 20px;
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: -50%;
     transform: translate(-50%, 0%);
 
   }
 
   .next-launch p {
     font-size: 16px;
-    transform: translateY(35px);
+    transform: translate(111px, -1px);
   }
 
   .next-launch .month {
     font-size: 22px;
     font-weight: $light;
-    transform: translate(57px, 295px);
+    transform: translate(-106px, 277px);
   }
 
   .month {
@@ -299,7 +300,7 @@
   .next-launch,
   .next-launch-info,
   .accordion {
-    width: 600px;
+    width: 800px;
     margin: 0 auto;
   }
 
@@ -360,11 +361,12 @@
     .all-pages {
       top: -101px;
     }
+
   }
 
   h1 {
     margin-left: 16%;
-    transform: translateY(-49px);
+    transform: translateY(-25px);
   }
 
   .cards {
@@ -390,14 +392,11 @@
         left: -137px;
       }
 
-      .devider-1 {
-        // margin-left: 73%;
-      }
+
 
     }
 
     .devider-container {
-      // width: 30%;
       margin: 0;
     }
 
@@ -420,19 +419,19 @@
     }
 
     .about-text {
-      width: 600px;
+      width: 800px;
       margin: 0 auto;
       background: #21202059;
       padding: 60px;
       border-radius: 5px;
-      height: 100%;
+      height: 450px;
     }
   }
 
   /*Contact*/
 
   form, .success-message {
-    width: 600px;
+    width: 800px;
     margin: 0 auto;
     background: #21202059;
     padding: 5% 7%;

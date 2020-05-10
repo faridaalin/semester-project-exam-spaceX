@@ -194,14 +194,17 @@ height: 100px;
   font-weight: $medium;
 }
 
-.details p {
+.active +.details {
+  transform: translateY(-1px);
+}
+
+.details p{
   font-family: $font-text;
   font-size: 1rem;
   color: $color-light-grey;
   font-weight: $extra-light;
   height: 100%;
   line-height: 2;
-  padding-top: 40px;
 }
 
 

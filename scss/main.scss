@@ -165,7 +165,6 @@ header {
 
 }
 
-@import './home';
 @import './launches';
 @import './rockets';
 @import './about';
@@ -242,10 +241,20 @@ h1 {
   padding: 0 8px;
   margin-bottom: 32px;
 
+  &:hover{
+    background: #1b1b1b47;
+    color: $color-light-grey;
+  }
+
+  &:hover + .cross {
+    background: $color-light-grey;
+  }
+
   &:focus {
     outline: none;
     box-shadow: 0px 0px 3px 0px #F0F0F0;
   }
+
 }
 
 .cross-wrapper {
@@ -269,6 +278,8 @@ h1 {
 
 }
 
+
+
 .tab-content,
 .location-launches__info {
   max-height: 0;
@@ -276,13 +287,19 @@ h1 {
   transition: max-height, .3s ease-in-out;
 }
 
+
 [class~='launches_container']:last-of-type {
-  margin-bottom: 90px;
+  padding-bottom: 5px;
 }
 
+.active +.tab-content{
+  padding: 8%;
+  background: #1b1b1b47;
+  transform: translateY(-32px);
+}
 .active {
-  background: transparent;
-  font-weight: $semibold;
+  background: #1b1b1b47;
+  font-weight: $light;
   color: $color-red;
 }
 
@@ -326,5 +343,5 @@ h1 {
     }
   }
 }
-
+@import './home';
 @import './responsive';
