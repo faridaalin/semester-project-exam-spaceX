@@ -138,13 +138,20 @@ function dateCountdown(date) {
 }
 
 function currentSiteLocation(data) {
-  const siteLocationFromApi = data.launch_site.site_name;
+  const siteLocationFromApi = data.launch_site.site_id;
+  const area = document.querySelectorAll('.area');
 
-  const california = document.querySelector('#california')
-  const florida = document.querySelector('#florida')
-  const texas = document.querySelector('#texas')
-  const marshalIslands = document.querySelector('#marshallIslands')
+  area.forEach(site => {
 
-  console.dir(california.dataset)
+    const sitename = site.id
+    const title = site.parentNode.previousElementSibling
+    console.dir(title)
+
+    if(siteLocationFromApi === sitename) {
+      title.children[0].classList.add('active-location')
+    }else {
+      title.children[0].classList.remove('active-location')
+    }
+  });
 
 }
