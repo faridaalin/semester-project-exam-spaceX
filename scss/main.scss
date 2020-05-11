@@ -151,11 +151,6 @@ header {
         border-bottom: 2px solid $color-red;
         padding-bottom: 5px;
 
-        // &:hover {
-        //   color: $color-red;
-        //   font-weight: $regular;
-        //   border-bottom: 2px solid $color-light-grey;
-        // }
       }
 
 
@@ -186,6 +181,8 @@ img {
   position: relative;
   z-index: 2;
 }
+
+
 
 h1 {
   font-family: $font-heading;
@@ -244,10 +241,6 @@ h1 {
   &:hover{
     background: #1b1b1b47;
     color: $color-light-grey;
-  }
-
-  &:hover + .cross {
-    background: $color-light-grey;
   }
 
   &:focus {
