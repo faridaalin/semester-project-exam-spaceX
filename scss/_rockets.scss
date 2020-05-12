@@ -4,23 +4,26 @@
   &:after {
     background: rgba(41, 41, 41, 0.88);
   }
-  h1 {
-    font-family: $font-heading;
-    color: $color-light-grey;
-    font-weight: $extra-light;
-    font-size: 26px;
-    padding: 38px 0 40px 0;
-  }
+
 }
 
+// h1 {
+//   font-family: $font-heading;
+//   color: $color-light-grey;
+//   font-weight: $extra-light;
+//   font-size: 26px;
+//   padding: 38px 0 40px 0;
+// }
+
 .card {
-  background: $color-black url(../img/falcon1.jpg) no-repeat center/cover;
+  background: $color-black  no-repeat center/cover;
   width: 100%;
   height: 100%;
   position: relative;
   border-radius: 38px;
   box-shadow: -16px 16px 9px #00000016;
   margin-bottom: 50px;
+  position: relative;
 
   &>* {
     position: relative;
@@ -36,11 +39,29 @@
     width: 100%;
     background: #484747d6;
     border-radius: 38px;
+
+  }
+
+
+
+  .card__title {
+    font-family: $font-heading;
+    color: $color-red;
+    font-weight: $light;
+    font-size: 24px;
+    transform: rotate(-90deg);
+    transform-origin: 0 0;
+    position: absolute;
+    bottom: 65%;
+    left: 9px;
+    z-index: 3;
+
+    display:inline-block;
   }
 
   .hr-break {
     width: 42%;
-    margin: 0 0 0 25%;
+    margin: 0 0 0 22%;
   }
 
 
@@ -65,20 +86,10 @@
   position: relative;
   padding: 45px 22px 45px 22px;
 
-
-  .card__title {
-    font-family: $font-heading;
-    color: $color-red;
-    font-weight: $light;
-    font-size: 27px;
-    transform: translate(0, 100%) rotate(-90deg);
-    transform-origin: 0 0;
-    position: absolute;
-    bottom: 30%;
-    left: 4%;
-
-
+  .devider-container {
+    margin: 0 0 0 20%;
   }
+
 
   .info-container {
     flex-direction: column;
@@ -97,8 +108,8 @@
 
   .devider-1, .devider-2 {
     display: flex;
-    width: 60%;
-    margin: auto;
+    // width: 60%;
+    // margin: auto;
   }
   // .devider-1 .info__text, .devider-2 .info__text {
   //   width: 100%;

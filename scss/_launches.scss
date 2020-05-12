@@ -3,6 +3,7 @@
 
     &:after {
       background: rgba(41, 41, 41, 0.94);
+
     }
 }
 
@@ -80,5 +81,15 @@
     flex-direction: row;
     text-decoration: underline;
   }
+}
+
+.upcoming-container {
+  .info__text {
+    font-family: $font-text;
+  }
+}
+
+.launches {
+  transform: translateY(-32px);
 }
 

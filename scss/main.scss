@@ -1,17 +1,22 @@
 @import './config';
+
 .bg-parallax {
   position: relative;
+  height: 100%;
+  width: 100%;
+  z-index: -2;
 
   &:after {
     content: "";
     position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
     width: 100%;
-
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -3;
   }
 }
+
 
 header {
   font-family: $font-heading;
@@ -177,9 +182,9 @@ img {
   width: 80%;
   margin: 0 auto;
   min-height: calc(100vh - 150px);
-  z-index: 4;
-  position: relative;
-  z-index: 2;
+  // z-index: 4;
+  // position: relative;
+
 }
 
 
@@ -222,6 +227,35 @@ h1 {
 .all-pages {
   display: none;
 }
+.accordion_btn  ~ .tab-content {
+  height: 0px;
+  // overflow: hidden;
+  // transform: translateY(-26px);
+}
+
+.tab-content {
+  background: #1b1b1b47;
+  padding: 0 18px;
+  overflow: hidden;
+  line-height: 1.5rem;
+  transition: max-height 0.3s ease-out;
+}
+
+.accordion .active {
+  background: #1b1b1b47;
+  font-weight: $light;
+  color: $color-red;
+}
+
+.active + .tab-content {
+  height: 100%;
+}
+
+.active .cross::after {
+  background: $color-red;
+  transform: rotate(180deg);
+  transition: .5s ease-in-out;
+}
 
 .accordion_btn {
   display: flex;
@@ -240,6 +274,7 @@ h1 {
 
   &:hover{
     background: #1b1b1b47;
+    // background: rgba(64, 63, 63, 0.7);
     color: $color-light-grey;
   }
 
@@ -273,11 +308,12 @@ h1 {
 
 
 
-.tab-content,
-.location-launches__info {
-  max-height: 0;
-  overflow: auto;
-  transition: max-height, .3s ease-in-out;
+
+.accordion-item-content{
+  background: #1b1b1b47;
+  padding: 1rem;
+  // line-height: 1.5rem;
+  // transition: max-height 0.3s ease-out;
 }
 
 
@@ -285,28 +321,90 @@ h1 {
   padding-bottom: 5px;
 }
 
-.active +.tab-content{
-  padding: 8%;
-  background: #1b1b1b47;
-  transform: translateY(-32px);
-}
-.active {
-  background: #1b1b1b47;
-  font-weight: $light;
-  color: $color-red;
-}
 
-.active .cross::after {
-  background: $color-red;
-  transform: rotate(180deg);
-  transition: .5s ease-in-out;
-}
 
 .hr-break {
   width: 90%;
   margin: 90px 6% 90px;
   border: 2px #FC3D21 solid;
   opacity: 0.65;
+}
+
+.locations {
+  position: absolute;
+    transform: translateY(150%);
+    top: 0;
+    left: 92px;
+    display: none;
+
+
+.location-wrapper {
+  display: block;
+  font-family: $font-heading;
+  color: $color-light-grey;
+  font-weight: $extra-light;
+
+  width: 20px;
+  height: 75px;
+
+  .title {
+    width: 100px;
+  }
+
+  .title h3 {
+    font-weight: $extra-light;
+    text-align: center;
+    display:inline-block;
+    transform: rotate(-90deg) translate(-100%, 0);
+    transform-origin: 0 0;
+  }
+
+  .title .active-location  {
+    border-bottom: 2px solid #FC3D21;
+    font-weight: $light;
+  }
+
+  .location-content {
+    padding-left: 30px;
+    width: 150px;
+    opacity: 0;
+    transition: opacity .3s, padding-left .3s;
+    text-transform: uppercase;
+    font-size: 15px;
+  }
+
+  .area-1 {
+    transform: translateY(-20px);
+  }
+  .area-2 {
+    transform: translateY(-32px);
+  }
+  .area-3 {
+    transform: translateY(-23px);
+  }
+  .area-4 {
+    transform: translateY(8px);
+  }
+}
+
+}
+
+
+.location-wrapper-florida {
+  height: 60px;
+}
+
+.location-wrapper-texas {
+  height: 50px;
+}
+
+.location-wrapper-islands {
+height: 100px;
+}
+
+.location-wrapper:hover  .location-content{
+  padding-left: 42px;
+  opacity: 1;
 }
 
 

@@ -6,9 +6,18 @@
     padding-top: 0;
     transform: translateY(-6px);
   }
+  .card {
+    .card__title {
+      bottom: 59%;
+      left: 30px;
+    }
+  }
+
 }
 
 @include media-md {
+
+
   .next-launch .year {
     font-size: 30vw;
   }
@@ -37,17 +46,21 @@
     }
 
   }
+  // .card__info {
+  //   .card__title {
+  //     bottom: 54%;
+  //     left: 10%;
+  //   }
+  // }
+  .card {
+    .card__title {
+      font-size: 30px;
+      bottom: 54%;
+      left: 8%;
+    }
 
-  .card__info .info-container {
-    width: auto;
+
   }
-
-  .card__info .card__title {
-    font-size: 35px;
-    bottom: 0;
-    left: 2%;
-  }
-
   /*Contact*/
   form {
     width: 409px;
@@ -57,6 +70,8 @@
 }
 
 @include media-md-l {
+
+
   .next-launch {
     transform: translateY(-50px);
 
@@ -69,6 +84,13 @@
     }
   }
 
+  .card {
+    .card__title {
+      bottom: 47%;
+    }
+  }
+
+
   .card__info .devider-1,
   .card__info .devider-2 {
     justify-content: space-between;
@@ -77,6 +99,7 @@
   .card__description {
     text-align: center;
   }
+
 }
 
 @include media-md-lg {
@@ -103,7 +126,7 @@
   }
 
   .next-launch-info .info__text {
-    margin-right: 30%;
+    margin-right: 50%;
   }
 }
 
@@ -121,7 +144,6 @@
 }
 
 @include media-lg {
-
 
   header {
     padding: 40px;
@@ -162,7 +184,6 @@
       top: 0;
       left: 50%;
       transition: none;
-      // transform: translate(393px, 145%);
       transform: translate(444px, 146%);
 
       .nav-link {
@@ -258,6 +279,29 @@
       z-index: 1;
     }
   }
+  .countdown-wrapper {
+    width: 355px;
+    position: absolute;
+    top: 48px;
+    left: 840px;
+    padding: 0;
+
+      .countdown {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+
+        .countdown__counter span {
+          font-size: 26px;
+        }
+
+        .countdown__counter p {
+          font-size: 17px;
+          font-weight: $extra-light;
+        }
+      }
+
+  }
 
 
   .next-launch {
@@ -326,42 +370,10 @@
     }
   }
 
-  .countdown-wrapper {
 
-    width: 355px;
-    position: relative;
-    top: -153px;
-    // left: 755px;
-    left: 840px;
-    padding: 0;
-
-    .countdown {
-      width: 100%;
-      margin: 0;
-      padding: 0;
-
-      .countdown__counter span {
-        font-size: 26px;
-      }
-
-      .countdown__counter p {
-        font-size: 17px;
-        font-weight: $extra-light;
-      }
-    }
-  }
-
-  /*Launches*/
+/*Rockets*/
   .all-pages {
     display: block;
-    top: -121px;
-  }
-
-  .bg-launches {
-    .all-pages {
-      top: -101px;
-    }
-
   }
 
   h1 {
@@ -372,51 +384,33 @@
   .cards {
     width: 800px;
     margin: 0 auto;
+
+    .card {
+      min-height: 450px;
+    }
   }
 
   .bg-rockets {
-    .countdown-wrapper {
-      top: -102px;
-    }
-
-    .card__info {
-      flex-direction: row-reverse;
-      padding: 45px 22px 0px 22px;
-      margin: 0 0 0 22%;
-      padding-top: 120px;
-      transform: translateY(104px);
-
       .card__title {
-        font-size: 65px;
-        bottom: -136px;
-        left: -137px;
+        font-size: 56px;
+        bottom: -35px;
+
       }
 
+      .card__info {
+        padding: 200px 22px 0px 22px;
 
-
-    }
-
-    .devider-container {
-      margin: 0;
-    }
-
-    .hr-break {
-      margin: 45px 0 45px 22%;
-      transform: translateY(84px);
-    }
-
+      }
     .card__description {
-      transform: translateY(66px);
-      margin: 0 0 0 22%;
-      text-align: left;
-      padding: 0;
+    padding: 15px 10px 45px 15px;
+    text-align: left;
+    margin: 0 0 0 20%;
     }
   }
 
+  /*About*/
+
   .bg-about {
-    .countdown-wrapper {
-      top: -102px;
-    }
 
     .about-text {
       width: 800px;
@@ -429,7 +423,6 @@
   }
 
   /*Contact*/
-
   form, .success-message {
     width: 800px;
     margin: 0 auto;
@@ -460,13 +453,16 @@
         margin-left: 25%;
       }
 
-
-
-
     }
-
 
   }
 
+  /*tabs*/
 
+  .tab-content {
+    background: #1b1b1b47;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+  }
 }

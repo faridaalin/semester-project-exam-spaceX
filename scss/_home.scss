@@ -14,79 +14,6 @@ header .logo p {
  margin-bottom: 0;
 }
 
-.locations {
-  position: absolute;
-    transform: translateY(150%);
-    top: 0;
-    left: 0;
-    display: none;
-}
-
-.location-wrapper {
-  display: block;
-  font-family: $font-heading;
-  color: $color-light-grey;
-  font-weight: $extra-light;
-
-  width: 20px;
-  height: 75px;
-
-  .title {
-    width: 100px;
-  }
-
-  .title h3 {
-    font-weight: $extra-light;
-    text-align: center;
-    display:inline-block;
-    transform: rotate(-90deg) translate(-100%, 0);
-    transform-origin: 0 0;
-  }
-
-  .active-location h3 {
-    border-bottom: 2px solid #FC3D21;
-    font-weight: $light;
-  }
-
-  .location-content {
-    padding-left: 30px;
-    width: 150px;
-    opacity: 0;
-    transition: opacity .3s, padding-left .3s;
-    text-transform: uppercase;
-    font-size: 15px;
-  }
-
-  .area-1 {
-    transform: translateY(-20px);
-  }
-  .area-2 {
-    transform: translateY(-32px);
-  }
-  .area-3 {
-    transform: translateY(-23px);
-  }
-  .area-4 {
-    transform: translateY(8px);
-  }
-}
-
-.location-wrapper-florida {
-  height: 60px;
-}
-
-.location-wrapper-texas {
-  height: 50px;
-}
-
-.location-wrapper-islands {
-height: 100px;
-}
-
-.location-wrapper:hover  .location-content{
-  padding-left: 42px;
-  opacity: 1;
-}
 
 .next-launch{
   transform: translateY(-25px);
@@ -184,7 +111,7 @@ height: 100px;
   font-weight: $light;
   font-size: 17px;
   color: $color-medium-grey;
-  width: 100px;
+  // width: 100px;
   text-align: left;
 }
 
@@ -194,11 +121,11 @@ height: 100px;
   font-weight: $medium;
 }
 
-.active +.details {
-  transform: translateY(-1px);
-}
+// .active +.details {
+//   transform: translateY(-1px);
+// }
 
-.details p{
+.details {
   font-family: $font-text;
   font-size: 1rem;
   color: $color-light-grey;
