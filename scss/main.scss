@@ -207,10 +207,6 @@ h1 {
   display: flex;
   justify-content: space-between;
 
-  &__counter {
-    display: block;
-    width: 25%;
-  }
 
   &__counter  p {
     font-size: 12px;
@@ -234,7 +230,7 @@ h1 {
 }
 
 .tab-content {
-  background: #1b1b1b47;
+  // background: #1b1b1b47;
   padding: 0 18px;
   overflow: hidden;
   line-height: 1.5rem;
@@ -285,6 +281,12 @@ h1 {
 
 }
 
+
+[class~='accordion_btn']:last-of-type {
+  margin-bottom: 0;
+}
+
+
 .cross-wrapper {
   padding-top: 8px;
 }
@@ -310,7 +312,7 @@ h1 {
 
 
 .accordion-item-content{
-  background: #1b1b1b47;
+  // background: #1b1b1b47;
   padding: 1rem;
   // line-height: 1.5rem;
   // transition: max-height 0.3s ease-out;
@@ -320,7 +322,6 @@ h1 {
 [class~='launches_container']:last-of-type {
   padding-bottom: 5px;
 }
-
 
 
 .hr-break {

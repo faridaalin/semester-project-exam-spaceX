@@ -1,92 +1,53 @@
-const NEXT_LAUNCH_URL = `https://api.spacexdata.com/v3/launches/next`;
-
-
-const LANDING_PAD_LAUNCH_URL = `https://api.spacexdata.com/v3/landpads`;
-
-fetch(NEXT_LAUNCH_URL)
-  .then((response) => response.json())
-  .then((data) => {
-    dateCountdown(data);
-  })
-  .catch((error) => console.log(error));
-
-function dateCountdown(data) {
-  const nextLaunchDate = new Date(data.launch_date_local);
-
-  const countDownDate = new Date(nextLaunchDate).getTime();
-  setInterval(() => {
-    const today = new Date().getTime();
-    const timeRemaining = countDownDate - today;
-
-    let sec = Math.floor(timeRemaining / 1000);
-    let min = Math.floor(sec / 60);
-    let hours = Math.floor(min / 60);
-    let days = Math.floor(hours / 24);
-
-    hours %= 24;
-    min %= 60;
-    sec %= 60;
-
-    hours = hours < 10 ? "0" + hours : hours;
-    min = min < 10 ? "0" + min : min;
-    sec = sec < 10 ? "0" + sec : sec;
-
-    const countDownWrapper = document.querySelector(".countdown-wrapper");
-
-    countDownWrapper.innerHTML = `
-      <div class="countdown" id="countDown">
-      <div class="countdown__counter">
-      <p>Days</p>
-      <span id="days">${days}</span>
-    </div>
-    <div class="countdown__counter">
-      <p>hours</p>
-      <span id="hours">${hours}</span>
-    </div>
-    <div class="countdown__counter">
-      <p>min</p>
-      <span id="min">${min}</span>
-    </div>
-    <div class="countdown__counter">
-      <p>sec</p>
-      <span class="sec" id="sec">${sec}</span>
-    </div>
-
-      </div>
-  `;
-  }, 1000);
-}
-
-
-
 const UPCOMING_LAUNCH_URL = `https://api.spacexdata.com/v3/launches/upcoming`;
 
 fetch(UPCOMING_LAUNCH_URL)
   .then((response) => response.json())
   .then((data) => {
-    displayUpcomingLanuches(data);
+    displayLanuches(data);
   })
   .catch((error) => console.log(error));
 
-  function displayUpcomingLanuches(upcomingLaunches) {
-    const upcomingLaunchesContainer = document.querySelector('.upcoming-container')
-
-    upcomingLaunches.forEach(launch => {
-
-      // console.dir(launch)
+function displayLanuches(upcomingLaunches) {
+  const upcomingLaunchesContainer = document.querySelector(".upcoming-launches-container");
 
 
-      upcomingLaunchesContainer.innerHTML +=
-    `<div class="info-container upcoming">
-    <p class="info__text">YEAR-MONTH-DATE</p>
-    <p class="info__text">${launch.rocket.rocket_name}</p>
-    <p class="info__text">${launch.launch_site.site_name}</p>
-    <p class="info__text highlighted">${launch.flight_number}</p>
-    </div>`;
-    });
-  }
+  upcomingLaunches.forEach((launch) => {
+    // console.dir(launch)
+    let launchDate = new Date(launch.launch_date_local),
+    date = launchDate.getDate(),
+    month = launchDate.getMonth() + 1;
 
-  const PREVIOUS_LAUNCH_URL = `https://api.spacexdata.com/v3/launches/past`;
+
+    date = date < 10 ? "0" + date : date;
+    month = month < 10 ? "0" + month : month;
+
+
+    upcomingLaunchesContainer.innerHTML += `
+    <div class="container">
+    <div class="launches_container">
+      <div class="info-container heading">
+        <p class="info__name">Launch Date</p>
+        <p class="info__name">Rocket Name</p>
+        <p class=" info__name">Launch Pad</p>
+        <p class="info__name">Flight Number</p>
+      </div>
+    </div>
+
+    <div class="upcoming-container">
+      <div class="info-container upcoming">
+        <p class="info__text">${launch.launch_year}-${month}-${date}</p>
+        <p class="info__text">${launch.rocket.rocket_name}</p>
+        <p class="info__text">${launch.launch_site.site_name}</p>
+        <p class="info__text highlighted">9${launch.flight_number}</p>
+        </div>
+    </div>
+    <hr class="hr-break">
+  </div>`
+
+  });
+}
+
+const PREVIOUS_LAUNCH_URL = `https://api.spacexdata.com/v3/launches/past`;
 
 fetch(PREVIOUS_LAUNCH_URL)
   .then((response) => response.json())
@@ -95,21 +56,108 @@ fetch(PREVIOUS_LAUNCH_URL)
   })
   .catch((error) => console.log(error));
 
-  function displayPreviousLanuches(previousLaunches) {
-    const previousLaunchesContainer = document.querySelector('.previous-container')
-
-    previousLaunches.forEach(launch => {
-      // console.dir(launch)
-
-      // console.dir(launch)
 
 
-      previousLaunchesContainer.innerHTML +=
-    `<div class="info-container upcoming">
-    <p class="info__text">YEAR-MONTH-DATE</p>
-    <p class="info__text">${launch.rocket.rocket_name}</p>
-    <p class="info__text">${launch.launch_site.site_name}</p>
-    <p class="info__text highlighted">${launch.flight_number}</p>
+function displayPreviousLanuches(previousLaunches) {
+  const previousLaunchesContainer = document.querySelector(
+    ".previous-container"
+  );
+  const previousLaunchContainer = document.querySelector(".previous-launches-container");
+  previousLaunches.forEach((launch) => {
+
+    let launchDate = new Date(launch.launch_date_local),
+    date = launchDate.getDate(),
+    month = launchDate.getMonth() + 1;
+
+
+    date = date < 10 ? "0" + date : date;
+    month = month < 10 ? "0" + month : month;
+
+      previousLaunchContainer.innerHTML += ` <div class="container">
+      <div class="launches_container">
+        <div class="info-container heading">
+          <p class="info__name">Launch Date</p>
+          <p class="info__name">Rocket Name</p>
+          <p class=" info__name">Launch Pad</p>
+          <p class="info__name">Flight Number</p>
+        </div>
+      </div>
+
+      <div class="upcoming-container">
+        <div class="info-container upcoming">
+          <p class="info__text">${launch.launch_year}-${month}-${date}</p>
+          <p class="info__text">${launch.rocket.rocket_name}</p>
+          <p class="info__text">${launch.launch_site.site_name}</p>
+          <p class="info__text highlighted">9${launch.flight_number}</p>
+          </div>
+      </div>
+      <hr class="hr-break">
     </div>`;
-    });
-  }
+  });
+}
+
+const LANDING_PAD_LAUNCH_URL = `https://api.spacexdata.com/v3/launchpads`;
+fetch(LANDING_PAD_LAUNCH_URL)
+  .then((response) => response.json())
+  .then((data) => {
+    displayLanuchPads(data);
+  })
+  .catch((error) => console.log(error));
+
+function displayLanuchPads(locationPads) {
+  console.dir(locationPads)
+
+  const californiaLocations = locationPads.filter(function(pad) {
+    return pad.location.region === "California";
+  })
+  const floridaaLocations = locationPads.filter(function(pad) {
+    return pad.location.region === "Florida";
+  })
+  const texasLocations = locationPads.filter(function(pad) {
+    return pad.location.region === "Texas";
+  })
+  const mIslandLocations = locationPads.filter(function(pad) {
+    return pad.location.region === "Marshall Islands";
+  })
+
+  console.dir(mIslandLocations)
+
+  const californiaLocationsContainer = document.querySelector('.location-launches__info__ca');
+  const floridaLocationsContainer = document.querySelector('.location-launches__info__fl');
+  const texasLocationsContainer = document.querySelector('.location-launches__info__tx');
+  const mIslandsLocationsContainer = document.querySelector('.location-launches__info__mi');
+
+  createLocationPads(californiaLocations, californiaLocationsContainer)
+  createLocationPads(floridaaLocations, floridaLocationsContainer)
+  createLocationPads(texasLocations, texasLocationsContainer)
+  createLocationPads(mIslandLocations, mIslandsLocationsContainer)
+
+}
+
+function createLocationPads(array, container) {
+
+  array.forEach(item => {
+    console.dir(item)
+
+    container.innerHTML += `
+    <div class="launches_container location_container locations-pads">
+    <div class="info-container">
+      <p class="info__name">${item.name}:</p>
+      <p class="info__text">${item.site_name_long}</p>
+    </div>
+
+    <div class="info-container">
+      <p class="info__name">Status:</p>
+      <p class="info__text">${item.status}</p>
+    </div>
+
+    <div class="info-container">
+      <p class="info__name">Location Description:</p>
+      <p class="info__text">${item.details}</p>
+    </div>
+
+    <hr class="hr-break">
+  </div>`
+  });
+
+}

@@ -59,31 +59,7 @@ header .logo p {
   margin-left: 80%;
 }
 
-.countdown-wrapper {
-  padding-bottom: 80px;
-  padding-top: 13px;
-}
 
-.countdown{
-  display: flex;
-  justify-content: space-between;
-
-  &__counter {
-    display: block;
-    width: 25%;
-  }
-
-  &__counter  p {
-    font-size: 12px;
-    color: $color-medium-grey;
-    display: inline;
-  }
-
-  &__counter span {
-    font-size: 28px;
-    color: $color-light-grey;
-  }
-}
 
 .next-launch-info {
   padding-bottom: 37px;

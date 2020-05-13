@@ -31,7 +31,6 @@ accordionBtn.forEach((button) => {
 function openTab(event) {
 
   this.classList.toggle("active");
-  console.log(this)
 }
 
 
