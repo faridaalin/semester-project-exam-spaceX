@@ -152,18 +152,18 @@
 header {
   font-family: "Oswald", sans-serif;
   width: 100%;
-  position: relative;
+  position: fixed;
   top: 0;
-  left: 0;
   right: 0;
+  left: 0;
   padding-top: 38px;
   z-index: 4;
+  height: 100px;
 }
 
 header nav {
   width: 80%;
   margin: 0 auto;
-  position: relative;
 }
 
 header .inner-nav {
@@ -174,8 +174,10 @@ header .inner-nav {
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 100%;
-  position: absolute;
-  z-index: 6;
+}
+
+header .logo {
+  z-index: 1;
 }
 
 header .logo a {
@@ -190,6 +192,7 @@ header .logo a {
 header .hamburger {
   width: 44px;
   height: 29px;
+  z-index: 1;
 }
 
 header .hamburger span {
@@ -735,10 +738,11 @@ img {
 }
 
 .main {
-  padding-top: 90px;
+  padding-top: 160px;
   width: 80%;
   margin: 0 auto;
   min-height: calc(100vh - 150px);
+  position: relative;
 }
 
 h1 {
@@ -791,9 +795,11 @@ h1 {
 }
 
 .accordion .active {
-  background: #1b1b1b47;
-  font-weight: 300;
-  color: #FC3D21;
+  background: #1b1b1b96;
+  font-weight: 400;
+  -webkit-box-shadow: 0px 0px 3px 0px #F0F0F0;
+          box-shadow: 0px 0px 3px 0px #F0F0F0;
+  color: #F0F0F0;
 }
 
 .active + .tab-content {
@@ -801,7 +807,7 @@ h1 {
 }
 
 .active .cross::after {
-  background: #FC3D21;
+  background: #F0F0F0;
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
   -webkit-transition: .5s ease-in-out;
@@ -825,13 +831,21 @@ h1 {
   text-transform: uppercase;
   font-size: 1rem;
   font-weight: 300;
-  padding: 0 8px;
+  padding: 0 20px 0 8px;
   margin-bottom: 32px;
 }
 
 .accordion_btn:hover {
   background: #1b1b1b47;
   color: #F0F0F0;
+}
+
+.accordion_btn:hover .cross {
+  background: #F0F0F0;
+}
+
+.accordion_btn:hover .cross::after {
+  background: #F0F0F0;
 }
 
 .accordion_btn:focus {
@@ -881,11 +895,10 @@ h1 {
 }
 
 .locations {
-  position: absolute;
+  position: fixed;
   -webkit-transform: translateY(150%);
           transform: translateY(150%);
   top: 0;
-  left: 92px;
   display: none;
 }
 
@@ -1250,9 +1263,6 @@ header .logo p {
     max-width: 1200px;
     margin: 0 auto;
   }
-  header .logo {
-    margin-left: -41px;
-  }
   header .logo a {
     font-size: 30px;
   }
@@ -1274,7 +1284,7 @@ header .logo p {
     -webkit-transform: translate(0px, 0px);
             transform: translate(0px, 0px);
     background: transparent;
-    position: absolute;
+    position: fixed;
     width: 108px;
     height: 290px;
     top: 0;
@@ -1363,22 +1373,22 @@ header .logo p {
     background: #F0F0F0;
   }
   .main {
-    padding-top: 73px;
+    padding-top: 200px;
     max-width: 1200px;
     margin: 0 auto;
     left: -25px;
   }
   .main .locations {
     display: block;
-    -webkit-transform: translateY(134%);
-            transform: translateY(134%);
+    -webkit-transform: translateY(125%);
+            transform: translateY(125%);
     z-index: 1;
   }
   .countdown-wrapper {
     width: 355px;
     position: absolute;
-    top: 48px;
-    left: 840px;
+    top: 8px;
+    right: -60px;
     padding: 0;
     display: inline-block;
     z-index: 10;

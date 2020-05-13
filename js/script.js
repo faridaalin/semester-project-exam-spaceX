@@ -10,17 +10,25 @@ function toggleMenu() {
   console.dir(this)
 }
 
-let prevScrollPosition = window.pageYOffset;
-window.onscroll = function () {
-  const currentScrollPosition = window.pageYOffset;
+let lastScrollPosition = 0;
+console.log(lastScrollPosition)
 
-  if (prevScrollPosition === 0 || prevScrollPosition > currentScrollPosition) {
-    document.querySelector("header").style.visibility = "visible";
+window.onscroll = function() {
+  let currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+  console.log(currentScrollPosition)
+  console.log(lastScrollPosition > currentScrollPosition)
+
+  if(currentScrollPosition > lastScrollPosition) {
+    document.querySelector("header").style.top = "-115px";
   } else {
-    document.querySelector("header").style.visibility = "hidden";
+    document.querySelector("header").style.top = "0";
   }
-  prevScrollPosition = currentScrollPosition;
-};
+
+  lastScrollPosition = currentScrollPosition;
+  console.log('New Scroll position:', lastScrollPosition)
+
+}
 
 /*Accordion*/
 const accordionBtn = document.querySelectorAll(".accordion_btn");

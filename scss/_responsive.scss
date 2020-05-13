@@ -178,7 +178,7 @@
     margin: 0 auto;
 
     .logo {
-      margin-left: -41px;
+      // transform: translateX(-132px);
 
       a {
         font-size: 30px;
@@ -205,7 +205,7 @@
       visibility: visible;
       transform: translate(0px, 0px);
       background: transparent;
-      position: absolute;
+      position: fixed;
       width: 108px;
       height: 290px;
       top: 0;
@@ -295,14 +295,16 @@
   }
 
   .main {
-    padding-top: 73px;
+    padding-top: 200px;
     max-width: 1200px;
     margin: 0 auto;
     left: -25px;
 
     .locations {
       display: block;
-      transform: translateY(134%);
+      // transform: translateY(134%);
+     transform:  translateY(125%);
+      // left: 300px;
       z-index: 1;
     }
   }
@@ -310,11 +312,21 @@
   .countdown-wrapper {
     width: 355px;
     position: absolute;
-    top: 48px;
-    left: 840px;
+    top:  8px;
+    right: -60px;
     padding: 0;
     display: inline-block;
     z-index: 10;
+
+      // p {
+      //   display: block;
+      //   font-family: $font-text;
+      //   color: $color-dark-grey;
+      //   font-size: 16px;
+      //   font-weight: $light;
+      //   margin-top: 8px;
+      // }
+
 
 
     .countdown {

@@ -34,7 +34,9 @@ function dateCountdown(jsonData) {
     const countDownWrapper = document.querySelector(".countdown-wrapper");
 
     countDownWrapper.innerHTML = `
-      <div class="countdown" id="countDown">
+    <div>
+
+    <div class="countdown" id="countDown">
       <div class="countdown__counter">
       <p>Days</p>
       <span id="days">${days}</span>
@@ -51,8 +53,9 @@ function dateCountdown(jsonData) {
       <p>sec</p>
       <span class="sec" id="sec">${sec}</span>
     </div>
-
       </div>
+    </div>
+
   `;
   }, 1000);
 }
