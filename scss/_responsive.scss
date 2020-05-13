@@ -6,6 +6,7 @@
     padding-top: 0;
     transform: translateY(-6px);
   }
+
   .card {
     .card__title {
       bottom: 59%;
@@ -46,6 +47,7 @@
     }
 
   }
+
   // .card__info {
   //   .card__title {
   //     bottom: 54%;
@@ -61,6 +63,7 @@
 
 
   }
+
   /*Contact*/
   form {
     width: 409px;
@@ -102,11 +105,11 @@
 
   /*Launches*/
   .bg-launches {
-    .locations-pads{
+    .locations-pads {
       .hr-break {
         width: 50%;
-       margin-left: 26%;
-       margin-right: 26%;
+        margin-left: 26%;
+        margin-right: 26%;
       }
 
     }
@@ -155,7 +158,7 @@
 
   /*Launches*/
   .bg-launches {
-    .locations-pads{
+    .locations-pads {
       .hr-break {
         width: 30%;
         margin-left: 35%;
@@ -314,27 +317,27 @@
     z-index: 10;
 
 
-      .countdown {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: space-between;
+    .countdown {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: space-between;
 
-        .countdown__counter {
-          width: auto;
-          display: initial;
-        }
-
-        .countdown__counter span {
-          font-size: 26px;
-        }
-
-        .countdown__counter p {
-          font-size: 17px;
-          font-weight: $extra-light;
-        }
+      .countdown__counter {
+        width: auto;
+        display: initial;
       }
+
+      .countdown__counter span {
+        font-size: 26px;
+      }
+
+      .countdown__counter p {
+        font-size: 17px;
+        font-weight: $extra-light;
+      }
+    }
 
   }
 
@@ -408,20 +411,56 @@
   /*Launches*/
 
   .bg-launches {
+
+    .location-launches {
+      transform: translateY(0px);
+    }
+
     .container {
       flex-direction: column;
 
-      .info__text, .info__name {
+      .info__text,
+      .info__name {
         width: 25%;
       }
+
       .info-container {
         flex-direction: row;
       }
     }
+
+    .upcoming-launches, .previous-launches {
+        transform: translateY(-32px);
+    }
+
+    .previous-launches-container,
+    .upcoming-launches-container {
+
+      .container {
+
+
+        .launches_container {
+          flex-direction: column;
+
+          .info-container {
+            flex-direction: row;
+
+            // p {
+            //   width: 25%;
+            // }
+          }
+        }
+
+        .hr-break {}
+      }
+
+
+    }
+
   }
 
 
-/*Rockets*/
+  /*Rockets*/
   // .all-pages {
   //   display: block;
   // }
@@ -445,20 +484,22 @@
     .accordion-item-content {
       padding: 1rem 1rem 1rem 1px;
     }
-      .card__title {
-        font-size: 56px;
-        bottom: -35px;
 
-      }
+    .card__title {
+      font-size: 56px;
+      bottom: -35px;
 
-      .card__info {
-        padding: 200px 22px 0px 22px;
+    }
 
-      }
+    .card__info {
+      padding: 200px 22px 0px 22px;
+
+    }
+
     .card__description {
-    padding: 15px 10px 45px 15px;
-    text-align: left;
-    margin: 0 0 0 20%;
+      padding: 15px 10px 45px 15px;
+      text-align: left;
+      margin: 0 0 0 20%;
     }
   }
 
@@ -477,7 +518,8 @@
   }
 
   /*Contact*/
-  form, .success-message {
+  form,
+  .success-message {
     width: 800px;
     margin: 0 auto;
     background: #21202059;
@@ -502,7 +544,8 @@
         padding: 6px 6px;
 
       }
-      input[type="submit"]{
+
+      input[type="submit"] {
         width: 75%;
         margin-left: 25%;
       }

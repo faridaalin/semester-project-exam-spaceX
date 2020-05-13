@@ -1,5 +1,155 @@
 @import './config';
 
+
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+  background: $color-black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .circles-wrapper {
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, 50%);
+
+    .circle, .circle:nth-child(2), .circle:nth-child(3){
+      box-shadow: 0px 0px 10px 0px #F0F0F0;
+      border-radius: 50%;
+      background-color: $color-light-grey;
+      width: 20px;
+      height: 20px;
+      transform-origin: center center;
+      display: inline-block;
+      position: relative;
+      animation: scale 1.2s linear infinite;
+      transform: scale(0.5);
+      opacity: 0.25;
+      margin: 5px;
+
+    }
+
+    .circle:nth-child(2) {
+      background:$color-light-grey;
+      animation-delay: 0.2s;
+    }
+
+    .circle:nth-child(3) {
+      background: $color-light-grey;
+      animation-delay: 0.4s;
+    }
+
+
+  }
+}
+
+.hidden {
+  animation: fadeOut 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes scale {
+
+  0% {
+    transform: scale(0.5);
+    opacity: 0.25;
+  }
+  25% {
+    transform: scale(0.75);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  75% {
+    transform: scale(0.75);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(0.5);
+    opacity: 0.25;
+  }
+
+}
+
+
+
+
+
+
+
+
+// .circles {
+// 	position: relative;
+// 	background-color: $color-light-grey;
+//   opacity: 1;
+// 	animation: spScaleAlpha 1s infinite linear;
+// }
+// .circles:before, .circles:after {
+// 	content: '';
+// 	position: relative;
+//   opacity: 0.25;
+
+// }
+// .circles:before {
+// 	left: 30px;
+//   top: 0px;
+//   transition-delay: 1s;
+// 	animation: spScaleAlphaBefore 1s infinite linear;
+// }
+// .circles:after {
+// 	left: -30px;
+//   top: -23px;
+//   transition-delay: 0.5s;
+// 	animation: spScaleAlphaAfter 1s infinite linear;
+// }
+// @keyframes spScaleAlpha {
+// 	0% {
+//     opacity: 1;
+
+//   }
+// 	33% {
+//     opacity: 0.25;
+
+//   }
+// 	66% {
+//     opacity: 0.25;
+
+//   }
+// 	100% {
+//     opacity: 1;
+
+//   }
+// }
+
+// @keyframes spScaleAlphaAfter {
+// 	33% {
+//     opacity: 0.25;
+//   }
+// 	66% {
+//     opacity: 1;
+//   }
+// 	100% {
+//     opacity: 0.25;
+//   }
+// }
+
+
+
 .bg-parallax {
   position: relative;
   height: 100%;

@@ -1,14 +1,17 @@
+
 const NEXT_LAUNCH_URL = `https://api.spacexdata.com/v3/launches/next`;
+let jsonData;
 
 fetch(NEXT_LAUNCH_URL)
   .then((response) => response.json())
   .then((data) => {
-    dateCountdown(data);
+    jsonData = data;
+    dateCountdown(jsonData);
   })
   .catch((error) => console.log(error));
 
-function dateCountdown(data) {
-  const nextLaunchDate = new Date(data.launch_date_local);
+function dateCountdown(jsonData) {
+  const nextLaunchDate = new Date(jsonData.launch_date_local);
 
   const countDownDate = new Date(nextLaunchDate).getTime();
   setInterval(() => {

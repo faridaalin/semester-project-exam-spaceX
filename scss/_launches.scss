@@ -29,7 +29,7 @@
 
 
   .item-tabs {
-    margin-top: 30px;
+    // margin-top: 30px;
   }
 
   .accordion-item-content {
@@ -99,13 +99,15 @@
   .container {
     flex-direction: column;
 
-    .launches_container, .launches_container + div{
+    .launches_container{
+      display: flex;
+      justify-content: space-between;
       .info-container {
-        flex-direction: row;
+        flex-direction: column;
 
-        p {
-          width: 25%;
-        }
+        // p {
+        //   width: 25%;
+        // }
       }
     }
     .hr-break {
@@ -118,7 +120,7 @@
 }
 
 .launches {
-  transform: translateY(-32px);
+  // transform: translateY(-32px);
 }
 
 .container {

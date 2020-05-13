@@ -1,4 +1,10 @@
 
+window.addEventListener('load', (event) => {
+  const loader = document.querySelector('.loader-container');
+  loader.className+=' hidden'
+})
+
+
 const ROCKETS_URL = `https://api.spacexdata.com/v3/rockets`;
 let rocketsArray = [];
 
@@ -11,6 +17,8 @@ fetch(ROCKETS_URL)
   .catch((error) => console.log(error));
 
 function createRocketCards(rockets) {
+const loader = document.querySelector('.loader')
+
   const cardsContainer = document.querySelector(".cards");
 
   rockets.forEach((rocket) => {
@@ -69,3 +77,5 @@ function createRocketCards(rockets) {
     </div>`;
   });
 }
+
+

@@ -1,8 +1,13 @@
+window.addEventListener('load', (event) => {
+  const loader = document.querySelector('.loader-container');
+  loader.className+=' hidden'
+})
+
 /*fetch*/
 
-const NEXT_LAUNCH_URL = `https://api.spacexdata.com/v3/launches/next`;
+const NEXT_LAUNCH = `https://api.spacexdata.com/v3/launches/next`;
 
-fetch(NEXT_LAUNCH_URL)
+fetch(NEXT_LAUNCH)
   .then((response) => response.json())
   .then((data) => {
     currentSiteLocation(data)
@@ -50,7 +55,7 @@ function displayNextLaunch(data) {
 </div>`;
 
   nextLaunchDetails.innerHTML = ` <div class="accordion-item-content"><p>${launchDetails}</p></div`;
-
+  dateCountdown(launchDate)
 }
 
 function currentSiteLocation(data) {
@@ -67,4 +72,51 @@ function currentSiteLocation(data) {
     }
   });
 
+}
+
+function dateCountdown(launchDate) {
+
+
+  const countDownDate = new Date(launchDate).getTime();
+  setInterval(() => {
+    const today = new Date().getTime();
+    const timeRemaining = countDownDate - today;
+
+    let sec = Math.floor(timeRemaining / 1000);
+    let min = Math.floor(sec / 60);
+    let hours = Math.floor(min / 60);
+    let days = Math.floor(hours / 24);
+
+    hours %= 24;
+    min %= 60;
+    sec %= 60;
+
+    hours = hours < 10 ? "0" + hours : hours;
+    min = min < 10 ? "0" + min : min;
+    sec = sec < 10 ? "0" + sec : sec;
+
+    const countDownWrapper = document.querySelector(".countdown-wrapper");
+
+    countDownWrapper.innerHTML = `
+      <div class="countdown" id="countDown">
+      <div class="countdown__counter">
+      <p>Days</p>
+      <span id="days">${days}</span>
+    </div>
+    <div class="countdown__counter">
+      <p>hours</p>
+      <span id="hours">${hours}</span>
+    </div>
+    <div class="countdown__counter">
+      <p>min</p>
+      <span id="min">${min}</span>
+    </div>
+    <div class="countdown__counter">
+      <p>sec</p>
+      <span class="sec" id="sec">${sec}</span>
+    </div>
+
+      </div>
+  `;
+  }, 1000);
 }
