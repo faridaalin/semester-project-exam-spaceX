@@ -171,3 +171,23 @@ function createLocationPads(array, container) {
   </div>`;
   });
 }
+
+const scrollToUp = document.querySelector('.scroll-up')
+
+window.addEventListener('scroll', () => {
+  if(window.pageYOffset > 100) { //if the page has been scrolled 100px from the top then....
+    scrollToUp.classList.add('active')
+  } else {
+    scrollToUp.classList.remove('active')
+  }
+})
+
+
+scrollToUp.addEventListener('click', scrollToTop)
+function scrollToTop (event) {
+  window.scrollTo({
+    top:0,
+    lef: 0,
+    behavior: "smooth"
+  });
+}

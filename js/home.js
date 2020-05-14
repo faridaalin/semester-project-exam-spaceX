@@ -98,25 +98,27 @@ function dateCountdown(launchDate) {
     const countDownWrapper = document.querySelector(".countdown-wrapper");
 
     countDownWrapper.innerHTML = `
+    <div class="inner-counter">
+    <p>Next launch is in:</p>
       <div class="countdown" id="countDown">
-      <div class="countdown__counter">
-      <p>Days</p>
-      <span id="days">${days}</span>
-    </div>
-    <div class="countdown__counter">
-      <p>hours</p>
-      <span id="hours">${hours}</span>
-    </div>
-    <div class="countdown__counter">
-      <p>min</p>
-      <span id="min">${min}</span>
-    </div>
-    <div class="countdown__counter">
-      <p>sec</p>
-      <span class="sec" id="sec">${sec}</span>
-    </div>
-
+        <div class="countdown__counter">
+        <p>Days</p>
+        <span id="days">${days}</span>
+        </div>
+        <div class="countdown__counter">
+        <p>hours</p>
+        <span id="hours">${hours}</span>
+        </div>
+        <div class="countdown__counter">
+        <p>min</p>
+        <span id="min">${min}</span>
+        </div>
+        <div class="countdown__counter">
+        <p>sec</p>
+        <span class="sec" id="sec">${sec}</span>
+        </div>
       </div>
+    </div>
   `;
   }, 1000);
 }

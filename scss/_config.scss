@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 
 $font-heading: 'Oswald', sans-serif;
 $font-text: 'Open Sans', sans-serif;

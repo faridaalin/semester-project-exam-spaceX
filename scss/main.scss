@@ -1,24 +1,35 @@
 @import './config';
 
 
+/*Page transition*/
+.animatein {
+  animation: transitionIn 0.75s;
+}
+
+@keyframes transitionIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+
+}
+
+/*Loader*/
 .loader-container {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 4;
+  z-index: 20;
   background: $color-black;
   display: flex;
   justify-content: center;
   align-items: center;
 
   .circles-wrapper {
-    // position: absolute;
-    // top: 50%;
-    // left: 50%;
-    // transform: translate(-50%, 50%);
-
     .circle, .circle:nth-child(2), .circle:nth-child(3){
       box-shadow: 0px 0px 10px 0px #F0F0F0;
       border-radius: 50%;
@@ -86,69 +97,105 @@
 
 }
 
+/*Arrow - Scroll indicator*/
+
+.scroll-indicator, .scroll-up {
+  position: fixed;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    z-index: 3;
+    box-shadow: 0px 0px 6px 3px #b7b7b7ad;
+    background: #b7b7b7;
+    opacity: 0;
+    // animation-name: bounce;
+    // animation-duration: 3s;
+    // animation-iteration-count: infinite;
+    // animation-delay: 5s;
+
+}
+
+.show {
+  opacity: 0;
+    animation: bounce 5s ease-in-out 1s;
+}
+
+.arrow {
+display: block;
+position: absolute;
+width: 20px;
+height: 20px;
+border-bottom: 2px solid #fc3d21ad;
+border-right: 2px solid #fc3d21ad;
+transform: rotate(45deg) translate(28px, 0px);
+}
+
+@keyframes bounce {
+  0% {
+      transform: translateY(0px);
+      opacity: 0;
+  }
+  20% {
+      transform: translateY(0px);
+      opacity: 1;
+  }
+  40% {
+      transform: translateY(-30px);
+      opacity: 1;
+  }
+
+  60% {
+      transform: translateY(0);
+      opacity: 1;
+  }
+  80% {
+      transform: translateY(-15px);
+      opacity: 1;
+  }
+  100% {
+      transform: translateY(0);
+      opacity: 0;
+  }
+}
+
+@keyframes showArrow {
+  to {
+    opacity: 1;
+  }
+}
+
+.scroll-up {
+  bottom: 5%;
+  right: 15%;
+  top: unset;
+  left: unset;
+  box-shadow: 1px 2px 10px 0px #b7b7b742;
+  border: 2px solid #757373ad;
+  background: transparent;
+  transform: rotate(-180deg) translate(-25px, -1px);
+  transition: all .3s;
+  cursor: pointer;
+  opacity: 0;
+
+  .arrow {
+    transform: rotate(45deg) translate(22px, -3px);
+  }
+}
+
+.scroll-up.active {
+  opacity: 1;
+}
 
 
+.scroll-up:active {
+  box-shadow: 1px 1px 10px 3px #b7b7b7b8;
+}
 
 
-
-
-
-// .circles {
-// 	position: relative;
-// 	background-color: $color-light-grey;
-//   opacity: 1;
-// 	animation: spScaleAlpha 1s infinite linear;
-// }
-// .circles:before, .circles:after {
-// 	content: '';
-// 	position: relative;
-//   opacity: 0.25;
-
-// }
-// .circles:before {
-// 	left: 30px;
-//   top: 0px;
-//   transition-delay: 1s;
-// 	animation: spScaleAlphaBefore 1s infinite linear;
-// }
-// .circles:after {
-// 	left: -30px;
-//   top: -23px;
-//   transition-delay: 0.5s;
-// 	animation: spScaleAlphaAfter 1s infinite linear;
-// }
-// @keyframes spScaleAlpha {
-// 	0% {
-//     opacity: 1;
-
-//   }
-// 	33% {
-//     opacity: 0.25;
-
-//   }
-// 	66% {
-//     opacity: 0.25;
-
-//   }
-// 	100% {
-//     opacity: 1;
-
-//   }
-// }
-
-// @keyframes spScaleAlphaAfter {
-// 	33% {
-//     opacity: 0.25;
-//   }
-// 	66% {
-//     opacity: 1;
-//   }
-// 	100% {
-//     opacity: 0.25;
-//   }
-// }
-
-
+/*Global CSS*/
 
 .bg-parallax {
   position: relative;
@@ -426,11 +473,13 @@ h1 {
   font-weight: $light;
   padding: 0 20px 0 8px;
   margin-bottom: 32px;
+  transition: background .3s ease-in-out;
+  transition: color .3s ease-in-out;;
 
 
 
   &:hover{
-    background: #1b1b1b47;
+    background: #1b1b1b6b;
     // background: rgba(64, 63, 63, 0.7);
     color: $color-light-grey;
   }

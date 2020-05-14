@@ -2,7 +2,16 @@
 window.addEventListener('load', (event) => {
   const loader = document.querySelector('.loader-container');
   loader.className+=' hidden'
+  const scrollIndicator = document.querySelector('.scroll-indicator')
+
+  const scrollPositionTop = window.scrollY;
+  console.dir(scrollPositionTop)
+
+  if(scrollPositionTop < 200) scrollIndicator.classList.add('show')
 })
+
+
+
 
 
 const ROCKETS_URL = `https://api.spacexdata.com/v3/rockets`;
@@ -77,5 +86,24 @@ const loader = document.querySelector('.loader')
     </div>`;
   });
 }
+
+const scrollToUp = document.querySelector('.scroll-up')
+
+window.addEventListener('scroll', () => {
+  if(window.pageYOffset > 100) { //if the page has been scrolled 100px from the top then....
+    scrollToUp.classList.add('active')
+  } else {
+    scrollToUp.classList.remove('active')
+  }
+})
+
+
+scrollToUp.addEventListener('click', () => {
+  window.scrollTo({
+    top:0,
+    lef: 0,
+    behavior: "smooth"
+  });
+})
 
 

@@ -11,23 +11,31 @@ function toggleMenu() {
 }
 
 let lastScrollPosition = 0;
-console.log(lastScrollPosition)
 
 window.onscroll = function() {
   let currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
 
-  console.log(currentScrollPosition)
-  console.log(lastScrollPosition > currentScrollPosition)
-
   if(currentScrollPosition > lastScrollPosition) {
     document.querySelector("header").style.top = "-115px";
+    document.querySelector(".countdown-wrapper").style.top = "-115px";
   } else {
     document.querySelector("header").style.top = "0";
+    document.querySelector(".countdown-wrapper").style.top = "0";
   }
 
   lastScrollPosition = currentScrollPosition;
-  console.log('New Scroll position:', lastScrollPosition)
 
+}
+
+const scrollUp = document.querySelector('.scroll-up')
+scrollUp.addEventListener('click', scrollToTop)
+
+function scrollToTop (event) {
+  window.scrollTo({
+    top:0,
+    lef: 0,
+    behavior: "smooth"
+  });
 }
 
 /*Accordion*/

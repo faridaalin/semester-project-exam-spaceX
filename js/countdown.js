@@ -1,4 +1,3 @@
-
 const NEXT_LAUNCH_URL = `https://api.spacexdata.com/v3/launches/next`;
 let jsonData;
 
@@ -34,27 +33,27 @@ function dateCountdown(jsonData) {
     const countDownWrapper = document.querySelector(".countdown-wrapper");
 
     countDownWrapper.innerHTML = `
-    <div>
-
+  <div class="inner-counter">
+  <p>Next launch is in:</p>
     <div class="countdown" id="countDown">
       <div class="countdown__counter">
       <p>Days</p>
       <span id="days">${days}</span>
-    </div>
-    <div class="countdown__counter">
+      </div>
+      <div class="countdown__counter">
       <p>hours</p>
       <span id="hours">${hours}</span>
-    </div>
-    <div class="countdown__counter">
+      </div>
+      <div class="countdown__counter">
       <p>min</p>
       <span id="min">${min}</span>
-    </div>
-    <div class="countdown__counter">
+      </div>
+      <div class="countdown__counter">
       <p>sec</p>
       <span class="sec" id="sec">${sec}</span>
-    </div>
       </div>
     </div>
+  </div>
 
   `;
   }, 1000);

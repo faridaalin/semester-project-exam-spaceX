@@ -173,7 +173,7 @@
 @include media-lg {
 
   header {
-    padding: 40px;
+    // padding: 40px;
     max-width: 1200px;
     margin: 0 auto;
 
@@ -227,7 +227,7 @@
           right: -62.5%;
           height: 10px;
           width: 10px;
-          background: $color-dark-grey;
+          background: #acadafc7;
           display: inline-block;
           border: none;
           border-radius: 50%;
@@ -239,7 +239,7 @@
         .circle-long-line {
           content: '';
           position: absolute;
-          background: $color-dark-grey;
+          background:#acadafc7;
           width: 3px;
           height: 32px;
           top: -19px;
@@ -262,7 +262,7 @@
         a {
           border-bottom: none;
           padding: 0;
-          color: $color-dark-grey;
+          color: #acadafc7;
           display: inline-block;
           font-size: 15px;
         }
@@ -309,12 +309,23 @@
     }
   }
 
+  .inner-counter {
+    display: block;
+    font-family: $font-heading;
+    font-weight: $light;
+    color: #A7A9AC;
+    font-size: 16px;
+    font-weight: 300;
+    margin-top: 8px;
+    text-align: right;
+  }
+
   .countdown-wrapper {
     width: 355px;
-    position: absolute;
-    top:  8px;
-    right: -60px;
-    padding: 0;
+    position: fixed;
+    top:  0;
+    right: 93px;
+    padding-top: 38px;
     display: inline-block;
     z-index: 10;
 
@@ -573,5 +584,12 @@
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 
+  }
+
+
+  /*Scroll-Up Icon*/
+  .scroll-up {
+    bottom: 10%;
+    right: 25%;
   }
 }
