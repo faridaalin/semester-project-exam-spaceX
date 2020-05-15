@@ -52,7 +52,6 @@ function validateEmail(email) {
   return regEx.test(email);
 };
 
-
 function displayThankYouMessage(validation) {
   if(validation) {
     const ThanYouMessage = document.querySelector('.success-message')
