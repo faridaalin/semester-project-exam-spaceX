@@ -34,39 +34,39 @@ $color-green: #136F68;
 
 
 
-@mixin media-s {
-  @media screen and (min-width: 452px) {
+@mixin media-xs {
+  @media screen and (min-width: 28.25rem) {
     @content;
   }
 }
 
-@mixin media-md {
-  @media screen and (min-width: 512px) {
+@mixin media-s {
+  @media screen and (min-width: 32rem) {
+    @content;
+  }
+}
+
+@mixin media-m {
+  @media screen and (min-width: 42rem) {
     @content;
   }
 }
 
 @mixin media-md-l {
-  @media screen and (min-width: 672px) {
-    @content;
-  }
-}
-
-@mixin media-md-lg {
-  @media screen and (min-width: 700px) {
+  @media screen and (min-width: 43.75rem) {
     @content;
   }
 }
 
 @mixin media-l {
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 64rem) {
     @content;
   }
 }
 
 
-@mixin media-lg {
-  @media screen and (min-width: 1366px) {
+@mixin media-xl {
+  @media screen and (min-width: 85.375rem) {
     @content;
   }
 }

@@ -27,16 +27,6 @@ window.onscroll = function() {
 
 }
 
-const scrollUp = document.querySelector('.scroll-up')
-scrollUp.addEventListener('click', scrollToTop)
-
-function scrollToTop (event) {
-  window.scrollTo({
-    top:0,
-    lef: 0,
-    behavior: "smooth"
-  });
-}
 
 /*Accordion*/
 const accordionBtn = document.querySelectorAll(".accordion_btn");
@@ -45,7 +35,6 @@ accordionBtn.forEach((button) => {
 });
 
 function openTab(event) {
-
   this.classList.toggle("active");
 }
 

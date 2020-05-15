@@ -14,10 +14,6 @@ header .logo p {
  margin-bottom: 0;
 }
 
-
-.next-launch{
-  transform: translateY(-25px);
-}
 .next-launch, .countdown {
   @include primary-font;
 }
@@ -34,10 +30,9 @@ header .logo p {
   font-size: 1rem;
   font-family: $font-heading;
   color: $color-light-grey;
-  // margin-bottom: -30px;
   font-weight: 100;
   display: inline-block;
-  transform: translateY(25px);
+  transform: translateY(1.563rem);
 }
 
 .next-launch span {
@@ -45,7 +40,7 @@ header .logo p {
 }
 
 .next-launch .year{
-  font-size: 40vw;
+  // font-size: 40vw;
   font-weight: $medium;
   text-align: center;
 }
@@ -54,26 +49,23 @@ header .logo p {
   font-size: 1.3rem;
   text-align: right;
   font-weight: $regular;
-  margin-top: -17px;
-  display: inline-block;
-  margin-left: 80%;
+  // margin-left: 87%;
+  transform: translateY(-12.063px);
 }
-
-
 
 .next-launch-info {
-  padding-bottom: 37px;
+  padding-bottom: 2.313rem;
+  padding-top: 3rem;
 }
 .next-launch-info .accordion{
-  padding-top: 12px;
+  padding-top: 0.75rem;
 }
-
 
 .info__name {
 @include primary-font;
   color: $color-light-grey;
   font-weight: $light;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .info-container {
@@ -85,29 +77,23 @@ header .logo p {
 .info__text {
   font-family: $font-heading;
   font-weight: $light;
-  font-size: 17px;
-  color: $color-medium-grey;
-  // width: 100px;
+  font-size: 1.063rem;
+  color: #9e9b9b;
   text-align: left;
 }
-
 
 .highlighted {
   color: $color-green;
   font-weight: $medium;
 }
 
-// .active +.details {
-//   transform: translateY(-1px);
-// }
-
 .details {
   font-family: $font-text;
   font-size: 1rem;
   color: $color-light-grey;
   font-weight: $extra-light;
-  height: 100%;
   line-height: 2;
+  padding: 0;
 }
 
 

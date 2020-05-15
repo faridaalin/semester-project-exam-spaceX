@@ -148,7 +148,7 @@ function displayLanuchPads(locationPads) {
 
 function createLocationPads(array, container) {
   array.forEach((item) => {
-    // console.dir(item)
+    let status = item.status[0].toUpperCase() + item.status.slice(1);
 
     container.innerHTML += `
     <div class="launches_container location_container locations-pads">
@@ -159,7 +159,7 @@ function createLocationPads(array, container) {
 
     <div class="info-container">
       <p class="info__name">Status:</p>
-      <p class="info__text">${item.status}</p>
+      <p class="info__text">${status}</p>
     </div>
 
     <div class="info-container">

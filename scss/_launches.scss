@@ -1,36 +1,27 @@
 .bg-launches {
     background: $color-black url(../img/history-in-hd-e5eDHbmHprg-unsplash.jpg) fixed no-repeat 25% 31%/cover;
-
     &:after {
       background: rgba(41, 41, 41, 0.94);
-
     }
-
 
 .locations-pads{
   .info__name{
-    font-size: 13px;
+    font-size: 0.98rem;
   }
   .info__text {
     color: $color-light-grey;
     font-family: $font-text;
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: $regular;
   }
 
   .hr-break {
-    margin: 40px 6% 40px;
+    margin: 2.5rem 0 2.5rem;
   }
-
 }
 
 .location-launches {
   padding: 0;
-
-
-  .item-tabs {
-    // margin-top: 30px;
-  }
 
   .accordion-item-content {
     padding: 1rem 0.5rem;
@@ -43,35 +34,32 @@
     .cross, .cross:after {
       background: $color-light-grey;
     }
-
   }
 
   .accordion_btn:hover {
     background: rgba(64, 63, 63, 0.7);
     border-radius: 0;
-    // font-size: 16px;
     transition: all .3s ease-in-out;
-
   }
 
   .accordion_btn:hover .cross{
-    width: 18px;
-    height: 3px;
+    width: 1.125rem;
+    height: 0.188rem;
   }
 
   .accordion_btn:hover .cross:after{
-    width: 18px;
-    height: 3px;
+    width: 1.125rem;
+    height: 0.188rem;
     border: none;
   }
 }
 
 .location-launches .active {
   font-weight: 100;
-  font-size: 14px;
+  font-size: 1rem;
   background: rgba(70, 69, 69, 0.57);
   width: 100%;
-  height: 40px;
+  height: 2.5rem;
   border-radius: 0;
 }
 
@@ -80,15 +68,15 @@
 
   .info-container {
     flex-direction: column;
-    margin: 18px 0;
+    margin: 1.125rem 0;
 
     .info__text {
       font-family: $font-text;
       color: $color-dark-grey;
       width: 100%;
       line-height: 1.8;
-      font-size: 14px;
-      margin: 8px 0;
+      font-size: 1.125rem;
+      margin: 0.5rem 0;
     }
   }
 }
@@ -104,14 +92,10 @@
       justify-content: space-between;
       .info-container {
         flex-direction: column;
-
-        // p {
-        //   width: 25%;
-        // }
       }
     }
     .hr-break {
-      margin: 40px 0% 90px;
+      margin: 2.5rem 6% 5.625rem;
       width: 94%;
     }
   }
@@ -119,46 +103,32 @@
 
 }
 
-.launches {
-  // transform: translateY(-32px);
-}
-
 .container {
   display: flex;
   justify-content: space-between;
 
   .info__text, .info__name {
-    margin-bottom: 12px;
-
+    margin-bottom: 0.75rem;
   }
   .info-container {
     flex-direction: column;
 
     .info__text {
-      font-size: 13px;
+      font-size: 1rem;
       color: $color-light-grey;
       font-family: $font-text;
       text-transform: uppercase;
       color: $color-dark-grey;
     }
   }
-
 }
 
 .location-btn {
   margin: 0;
-  font-size: 14px;
+  font-size: 0.875rem;
 
   &:focus {
     box-shadow: none;
   }
 }
-
-// .tab-content-location-pads {
-//     padding: 0;
-//     .accordion-item-content {
-//       padding: 0;
-//     }
-// }
-
 }
