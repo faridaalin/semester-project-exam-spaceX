@@ -1,4 +1,3 @@
-
 window.addEventListener('load', (event) => {
   const loader = document.querySelector('.loader-container');
   loader.className+=' hidden'
@@ -9,9 +8,6 @@ window.addEventListener('load', (event) => {
 
   if(scrollPositionTop < 200) scrollIndicator.classList.add('show')
 })
-
-
-
 
 
 const ROCKETS_URL = `https://api.spacexdata.com/v3/rockets`;
@@ -90,13 +86,12 @@ const loader = document.querySelector('.loader')
 const scrollToUp = document.querySelector('.scroll-up')
 
 window.addEventListener('scroll', () => {
-  if(window.pageYOffset > 100) { //if the page has been scrolled 100px from the top then....
+  if(window.pageYOffset > 100) {
     scrollToUp.classList.add('active')
   } else {
     scrollToUp.classList.remove('active')
   }
 })
-
 
 scrollToUp.addEventListener('click', () => {
   window.scrollTo({

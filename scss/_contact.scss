@@ -64,7 +64,7 @@ form {
       border-radius: 0.313rem;
       height: 10.438rem;
       width: 100%;
-      margin-bottom: 2rem;
+      margin-bottom: 0rem;
     }
 
     input[type="submit"] {
@@ -73,16 +73,16 @@ form {
       text-transform: uppercase;
       background: $color-red;
       color: $color-black;
+      margin-top: 2rem;
     }
 
-    .error {
-      font-family: $font-text;
-      color: $color-red;
-      font-size: 0.813rem;
-      padding: 0.313rem 0;
-      display: none;
-    }
 
+  }
+  .error {
+    font-family: $font-text;
+    color: $color-red;
+    font-size: 0.813rem;
+    display: none;
   }
 
 }

@@ -184,7 +184,7 @@
   }
 
   .info__text {
-    margin-right: 50%;
+    width: 50%;
   }
 
   /*Launches*/
@@ -243,7 +243,7 @@
       top: 0;
       left: 50%;
       transition: none;
-      transform: translate(27.75rem, 146%);
+      transform: translate(29.9rem, 146%);
 
       .nav-link {
         position: relative;
@@ -325,7 +325,7 @@
 
 
   .main {
-    padding-top: 12.5rem;
+    padding-top: 8.5rem;
     max-width: 75rem;
     margin: 0 auto;
 
@@ -350,7 +350,7 @@
     width: 22.188rem;
     position: fixed;
     top:  0;
-    right: 6rem;
+    right: 19%;
     padding-top: 2.375rem;
     display: inline-block;
     z-index: 10;
@@ -382,11 +382,7 @@
   }
 
   .next-launch {
-    transform: translateY(0rem);
-  }
-
-  .next-launch-info .accordion {
-    padding-top: 1.25rem;
+    transform: translateY(-2rem);
   }
 
   .next-launch div {
@@ -394,24 +390,19 @@
   }
 
   .next-launch .year {
-    font-size: 13.125rem;
-    letter-spacing: 1.25rem;
-    // position: absolute;
-    // left: 50%;
-    // top: -50%;
-    // transform: translate(-50%, -9%);
+    font-size: 16em;
+    letter-spacing: 3.58rem;
   }
 
   .next-launch p {
     font-size: 1rem;
-    transform: translate(6.938rem, -0.063rem);
   }
 
   .next-launch .month {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: $light;
-    // transform: translate(-6.625rem, 17.313rem);
     bottom: 0;
+    transform: translate(-61px, -40px);
   }
 
   .month {
@@ -426,8 +417,7 @@
   }
 
   .next-launch-info {
-    // padding: 21rem 0 0;
-
+    transform: translateY(-2rem);
     .info-container {
       padding-bottom: 0.625rem;
       margin-bottom: 0;
@@ -449,7 +439,10 @@
 
   /*Launches*/
   .bg-launches {
-
+    .accordion {
+      width: 60%;
+      margin: 0 auto;
+    }
     .location-launches {
       transform: translateY(0rem);
     }
@@ -573,6 +566,19 @@
       }
     }
   }
+
+  form {
+    .error{
+      margin-left: 25%;
+      transform: translateY(-34px);
+    }
+
+    .error:nth-of-type(4) {
+      transform: translateY(-12px);
+    }
+  }
+
+
 
   /*Scroll-Up Icon*/
   .scroll-up {

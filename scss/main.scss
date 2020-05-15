@@ -107,7 +107,7 @@
   width: 3.75rem;
   height: 3.75rem;
   border-radius: 50%;
-  z-index: 3;
+  z-index: 5;
   box-shadow: 0rem 0rem 0.375rem 0.188rem #b7b7b7ad;
   background: #b7b7b7;
   opacity: 0;
@@ -601,7 +601,7 @@ h1 {
 }
 
 .location-wrapper:hover .location-content {
-  padding-left: 2.625;
+  padding-left: 2.625rem;
   opacity: 1;
 }
 

@@ -4,7 +4,6 @@ window.addEventListener('load', (event) => {
 })
 
 /*fetch*/
-
 const NEXT_LAUNCH = `https://api.spacexdata.com/v3/launches/next`;
 
 fetch(NEXT_LAUNCH)
@@ -75,7 +74,6 @@ function currentSiteLocation(data) {
 }
 
 function dateCountdown(launchDate) {
-
 
   const countDownDate = new Date(launchDate).getTime();
   setInterval(() => {

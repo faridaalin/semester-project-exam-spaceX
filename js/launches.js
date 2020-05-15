@@ -18,7 +18,6 @@ function displayLanuches(upcomingLaunches) {
   );
 
   upcomingLaunches.forEach((launch) => {
-    // console.dir(launch)
     let launchDate = new Date(launch.launch_date_local),
       date = launchDate.getDate(),
       month = launchDate.getMonth() + 1;
@@ -36,9 +35,6 @@ function displayLanuches(upcomingLaunches) {
             <p class=" info__name">Launch Pad</p>
             <p class="info__name">Flight Number</p>
           </div>
-
-
-
           <div class="info-container upcoming">
         <p class="info__text">${launch.launch_year}-${month}-${date}</p>
         <p class="info__text">${launch.rocket.rocket_name}</p>
@@ -85,9 +81,6 @@ function displayPreviousLanuches(previousLaunches) {
           <p class=" info__name">Launch Pad</p>
           <p class="info__name">Flight Number</p>
         </div>
-
-
-
         <div class="info-container upcoming">
       <p class="info__text">${launch.launch_year}-${month}-${date}</p>
       <p class="info__text">${launch.rocket.rocket_name}</p>
@@ -110,7 +103,6 @@ fetch(LANDING_PAD_LAUNCH_URL)
   .catch((error) => console.log(error));
 
 function displayLanuchPads(locationPads) {
-  // console.dir(locationPads)
 
   const californiaLocations = locationPads.filter(function (pad) {
     return pad.location.region === "California";
@@ -125,7 +117,6 @@ function displayLanuchPads(locationPads) {
     return pad.location.region === "Marshall Islands";
   });
 
-  // console.dir(mIslandLocations)
 
   const californiaLocationsContainer = document.querySelector(
     ".location-launches__info__ca"
@@ -175,13 +166,12 @@ function createLocationPads(array, container) {
 const scrollToUp = document.querySelector('.scroll-up')
 
 window.addEventListener('scroll', () => {
-  if(window.pageYOffset > 100) { //if the page has been scrolled 100px from the top then....
+  if(window.pageYOffset > 100) {
     scrollToUp.classList.add('active')
   } else {
     scrollToUp.classList.remove('active')
   }
 })
-
 
 scrollToUp.addEventListener('click', scrollToTop)
 function scrollToTop (event) {

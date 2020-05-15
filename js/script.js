@@ -22,11 +22,8 @@ window.onscroll = function() {
     document.querySelector("header").style.top = "0";
     document.querySelector(".countdown-wrapper").style.top = "0";
   }
-
   lastScrollPosition = currentScrollPosition;
-
 }
-
 
 /*Accordion*/
 const accordionBtn = document.querySelectorAll(".accordion_btn");
