@@ -5,12 +5,14 @@ window.addEventListener('load', (event) => {
 
 /*fetch*/
 const NEXT_LAUNCH = `https://api.spacexdata.com/v3/launches/next`;
+let nextLaunch;
 
 fetch(NEXT_LAUNCH)
   .then((response) => response.json())
   .then((data) => {
-    currentSiteLocation(data)
-    displayNextLaunch(data);
+    nextLaunch = data;
+    currentSiteLocation(nextLaunch)
+    displayNextLaunch(nextLaunch);
   })
   .catch((error) => console.log(error));
 

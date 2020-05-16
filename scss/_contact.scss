@@ -1,9 +1,15 @@
-.bg-contact {
-  background: $color-black url(../img/49235136806_7c0d6391a1_k.jpg) fixed no-repeat center/cover;
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
 
-  &:after {
+.contact {
+  background: $color-black url(../img/49235136806_7c0d6391a1_k.jpg) fixed no-repeat center/cover;
+}
+.overlay {
     background: rgba(41, 41, 41, 0.88);
-  }
 }
 
 form {
@@ -11,8 +17,13 @@ form {
   height: 100%;
 
   .fieldset {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     border: none;
     padding-bottom: translateY(-0.754rem);
 
@@ -43,6 +54,8 @@ form {
 
      input[type="text"]:hover, input[type="email"]:hover, textarea:hover {
       background: $color-dark-grey;
+      -webkit-transition: background 0.3s ease-in-out;
+      -o-transition: background 0.3s ease-in-out;
       transition: background 0.3s ease-in-out;
     }
 
@@ -52,11 +65,15 @@ form {
     }
     input[type="submit"] {
       font-weight: $semibold;
+      -webkit-transition: background .2s ease-in;
+      -o-transition: background .2s ease-in;
       transition: background .2s ease-in;
     }
 
     input[type="submit"]:hover {
       background: #a22917;
+      -webkit-transition: background 0.3s ease-in-out;
+      -o-transition: background 0.3s ease-in-out;
       transition: background 0.3s ease-in-out;
     }
 
@@ -106,4 +123,3 @@ form {
   margin: 2.5rem 0;
  }
 }
-

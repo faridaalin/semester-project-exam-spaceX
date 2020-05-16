@@ -1,9 +1,17 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
 
-.bg-home {
+
+.home {
   background: $color-black url(../img/lea-castanie-irQ74aUdmjY-unsplash.jpg) fixed no-repeat center/cover;
-  &::after {
+}
+
+.overlay {
     background: rgba(53, 52, 52, 0.87);
-  }
 }
 
 header .logo p {
@@ -32,7 +40,9 @@ header .logo p {
   color: $color-light-grey;
   font-weight: 100;
   display: inline-block;
-  transform: translateY(1.563rem);
+  -webkit-transform: translateY(1.563rem);
+      -ms-transform: translateY(1.563rem);
+          transform: translateY(1.563rem);
 }
 
 .next-launch span {
@@ -49,8 +59,9 @@ header .logo p {
   font-size: 1.3rem;
   text-align: right;
   font-weight: $regular;
-  // margin-left: 87%;
-  transform: translateY(-12.063px);
+  -webkit-transform: translateY(-12.063px);
+      -ms-transform: translateY(-12.063px);
+          transform: translateY(-12.063px);
 }
 
 .next-launch-info {
@@ -69,8 +80,12 @@ header .logo p {
 }
 
 .info-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-bottom: 1rem;
 }
 
@@ -95,5 +110,4 @@ header .logo p {
   line-height: 2;
   padding: 0;
 }
-
 

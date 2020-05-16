@@ -1,9 +1,18 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 @include media-xs {
   .countdown-wrapper {
     width: 21.875rem;
     padding-bottom: 2.688rem;
     padding-top: 0;
-    transform: translateY(2rem);
+    -webkit-transform: translateY(2rem);
+        -ms-transform: translateY(2rem);
+            transform: translateY(2rem);
   }
 
   .card {
@@ -33,10 +42,19 @@
   }
 
   .devider-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    justify-content: end;
-    align-items: end;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: end;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: end;
     height: 100%;
     margin: 0 0 0 22%;
   }
@@ -76,12 +94,16 @@
 
     .countdown-wrapper {
       padding: 0;
-      transform: translate(0, 0);
+      -webkit-transform: translate(0, 0);
+          -ms-transform: translate(0, 0);
+              transform: translate(0, 0);
     }
 
   .next-launch {
     p {
-      transform: translateY(3.125rem);
+      -webkit-transform: translateY(3.125rem);
+          -ms-transform: translateY(3.125rem);
+              transform: translateY(3.125rem);
     }
     .year {
       letter-spacing: 0.5rem;
@@ -89,7 +111,9 @@
     }
 
     .month {
-      transform: translate(-0.5rem, -1rem);
+      -webkit-transform: translate(-0.5rem, -1rem);
+          -ms-transform: translate(-0.5rem, -1rem);
+              transform: translate(-0.5rem, -1rem);
     }
 
   }
@@ -105,7 +129,9 @@
 
   .card__info .devider-1,
   .card__info .devider-2 {
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
 
   .card__description {
@@ -163,19 +189,25 @@
 }
 
   .countdown-wrapper {
-    transform: translate(10em, -5rem);
+    -webkit-transform: translate(10em, -5rem);
+        -ms-transform: translate(10em, -5rem);
+            transform: translate(10em, -5rem);
 
   }
 
   .next-launch {
-    transform: translateY(-3rem);
+    -webkit-transform: translateY(-3rem);
+        -ms-transform: translateY(-3rem);
+            transform: translateY(-3rem);
 
     .year {
       font-size: 14rem;
       letter-spacing: 1.5;
     }
     .month {
-      transform: translate(-3.5rem, -1.5rem);
+      -webkit-transform: translate(-3.5rem, -1.5rem);
+          -ms-transform: translate(-3.5rem, -1.5rem);
+              transform: translate(-3.5rem, -1.5rem);
       font-size: 1.8rem;
     }
   }
@@ -235,22 +267,32 @@
 
     .menu {
       visibility: visible;
-      transform: translate(0rem, 0rem);
+      -webkit-transform: translate(0rem, 0rem);
+          -ms-transform: translate(0rem, 0rem);
+              transform: translate(0rem, 0rem);
       background: transparent;
       position: fixed;
-      width: 7rem;
+      width: 7.5rem;
       height: 18.125rem;
       top: 0;
       left: 50%;
+      -webkit-transition: none;
+      -o-transition: none;
       transition: none;
-      transform: translate(29.9rem, 146%);
+      -webkit-transform: translate(29.9rem, 146%);
+          -ms-transform: translate(29.9rem, 146%);
+              transform: translate(29.9rem, 146%);
 
       .nav-link {
         position: relative;
         text-align: left;
         font-size: 1rem;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        justify-content: space-between;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
         opacity: 1;
 
         .circle {
@@ -263,7 +305,11 @@
           display: inline-block;
           border: none;
           border-radius: 50%;
+          -webkit-transition: background .3s, -webkit-transform .3s;
+          transition: background .3s, -webkit-transform .3s;
+          -o-transition: transform .3s, background .3s;
           transition: transform .3s, background .3s;
+          transition: transform .3s, background .3s, -webkit-transform .3s;
         }
 
         .circle-short-line,
@@ -299,24 +345,36 @@
         }
 
         a:hover {
-          transform: scale(1.2);
+          -webkit-transform: scale(1.2);
+              -ms-transform: scale(1.2);
+                  transform: scale(1.2);
           color: $color-light-grey;
+          -webkit-transition: color .3s, -webkit-transform .3s;
+          transition: color .3s, -webkit-transform .3s;
+          -o-transition: transform .3s, color .3s;
           transition: transform .3s, color .3s;
+          transition: transform .3s, color .3s, -webkit-transform .3s;
 
         }
 
         a:hover+.circle {
-          transform: translate(2%, -16%) scale(1.5);
+          -webkit-transform: translate(2%, -16%) scale(1.5);
+              -ms-transform: translate(2%, -16%) scale(1.5);
+                  transform: translate(2%, -16%) scale(1.5);
           background: $color-light-grey;
         }
 
         .active-link {
-          transform: scale(1.2);
+          -webkit-transform: scale(1.2);
+              -ms-transform: scale(1.2);
+                  transform: scale(1.2);
           color: $color-light-grey;
         }
 
         .active-link+.circle {
-          transform: translate(2%, -16%) scale(1.5);
+          -webkit-transform: translate(2%, -16%) scale(1.5);
+              -ms-transform: translate(2%, -16%) scale(1.5);
+                  transform: translate(2%, -16%) scale(1.5);
           background: $color-light-grey;
         }
       }
@@ -331,16 +389,22 @@
 
     .locations {
       display: block;
-     transform:  translateY(146%);
+     -webkit-transform:  translateY(146%);
+         -ms-transform:  translateY(146%);
+             transform:  translateY(146%);
       z-index: 1;
       height: 18.125rem;
 
       .location-wrapper {
       .mislands {
-        transform: rotate(-90deg) translate(-64%, 1%);
+        -webkit-transform: rotate(-90deg) translate(-64%, 1%);
+            -ms-transform: rotate(-90deg) translate(-64%, 1%);
+                transform: rotate(-90deg) translate(-64%, 1%);
       }
       .texas {
-        transform: rotate(-90deg) translate(-63%, 1%);
+        -webkit-transform: rotate(-90deg) translate(-63%, 1%);
+            -ms-transform: rotate(-90deg) translate(-63%, 1%);
+                transform: rotate(-90deg) translate(-63%, 1%);
       }
       }
     }
@@ -350,19 +414,25 @@
     width: 22.188rem;
     position: fixed;
     top:  0;
-    right: 19%;
+    right: 6%;
     padding-top: 2.375rem;
     display: inline-block;
     z-index: 10;
-    transform: translateY(0rem);
+    -webkit-transform: translateY(0rem);
+        -ms-transform: translateY(0rem);
+            transform: translateY(0rem);
     max-width: initial;
 
     .countdown {
       width: 100%;
       margin: 0;
       padding: 0;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
-      justify-content: space-between;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
 
       .countdown__counter {
         width: auto;
@@ -382,7 +452,9 @@
   }
 
   .next-launch {
-    transform: translateY(-2rem);
+    -webkit-transform: translateY(-2rem);
+        -ms-transform: translateY(-2rem);
+            transform: translateY(-2rem);
   }
 
   .next-launch div {
@@ -402,7 +474,9 @@
     font-size: 1.8rem;
     font-weight: $light;
     bottom: 0;
-    transform: translate(-61px, -40px);
+    -webkit-transform: translate(-61px, -40px);
+        -ms-transform: translate(-61px, -40px);
+            transform: translate(-61px, -40px);
   }
 
   .month {
@@ -417,7 +491,9 @@
   }
 
   .next-launch-info {
-    transform: translateY(-2rem);
+    -webkit-transform: translateY(-2rem);
+        -ms-transform: translateY(-2rem);
+            transform: translateY(-2rem);
     .info-container {
       padding-bottom: 0.625rem;
       margin-bottom: 0;
@@ -444,11 +520,16 @@
       margin: 0 auto;
     }
     .location-launches {
-      transform: translateY(0rem);
+      -webkit-transform: translateY(0rem);
+          -ms-transform: translateY(0rem);
+              transform: translateY(0rem);
     }
 
     .container {
-      flex-direction: column;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
 
       .info__text,
       .info__name {
@@ -456,22 +537,33 @@
       }
 
       .info-container {
-        flex-direction: row;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
       }
     }
 
     .upcoming-launches, .previous-launches {
-        transform: translateY(-2rem);
+        -webkit-transform: translateY(-2rem);
+            -ms-transform: translateY(-2rem);
+                transform: translateY(-2rem);
     }
 
     .previous-launches-container,
     .upcoming-launches-container {
       .container {
         .launches_container {
-          flex-direction: column;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+              -ms-flex-direction: column;
+                  flex-direction: column;
 
           .info-container {
-            flex-direction: row;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: row;
+                    flex-direction: row;
           }
         }
       }
@@ -480,7 +572,9 @@
 
   h1 {
     margin-left: 16%;
-    transform: translateY(-1.563rem);
+    -webkit-transform: translateY(-1.563rem);
+        -ms-transform: translateY(-1.563rem);
+            transform: translateY(-1.563rem);
   }
 
   .cards {
@@ -543,8 +637,13 @@
     border-radius: 0.313rem;
 
     .fieldset {
-      flex-direction: row;
-      justify-content: space-between;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: row;
+              flex-direction: row;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
       padding-bottom: 1.563rem;
       width: 100%;
 
@@ -570,11 +669,15 @@
   form {
     .error{
       margin-left: 25%;
-      transform: translateY(-34px);
+      -webkit-transform: translateY(-34px);
+          -ms-transform: translateY(-34px);
+              transform: translateY(-34px);
     }
 
     .error:nth-of-type(4) {
-      transform: translateY(-12px);
+      -webkit-transform: translateY(-12px);
+          -ms-transform: translateY(-12px);
+              transform: translateY(-12px);
     }
   }
 

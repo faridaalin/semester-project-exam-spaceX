@@ -1,7 +1,16 @@
-.bg-about {
-  background: $color-black url(../img/48954138902_c51f6f28a0_k.jpg) fixed no-repeat center/cover;
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
 
-  &:after {
+.bg-about {
+  .about {
+    background: $color-black url(../img/48954138902_c51f6f28a0_k.jpg) fixed no-repeat center/cover;
+
+  }
+  .overlay {
     background: rgba(41, 41, 41, 0.88);
   }
 
