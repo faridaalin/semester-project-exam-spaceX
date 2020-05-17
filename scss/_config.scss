@@ -16,6 +16,25 @@ $font-text: 'Open Sans', sans-serif;
   font-family: $font-heading;
   text-transform: uppercase;
 }
+@mixin link-style {
+  font-family: $font-text;
+  font-weight: $light;
+  color: $color-light-grey;
+  text-decoration: none;
+  border-bottom: 2px solid $color-light-grey;
+  -webkit-transition:  border-bottom .4s ease;
+  -o-transition:  border-bottom .4s ease;
+  transition:  border-bottom .4s ease;
+  -webkit-transition: color .4s ease;
+  -o-transition: color .4s ease;
+  transition: color .4s ease;
+}
+
+@mixin link-style-hover  {
+  color: $color-dark-grey;
+  border-bottom: 2px solid $color-red;
+	cursor: pointer;
+}
 
 $extra-light: 200;
 $light: 300;

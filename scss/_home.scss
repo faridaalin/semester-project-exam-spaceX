@@ -99,8 +99,8 @@ header .logo p {
   margin-bottom: 1rem;
 }
 
-.info__text, a {
-  font-family: $font-heading;
+.info__text  {
+  font-family: $font-text;
   font-weight: $light;
   font-size: 1.063rem;
   color: #9e9b9b;
@@ -108,6 +108,11 @@ header .logo p {
 
   a  {
     font-size: 0.98rem;
+    @include link-style;
+  }
+
+  a:hover {
+    @include link-style-hover;
   }
 }
 

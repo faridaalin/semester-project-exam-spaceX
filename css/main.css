@@ -854,7 +854,7 @@ header .menu ul a {
   padding-bottom: 15.313rem;
 }
 
-.about .about-text, .about .about-text a {
+.about .about-text {
   font-family: "Open Sans", sans-serif;
   font-size: 1rem;
   color: #F0F0F0;
@@ -862,12 +862,31 @@ header .menu ul a {
   line-height: 1.5;
 }
 
-.about .about-text p, .about .about-text a p {
+.about .about-text p {
   margin-bottom: 1.375rem;
 }
 
-.about .about-text p:last-child, .about .about-text a p:last-child {
+.about .about-text p:last-child {
   margin-bottom: rem;
+}
+
+.about .about-text a {
+  font-size: 0.98rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  color: #F0F0F0;
+  text-decoration: none;
+  border-bottom: 2px solid #F0F0F0;
+  -webkit-transition: border-bottom .4s ease;
+  transition: border-bottom .4s ease;
+  -webkit-transition: color .4s ease;
+  transition: color .4s ease;
+}
+
+.about .about-text a:hover {
+  color: #A7A9AC;
+  border-bottom: 2px solid #FC3D21;
+  cursor: pointer;
 }
 
 /*
@@ -1409,16 +1428,31 @@ header .logo p {
   margin-bottom: 1rem;
 }
 
-.info__text, a {
-  font-family: "Oswald", sans-serif;
+.info__text {
+  font-family: "Open Sans", sans-serif;
   font-weight: 300;
   font-size: 1.063rem;
   color: #9e9b9b;
   text-align: left;
 }
 
-.info__text a, a a {
+.info__text a {
   font-size: 0.98rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  color: #F0F0F0;
+  text-decoration: none;
+  border-bottom: 2px solid #F0F0F0;
+  -webkit-transition: border-bottom .4s ease;
+  transition: border-bottom .4s ease;
+  -webkit-transition: color .4s ease;
+  transition: color .4s ease;
+}
+
+.info__text a:hover {
+  color: #A7A9AC;
+  border-bottom: 2px solid #FC3D21;
+  cursor: pointer;
 }
 
 .highlighted {
