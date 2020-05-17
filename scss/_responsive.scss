@@ -5,20 +5,10 @@
 * Browsers: last 4 version
 */
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
 @include media-xs {
   .countdown-wrapper {
     padding-bottom: 2.688rem;
     padding-top: 0;
-<<<<<<< HEAD
-=======
-    -webkit-transform: translateY(2rem);
-        -ms-transform: translateY(2rem);
-            transform: translateY(2rem);
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
   }
 
   .card {
@@ -100,12 +90,6 @@
 
     .countdown-wrapper {
       padding: 0;
-<<<<<<< HEAD
-=======
-      -webkit-transform: translate(0, 0);
-          -ms-transform: translate(0, 0);
-              transform: translate(0, 0);
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
     }
 
   .next-launch {
@@ -198,24 +182,10 @@
 }
 
   .countdown-wrapper {
-<<<<<<< HEAD
     width: 63%;
   }
 
   .next-launch {
-=======
-    -webkit-transform: translate(10em, -5rem);
-        -ms-transform: translate(10em, -5rem);
-            transform: translate(10em, -5rem);
-
-  }
-
-  .next-launch {
-    -webkit-transform: translateY(-3rem);
-        -ms-transform: translateY(-3rem);
-            transform: translateY(-3rem);
-
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
     .year {
       font-size: 14rem;
       letter-spacing: 1.5;
@@ -293,24 +263,17 @@
       width: 7.5rem;
       height: 18.125rem;
       top: 0;
-<<<<<<< HEAD
       left: 49%;
-=======
-      left: 50%;
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
       -webkit-transition: none;
       -o-transition: none;
       transition: none;
       -webkit-transform: translate(29.9rem, 146%);
           -ms-transform: translate(29.9rem, 146%);
               transform: translate(29.9rem, 146%);
-<<<<<<< HEAD
 
               ul {
                 margin-right: auto;
               }
-=======
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
 
       .nav-link {
         position: relative;
@@ -375,21 +338,12 @@
         }
 
         a:hover {
-<<<<<<< HEAD
           -webkit-transform: scale(1.2) translateX(3px);
               -ms-transform: scale(1.2) translateX(3px);
                   transform: scale(1.2) translateX(3px);
           color: $color-light-grey;
           transition: color .3s, -webkit-transform .3s;
           -webkit-transition: color .3s, -webkit-transform .3s;
-=======
-          -webkit-transform: scale(1.2);
-              -ms-transform: scale(1.2);
-                  transform: scale(1.2);
-          color: $color-light-grey;
-          -webkit-transition: color .3s, -webkit-transform .3s;
-          transition: color .3s, -webkit-transform .3s;
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
           -o-transition: transform .3s, color .3s;
           transition: transform .3s, color .3s;
           transition: transform .3s, color .3s, -webkit-transform .3s;
@@ -397,7 +351,6 @@
         }
 
         a:hover+.circle {
-<<<<<<< HEAD
           -webkit-transform: scale(1.5);
               -ms-transform: scale(1.5);
                   transform: scale(1.5);
@@ -408,35 +361,15 @@
           -webkit-transform: scale(1.2) translateX(3px);
               -ms-transform: scale(1.2) translateX(3px);
                   transform: scale(1.2) translateX(3px);
-=======
-          -webkit-transform: translate(2%, -16%) scale(1.5);
-              -ms-transform: translate(2%, -16%) scale(1.5);
-                  transform: translate(2%, -16%) scale(1.5);
-          background: $color-light-grey;
-        }
-
-        .active-link {
-          -webkit-transform: scale(1.2);
-              -ms-transform: scale(1.2);
-                  transform: scale(1.2);
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
           color: $color-light-grey;
         }
 
         .active-link+.circle {
-<<<<<<< HEAD
           -webkit-transform: scale(1.5);
               -ms-transform: scale(1.5);
                   transform: scale(1.5);
   background: $color-light-grey;
 }
-=======
-          -webkit-transform: translate(2%, -16%) scale(1.5);
-              -ms-transform: translate(2%, -16%) scale(1.5);
-                  transform: translate(2%, -16%) scale(1.5);
-          background: $color-light-grey;
-        }
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
       }
     }
   }
@@ -473,15 +406,7 @@
 
 
   .countdown-wrapper {
-<<<<<<< HEAD
     width: 300px;
-=======
-    width: 22.188rem;
-    position: fixed;
-    top:  0;
-    right: 6%;
-    padding-top: 2.375rem;
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
     display: inline-block;
     z-index: 10;
     -webkit-transform: translateY(0rem);
@@ -732,11 +657,7 @@
               flex-direction: row;
       -webkit-box-pack: justify;
           -ms-flex-pack: justify;
-<<<<<<< HEAD
               justify-content: space-evenly;
-=======
-              justify-content: space-between;
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
       padding-bottom: 1.563rem;
       width: 100%;
 

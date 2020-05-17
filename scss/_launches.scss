@@ -5,18 +5,12 @@
 * Browsers: last 4 version
 */
 
-<<<<<<< HEAD
 .launch {
   .bg-launches {
     background-image: url("../img/history-in-hd-e5eDHbmHprg-unsplash.jpg");
     background-color: $color-black;
     background-size: cover;
     background-position: 25% 31%;
-=======
-.bg-launches {
-  .launch {
-    background: $color-black url(../img/history-in-hd-e5eDHbmHprg-unsplash.jpg) fixed no-repeat 25% 31%/cover;
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
 
   }
     .overlay {

@@ -320,14 +320,10 @@ html {
   right: 0;
   width: 100%;
   height: 100%;
-<<<<<<< HEAD
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   z-index: -2000;
-=======
-  z-index: -999;
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
 }
 
 .overlay {
@@ -516,10 +512,7 @@ header .menu ul a {
   border-bottom: 0.125rem solid #FC3D21;
   padding-bottom: 0.313rem;
   font-size: 1.2rem;
-<<<<<<< HEAD
   text-transform: uppercase;
-=======
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
 }
 
 .inner-counter {
@@ -541,7 +534,6 @@ header .menu ul a {
 * Autoprefixer: v9.7.6
 * Browsers: last 4 version
 */
-<<<<<<< HEAD
 .launch .bg-launches {
   background-image: url("../img/history-in-hd-e5eDHbmHprg-unsplash.jpg");
   background-color: #212020;
@@ -550,13 +542,6 @@ header .menu ul a {
 }
 
 .launch .overlay {
-=======
-.bg-launches .launch {
-  background: #212020 url(../img/history-in-hd-e5eDHbmHprg-unsplash.jpg) fixed no-repeat 25% 31%/cover;
-}
-
-.bg-launches .overlay {
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
   background: rgba(41, 41, 41, 0.94);
 }
 
@@ -720,20 +705,12 @@ header .menu ul a {
 * Autoprefixer: v9.7.6
 * Browsers: last 4 version
 */
-<<<<<<< HEAD
 .bg-rockets {
   background-image: url("../img/bantersnaps-5CPIzjWzGxo-unsplash.jpg");
   background-color: #212020;
 }
 
 .rockets .overlay {
-=======
-.rockets {
-  background: #212020 url(../img/bantersnaps-5CPIzjWzGxo-unsplash.jpg) fixed no-repeat center/cover;
-}
-
-.rocket .overlay {
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
   background: rgba(41, 41, 41, 0.88);
 }
 
@@ -864,20 +841,12 @@ header .menu ul a {
 * Autoprefixer: v9.7.6
 * Browsers: last 4 version
 */
-<<<<<<< HEAD
 .about .bg-about {
   background-image: url("../img/48954138902_c51f6f28a0_k.jpg");
   background-color: #212020;
 }
 
 .about .overlay {
-=======
-.bg-about .about {
-  background: #212020 url(../img/48954138902_c51f6f28a0_k.jpg) fixed no-repeat center/cover;
-}
-
-.bg-about .overlay {
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
   background: rgba(41, 41, 41, 0.88);
 }
 
@@ -907,20 +876,12 @@ header .menu ul a {
 * Autoprefixer: v9.7.6
 * Browsers: last 4 version
 */
-<<<<<<< HEAD
 .bg-contact {
   background-image: url("../img/49235136806_7c0d6391a1_k.jpg");
   background-color: #212020;
 }
 
 .contact .overlay {
-=======
-.contact {
-  background: #212020 url(../img/49235136806_7c0d6391a1_k.jpg) fixed no-repeat center/cover;
-}
-
-.overlay {
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
   background: rgba(41, 41, 41, 0.88);
 }
 
@@ -1352,20 +1313,12 @@ h1 {
 * Autoprefixer: v9.7.6
 * Browsers: last 4 version
 */
-<<<<<<< HEAD
 .bg-home {
   background-image: url("../img/lea-castanie-irQ74aUdmjY-unsplash.jpg");
   background-color: #212020;
 }
 
 .home .overlay {
-=======
-.home {
-  background: #212020 url(../img/lea-castanie-irQ74aUdmjY-unsplash.jpg) fixed no-repeat center/cover;
-}
-
-.overlay {
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
   background: rgba(53, 52, 52, 0.87);
 }
 
@@ -1482,13 +1435,10 @@ header .logo p {
   padding: 0;
 }
 
-<<<<<<< HEAD
 .next-launch-container {
   height: 100vh;
 }
 
-=======
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
 /*
 * Prefixed by https://autoprefixer.github.io
 * PostCSS: v7.0.29,
@@ -1499,11 +1449,6 @@ header .logo p {
   .countdown-wrapper {
     padding-bottom: 2.688rem;
     padding-top: 0;
-<<<<<<< HEAD
-=======
-    -webkit-transform: translateY(2rem);
-    transform: translateY(2rem);
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
   }
   .card .card__title {
     bottom: 59%;
@@ -1566,11 +1511,6 @@ header .logo p {
 @media screen and (min-width: 42rem) {
   .countdown-wrapper {
     padding: 0;
-<<<<<<< HEAD
-=======
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
   }
   .next-launch p {
     -webkit-transform: translateY(3.125rem);
@@ -1637,16 +1577,7 @@ header .logo p {
     max-width: 40rem;
   }
   .countdown-wrapper {
-<<<<<<< HEAD
     width: 63%;
-=======
-    -webkit-transform: translate(10em, -5rem);
-    transform: translate(10em, -5rem);
-  }
-  .next-launch {
-    -webkit-transform: translateY(-3rem);
-    transform: translateY(-3rem);
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
   }
   .next-launch .year {
     font-size: 14rem;
@@ -1709,12 +1640,9 @@ header .logo p {
     transition: none;
     -webkit-transform: translate(29.9rem, 146%);
     transform: translate(29.9rem, 146%);
-<<<<<<< HEAD
   }
   header .menu ul {
     margin-right: auto;
-=======
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
   }
   header .menu .nav-link {
     position: relative;
@@ -1772,13 +1700,8 @@ header .logo p {
     font-size: 1rem;
   }
   header .menu .nav-link a:hover {
-<<<<<<< HEAD
     -webkit-transform: scale(1.2) translateX(3px);
     transform: scale(1.2) translateX(3px);
-=======
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
     color: #F0F0F0;
     transition: color .3s, -webkit-transform .3s;
     -webkit-transition: color .3s, -webkit-transform .3s;
@@ -1786,7 +1709,6 @@ header .logo p {
     transition: transform .3s, color .3s, -webkit-transform .3s;
   }
   header .menu .nav-link a:hover + .circle {
-<<<<<<< HEAD
     -webkit-transform: scale(1.5);
     transform: scale(1.5);
     background: #F0F0F0;
@@ -1799,20 +1721,6 @@ header .logo p {
   header .menu .nav-link .active-link + .circle {
     -webkit-transform: scale(1.5);
     transform: scale(1.5);
-=======
-    -webkit-transform: translate(2%, -16%) scale(1.5);
-    transform: translate(2%, -16%) scale(1.5);
-    background: #F0F0F0;
-  }
-  header .menu .nav-link .active-link {
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
-    color: #F0F0F0;
-  }
-  header .menu .nav-link .active-link + .circle {
-    -webkit-transform: translate(2%, -16%) scale(1.5);
-    transform: translate(2%, -16%) scale(1.5);
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
     background: #F0F0F0;
   }
   .main {
@@ -1836,15 +1744,7 @@ header .logo p {
     transform: rotate(-90deg) translate(-63%, 1%);
   }
   .countdown-wrapper {
-<<<<<<< HEAD
     width: 300px;
-=======
-    width: 22.188rem;
-    position: fixed;
-    top: 0;
-    right: 6%;
-    padding-top: 2.375rem;
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
     display: inline-block;
     z-index: 10;
     -webkit-transform: translateY(0rem);
@@ -2033,11 +1933,7 @@ header .logo p {
     flex-direction: row;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
-<<<<<<< HEAD
     justify-content: space-evenly;
-=======
-    justify-content: space-between;
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
     padding-bottom: 1.563rem;
     width: 100%;
   }

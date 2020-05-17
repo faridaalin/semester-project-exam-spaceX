@@ -5,20 +5,12 @@
 * Browsers: last 4 version
 */
 
-<<<<<<< HEAD
 .bg-rockets {
   background-image: url("../img/bantersnaps-5CPIzjWzGxo-unsplash.jpg");
   background-color: $color-black;
 }
 
 .rockets .overlay {
-=======
-.rockets {
-  background: $color-black url(../img/bantersnaps-5CPIzjWzGxo-unsplash.jpg) fixed no-repeat center/cover;
-}
-
-.rocket .overlay {
->>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
     background: rgba(41, 41, 41, 0.88);
 }
 
