@@ -33,8 +33,8 @@ function dateCountdown(jsonData) {
     const countDownWrapper = document.querySelector(".countdown-wrapper");
 
     countDownWrapper.innerHTML = `
-  <div class="inner-counter">
-  <p>Next launch is in:</p>
+    <div class="inner-counter">
+    <p>Next launch is in:</p>
     <div class="countdown" id="countDown">
       <div class="countdown__counter">
       <p>Days</p>

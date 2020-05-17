@@ -14,7 +14,11 @@
   <title>SpaceX - microsite</title>
 </head>
 
-<body class="bg-parallax bg-home">
+<body class="home">
+  <div class="bg-parallax bg-home"></div>
+  <!-- Photo by NASA on Unsplash -->
+  <div class="overlay"></div>
+
   <header>
     <nav>
       <div class="inner-nav">
@@ -27,6 +31,7 @@
           <span></span>
           <span></span>
         </div>
+        <div class="countdown-wrapper coundtdown-desktop"></div>
       </div>
 
       <div class="menu">
@@ -68,7 +73,8 @@
       </div>
     </div>
 
-    <section class="countdown-wrapper"></section>
+
+
 
     <aside class="locations">
       <div class="location-wrapper location-wrapper-california">
@@ -110,25 +116,27 @@
       </div>
     </aside>
 
-    <section class="next-launch"></section>
+    <section class="next-launch-container">
+      <div class="next-launch"></div>
 
-    <section class="next-launch-info">
-      <div class="next-launch-info__first-part">
-      </div>
+      <div class="next-launch-info">
+        <div class="countdown-wrapper coundtdown-mobile"></div>
 
-      <section class="accordion">
-        <button class="accordion_btn">Details
-          <div class="cross-wrapper">
-            <span class="cross"></span>
+        <div class="next-launch-info__first-part"></div>
+        <div class="accordion">
+          <button class="accordion_btn">Details
+            <div class="cross-wrapper">
+              <span class="cross"></span>
+            </div>
+          </button>
+          <div class="tab-content details">
+
           </div>
-        </button>
-        <div class="tab-content details">
-
         </div>
-      </section>
-
-
+      </div>
     </section>
+
+
 
   </main>
 

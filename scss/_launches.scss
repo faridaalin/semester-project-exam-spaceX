@@ -1,6 +1,19 @@
-.bg-launches {
-    background: $color-black url(../img/history-in-hd-e5eDHbmHprg-unsplash.jpg) fixed no-repeat 25% 31%/cover;
-    &:after {
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
+.launch {
+  .bg-launches {
+    background-image: url("../img/history-in-hd-e5eDHbmHprg-unsplash.jpg");
+    background-color: $color-black;
+    background-size: cover;
+    background-position: 25% 31%;
+
+  }
+    .overlay {
       background: rgba(41, 41, 41, 0.94);
     }
 
@@ -39,6 +52,8 @@
   .accordion_btn:hover {
     background: rgba(64, 63, 63, 0.7);
     border-radius: 0;
+    -webkit-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
   }
 
@@ -64,10 +79,16 @@
 }
 
 .location_container {
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 
   .info-container {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     margin: 1.125rem 0;
 
     .info__text {
@@ -85,13 +106,23 @@
   padding-right: 0;
   padding-left: 0;
   .container {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 
     .launches_container{
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
-      justify-content: space-between;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
       .info-container {
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
       }
     }
     .hr-break {
@@ -104,14 +135,21 @@
 }
 
 .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 
   .info__text, .info__name {
     margin-bottom: 0.75rem;
   }
   .info-container {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 
     .info__text {
       font-size: 1rem;
@@ -128,7 +166,8 @@
   font-size: 0.875rem;
 
   &:focus {
-    box-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
   }
 }
 }

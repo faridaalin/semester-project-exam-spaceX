@@ -1,35 +1,34 @@
-window.addEventListener('load', (event) => {
-  const loader = document.querySelector('.loader-container');
-  loader.className+=' hidden'
-})
+window.addEventListener("load", (event) => {
+  const loader = document.querySelector(".loader-container");
+  loader.className += " hidden";
+});
 
 /*fetch*/
 const NEXT_LAUNCH = `https://api.spacexdata.com/v3/launches/next`;
+let nextLaunch;
 
 fetch(NEXT_LAUNCH)
   .then((response) => response.json())
   .then((data) => {
-    currentSiteLocation(data)
-    displayNextLaunch(data);
+    nextLaunch = data;
+    displayNextLaunch(nextLaunch);
+    currentSiteLocation(nextLaunch);
   })
   .catch((error) => console.log(error));
 
 function displayNextLaunch(data) {
+  console.dir(data);
+
   const nextLaunchContainer = document.querySelector(".next-launch");
   const nextLaunchInfo = document.querySelector(
     ".next-launch-info__first-part"
   );
   const nextLaunchDetails = document.querySelector(".details");
 
-  const launchDate = new Date(data.launch_date_local),
+  let launchDate = new Date(data.launch_date_local),
     date = launchDate.getDate(),
     month = launchDate.getMonth() + 1;
-
-  let launchDetails = data.details;
-  launchDetails
-    ? (launchDetails = launchDetails)
-    : (launchDetails =
-        "More information about this launch will be available soon.");
+  month = month < 10 ? "0" + month : month;
 
   nextLaunchContainer.innerHTML = `      <div>
   <p>Next Launch</p>
@@ -53,30 +52,34 @@ function displayNextLaunch(data) {
   <p class="info__text highlighted">${data.mission_name}</p>
 </div>`;
 
-  nextLaunchDetails.innerHTML = ` <div class="accordion-item-content"><p>${launchDetails}</p></div`;
-  dateCountdown(launchDate)
+  nextLaunchDetails.innerHTML = ` <div class="accordion-item-content"><p class="info__text">For live feed, discussions and updates you can visit
+  ${data.mission_name}'s <a href="${data.links.reddit_campaign}" target="_blank">Reddit Campaign Tread</a> and <a href="${data.links.reddit_launch}" target="_blank">Reddit Launch Tread</a></p></div`;
+
+  const coundtdownMobile = document.querySelector(".coundtdown-mobile"),
+    coundtdownDesktop = document.querySelector(".coundtdown-desktop");
+
+  dateCountdown(launchDate, coundtdownMobile);
+  dateCountdown(launchDate, coundtdownDesktop);
 }
 
 function currentSiteLocation(data) {
   const siteLocationFromApi = data.launch_site.site_id;
-  const area = document.querySelectorAll('.area');
+  const area = document.querySelectorAll(".area");
 
-  area.forEach(site => {
+  area.forEach((site) => {
+    const sitename = site.id;
+    const title = site.parentNode.previousElementSibling;
 
-    const sitename = site.id
-    const title = site.parentNode.previousElementSibling
-
-    if(siteLocationFromApi === sitename) {
-      title.children[0].classList.add('active-location')
+    if (siteLocationFromApi === sitename) {
+      title.children[0].classList.add("active-location");
     }
   });
-
 }
 
-function dateCountdown(launchDate) {
-
-  const countDownDate = new Date(launchDate).getTime();
+function dateCountdown(launchDate, container) {
   setInterval(() => {
+    const countDownDate = new Date(launchDate).getTime();
+
     const today = new Date().getTime();
     const timeRemaining = countDownDate - today;
 
@@ -93,9 +96,7 @@ function dateCountdown(launchDate) {
     min = min < 10 ? "0" + min : min;
     sec = sec < 10 ? "0" + sec : sec;
 
-    const countDownWrapper = document.querySelector(".countdown-wrapper");
-
-    countDownWrapper.innerHTML = `
+    container.innerHTML = `
     <div class="inner-counter">
     <p>Next launch is in:</p>
       <div class="countdown" id="countDown">
@@ -120,3 +121,6 @@ function dateCountdown(launchDate) {
   `;
   }, 1000);
 }
+
+// dateCountdown(nextLaunch, coundtdownMobile)
+// dateCountdown(nextLaunch, coundtdownDesktop)

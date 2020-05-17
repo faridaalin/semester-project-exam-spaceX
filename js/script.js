@@ -10,21 +10,6 @@ function toggleMenu() {
   console.dir(this)
 }
 
-let lastScrollPosition = 0;
-
-window.onscroll = function() {
-  let currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-
-  if(currentScrollPosition > lastScrollPosition) {
-    document.querySelector("header").style.top = "-115px";
-    document.querySelector(".countdown-wrapper").style.top = "-115px";
-  } else {
-    document.querySelector("header").style.top = "0";
-    document.querySelector(".countdown-wrapper").style.top = "0";
-  }
-  lastScrollPosition = currentScrollPosition;
-}
-
 /*Accordion*/
 const accordionBtn = document.querySelectorAll(".accordion_btn");
 accordionBtn.forEach((button) => {

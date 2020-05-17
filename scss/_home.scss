@@ -1,9 +1,18 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 
 .bg-home {
-  background: $color-black url(../img/lea-castanie-irQ74aUdmjY-unsplash.jpg) fixed no-repeat center/cover;
-  &::after {
-    background: rgba(53, 52, 52, 0.87);
-  }
+  background-image: url("../img/lea-castanie-irQ74aUdmjY-unsplash.jpg");
+  background-color: $color-black;
+}
+
+.home .overlay {
+  background: rgba(53, 52, 52, 0.87);
 }
 
 header .logo p {
@@ -16,6 +25,12 @@ header .logo p {
 
 .next-launch, .countdown {
   @include primary-font;
+}
+.coundtdown-desktop {
+  display: none;
+}
+.coundtdown-mobile {
+  display: block;
 }
 
 .next-launch div {
@@ -32,7 +47,9 @@ header .logo p {
   color: $color-light-grey;
   font-weight: 100;
   display: inline-block;
-  transform: translateY(1.563rem);
+  -webkit-transform: translateY(1.563rem);
+      -ms-transform: translateY(1.563rem);
+          transform: translateY(1.563rem);
 }
 
 .next-launch span {
@@ -49,16 +66,20 @@ header .logo p {
   font-size: 1.3rem;
   text-align: right;
   font-weight: $regular;
-  // margin-left: 87%;
-  transform: translateY(-12.063px);
+  -webkit-transform: translateY(-12.063px);
+      -ms-transform: translateY(-12.063px);
+          transform: translateY(-12.063px);
 }
 
 .next-launch-info {
   padding-bottom: 2.313rem;
-  padding-top: 3rem;
 }
 .next-launch-info .accordion{
   padding-top: 0.75rem;
+}
+
+.next-launch-info__first-part {
+  padding-top: 3rem;
 }
 
 .info__name {
@@ -69,17 +90,25 @@ header .logo p {
 }
 
 .info-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-bottom: 1rem;
 }
 
-.info__text {
+.info__text, a {
   font-family: $font-heading;
   font-weight: $light;
   font-size: 1.063rem;
   color: #9e9b9b;
   text-align: left;
+
+  a  {
+    font-size: 0.98rem;
+  }
 }
 
 .highlighted {
@@ -96,4 +125,6 @@ header .logo p {
   padding: 0;
 }
 
-
+.next-launch-container {
+  height: 100vh;
+}

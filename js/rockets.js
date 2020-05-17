@@ -4,7 +4,6 @@ window.addEventListener('load', (event) => {
   const scrollIndicator = document.querySelector('.scroll-indicator')
 
   const scrollPositionTop = window.scrollY;
-  console.dir(scrollPositionTop)
 
   if(scrollPositionTop < 200) scrollIndicator.classList.add('show')
 })

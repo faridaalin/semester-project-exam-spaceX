@@ -4,11 +4,13 @@ window.addEventListener("load", (event) => {
 });
 
 const UPCOMING_LAUNCH_URL = `https://api.spacexdata.com/v3/launches/upcoming`;
+let launchesArray;
 
 fetch(UPCOMING_LAUNCH_URL)
   .then((response) => response.json())
   .then((data) => {
-    displayLanuches(data);
+    launchesArray = data;
+    displayLanuches(launchesArray);
   })
   .catch((error) => console.log(error));
 
@@ -49,11 +51,13 @@ function displayLanuches(upcomingLaunches) {
 }
 
 const PREVIOUS_LAUNCH_URL = `https://api.spacexdata.com/v3/launches/past`;
+let previousLaunchesArray;
 
 fetch(PREVIOUS_LAUNCH_URL)
   .then((response) => response.json())
   .then((data) => {
-    displayPreviousLanuches(data);
+    previousLaunchesArray = data;
+    displayPreviousLanuches(previousLaunchesArray);
   })
   .catch((error) => console.log(error));
 
@@ -95,10 +99,12 @@ function displayPreviousLanuches(previousLaunches) {
 }
 
 const LANDING_PAD_LAUNCH_URL = `https://api.spacexdata.com/v3/launchpads`;
+let landindPadsArray;
 fetch(LANDING_PAD_LAUNCH_URL)
   .then((response) => response.json())
   .then((data) => {
-    displayLanuchPads(data);
+    landindPadsArray = data;
+    displayLanuchPads(landindPadsArray);
   })
   .catch((error) => console.log(error));
 
