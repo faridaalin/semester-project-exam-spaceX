@@ -4,11 +4,19 @@
 * Autoprefixer: v9.7.6
 * Browsers: last 4 version
 */
+<<<<<<< HEAD
 
 .about {
   .bg-about {
     background-image: url("../img/48954138902_c51f6f28a0_k.jpg");
     background-color: $color-black;
+=======
+
+.bg-about {
+  .about {
+    background: $color-black url(../img/48954138902_c51f6f28a0_k.jpg) fixed no-repeat center/cover;
+
+>>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
   }
   .overlay {
     background: rgba(41, 41, 41, 0.88);

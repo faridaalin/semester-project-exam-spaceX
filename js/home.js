@@ -11,8 +11,13 @@ fetch(NEXT_LAUNCH)
   .then((response) => response.json())
   .then((data) => {
     nextLaunch = data;
+<<<<<<< HEAD
     displayNextLaunch(nextLaunch);
     currentSiteLocation(nextLaunch);
+=======
+    currentSiteLocation(nextLaunch)
+    displayNextLaunch(nextLaunch);
+>>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
   })
   .catch((error) => console.log(error));
 

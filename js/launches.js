@@ -99,7 +99,11 @@ function displayPreviousLanuches(previousLaunches) {
 }
 
 const LANDING_PAD_LAUNCH_URL = `https://api.spacexdata.com/v3/launchpads`;
+<<<<<<< HEAD
 let landindPadsArray;
+=======
+let ;
+>>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
 fetch(LANDING_PAD_LAUNCH_URL)
   .then((response) => response.json())
   .then((data) => {

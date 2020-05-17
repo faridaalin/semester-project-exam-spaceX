@@ -4,6 +4,7 @@
 * Autoprefixer: v9.7.6
 * Browsers: last 4 version
 */
+<<<<<<< HEAD
 
 
 .bg-home {
@@ -13,6 +14,16 @@
 
 .home .overlay {
   background: rgba(53, 52, 52, 0.87);
+=======
+
+
+.home {
+  background: $color-black url(../img/lea-castanie-irQ74aUdmjY-unsplash.jpg) fixed no-repeat center/cover;
+}
+
+.overlay {
+    background: rgba(53, 52, 52, 0.87);
+>>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
 }
 
 header .logo p {
@@ -125,6 +136,9 @@ header .logo p {
   padding: 0;
 }
 
+<<<<<<< HEAD
 .next-launch-container {
   height: 100vh;
 }
+=======
+>>>>>>> 6c5083a6ab6674bb8756b598e1f6c467f4388379
