@@ -25,9 +25,11 @@ const loader = document.querySelector('.loader')
 
   const cardsContainer = document.querySelector(".cards");
 
+
   rockets.forEach((rocket) => {
+    console.log(rocket)
     cardsContainer.innerHTML += `
-      <div class="card" style="background-image: url(${rocket.flickr_images[0]})">
+      <div class="card">
 
       <h2 class="card__title">${rocket.rocket_name}</h2>
 
