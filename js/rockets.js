@@ -5,7 +5,7 @@ window.addEventListener('load', (event) => {
 
   const scrollPositionTop = window.scrollY;
 
-  if(scrollPositionTop < 200) scrollIndicator.classList.add('show')
+if(scrollPositionTop < 200) scrollIndicator.classList.add('show') // good use of one line return
 })
 
 
@@ -20,14 +20,14 @@ fetch(ROCKETS_URL)
   })
   .catch((error) => console.log(error));
 
-function createRocketCards(rockets) {
+function createRocketCards(rockets) { // nice, good argument name
 const loader = document.querySelector('.loader')
 
   const cardsContainer = document.querySelector(".cards");
 
 
   rockets.forEach((rocket) => {
-    console.log(rocket)
+console.log(rocket) // remove all console logs from code base before shipping to production.
     cardsContainer.innerHTML += `
       <div class="card">
 

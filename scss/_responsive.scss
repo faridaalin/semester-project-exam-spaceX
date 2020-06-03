@@ -17,7 +17,7 @@
       left: 1.875rem;
     }
   }
-
+  // we will cover BEM in new semester, nice to see you using it.
   .card:nth-of-type(3) .card__title {
     bottom: 51%;
   }
@@ -369,7 +369,7 @@
               -ms-transform: scale(1.5);
                   transform: scale(1.5);
   background: $color-light-grey;
-}
+} // use code formatter to tidy up your files, prettier is a good one.
       }
     }
   }

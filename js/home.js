@@ -1,4 +1,4 @@
-window.addEventListener("load", (event) => {
+window.addEventListener("load", (event) => { // event is declared but never used, event can be removed.
   const loader = document.querySelector(".loader-container");
   loader.className += " hidden";
 });
@@ -121,6 +121,8 @@ function dateCountdown(launchDate, container) {
   `;
   }, 1000);
 }
+i
 
+// you may remove your commented out code, if you ever see dead code in a code delete it, unless there is a comment telling yo not to, and if any one asks why, say dead code is confusing and useless, it takes up bytes of space on the server. dead code and useless comments should be removed. Clean Code by Uncle Bob <- google that one please.
 // dateCountdown(nextLaunch, coundtdownMobile)
 // dateCountdown(nextLaunch, coundtdownDesktop)
