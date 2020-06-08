@@ -10,7 +10,6 @@ let app = (function () {
   };
 
   const updateEverySec = (nextDate) => {
-    console.dir(nextDate)
     const nextLaunchDate = new Date(nextDate.launch_date_local);
     const countDownDate = new Date(nextLaunchDate).getTime();
 
