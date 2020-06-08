@@ -9,8 +9,9 @@
   <meta name="keywords" content="SpaceX, Launch, rockets, asteroids">
   <meta name="author" content="Farida Alin">
   <link rel="stylesheet" href="css/main.css">
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Oswald:wght@200;300;400;500&display=swap"
+    rel="stylesheet">
   <title>SpaceX - microsite - Launches</title>
 </head>
 
@@ -31,7 +32,29 @@
           <span></span>
           <span></span>
         </div>
-        <div class="countdown-wrapper all-pages"></div>
+        <div class="countdown-wrapper all-pages">
+          <div class="inner-counter">
+            <p>Next launch is in:</p>
+            <div class="countdown" id="countDown">
+              <div class="countdown__counter">
+                <p>Days</p>
+                <span id="days"></span>
+              </div>
+              <div class="countdown__counter">
+                <p>hours</p>
+                <span id="hours"></span>
+              </div>
+              <div class="countdown__counter">
+                <p>min</p>
+                <span id="min"></span>
+              </div>
+              <div class="countdown__counter">
+                <p>sec</p>
+                <span class="sec" id="sec"></span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="menu">
         <ul>
@@ -137,10 +160,10 @@
           <span class="cross"></span>
         </div>
       </button>
-     <div class="tab-content launches previous-launches">
-      <div class="accordion-item-content  previous-launches-container">
+      <div class="tab-content launches previous-launches">
+        <div class="accordion-item-content  previous-launches-container">
+        </div>
       </div>
-    </div>
 
       <button class="accordion_btn">Launch Pad Locations
         <div class="cross-wrapper">
@@ -188,23 +211,23 @@
               <div class="location-launches__info__tx">
               </div>
             </div>
-        </div>
-
-        <button class="accordion_btn location-btn">Marshall Islands
-          <div class="cross-wrapper">
-            <span class="cross"></span>
           </div>
-        </button>
-        <div class="tab-content pad-locations location-launches">
-          <div class="accordion-item-content ca">
-            <div class="location-launches__info__mi">
+
+          <button class="accordion_btn location-btn">Marshall Islands
+            <div class="cross-wrapper">
+              <span class="cross"></span>
+            </div>
+          </button>
+          <div class="tab-content pad-locations location-launches">
+            <div class="accordion-item-content ca">
+              <div class="location-launches__info__mi">
+              </div>
             </div>
           </div>
+
+
+
         </div>
-
-
-
-      </div>
     </section>
 
   </main>
@@ -217,9 +240,10 @@
     </section>
   </footer>
 
-  <script src="js/script.js"></script>
-  <script src="js/launches.js"></script>
-  <script src="js/countdown.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="./js/countdown.js"></script>
+  <script src="./js/launches.js"></script>
+
 </body>
 
 </html>

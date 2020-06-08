@@ -19,16 +19,19 @@ header .logo p {
   display: none;
 }
 
-.main-home .accordion_btn{
- margin-bottom: 0;
+.main-home .accordion_btn {
+  margin-bottom: 0;
 }
 
-.next-launch, .countdown {
+.next-launch,
+.countdown {
   @include primary-font;
 }
+
 .coundtdown-desktop {
   display: none;
 }
+
 .coundtdown-mobile {
   display: block;
 }
@@ -37,7 +40,8 @@ header .logo p {
   width: 100%;
 }
 
-.next-launch p, span {
+.next-launch p,
+span {
   color: $color-red;
 }
 
@@ -48,15 +52,15 @@ header .logo p {
   font-weight: 100;
   display: inline-block;
   -webkit-transform: translateY(1.563rem);
-      -ms-transform: translateY(1.563rem);
-          transform: translateY(1.563rem);
+  -ms-transform: translateY(1.563rem);
+  transform: translateY(1.563rem);
 }
 
 .next-launch span {
   display: block;
 }
 
-.next-launch .year{
+.next-launch .year {
   font-size: 40vw;
   font-weight: $medium;
   text-align: center;
@@ -67,14 +71,15 @@ header .logo p {
   text-align: right;
   font-weight: $regular;
   -webkit-transform: translateY(-12.063px);
-      -ms-transform: translateY(-12.063px);
-          transform: translateY(-12.063px);
+  -ms-transform: translateY(-12.063px);
+  transform: translateY(-12.063px);
 }
 
 .next-launch-info {
   padding-bottom: 2.313rem;
 }
-.next-launch-info .accordion{
+
+.next-launch-info .accordion {
   padding-top: 0.75rem;
 }
 
@@ -83,7 +88,7 @@ header .logo p {
 }
 
 .info__name {
-@include primary-font;
+  @include primary-font;
   color: $color-light-grey;
   font-weight: $light;
   font-size: 1rem;
@@ -94,19 +99,19 @@ header .logo p {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   margin-bottom: 1rem;
 }
 
-.info__text  {
+.info__text {
   font-family: $font-text;
   font-weight: $light;
   font-size: 1.063rem;
   color: #9e9b9b;
   text-align: left;
 
-  a  {
+  a {
     font-size: 0.98rem;
     @include link-style;
   }
@@ -128,8 +133,4 @@ header .logo p {
   font-weight: $extra-light;
   line-height: 2;
   padding: 0;
-}
-
-.next-launch-container {
-  height: 100vh;
 }

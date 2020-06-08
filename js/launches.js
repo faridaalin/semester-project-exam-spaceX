@@ -1,7 +1,10 @@
-window.addEventListener("load", (event) => {
+window.addEventListener("load", () => {
   const loader = document.querySelector(".loader-container");
   loader.className += " hidden";
 });
+
+const dateUrl = `https://api.spacexdata.com/v3/launches/next`;
+let showdateCountDown = app.countDown(dateUrl);
 
 const UPCOMING_LAUNCH_URL = `https://api.spacexdata.com/v3/launches/upcoming`;
 let launchesArray;
@@ -94,7 +97,7 @@ function displayPreviousLanuches(previousLaunches) {
 
     </div>
   <hr class="hr-break">
-</div>`
+</div>`;
   });
 }
 
@@ -109,7 +112,6 @@ fetch(LANDING_PAD_LAUNCH_URL)
   .catch((error) => console.log(error));
 
 function displayLanuchPads(locationPads) {
-
   const californiaLocations = locationPads.filter(function (pad) {
     return pad.location.region === "California";
   });
@@ -122,7 +124,6 @@ function displayLanuchPads(locationPads) {
   const mIslandLocations = locationPads.filter(function (pad) {
     return pad.location.region === "Marshall Islands";
   });
-
 
   const californiaLocationsContainer = document.querySelector(
     ".location-launches__info__ca"
@@ -169,21 +170,21 @@ function createLocationPads(array, container) {
   });
 }
 
-const scrollToUp = document.querySelector('.scroll-up')
+const scrollToUp = document.querySelector(".scroll-up");
 
-window.addEventListener('scroll', () => {
-  if(window.pageYOffset > 100) {
-    scrollToUp.classList.add('active')
+window.addEventListener("scroll", () => {
+  if (window.pageYOffset > 100) {
+    scrollToUp.classList.add("active");
   } else {
-    scrollToUp.classList.remove('active')
+    scrollToUp.classList.remove("active");
   }
-})
+});
 
-scrollToUp.addEventListener('click', scrollToTop)
-function scrollToTop (event) {
+scrollToUp.addEventListener("click", scrollToTop);
+function scrollToTop(event) {
   window.scrollTo({
-    top:0,
+    top: 0,
     lef: 0,
-    behavior: "smooth"
+    behavior: "smooth",
   });
 }

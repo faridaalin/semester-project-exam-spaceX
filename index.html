@@ -9,8 +9,7 @@
   <meta name="keywords" content="SpaceX, Launch, rockets, asteroids">
   <meta name="author" content="Farida Alin">
   <link rel="stylesheet" href="css/main.css">
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Oswald:wght@200;300;400;500&display=swap" rel="stylesheet">
   <title>SpaceX - microsite</title>
 </head>
 
@@ -31,7 +30,6 @@
           <span></span>
           <span></span>
         </div>
-        <div class="countdown-wrapper coundtdown-desktop"></div>
       </div>
 
       <div class="menu">
@@ -72,9 +70,6 @@
         <div class="circle"></div>
       </div>
     </div>
-
-
-
 
     <aside class="locations">
       <div class="location-wrapper location-wrapper-california">
@@ -120,7 +115,29 @@
       <div class="next-launch"></div>
 
       <div class="next-launch-info">
-        <div class="countdown-wrapper coundtdown-mobile"></div>
+        <div class="countdown-wrapper coundtdown-mobile">
+          <div class="inner-counter">
+            <p>Next launch is in:</p>
+            <div class="countdown" id="countDown">
+              <div class="countdown__counter">
+                <p>Days</p>
+                <span id="days"></span>
+              </div>
+              <div class="countdown__counter">
+                <p>hours</p>
+                <span id="hours"></span>
+              </div>
+              <div class="countdown__counter">
+                <p>min</p>
+                <span id="min"></span>
+              </div>
+              <div class="countdown__counter">
+                <p>sec</p>
+                <span class="sec" id="sec"></span>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="next-launch-info__first-part"></div>
         <div class="accordion">
@@ -147,8 +164,9 @@
       <p>Site by Farida Alin</p>
     </section>
   </footer>
-  <script src="js/script.js"></script>
-  <script src="js/home.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="./js/countdown.js"></script>
+  <script src="./js/home.js"></script>
 </body>
 
 </html>

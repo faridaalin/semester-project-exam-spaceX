@@ -9,14 +9,15 @@
   <meta name="keywords" content="SpaceX, Launch, rockets, asteroids">
   <meta name="author" content="Farida Alin">
   <link rel="stylesheet" href="css/main.css">
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Oswald:wght@200;300;400;500&display=swap"
+    rel="stylesheet">
   <title>SpaceX - microsite - Contact</title>
 </head>
 
 <body class="contact">
   <div class="bg-parallax bg-contact"></div>
-    <!-- Image from Official SpaceX Photos: https://www.flickr.com/photos/spacex/49235136806/ -->
+  <!-- Image from Official SpaceX Photos: https://www.flickr.com/photos/spacex/49235136806/ -->
   <div class="overlay"></div>
   <header>
     <nav>
@@ -30,7 +31,29 @@
           <span></span>
           <span></span>
         </div>
-        <div class="countdown-wrapper all-pages"></div>
+        <div class="countdown-wrapper all-pages">
+          <div class="inner-counter">
+            <p>Next launch is in:</p>
+            <div class="countdown" id="countDown">
+              <div class="countdown__counter">
+                <p>Days</p>
+                <span id="days"></span>
+              </div>
+              <div class="countdown__counter">
+                <p>hours</p>
+                <span id="hours"></span>
+              </div>
+              <div class="countdown__counter">
+                <p>min</p>
+                <span id="min"></span>
+              </div>
+              <div class="countdown__counter">
+                <p>sec</p>
+                <span class="sec" id="sec"></span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="menu">
@@ -64,78 +87,78 @@
 
   <main class="main animatein">
 
-      <h1>Contact</h1>
+    <h1>Contact</h1>
 
-      <aside class="locations">
-        <div class="location-wrapper location-wrapper-california">
-         <div class="title">
+    <aside class="locations">
+      <div class="location-wrapper location-wrapper-california">
+        <div class="title">
           <h3 class="california">California</h3>
-         </div>
-          <div class="location-content area-1">
-            <p>VAFB SLC 3W</p>
-            <p>VAFB SLC 4E</p>
-          </div>
         </div>
+        <div class="location-content area-1">
+          <p>VAFB SLC 3W</p>
+          <p>VAFB SLC 4E</p>
+        </div>
+      </div>
 
-        <div class="location-wrapper location-wrapper-florida">
-          <div class="title">
-            <h3 class="florida">Florida</h3>
-          </div>
-          <div class="location-content area-2">
-            <p>CCAFS SLC 40</p>
-            <p>KSC LC 39A</p>
-          </div>
+      <div class="location-wrapper location-wrapper-florida">
+        <div class="title">
+          <h3 class="florida">Florida</h3>
         </div>
+        <div class="location-content area-2">
+          <p>CCAFS SLC 40</p>
+          <p>KSC LC 39A</p>
+        </div>
+      </div>
 
-        <div class="location-wrapper location-wrapper-texas">
-          <div class="title">
-            <h3 class="texas">Texas</h3>
-          </div>
-          <div class="location-content area-3">
-            <p>STLS</p>
-          </div>
+      <div class="location-wrapper location-wrapper-texas">
+        <div class="title">
+          <h3 class="texas">Texas</h3>
         </div>
+        <div class="location-content area-3">
+          <p>STLS</p>
+        </div>
+      </div>
 
-        <div class="location-wrapper location-wrapper-islands">
-          <div class="title">
-            <h3 class="location-title mislands">Marshall Islands</h3>
-          </div>
-          <div class="location-content area-4">
-            <p>Kwajalein Atoll</p>
-          </div>
+      <div class="location-wrapper location-wrapper-islands">
+        <div class="title">
+          <h3 class="location-title mislands">Marshall Islands</h3>
         </div>
-      </aside>
-      <form action="" method="" class="contact-form">
-        <div class="fieldset name">
-          <label for="name">Name</label>
-          <input type="text" name="name" id="name">
+        <div class="location-content area-4">
+          <p>Kwajalein Atoll</p>
         </div>
-        <span class="error error-name">Please enter your name</span>
-        <div class="fieldset email">
-          <label for="email">Email</label>
-          <input type="email" name="email" id="email">
-        </div>
-        <span class="error error-email">Please enter your email</span>
-        <span class="error error-invalid-email">Please enter a valid email</span>
-        <div class="fieldset message">
-          <label for="comment">Message</label>
-          <textarea name="message" id="message"></textarea>
-        </div>
-        <span class="error error-name-message">Please leave me a message</span>
+      </div>
+    </aside>
+    <form action="" method="" class="contact-form">
+      <div class="fieldset name">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name">
+      </div>
+      <span class="error error-name">Please enter your name</span>
+      <div class="fieldset email">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email">
+      </div>
+      <span class="error error-email">Please enter your email</span>
+      <span class="error error-invalid-email">Please enter a valid email</span>
+      <div class="fieldset message">
+        <label for="comment">Message</label>
+        <textarea name="message" id="message"></textarea>
+      </div>
+      <span class="error error-name-message">Please leave me a message</span>
 
 
-        <fieldset class="fieldset sumbit">
-          <input type="submit" value="Send" class="sumbit-btn" id="submit">
-        </fieldset>
-      </form>
+      <fieldset class="fieldset sumbit">
+        <input type="submit" value="Send" class="sumbit-btn" id="submit">
+      </fieldset>
+    </form>
 
-      <section class="success-message">
-        <div>
-          <h2>Thank you for your message!</h2>
-          <p>I am happy that you find this project interesting. I’ll get back in touch with you as soon as I can.</p>
-          <p>Have a great day!</p>
-        </div>
-      </section>
+    <section class="success-message">
+      <div>
+        <h2>Thank you for your message!</h2>
+        <p>I am happy that you find this project interesting. I’ll get back in touch with you as soon as I can.</p>
+        <p>Have a great day!</p>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -146,9 +169,9 @@
     </section>
   </footer>
 
-  <script src="js/script.js"></script>
-  <script src="js/form.js"></script>
-  <script src="js/countdown.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="./js/countdown.js"></script>
+  <script src="./js/form.js"></script>
 </body>
 
 </html>

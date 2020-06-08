@@ -10,6 +10,7 @@
     background-image: url("../img/48954138902_c51f6f28a0_k.jpg");
     background-color: $color-black;
   }
+
   .overlay {
     background: rgba(41, 41, 41, 0.88);
   }
@@ -18,7 +19,7 @@
     padding-bottom: 15.313rem;
   }
 
-  .about-text{
+  .about-text {
     font-family: $font-text;
     font-size: 1rem;
     color: $color-light-grey;
@@ -33,12 +34,13 @@
       }
     }
   }
+
   .about-text a {
     font-size: 0.98rem;
     @include link-style;
   }
+
   .about-text a:hover {
     @include link-style-hover;
   }
-
 }
