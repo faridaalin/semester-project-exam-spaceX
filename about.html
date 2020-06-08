@@ -9,8 +9,9 @@
   <meta name="keywords" content="SpaceX, Launch, rockets, asteroids">
   <meta name="author" content="Farida Alin">
   <link rel="stylesheet" href="css/main.css">
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Oswald:wght@200;300;400;500&display=swap"
+    rel="stylesheet">
   <title>SpaceX - microsite - About</title>
 </head>
 
@@ -30,7 +31,29 @@
           <span></span>
           <span></span>
         </div>
-        <div class="countdown-wrapper all-pages"></div>
+        <div class="countdown-wrapper all-pages">
+          <div class="inner-counter">
+            <p>Next launch is in:</p>
+            <div class="countdown" id="countDown">
+              <div class="countdown__counter">
+                <p>Days</p>
+                <span id="days"></span>
+              </div>
+              <div class="countdown__counter">
+                <p>hours</p>
+                <span id="hours"></span>
+              </div>
+              <div class="countdown__counter">
+                <p>min</p>
+                <span id="min"></span>
+              </div>
+              <div class="countdown__counter">
+                <p>sec</p>
+                <span class="sec" id="sec"></span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="menu">
@@ -64,59 +87,59 @@
 
   <main class="main animatein">
 
-      <h1>About</h1>
+    <h1>About</h1>
 
-      <aside class="locations">
-        <div class="location-wrapper location-wrapper-california">
-         <div class="title">
+    <aside class="locations">
+      <div class="location-wrapper location-wrapper-california">
+        <div class="title">
           <h3 class="california">California</h3>
-         </div>
-          <div class="location-content area-1">
-            <p>VAFB SLC 3W</p>
-            <p>VAFB SLC 4E</p>
-          </div>
         </div>
-
-        <div class="location-wrapper location-wrapper-florida">
-          <div class="title">
-            <h3 class="florida">Florida</h3>
-          </div>
-          <div class="location-content area-2">
-            <p>CCAFS SLC 40</p>
-            <p>KSC LC 39A</p>
-          </div>
+        <div class="location-content area-1">
+          <p>VAFB SLC 3W</p>
+          <p>VAFB SLC 4E</p>
         </div>
+      </div>
 
-        <div class="location-wrapper location-wrapper-texas">
-          <div class="title">
-            <h3 class="texas">Texas</h3>
-          </div>
-          <div class="location-content area-3">
-            <p>STLS</p>
-          </div>
+      <div class="location-wrapper location-wrapper-florida">
+        <div class="title">
+          <h3 class="florida">Florida</h3>
         </div>
-
-        <div class="location-wrapper location-wrapper-islands">
-          <div class="title">
-            <h3 class="location-title mislands">Marshall Islands</h3>
-          </div>
-          <div class="location-content area-4">
-            <p>Kwajalein Atoll</p>
-          </div>
+        <div class="location-content area-2">
+          <p>CCAFS SLC 40</p>
+          <p>KSC LC 39A</p>
         </div>
-      </aside>
-      <section class="about-text">
-        <p>
-          SpaceX Launch page was created to inform and engage people about spaceXs program activities.
-          The site is a school project and not commercial website.
-        </p>
-        <p>If you want to go Space X official site click <a href="https://www.spacex.com/" target="_blank">here</a>.</p>
-        <p>
-          Feel free to <a href="./contact.html">contact</a> me for any questions.
-        </p>
-      </section>
+      </div>
 
-      </section>
+      <div class="location-wrapper location-wrapper-texas">
+        <div class="title">
+          <h3 class="texas">Texas</h3>
+        </div>
+        <div class="location-content area-3">
+          <p>STLS</p>
+        </div>
+      </div>
+
+      <div class="location-wrapper location-wrapper-islands">
+        <div class="title">
+          <h3 class="location-title mislands">Marshall Islands</h3>
+        </div>
+        <div class="location-content area-4">
+          <p>Kwajalein Atoll</p>
+        </div>
+      </div>
+    </aside>
+    <section class="about-text">
+      <p>
+        SpaceX Launch page was created to inform and engage people about spaceXs program activities.
+        The site is a school project and not commercial website.
+      </p>
+      <p>If you want to go Space X official site click <a href="https://www.spacex.com/" target="_blank">here</a>.</p>
+      <p>
+        Feel free to <a href="./contact.html">contact</a> me for any questions.
+      </p>
+    </section>
+
+    </section>
 
   </main>
 
@@ -128,8 +151,9 @@
     </section>
   </footer>
 
-  <script src="js/script.js"></script>
-  <script src="js/countdown.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="./js/countdown.js"></script>
+  <script src="./js/about.js"></script>
 </body>
 
 </html>

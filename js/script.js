@@ -28,7 +28,6 @@ hamburger.addEventListener("click", toggleMenu);
 function toggleMenu() {
   this.classList.toggle("open");
   menu.classList.toggle("dropdown");
-console.dir(this) // delete all logs
 }
 
 /*Accordion*/

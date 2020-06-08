@@ -5,8 +5,6 @@
 * Browsers: last 4 version
 */
 
-
-
 .bg-contact {
   background-image: url("../img/49235136806_7c0d6391a1_k.jpg");
   background-color: $color-black;
@@ -123,16 +121,18 @@ form {
     display: none;
   }
 
-  .error-name, .error-email, .error-invalid-email {
+  .error-name,
+  .error-email,
+  .error-invalid-email {
     -webkit-transform: translateY(-10px);
-        -ms-transform: translateY(-10px);
-            transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    transform: translateY(-10px);
   }
 
   .error-name-message {
     -webkit-transform: translateY(10px);
-        -ms-transform: translateY(10px);
-            transform: translateY(10px);
+    -ms-transform: translateY(10px);
+    transform: translateY(10px);
   }
 }
 

@@ -1,12 +1,15 @@
-window.addEventListener('load', (event) => {
-  const loader = document.querySelector('.loader-container');
-  loader.className+=' hidden'
-  const scrollIndicator = document.querySelector('.scroll-indicator')
+
+window.addEventListener("load", () => {
+  const loader = document.querySelector(".loader-container");
+  loader.className += " hidden";
+  const scrollIndicator = document.querySelector(".scroll-indicator");
 
   const scrollPositionTop = window.scrollY;
+  if (scrollPositionTop < 200) scrollIndicator.classList.add("show");
+});
 
-if(scrollPositionTop < 200) scrollIndicator.classList.add('show') // good use of one line return
-})
+const dateUrl = `https://api.spacexdata.com/v3/launches/next`;
+let showdateCountDown = app.countDown(dateUrl);
 
 
 const ROCKETS_URL = `https://api.spacexdata.com/v3/rockets`;
@@ -20,14 +23,10 @@ fetch(ROCKETS_URL)
   })
   .catch((error) => console.log(error));
 
-function createRocketCards(rockets) { // nice, good argument name
-const loader = document.querySelector('.loader')
-
+function createRocketCards(rockets) {
   const cardsContainer = document.querySelector(".cards");
 
-
   rockets.forEach((rocket) => {
-console.log(rocket) // remove all console logs from code base before shipping to production.
     cardsContainer.innerHTML += `
       <div class="card">
 
@@ -84,22 +83,20 @@ console.log(rocket) // remove all console logs from code base before shipping to
   });
 }
 
-const scrollToUp = document.querySelector('.scroll-up')
+const scrollToUp = document.querySelector(".scroll-up");
 
-window.addEventListener('scroll', () => {
-  if(window.pageYOffset > 100) {
-    scrollToUp.classList.add('active')
+window.addEventListener("scroll", () => {
+  if (window.pageYOffset > 100) {
+    scrollToUp.classList.add("active");
   } else {
-    scrollToUp.classList.remove('active')
+    scrollToUp.classList.remove("active");
   }
-})
+});
 
-scrollToUp.addEventListener('click', () => {
+scrollToUp.addEventListener("click", () => {
   window.scrollTo({
-    top:0,
+    top: 0,
     lef: 0,
-    behavior: "smooth"
+    behavior: "smooth",
   });
-})
-
-
+});

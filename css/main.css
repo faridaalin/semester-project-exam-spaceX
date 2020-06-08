@@ -4,7 +4,9 @@
 * Autoprefixer: v9.7.6
 * Browsers: last 4 version
 */
-*, html, body {
+*,
+html,
+body {
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
@@ -573,7 +575,8 @@ header .menu ul a {
   color: #F0F0F0;
 }
 
-.launch .location-launches .accordion_btn .cross, .launch .location-launches .accordion_btn .cross:after {
+.launch .location-launches .accordion_btn .cross,
+.launch .location-launches .accordion_btn .cross:after {
   background: #F0F0F0;
 }
 
@@ -628,19 +631,22 @@ header .menu ul a {
   margin: 0.5rem 0;
 }
 
-.launch .previous-launches-container, .launch .upcoming-launches-container {
+.launch .previous-launches-container,
+.launch .upcoming-launches-container {
   padding-right: 0;
   padding-left: 0;
 }
 
-.launch .previous-launches-container .container, .launch .upcoming-launches-container .container {
+.launch .previous-launches-container .container,
+.launch .upcoming-launches-container .container {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
 }
 
-.launch .previous-launches-container .container .launches_container, .launch .upcoming-launches-container .container .launches_container {
+.launch .previous-launches-container .container .launches_container,
+.launch .upcoming-launches-container .container .launches_container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -649,14 +655,16 @@ header .menu ul a {
   justify-content: space-between;
 }
 
-.launch .previous-launches-container .container .launches_container .info-container, .launch .upcoming-launches-container .container .launches_container .info-container {
+.launch .previous-launches-container .container .launches_container .info-container,
+.launch .upcoming-launches-container .container .launches_container .info-container {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
 }
 
-.launch .previous-launches-container .container .hr-break, .launch .upcoming-launches-container .container .hr-break {
+.launch .previous-launches-container .container .hr-break,
+.launch .upcoming-launches-container .container .hr-break {
   margin: 2.5rem 6% 5.625rem;
   width: 94%;
 }
@@ -670,7 +678,8 @@ header .menu ul a {
   justify-content: space-between;
 }
 
-.launch .container .info__text, .launch .container .info__name {
+.launch .container .info__text,
+.launch .container .info__name {
   margin-bottom: 0.75rem;
 }
 
@@ -845,7 +854,8 @@ header .menu ul a {
   font-size: 0.8rem;
 }
 
-.card__info .devider-1, .card__info .devider-2 {
+.card__info .devider-1,
+.card__info .devider-2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1025,7 +1035,9 @@ form .error {
   display: none;
 }
 
-form .error-name, form .error-email, form .error-invalid-email {
+form .error-name,
+form .error-email,
+form .error-invalid-email {
   -webkit-transform: translateY(-10px);
   transform: translateY(-10px);
 }
@@ -1368,7 +1380,8 @@ header .logo p {
   margin-bottom: 0;
 }
 
-.next-launch, .countdown {
+.next-launch,
+.countdown {
   font-family: "Oswald", sans-serif;
   text-transform: uppercase;
 }
@@ -1385,7 +1398,8 @@ header .logo p {
   width: 100%;
 }
 
-.next-launch p, span {
+.next-launch p,
+span {
   color: #FC3D21;
 }
 
@@ -1486,10 +1500,6 @@ header .logo p {
   font-weight: 200;
   line-height: 2;
   padding: 0;
-}
-
-.next-launch-container {
-  height: 100vh;
 }
 
 /*
@@ -1720,14 +1730,14 @@ header .logo p {
     display: inline-block;
     border: none;
     border-radius: 50%;
-    -webkit-transition: background .3s, -webkit-transform .3s;
-    transition: background .3s, -webkit-transform .3s;
-    transition: transform .3s, background .3s;
-    transition: transform .3s, background .3s, -webkit-transform .3s;
+    -webkit-transition: background 0.3s, -webkit-transform 0.3s;
+    transition: background 0.3s, -webkit-transform 0.3s;
+    transition: transform 0.3s, background 0.3s;
+    transition: transform 0.3s, background 0.3s, -webkit-transform 0.3s;
   }
   header .menu .nav-link .circle-short-line,
   header .menu .nav-link .circle-long-line {
-    content: '';
+    content: "";
     position: absolute;
     background: #acadafc7;
     width: 0.188rem;
@@ -1742,7 +1752,7 @@ header .logo p {
   header .menu .nav-link .circle-long-line {
     top: 73%;
   }
-  header .menu .nav-link [class~='circle-short-line']:last-of-type {
+  header .menu .nav-link [class~="circle-short-line"]:last-of-type {
     top: 71%;
   }
   header .menu .nav-link a {
@@ -1756,10 +1766,10 @@ header .logo p {
     -webkit-transform: scale(1.2) translateX(3px);
     transform: scale(1.2) translateX(3px);
     color: #F0F0F0;
-    transition: color .3s, -webkit-transform .3s;
-    -webkit-transition: color .3s, -webkit-transform .3s;
-    transition: transform .3s, color .3s;
-    transition: transform .3s, color .3s, -webkit-transform .3s;
+    transition: color 0.3s, -webkit-transform 0.3s;
+    -webkit-transition: color 0.3s, -webkit-transform 0.3s;
+    transition: transform 0.3s, color 0.3s;
+    transition: transform 0.3s, color 0.3s, -webkit-transform 0.3s;
   }
   header .menu .nav-link a:hover + .circle {
     -webkit-transform: scale(1.5);
@@ -1826,13 +1836,10 @@ header .logo p {
     font-size: 1.063rem;
     font-weight: 200;
   }
-  .home .coundtdown-desktop {
-    display: block;
-    top: 19px;
-    right: 32px;
-  }
   .home .coundtdown-mobile {
-    display: none;
+    position: absolute;
+    top: -519px;
+    left: 628px;
   }
   .all-pages {
     top: 30px;
@@ -1886,7 +1893,7 @@ header .logo p {
     color: #8c8a8a;
   }
   .next-launch-info .info-container .highlighted {
-    color: #136F68;
+    color: #136f68;
   }
   /*Launches*/
   .launch .accordion {
@@ -1913,7 +1920,8 @@ header .logo p {
     -ms-flex-direction: row;
     flex-direction: row;
   }
-  .launch .upcoming-launches, .launch .previous-launches {
+  .launch .upcoming-launches,
+  .launch .previous-launches {
     -webkit-transform: translateY(-2rem);
     transform: translateY(-2rem);
   }
@@ -1949,7 +1957,10 @@ header .logo p {
   .rockets .card__title {
     font-size: 3.5rem;
   }
-  .rockets .card:nth-of-type(1) .card__title, .rockets .card:nth-of-type(2) .card__title, .rockets .card:nth-of-type(3) .card__title, .rockets .card:nth-of-type(4) .card__title {
+  .rockets .card:nth-of-type(1) .card__title,
+  .rockets .card:nth-of-type(2) .card__title,
+  .rockets .card:nth-of-type(3) .card__title,
+  .rockets .card:nth-of-type(4) .card__title {
     bottom: 0;
   }
   .rockets .card__info {

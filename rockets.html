@@ -9,14 +9,15 @@
   <meta name="keywords" content="SpaceX, Launch, rockets, asteroids">
   <meta name="author" content="Farida Alin">
   <link rel="stylesheet" href="css/main.css">
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Oswald:wght@200;300;400;500&display=swap"
+    rel="stylesheet">
   <title>SpaceX - microsite - Rockets</title>
 </head>
 
 <body class="rockets">
   <div class="bg-parallax bg-rockets"></div>
-    <!-- Photo by bantersnaps on Unsplash -->
+  <!-- Photo by bantersnaps on Unsplash -->
   <div class="overlay"></div>
   <header>
     <nav>
@@ -30,7 +31,29 @@
           <span></span>
           <span></span>
         </div>
-        <div class="countdown-wrapper all-pages"></div>
+        <div class="countdown-wrapper all-pages">
+          <div class="inner-counter">
+            <p>Next launch is in:</p>
+            <div class="countdown" id="countDown">
+              <div class="countdown__counter">
+                <p>Days</p>
+                <span id="days"></span>
+              </div>
+              <div class="countdown__counter">
+                <p>hours</p>
+                <span id="hours"></span>
+              </div>
+              <div class="countdown__counter">
+                <p>min</p>
+                <span id="min"></span>
+              </div>
+              <div class="countdown__counter">
+                <p>sec</p>
+                <span class="sec" id="sec"></span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="menu">
@@ -72,58 +95,58 @@
     </div>
 
 
-      <h1>Rockets</h1>
+    <h1>Rockets</h1>
 
 
-      <aside class="locations">
-        <div class="location-wrapper location-wrapper-california">
-          <div class="title">
-            <h3 class="california">California</h3>
-          </div>
-          <div class="location-content area-1 ">
-            <p class="area" id="vafb_slc_3w">VAFB SLC 3W</p>
-            <p class="area" id="vafb_slc_4e">VAFB SLC 4E</p>
-          </div>
+    <aside class="locations">
+      <div class="location-wrapper location-wrapper-california">
+        <div class="title">
+          <h3 class="california">California</h3>
         </div>
-
-        <div class="location-wrapper location-wrapper-florida">
-          <div class="title">
-            <h3 class="florida">Florida</h3>
-          </div>
-          <div class="location-content area-2">
-            <p class="area" id="ccafs_slc_40">CCAFS SLC 40</p>
-            <p class="area" id="kfc_lc_39a">KSC LC 39A</p>
-          </div>
+        <div class="location-content area-1 ">
+          <p class="area" id="vafb_slc_3w">VAFB SLC 3W</p>
+          <p class="area" id="vafb_slc_4e">VAFB SLC 4E</p>
         </div>
-
-        <div class="location-wrapper location-wrapper-texas">
-          <div class="title">
-            <h3 class="texas">Texas</h3>
-          </div>
-          <div class="location-content area-3">
-            <p class="area" id="stls">STLS</p>
-          </div>
-        </div>
-
-        <div class="location-wrapper location-wrapper-islands">
-          <div class="title">
-            <h3 class="location-title mislands">Marshall Islands</h3>
-          </div>
-          <div class="location-content area-4">
-            <p class="area" id="kwajalein_atoll">Kwajalein Atoll</p>
-          </div>
-        </div>
-      </aside>
-      <div class="scroll-indicator">
-        <span class="arrow"></span>
-      </div>
-      <div class="scroll-up">
-        <span class="arrow"></span>
       </div>
 
-      <section class="cards">
+      <div class="location-wrapper location-wrapper-florida">
+        <div class="title">
+          <h3 class="florida">Florida</h3>
+        </div>
+        <div class="location-content area-2">
+          <p class="area" id="ccafs_slc_40">CCAFS SLC 40</p>
+          <p class="area" id="kfc_lc_39a">KSC LC 39A</p>
+        </div>
+      </div>
 
-      </section>
+      <div class="location-wrapper location-wrapper-texas">
+        <div class="title">
+          <h3 class="texas">Texas</h3>
+        </div>
+        <div class="location-content area-3">
+          <p class="area" id="stls">STLS</p>
+        </div>
+      </div>
+
+      <div class="location-wrapper location-wrapper-islands">
+        <div class="title">
+          <h3 class="location-title mislands">Marshall Islands</h3>
+        </div>
+        <div class="location-content area-4">
+          <p class="area" id="kwajalein_atoll">Kwajalein Atoll</p>
+        </div>
+      </div>
+    </aside>
+    <div class="scroll-indicator">
+      <span class="arrow"></span>
+    </div>
+    <div class="scroll-up">
+      <span class="arrow"></span>
+    </div>
+
+    <section class="cards">
+
+    </section>
   </main>
 
   <footer class="footer">
@@ -135,9 +158,10 @@
   </footer>
 
 
-  <script src="js/script.js"></script>
-  <script src="js/rockets.js"></script>
-  <script src="js/countdown.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="./js/countdown.js"></script>
+  <script src="./js/rockets.js"></script>
+
 </body>
 
 </html>
