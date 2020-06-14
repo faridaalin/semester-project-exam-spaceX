@@ -99,19 +99,20 @@ html {
   animation: fadeOut 1.2s;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
+  z-index: -1;
 }
 
 @-webkit-keyframes fadeOut {
   100% {
     opacity: 0;
-    visibility: hidden;
+    display: none;
   }
 }
 
 @keyframes fadeOut {
   100% {
     opacity: 0;
-    visibility: hidden;
+    display: none;
   }
 }
 
@@ -555,7 +556,6 @@ header .menu ul a {
   color: #F0F0F0;
   font-family: "Open Sans", sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
 }
 
 .launch .locations-pads .hr-break {
@@ -627,8 +627,9 @@ header .menu ul a {
   color: #A7A9AC;
   width: 100%;
   line-height: 1.8;
-  font-size: 1.125rem;
+  font-size: 1rem;
   margin: 0.5rem 0;
+  font-weight: 100;
 }
 
 .launch .previous-launches-container,
@@ -665,7 +666,7 @@ header .menu ul a {
 
 .launch .previous-launches-container .container .hr-break,
 .launch .upcoming-launches-container .container .hr-break {
-  margin: 2.5rem 6% 5.625rem;
+  margin: 2.5rem 1rem 5.625rem;
   width: 94%;
 }
 
@@ -691,7 +692,7 @@ header .menu ul a {
 }
 
 .launch .container .info-container .info__text {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #F0F0F0;
   font-family: "Open Sans", sans-serif;
   text-transform: uppercase;
@@ -1231,7 +1232,7 @@ h1 {
 
 .hr-break {
   width: 90%;
-  margin: 5.625rem 6% 5.625rem;
+  margin: 5.625rem 1rem 5.625rem;
   border: 0.125rem #FC3D21 solid;
   opacity: 0.65;
 }
@@ -1639,6 +1640,9 @@ span {
   .home .main-home {
     max-width: 40rem;
   }
+  .home .info-container .info__text {
+    width: 50%;
+  }
   .countdown-wrapper {
     width: 63%;
   }
@@ -1654,14 +1658,14 @@ span {
   .next-launch-info {
     padding-top: 0;
   }
-  .info-container .info__text {
-    width: 50%;
-  }
   /*Launches*/
   .launch .locations-pads .hr-break {
     width: 30%;
     margin-left: 35%;
     margin-right: 35%;
+  }
+  .card__info .info__name {
+    font-size: 0.8rem;
   }
 }
 
@@ -1889,7 +1893,7 @@ span {
     font-size: 1rem;
   }
   .next-launch-info .info-container .info__text {
-    font-size: 1.188rem;
+    font-size: 1rem;
     color: #8c8a8a;
   }
   .next-launch-info .info-container .highlighted {

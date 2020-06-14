@@ -27,7 +27,6 @@
       color: $color-light-grey;
       font-family: $font-text;
       font-size: 0.75rem;
-      font-weight: $regular;
     }
 
     .hr-break {
@@ -99,8 +98,9 @@
         color: $color-dark-grey;
         width: 100%;
         line-height: 1.8;
-        font-size: 1.125rem;
+        font-size: 1rem;
         margin: 0.5rem 0;
+        font-weight: 100;
       }
     }
   }
@@ -133,7 +133,7 @@
       }
 
       .hr-break {
-        margin: 2.5rem 6% 5.625rem;
+        margin: 2.5rem 1rem 5.625rem;
         width: 94%;
       }
     }
@@ -161,11 +161,12 @@
       flex-direction: column;
 
       .info__text {
-        font-size: 1rem;
+        font-size: 0.9rem;
         color: $color-light-grey;
         font-family: $font-text;
         text-transform: uppercase;
         color: $color-dark-grey;
+
       }
     }
   }

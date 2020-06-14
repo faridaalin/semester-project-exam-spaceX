@@ -173,6 +173,9 @@
     .main-home {
       max-width: 40rem;
     }
+    .info-container .info__text {
+      width: 50%;
+    }
   }
 
   .countdown-wrapper {
@@ -197,9 +200,6 @@
     padding-top: 0;
   }
 
-  .info-container .info__text {
-    width: 50%;
-  }
 
   /*Launches*/
   .launch {
@@ -209,6 +209,12 @@
         margin-left: 35%;
         margin-right: 35%;
       }
+    }
+  }
+
+  .card__info {
+    .info__name {
+      font-size: 0.8rem;
     }
   }
 }
@@ -500,7 +506,7 @@
       }
 
       .info__text {
-        font-size: 1.188rem;
+        font-size: 1rem;
         color: #8c8a8a;
       }
 
