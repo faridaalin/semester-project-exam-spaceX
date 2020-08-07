@@ -4,6 +4,7 @@ window.addEventListener("load", () => {
 });
 
 const NEXT_LAUNCH = `https://api.spacexdata.com/v3/launches/next`;
+
 let showdateCountDown = app.countDown(NEXT_LAUNCH);
 
 /*fetch*/
@@ -28,10 +29,12 @@ function displayNextLaunch(data) {
   let launchDate = new Date(data.launch_date_local),
     date = launchDate.getDate(),
     month = launchDate.getMonth() + 1;
-  month = month < 10 ? "0" + month : month;
+    month = month < 10 ? "0" + month : month;
 
-  nextLaunchContainer.innerHTML = `      <div>
-  <p>Next Launch</p>
+  const today = new Date().getTime();
+
+  nextLaunchContainer.innerHTML = `<div>
+  <p>${today > launchDate.getTime()  ? 'Latest Launch' : 'Next Launch '}</p>
   <span class="year">${data.launch_year}</span>
   <span class="month">${month}/${date}</span>
 </div>`;
@@ -52,9 +55,8 @@ function displayNextLaunch(data) {
   <p class="info__text highlighted">${data.mission_name}</p>
 </div>`;
 
-
   const nextLaunchDetails = document.querySelector(".details");
-  if(nextLaunchDetails === null) {
+  if (nextLaunchDetails === null) {
     nextLaunchDetails.innerHTML = ` <div class="accordion-item-content"><p class="info__text">For live feed, discussions and updates you can visit
     ${data.mission_name}'s <a href="${data.links.reddit_campaign}" target="_blank">Reddit Campaign Tread</a> and <a href="${data.links.reddit_launch}" target="_blank">Reddit Launch Tread</a></p></div`;
   } else {
@@ -63,7 +65,6 @@ function displayNextLaunch(data) {
 
   const coundtdownMobile = document.querySelector(".coundtdown-mobile"),
     coundtdownDesktop = document.querySelector(".coundtdown-desktop");
-
 }
 
 function currentSiteLocation(data) {
@@ -79,4 +80,3 @@ function currentSiteLocation(data) {
     }
   });
 }
-
