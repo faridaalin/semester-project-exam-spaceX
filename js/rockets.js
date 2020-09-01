@@ -2,6 +2,7 @@
 window.addEventListener("load", () => {
   const loader = document.querySelector(".loader-container");
   loader.className += " hidden";
+
   const scrollIndicator = document.querySelector(".scroll-indicator");
 
   const scrollPositionTop = window.scrollY;
