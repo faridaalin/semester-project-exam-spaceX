@@ -34,7 +34,7 @@ function displayNextLaunch(data) {
   const today = new Date().getTime();
 
   nextLaunchContainer.innerHTML = `<div>
-  <p>${today > launchDate.getTime()  ? 'Latest Launch' : 'Next Launch '}</p>
+  <p>${today > launchDate.getTime()  ? 'Last Launch Was:' : 'Next Launch'}</p>
   <span class="year">${data.launch_year}</span>
   <span class="month">${month}/${date}</span>
 </div>`;
