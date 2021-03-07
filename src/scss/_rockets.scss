@@ -6,7 +6,7 @@
 */
 
 .bg-rockets {
-  background-image: url("../img/bantersnaps-5CPIzjWzGxo-unsplash.jpg");
+  background-image: url('../img/bantersnaps-5CPIzjWzGxo-unsplash.jpg');
   background-color: $color-black;
 }
 
@@ -28,14 +28,13 @@
   background-repeat: no-repeat;
   background-color: $color-black;
 
-
-  &>* {
+  & > * {
     position: relative;
     z-index: 2;
   }
 
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     top: 0;
@@ -43,7 +42,6 @@
     width: 100%;
     background: #484747d6;
     border-radius: 2.375rem;
-
   }
 
   .card__title {
@@ -63,7 +61,6 @@
     display: inline-block;
   }
 
-
   .hr-break {
     width: 42%;
     margin: 0 0 0 22%;
@@ -73,7 +70,7 @@
     font-family: $font-text;
     color: $color-light-grey;
     font-weight: $light;
-    font-size: .9rem;
+    font-size: 0.9rem;
     padding: 2.813rem 1.375rem;
     line-height: 1.6;
 
@@ -82,7 +79,6 @@
     }
   }
 }
-
 
 .card:nth-of-type(1) {
   background-image: url(../img/falcon1.jpg);
@@ -158,5 +154,18 @@
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
+  }
+}
+
+@include media-xs {
+  .card {
+    .card__title {
+      bottom: 59%;
+      left: 1.875rem;
+    }
+  }
+
+  .card:nth-of-type(3) .card__title {
+    bottom: 51%;
   }
 }

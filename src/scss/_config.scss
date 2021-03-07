@@ -10,10 +10,13 @@ html {
   scroll-behavior: smooth;
 }
 
-$font-heading: 'Oswald',
-sans-serif;
-$font-text: 'Open Sans',
-sans-serif;
+ul {
+  text-decoration: none;
+  list-style: none;
+}
+
+$font-heading: 'Oswald', sans-serif;
+$font-text: 'Open Sans', sans-serif;
 
 @mixin primary-font {
   font-family: $font-heading;
@@ -26,12 +29,12 @@ sans-serif;
   color: $color-light-grey;
   text-decoration: none;
   border-bottom: 2px solid $color-light-grey;
-  -webkit-transition: border-bottom .4s ease;
-  -o-transition: border-bottom .4s ease;
-  transition: border-bottom .4s ease;
-  -webkit-transition: color .4s ease;
-  -o-transition: color .4s ease;
-  transition: color .4s ease;
+  -webkit-transition: border-bottom 0.4s ease;
+  -o-transition: border-bottom 0.4s ease;
+  transition: border-bottom 0.4s ease;
+  -webkit-transition: color 0.4s ease;
+  -o-transition: color 0.4s ease;
+  transition: color 0.4s ease;
 }
 
 @mixin link-style-hover {
@@ -47,15 +50,12 @@ $medium: 500;
 $semibold: 600;
 $bold: 700;
 
-
 $color-black: #212020;
-$color-dark-grey: #A7A9AC;
+$color-dark-grey: #a7a9ac;
 $color-medium-grey: #707070;
-$color-light-grey: #F0F0F0;
-$color-red: #FC3D21;
-$color-green: #136F68;
-
-
+$color-light-grey: #f0f0f0;
+$color-red: #fc3d21;
+$color-green: #136f68;
 
 @mixin media-xs {
   @media screen and (min-width: 28.25rem) {
@@ -86,7 +86,6 @@ $color-green: #136F68;
     @content;
   }
 }
-
 
 @mixin media-xl {
   @media screen and (min-width: 85.375rem) {

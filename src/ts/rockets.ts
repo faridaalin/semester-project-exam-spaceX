@@ -1,38 +1,42 @@
+import { menu } from './script';
+import endpoints, { storage } from './config';
+import { countDownTimer } from './countdown';
+import { fetchData } from './fetchData';
 
-window.addEventListener("load", () => {
-  const loader = document.querySelector(".loader-container");
-  loader.className += " hidden";
+window.addEventListener('load', () => {
+  const loader = document.querySelector('.loader-container') as HTMLDivElement;
+  loader.className += ' hidden';
 
-  const scrollIndicator = document.querySelector(".scroll-indicator");
+  const scrollIndicator = document.querySelector(
+    '.scroll-indicator'
+  ) as HTMLDivElement;
 
   const scrollPositionTop = window.scrollY;
-  if (scrollPositionTop < 200) scrollIndicator.classList.add("show");
+  if (scrollPositionTop < 200) scrollIndicator.classList.add('show');
 });
 
-const dateUrl = `https://api.spacexdata.com/v3/launches/next`;
-let showdateCountDown = app.countDown(dateUrl);
+countDownTimer(storage.NEXT_LAUNCH, endpoints.NEXT_LAUNCH);
+menu();
 
+const dataFromSessionStorage = sessionStorage.getItem(storage.ROCKETS);
+if (!dataFromSessionStorage) {
+  fetchData(storage.ROCKETS, endpoints.ROCKETS)
+    .then((data) => {
+      createRocketCards(data);
+    })
+    .catch((e) => console.log(e));
+} else {
+  createRocketCards(JSON.parse(dataFromSessionStorage));
+}
 
-const ROCKETS_URL = `https://api.spacexdata.com/v3/rockets`;
-let rocketsArray = [];
-
-fetch(ROCKETS_URL)
-  .then((response) => response.json())
-  .then((data) => {
-    rocketsArray = data;
-    createRocketCards(rocketsArray);
-  })
-  .catch((error) => console.log(error));
-
-function createRocketCards(rockets) {
-  const cardsContainer = document.querySelector(".cards");
+function createRocketCards<T extends IObjectFromApiCall>(rockets: T[]): void {
+  const cardsContainer = document.querySelector('.cards') as HTMLDivElement;
 
   rockets.forEach((rocket) => {
     cardsContainer.innerHTML += `
       <div class="card">
 
       <h2 class="card__title">${rocket.rocket_name}</h2>
-
       <div class="card__info">
         <div class="devider">
           <div class="devider-container">
@@ -84,20 +88,20 @@ function createRocketCards(rockets) {
   });
 }
 
-const scrollToUp = document.querySelector(".scroll-up");
+const scrollToUp = document.querySelector('.scroll-up') as HTMLDivElement;
 
-window.addEventListener("scroll", () => {
+window.addEventListener('scroll', () => {
   if (window.pageYOffset > 100) {
-    scrollToUp.classList.add("active");
+    scrollToUp.classList.add('active');
   } else {
-    scrollToUp.classList.remove("active");
+    scrollToUp.classList.remove('active');
   }
 });
 
-scrollToUp.addEventListener("click", () => {
+scrollToUp.addEventListener('click', () => {
   window.scrollTo({
     top: 0,
-    lef: 0,
-    behavior: "smooth",
+    left: 0,
+    behavior: 'smooth',
   });
 });

@@ -1,34 +1,60 @@
-window.addEventListener("load", () => {
-  const loader = document.querySelector(".loader-container");
-  loader.className += " hidden";
+import { accordion, menu } from './script';
+import endpoints, { storage } from './config';
+import { countDownTimer } from './countdown';
+import { fetchData } from './fetchData';
+
+window.addEventListener('load', () => {
+  const loader = document.querySelector('.loader-container') as HTMLDivElement;
+  loader.className += ' hidden';
 });
 
-const dateUrl = `https://api.spacexdata.com/v3/launches/next`;
-let showdateCountDown = app.countDown(dateUrl);
+countDownTimer(storage.NEXT_LAUNCH, endpoints.NEXT_LAUNCH);
+accordion();
+menu();
 
-const UPCOMING_LAUNCH_URL = `https://api.spacexdata.com/v3/launches/upcoming`;
-let launchesArray;
+const getLaunches = (
+  key: string,
+  url: string,
+  callback: (a: object[]) => void
+) => {
+  const dataFromStorage = sessionStorage.getItem(key);
 
-fetch(UPCOMING_LAUNCH_URL)
-  .then((response) => response.json())
-  .then((data) => {
-    launchesArray = data;
-    displayLanuches(launchesArray);
-  })
-  .catch((error) => console.log(error));
+  if (!dataFromStorage) {
+    fetchData(key, url)
+      .then((data) => {
+        callback(data);
+      })
+      .catch((e) => console.log(e));
+  } else {
+    callback(JSON.parse(dataFromStorage));
+  }
+};
+getLaunches(
+  storage.UPCOMING_LAUNCH,
+  endpoints.UPCOMING_LAUNCH,
+  displayLanuches
+);
+getLaunches(
+  storage.PREVIOUS_LAUNCH,
+  endpoints.PREVIOUS_LAUNCH,
+  displayPreviousLanuches
+);
+getLaunches(storage.PAD_LOCATIONS, endpoints.PAD_LOCATIONS, displayLanuchPads);
 
-function displayLanuches(upcomingLaunches) {
+function displayLanuches<T extends IObjectFromApiCall>(
+  upcomingLaunches: T[]
+): void {
   const upcomingLaunchesContainer = document.querySelector(
-    ".upcoming-launches-container"
-  );
+    '.upcoming-launches-container'
+  ) as HTMLDivElement;
 
   upcomingLaunches.forEach((launch) => {
-    let launchDate = new Date(launch.launch_date_local),
-      date = launchDate.getDate(),
-      month = launchDate.getMonth() + 1;
+    let launchDate = new Date(launch.launch_date_local);
+    let date: number | string = launchDate.getDate();
+    let month: number | string = launchDate.getMonth() + 1;
 
-    date = date < 10 ? "0" + date : date;
-    month = month < 10 ? "0" + month : month;
+    date = date < 10 ? '0' + date : date;
+    month = month < 10 ? '0' + month : month;
 
     upcomingLaunchesContainer.innerHTML += `
     <div class="container">
@@ -53,31 +79,18 @@ function displayLanuches(upcomingLaunches) {
   });
 }
 
-const PREVIOUS_LAUNCH_URL = `https://api.spacexdata.com/v3/launches/past`;
-let previousLaunchesArray;
-
-fetch(PREVIOUS_LAUNCH_URL)
-  .then((response) => response.json())
-  .then((data) => {
-    previousLaunchesArray = data;
-    displayPreviousLanuches(previousLaunchesArray);
-  })
-  .catch((error) => console.log(error));
-
-function displayPreviousLanuches(previousLaunches) {
-  const previousLaunchesContainer = document.querySelector(
-    ".previous-container"
-  );
+function displayPreviousLanuches<T extends IObjectFromApiCall>(
+  previousLaunches: T[]
+): void {
   const previousLaunchContainer = document.querySelector(
-    ".previous-launches-container"
-  );
+    '.previous-launches-container'
+  ) as HTMLDivElement;
   previousLaunches.forEach((launch) => {
-    let launchDate = new Date(launch.launch_date_local),
-      date = launchDate.getDate(),
-      month = launchDate.getMonth() + 1;
-
-    date = date < 10 ? "0" + date : date;
-    month = month < 10 ? "0" + month : month;
+    let launchDate = new Date(launch.launch_date_local);
+    let date: number | string = launchDate.getDate();
+    let month: number | string = launchDate.getMonth() + 1;
+    date = date < 10 ? '0' + date : date;
+    month = month < 10 ? '0' + month : month;
 
     previousLaunchContainer.innerHTML += `  <div class="container">
     <div class="launches_container">
@@ -101,42 +114,34 @@ function displayPreviousLanuches(previousLaunches) {
   });
 }
 
-const LANDING_PAD_LAUNCH_URL = `https://api.spacexdata.com/v3/launchpads`;
-let landindPadsArray;
-fetch(LANDING_PAD_LAUNCH_URL)
-  .then((response) => response.json())
-  .then((data) => {
-    landindPadsArray = data;
-    displayLanuchPads(landindPadsArray);
-  })
-  .catch((error) => console.log(error));
-
-function displayLanuchPads(locationPads) {
+function displayLanuchPads<T extends IObjectFromApiCall>(
+  locationPads: T[]
+): void {
   const californiaLocations = locationPads.filter(function (pad) {
-    return pad.location.region === "California";
+    return pad.location.region === 'California';
   });
   const floridaaLocations = locationPads.filter(function (pad) {
-    return pad.location.region === "Florida";
+    return pad.location.region === 'Florida';
   });
   const texasLocations = locationPads.filter(function (pad) {
-    return pad.location.region === "Texas";
+    return pad.location.region === 'Texas';
   });
   const mIslandLocations = locationPads.filter(function (pad) {
-    return pad.location.region === "Marshall Islands";
+    return pad.location.region === 'Marshall Islands';
   });
 
   const californiaLocationsContainer = document.querySelector(
-    ".location-launches__info__ca"
-  );
+    '.location-launches__info__ca'
+  ) as HTMLElement;
   const floridaLocationsContainer = document.querySelector(
-    ".location-launches__info__fl"
-  );
+    '.location-launches__info__fl'
+  ) as HTMLElement;
   const texasLocationsContainer = document.querySelector(
-    ".location-launches__info__tx"
-  );
+    '.location-launches__info__tx'
+  ) as HTMLElement;
   const mIslandsLocationsContainer = document.querySelector(
-    ".location-launches__info__mi"
-  );
+    '.location-launches__info__mi'
+  ) as HTMLElement;
 
   createLocationPads(californiaLocations, californiaLocationsContainer);
   createLocationPads(floridaaLocations, floridaLocationsContainer);
@@ -144,7 +149,10 @@ function displayLanuchPads(locationPads) {
   createLocationPads(mIslandLocations, mIslandsLocationsContainer);
 }
 
-function createLocationPads(array, container) {
+function createLocationPads<
+  T extends IObjectFromApiCall,
+  U extends HTMLElement
+>(array: T[], container: U): void {
   array.forEach((item) => {
     let status = item.status[0].toUpperCase() + item.status.slice(1);
 
@@ -170,21 +178,21 @@ function createLocationPads(array, container) {
   });
 }
 
-const scrollToUp = document.querySelector(".scroll-up");
+const scrollToUp = document.querySelector('.scroll-up') as HTMLDivElement;
 
-window.addEventListener("scroll", () => {
+window.addEventListener('scroll', () => {
   if (window.pageYOffset > 100) {
-    scrollToUp.classList.add("active");
+    scrollToUp.classList.add('active');
   } else {
-    scrollToUp.classList.remove("active");
+    scrollToUp.classList.remove('active');
   }
 });
 
-scrollToUp.addEventListener("click", scrollToTop);
-function scrollToTop(event) {
+scrollToUp.addEventListener('click', scrollToTop);
+function scrollToTop() {
   window.scrollTo({
     top: 0,
-    lef: 0,
-    behavior: "smooth",
+    left: 0,
+    behavior: 'smooth',
   });
 }

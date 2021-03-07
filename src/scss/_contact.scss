@@ -6,7 +6,7 @@
 */
 
 .bg-contact {
-  background-image: url("../img/49235136806_7c0d6391a1_k.jpg");
+  background-image: url('../img/49235136806_7c0d6391a1_k.jpg');
   background-color: $color-black;
 }
 
@@ -17,28 +17,36 @@
 form {
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .form-inner {
+    width: 100%;
+  }
+
+  @include media-xl {
+    .form-inner {
+      width: 60%;
+    }
+  }
+  input,
+  textarea {
+    margin-left: auto;
+    margin-top: 1rem;
+  }
 
   .fieldset {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    border: none;
-    padding-bottom: translateY(-0.754rem);
-
     label {
       font-family: $font-text;
       color: $color-light-grey;
-      padding-bottom: 0.7rem;
+
       font-weight: $extra-light;
     }
 
-    input[type="submit"],
-    input[type="text"],
-    input[type="email"],
+    input[type='submit'],
+    input[type='text'],
+    input[type='email'],
     textarea {
       width: 100%;
       border: none;
@@ -51,22 +59,22 @@ form {
       opacity: 1;
     }
 
-    input[type="submit"],
-    input[type="text"],
-    input[type="email"] {
+    input[type='submit'],
+    input[type='text'],
+    input[type='email'] {
       width: 100%;
       padding: 1rem;
       border-radius: 0.313rem;
     }
 
-    input[type="text"],
-    input[type="email"],
+    input[type='text'],
+    input[type='email'],
     textarea {
       background: #cbcbcb;
     }
 
-    input[type="text"]:hover,
-    input[type="email"]:hover,
+    input[type='text']:hover,
+    input[type='email']:hover,
     textarea:hover {
       background: $color-dark-grey;
       -webkit-transition: background 0.3s ease-in-out;
@@ -74,21 +82,20 @@ form {
       transition: background 0.3s ease-in-out;
     }
 
-    input[type="text"]:focus-within,
-    input[type="email"]:focus-within,
+    input[type='text']:focus-within,
+    input[type='email']:focus-within,
     textarea:focus-within {
       background: #f0f0f0cc;
-
     }
 
-    input[type="submit"] {
+    input[type='submit'] {
       font-weight: $semibold;
-      -webkit-transition: background .2s ease-in;
-      -o-transition: background .2s ease-in;
-      transition: background .2s ease-in;
+      -webkit-transition: background 0.2s ease-in;
+      -o-transition: background 0.2s ease-in;
+      transition: background 0.2s ease-in;
     }
 
-    input[type="submit"]:hover {
+    input[type='submit']:hover {
       background: #a22917;
       -webkit-transition: background 0.3s ease-in-out;
       -o-transition: background 0.3s ease-in-out;
@@ -102,7 +109,7 @@ form {
       margin-bottom: 0rem;
     }
 
-    input[type="submit"] {
+    input[type='submit'] {
       font-size: 1rem;
       border-radius: 0.313rem;
       text-transform: uppercase;
@@ -110,8 +117,6 @@ form {
       color: $color-black;
       margin-top: 2rem;
     }
-
-
   }
 
   .error {
@@ -134,6 +139,18 @@ form {
     -ms-transform: translateY(10px);
     transform: translateY(10px);
   }
+  @include media-s {
+    width: 25.563rem;
+    margin: 0 auto;
+  }
+
+  @include media-xl {
+    width: 60%;
+    margin: 0 auto;
+    background: #21202059;
+    padding: 5% 7%;
+    border-radius: 0.313rem;
+  }
 }
 
 .success-message {
@@ -154,5 +171,13 @@ form {
 
   p:nth-child(2) {
     margin: 2.5rem 0;
+  }
+
+  @include media-xl {
+    width: 60%;
+    margin: 0 auto;
+    background: #21202059;
+    padding: 5% 7%;
+    border-radius: 0.313rem;
   }
 }

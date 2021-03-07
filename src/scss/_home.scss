@@ -5,18 +5,13 @@
 * Browsers: last 4 version
 */
 
-
 .bg-home {
-  background-image: url("../img/lea-castanie-irQ74aUdmjY-unsplash.jpg");
+  background-image: url('../img/lea-castanie-irQ74aUdmjY-unsplash.jpg');
   background-color: $color-black;
 }
 
 .home .overlay {
   background: rgba(53, 52, 52, 0.87);
-}
-
-header .logo p {
-  display: none;
 }
 
 .main-home .accordion_btn {
@@ -30,10 +25,6 @@ header .logo p {
 
 .coundtdown-desktop {
   display: none;
-}
-
-.coundtdown-mobile {
-  display: block;
 }
 
 .next-launch div {
