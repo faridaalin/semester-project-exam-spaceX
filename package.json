@@ -2,7 +2,6 @@
   "name": "workflow2_ca",
   "version": "1.0.0",
   "description": "> Space X / NASA Microsite",
-  "main": "index.js",
   "scripts": {
     "serve": "parcel serve src/**/*.html",
     "develop": "parcel src/index.html /src/about.html /src/contact.html src/launches.html src/rockets.html",
@@ -24,6 +23,7 @@
     "last 1 Chrome version"
   ],
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.0-nightly.628",
     "@types/jest": "^26.0.20",
     "jest": "^26.6.3",
     "package-lock.json": "^1.0.0",
