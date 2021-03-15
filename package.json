@@ -32,6 +32,6 @@
     "typescript": "^4.1.5"
   },
   "dependencies": {
-    "parcel": "^1.12.4"
+    "parcel": "^1.12.3"
   }
 }
