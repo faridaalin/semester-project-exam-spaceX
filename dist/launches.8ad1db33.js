@@ -442,12 +442,13 @@ id) /*: string*/
 }
 
 },{}],"4OSwq":[function(require,module,exports) {
+var _libDisplayComponents = require("./lib/displayComponents");
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+var _libDisplayComponentsDefault = _parcelHelpers.interopDefault(_libDisplayComponents);
+var _utilsQuery = require("./utils/query");
 var _script = require("./script");
 var _utilsConstants = require("./utils/constants");
-var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
-var _utilsConstantsDefault = _parcelHelpers.interopDefault(_utilsConstants);
 var _countdown = require("./countdown");
-var _fetchData = require("./fetchData");
 window.addEventListener("load", () => {
   const loader = document.querySelector(".loader-container");
   loader.className += " hidden";
@@ -455,29 +456,51 @@ window.addEventListener("load", () => {
 _countdown.countDownTimer();
 _script.accordion();
 _script.menu();
-const getLaunches = (key, url, callback) => {
-  const dataFromStorage = sessionStorage.getItem(key);
-  if (!dataFromStorage) {
-    _fetchData.fetchData(key, url).then(data => {
-      callback(data);
-    }).catch(e => console.log(e));
-  } else {
-    callback(JSON.parse(dataFromStorage));
-  }
-};
-getLaunches(_utilsConstants.storage.UPCOMING_LAUNCH, _utilsConstantsDefault.default.UPCOMING_LAUNCH, displayLanuches);
-getLaunches(_utilsConstants.storage.PREVIOUS_LAUNCH, _utilsConstantsDefault.default.PREVIOUS_LAUNCH, displayPreviousLanuches);
-getLaunches(_utilsConstants.storage.PAD_LOCATIONS, _utilsConstantsDefault.default.PAD_LOCATIONS, displayLanuchPads);
-function displayLanuches(upcomingLaunches) {
+_libDisplayComponentsDefault.default(_utilsConstants.storage.PREVIOUS_LAUNCH, displayPreviousLanuches, _utilsQuery.launchesPast);
+_libDisplayComponentsDefault.default(_utilsConstants.storage.UPCOMING_LAUNCH, displayLanuches, _utilsQuery.launchesUpcoming);
+_libDisplayComponentsDefault.default(_utilsConstants.storage.PAD_LOCATIONS, displayLanuchPads, _utilsQuery.launchpads);
+function displayLanuches(data) {
+  console.log("data", data);
+  const upcomingLaunches = data.launchesUpcoming;
   const upcomingLaunchesContainer = document.querySelector(".upcoming-launches-container");
   upcomingLaunches.forEach(launch => {
+    let date = Intl.DateTimeFormat(navigator.language, {
+      year: "numeric",
+      month: "short",
+      day: "numeric"
+    }).format(new Date(launch.launch_date_local));
+    upcomingLaunchesContainer.innerHTML += `
+    <div class="container">
+      <div class="launches_container">
+
+          <div class="info-container heading">
+            <p class="info__name">Launch Date</p>
+            <p class="info__name">Rocket Name</p>
+            <p class=" info__name">Launch Pad</p>
+            <p class="info__name">Flight Number</p>
+          </div>
+          <div class="info-container upcoming">
+        <p class="info__text">${date}</p>
+        <p class="info__text">${launch.rocket.rocket_name}</p>
+        <p class="info__text">${launch.launch_site.site_name}</p>
+        <p class="info__text highlighted">9${launch.flight_number}</p>
+           </div>
+
+      </div>
+    <hr class="hr-break">
+  </div>`;
+  });
+}
+function displayPreviousLanuches(data) {
+  const previousLaunches = data.launchesPast;
+  const previousLaunchContainer = document.querySelector(".previous-launches-container");
+  previousLaunches.forEach(launch => {
     let launchDate = new Date(launch.launch_date_local);
     let date = launchDate.getDate();
     let month = launchDate.getMonth() + 1;
     date = date < 10 ? "0" + date : date;
     month = month < 10 ? "0" + month : month;
-    upcomingLaunchesContainer.innerHTML += `
-    <div class="container">
+    previousLaunchContainer.innerHTML += `  <div class="container">
       <div class="launches_container">
 
           <div class="info-container heading">
@@ -498,36 +521,8 @@ function displayLanuches(upcomingLaunches) {
   </div>`;
   });
 }
-function displayPreviousLanuches(previousLaunches) {
-  const previousLaunchContainer = document.querySelector(".previous-launches-container");
-  previousLaunches.forEach(launch => {
-    let launchDate = new Date(launch.launch_date_local);
-    let date = launchDate.getDate();
-    let month = launchDate.getMonth() + 1;
-    date = date < 10 ? "0" + date : date;
-    month = month < 10 ? "0" + month : month;
-    previousLaunchContainer.innerHTML += `  <div class="container">
-    <div class="launches_container">
-
-        <div class="info-container heading">
-          <p class="info__name">Launch Date</p>
-          <p class="info__name">Rocket Name</p>
-          <p class=" info__name">Launch Pad</p>
-          <p class="info__name">Flight Number</p>
-        </div>
-        <div class="info-container upcoming">
-      <p class="info__text">${launch.launch_year}-${month}-${date}</p>
-      <p class="info__text">${launch.rocket.rocket_name}</p>
-      <p class="info__text">${launch.launch_site.site_name}</p>
-      <p class="info__text highlighted">9${launch.flight_number}</p>
-         </div>
-
-    </div>
-  <hr class="hr-break">
-</div>`;
-  });
-}
-function displayLanuchPads(locationPads) {
+function displayLanuchPads(data) {
+  const locationPads = data.launchpads;
   const californiaLocations = locationPads.filter(function (pad) {
     return pad.location.region === "California";
   });
@@ -555,8 +550,8 @@ function createLocationPads(array, container) {
     container.innerHTML += `
     <div class="launches_container location_container locations-pads">
     <div class="info-container">
-      <p class="info__name">${item.name}:</p>
-      <p class="info__text">${item.site_name_long}</p>
+      <p class="info__name">${item.location.name}:</p>
+      <p class="info__text">${item.name}</p>
     </div>
 
     <div class="info-container">
@@ -590,156 +585,44 @@ function scrollToTop() {
   });
 }
 
-},{"./script":"1aYJp","./countdown":"41IE6","./fetchData":"5HPDR","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./utils/constants":"5StmA"}],"1aYJp":[function(require,module,exports) {
+},{"./lib/displayComponents":"7rOp6","./utils/query":"58FSQ","./script":"1aYJp","./utils/constants":"5StmA","./countdown":"41IE6","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"7rOp6":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
-_parcelHelpers.export(exports, "menu", function () {
-  return menu;
-});
-_parcelHelpers.export(exports, "accordion", function () {
-  return accordion;
-});
-const menu = () => {
-  const hamburger = document.querySelector('.hamburger');
-  const menu = document.querySelector('.menu');
-  hamburger.addEventListener('click', toggleMenu);
-  function toggleMenu(event) {
-    const target = event.currentTarget;
-    target.classList.toggle('open');
-    menu.classList.toggle('dropdown');
-  }
-};
-const accordion = () => {
-  const accordionBtn = document.querySelectorAll('.accordion_btn');
-  accordionBtn.forEach(button => {
-    button.addEventListener('click', openTab);
-  });
-  function openTab(event) {
-    const target = event.currentTarget;
-    target.classList.toggle('active');
-  }
-};
-
-},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"5gA8y":[function(require,module,exports) {
-"use strict";
-
-exports.interopDefault = function (a) {
-  return a && a.__esModule ? a : {
-    default: a
-  };
-};
-
-exports.defineInteropFlag = function (a) {
-  Object.defineProperty(a, '__esModule', {
-    value: true
-  });
-};
-
-exports.exportAll = function (source, dest) {
-  Object.keys(source).forEach(function (key) {
-    if (key === 'default' || key === '__esModule') {
-      return;
-    } // Skip duplicate re-exports when they have the same value.
-
-
-    if (key in dest && dest[key] === source[key]) {
-      return;
-    }
-
-    Object.defineProperty(dest, key, {
-      enumerable: true,
-      get: function () {
-        return source[key];
-      }
-    });
-  });
-  return dest;
-};
-
-exports.export = function (dest, destName, get) {
-  Object.defineProperty(dest, destName, {
-    enumerable: true,
-    get: get
-  });
-};
-},{}],"41IE6":[function(require,module,exports) {
-var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
-_parcelHelpers.defineInteropFlag(exports);
-_parcelHelpers.export(exports, "countDownTimer", function () {
-  return countDownTimer;
-});
-var _utilsFetchData = require("./utils/fetchData");
-var _utilsConstants = require("./utils/constants");
-var _currentSiteLocation = require("./currentSiteLocation");
-const countDownTimer = () => {
-  // Typescript generic type
-  const updateEverySec = nextDate => {
-    console.log("nextDate", nextDate);
-    const countDownDate = nextDate.launch_date_local;
-    const day = document.querySelectorAll(".days");
-    const hrs = document.querySelectorAll(".hours");
-    const minutes = document.querySelectorAll(".min");
-    const seconds = document.querySelectorAll(".sec");
-    const nextLanunchText = document.querySelector(".inner-counter p");
-    setInterval(() => {
-      const today = new Date().getTime();
-      if (countDownDate > today) {
-        const timeRemaining = countDownDate - today;
-        let sec = Math.floor(timeRemaining / 1000);
-        let min = Math.floor(sec / 60);
-        let hours = Math.floor(min / 60);
-        let days = Math.floor(hours / 24);
-        hours %= 24;
-        min %= 60;
-        sec %= 60;
-        day.forEach(el => el.innerHTML = `${days}`);
-        hrs.forEach(el => el.innerHTML = `${hours < 10 ? "0" : ""} ${hours}`);
-        minutes.forEach(el => el.innerHTML = `${min < 10 ? "0" : ""} ${min}`);
-        seconds.forEach(el => el.innerHTML = `${sec < 10 ? "0" : ""} ${sec}`);
-      } else {
-        day.forEach(el => el.textContent = "00");
-        hrs.forEach(el => el.textContent = "00");
-        minutes.forEach(el => el.textContent = "00");
-        seconds.forEach(el => el.textContent = "00");
-        nextLanunchText.textContent = "Launch has ended";
-      }
-    }, 1000);
-  };
-  const timer = sessionStorage.getItem(_utilsConstants.storage.NEXT_LAUNCH);
-  if (!timer) {
+var _utilsFetchData = require("../utils/fetchData");
+const displayComponents = (key, fc, query) => {
+  const dataFromSessionStorage = sessionStorage.getItem(key);
+  if (!dataFromSessionStorage) {
     (async () => {
       try {
-        const {data} = await _utilsFetchData.fetchData(_utilsConstants.storage.NEXT_LAUNCH);
-        updateEverySec(data.launchNext);
-        _currentSiteLocation.currentSiteLocation(data.launchNext);
+        const {data} = await _utilsFetchData.fetchData(key, query);
+        fc(data);
       } catch (err) {
         console.log("ERROR🔥", err);
       }
     })();
   } else {
-    updateEverySec(JSON.parse(timer));
-    _currentSiteLocation.currentSiteLocation(JSON.parse(timer));
+    fc(JSON.parse(dataFromSessionStorage));
   }
 };
+exports.default = displayComponents;
 
-},{"./utils/fetchData":"5KJHN","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./currentSiteLocation":"7zJAJ","./utils/constants":"5StmA"}],"5KJHN":[function(require,module,exports) {
+},{"../utils/fetchData":"5KJHN","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"5KJHN":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "fetchData", function () {
   return fetchData;
 });
 var _utilsClient = require("../utils/client");
-var _query = require("./query");
-const fetchData = async key => {
+const fetchData = async (key, query) => {
   const result = await _utilsClient.client.query({
-    query: _query.query
+    query: query
   });
   if (result.errors) throw new Error(`HTTP error! status: ${result.errors}`);
-  if (key) sessionStorage.setItem(key, JSON.stringify(result.data.launchNext));
+  if (key) sessionStorage.setItem(key, JSON.stringify(result.data));
   return result;
 };
 
-},{"../utils/client":"66iMc","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./query":"58FSQ"}],"66iMc":[function(require,module,exports) {
+},{"../utils/client":"66iMc","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"66iMc":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "client", function () {
@@ -8994,15 +8877,66 @@ exports.noContext = noContext;
 exports.setTimeout = setTimeoutWithContext;
 exports.wrapYieldingFiberMethods = wrapYieldingFiberMethods;
 
+},{}],"5gA8y":[function(require,module,exports) {
+"use strict";
+
+exports.interopDefault = function (a) {
+  return a && a.__esModule ? a : {
+    default: a
+  };
+};
+
+exports.defineInteropFlag = function (a) {
+  Object.defineProperty(a, '__esModule', {
+    value: true
+  });
+};
+
+exports.exportAll = function (source, dest) {
+  Object.keys(source).forEach(function (key) {
+    if (key === 'default' || key === '__esModule') {
+      return;
+    } // Skip duplicate re-exports when they have the same value.
+
+
+    if (key in dest && dest[key] === source[key]) {
+      return;
+    }
+
+    Object.defineProperty(dest, key, {
+      enumerable: true,
+      get: function () {
+        return source[key];
+      }
+    });
+  });
+  return dest;
+};
+
+exports.export = function (dest, destName, get) {
+  Object.defineProperty(dest, destName, {
+    enumerable: true,
+    get: get
+  });
+};
 },{}],"58FSQ":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
-_parcelHelpers.export(exports, "query", function () {
-  return query;
+_parcelHelpers.export(exports, "launchNext", function () {
+  return launchNext;
+});
+_parcelHelpers.export(exports, "launchesPast", function () {
+  return launchesPast;
+});
+_parcelHelpers.export(exports, "launchesUpcoming", function () {
+  return launchesUpcoming;
+});
+_parcelHelpers.export(exports, "launchpads", function () {
+  return launchpads;
 });
 var _graphqlTag = require("graphql-tag");
 var _graphqlTagDefault = _parcelHelpers.interopDefault(_graphqlTag);
-const query = _graphqlTagDefault.default`
+const launchNext = _graphqlTagDefault.default`
   query {
     launchNext {
       launch_site {
@@ -9016,6 +8950,52 @@ const query = _graphqlTagDefault.default`
       mission_name
       details
       launch_date_local
+    }
+  }
+`;
+const launchesPast = _graphqlTagDefault.default`
+  query {
+    launchesPast(limit: 10) {
+      launch_date_local
+      launch_site {
+        site_name
+      }
+      links {
+        video_link
+        flickr_images
+      }
+      rocket {
+        rocket_name
+      }
+    }
+  }
+`;
+const launchesUpcoming = _graphqlTagDefault.default`
+  query {
+    launchesUpcoming {
+      launch_date_local
+      launch_site {
+        site_name
+      }
+      links {
+        flickr_images
+      }
+      rocket {
+        rocket_name
+      }
+    }
+  }
+`;
+const launchpads = _graphqlTagDefault.default`
+  query {
+    launchpads {
+      location {
+        name
+        region
+      }
+      details
+      status
+      name
     }
   }
 `;
@@ -28036,26 +28016,35 @@ function findDeprecatedUsages(schema, ast) {
   return (0, _validate.validate)(schema, ast, [_NoDeprecatedCustomRule.NoDeprecatedCustomRule]);
 }
 
-},{"../validation/validate.js":"4pm1K","../validation/rules/custom/NoDeprecatedCustomRule.js":"5roLf"}],"7zJAJ":[function(require,module,exports) {
+},{"../validation/validate.js":"4pm1K","../validation/rules/custom/NoDeprecatedCustomRule.js":"5roLf"}],"1aYJp":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
-_parcelHelpers.export(exports, "currentSiteLocation", function () {
-  return currentSiteLocation;
+_parcelHelpers.export(exports, "menu", function () {
+  return menu;
 });
-function currentSiteLocation(data) {
-  const siteLocationFromApi = data.launch_site.site_id;
-  const area = document.querySelectorAll(".area");
-  area.forEach(location => {
-    if (location.parentElement) {
-      const title = location.parentElement.previousElementSibling;
-      if (siteLocationFromApi === location.id) {
-        if (title) {
-          title.children[0].classList.add("active-location");
-        }
-      }
-    }
+_parcelHelpers.export(exports, "accordion", function () {
+  return accordion;
+});
+const menu = () => {
+  const hamburger = document.querySelector('.hamburger');
+  const menu = document.querySelector('.menu');
+  hamburger.addEventListener('click', toggleMenu);
+  function toggleMenu(event) {
+    const target = event.currentTarget;
+    target.classList.toggle('open');
+    menu.classList.toggle('dropdown');
+  }
+};
+const accordion = () => {
+  const accordionBtn = document.querySelectorAll('.accordion_btn');
+  accordionBtn.forEach(button => {
+    button.addEventListener('click', openTab);
   });
-}
+  function openTab(event) {
+    const target = event.currentTarget;
+    target.classList.toggle('active');
+  }
+};
 
 },{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"5StmA":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
@@ -28079,21 +28068,85 @@ const storage = {
   ROCKETS: "ROCKETS"
 };
 
-},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"5HPDR":[function(require,module,exports) {
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"41IE6":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
-_parcelHelpers.export(exports, "fetchData", function () {
-  return fetchData;
+_parcelHelpers.export(exports, "countDownTimer", function () {
+  return countDownTimer;
 });
-async function fetchData(key, url) {
-  let response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
+var _utilsFetchData = require("./utils/fetchData");
+var _utilsQuery = require("./utils/query");
+var _utilsConstants = require("./utils/constants");
+var _currentSiteLocation = require("./currentSiteLocation");
+const countDownTimer = () => {
+  // Typescript generic type
+  const updateEverySec = nextDate => {
+    const countDownDate = nextDate.launch_date_local;
+    const day = document.querySelectorAll(".days");
+    const hrs = document.querySelectorAll(".hours");
+    const minutes = document.querySelectorAll(".min");
+    const seconds = document.querySelectorAll(".sec");
+    const nextLanunchText = document.querySelector(".inner-counter p");
+    setInterval(() => {
+      const today = new Date().getTime();
+      if (countDownDate > today) {
+        const timeRemaining = countDownDate - today;
+        let sec = Math.floor(timeRemaining / 1000);
+        let min = Math.floor(sec / 60);
+        let hours = Math.floor(min / 60);
+        let days = Math.floor(hours / 24);
+        hours %= 24;
+        min %= 60;
+        sec %= 60;
+        day.forEach(el => el.innerHTML = `${days}`);
+        hrs.forEach(el => el.innerHTML = `${hours < 10 ? "0" : ""} ${hours}`);
+        minutes.forEach(el => el.innerHTML = `${min < 10 ? "0" : ""} ${min}`);
+        seconds.forEach(el => el.innerHTML = `${sec < 10 ? "0" : ""} ${sec}`);
+      } else {
+        day.forEach(el => el.textContent = "00");
+        hrs.forEach(el => el.textContent = "00");
+        minutes.forEach(el => el.textContent = "00");
+        seconds.forEach(el => el.textContent = "00");
+        nextLanunchText.textContent = "Launch has ended";
+      }
+    }, 1000);
+  };
+  const timer = sessionStorage.getItem(_utilsConstants.storage.NEXT_LAUNCH);
+  if (!timer) {
+    (async () => {
+      try {
+        const {data} = await _utilsFetchData.fetchData(_utilsConstants.storage.NEXT_LAUNCH, _utilsQuery.launchNext);
+        updateEverySec(data.launchNext);
+        _currentSiteLocation.currentSiteLocation(data.launchNext);
+      } catch (err) {
+        console.log("ERROR🔥", err);
+      }
+    })();
   } else {
-    const data = await response.json();
-    // sessionStorage.setItem(key, JSON.stringify(data));
-    return data;
+    updateEverySec(JSON.parse(timer).launchNext);
+    _currentSiteLocation.currentSiteLocation(JSON.parse(timer).launchNext);
   }
+};
+
+},{"./utils/fetchData":"5KJHN","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./currentSiteLocation":"7zJAJ","./utils/constants":"5StmA","./utils/query":"58FSQ"}],"7zJAJ":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+_parcelHelpers.export(exports, "currentSiteLocation", function () {
+  return currentSiteLocation;
+});
+function currentSiteLocation(data) {
+  const siteLocationFromApi = data.launch_site.site_id;
+  const area = document.querySelectorAll(".area");
+  area.forEach(location => {
+    if (location.parentElement) {
+      const title = location.parentElement.previousElementSibling;
+      if (siteLocationFromApi === location.id) {
+        if (title) {
+          title.children[0].classList.add("active-location");
+        }
+      }
+    }
+  });
 }
 
 },{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}]},["7CfR8","4OSwq"], "4OSwq", "parcelRequire144b")

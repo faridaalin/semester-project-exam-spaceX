@@ -526,12 +526,12 @@ _parcelHelpers.export(exports, "countDownTimer", function () {
   return countDownTimer;
 });
 var _utilsFetchData = require("./utils/fetchData");
+var _utilsQuery = require("./utils/query");
 var _utilsConstants = require("./utils/constants");
 var _currentSiteLocation = require("./currentSiteLocation");
 const countDownTimer = () => {
   // Typescript generic type
   const updateEverySec = nextDate => {
-    console.log("nextDate", nextDate);
     const countDownDate = nextDate.launch_date_local;
     const day = document.querySelectorAll(".days");
     const hrs = document.querySelectorAll(".hours");
@@ -566,7 +566,7 @@ const countDownTimer = () => {
   if (!timer) {
     (async () => {
       try {
-        const {data} = await _utilsFetchData.fetchData(_utilsConstants.storage.NEXT_LAUNCH);
+        const {data} = await _utilsFetchData.fetchData(_utilsConstants.storage.NEXT_LAUNCH, _utilsQuery.launchNext);
         updateEverySec(data.launchNext);
         _currentSiteLocation.currentSiteLocation(data.launchNext);
       } catch (err) {
@@ -574,29 +574,28 @@ const countDownTimer = () => {
       }
     })();
   } else {
-    updateEverySec(JSON.parse(timer));
-    _currentSiteLocation.currentSiteLocation(JSON.parse(timer));
+    updateEverySec(JSON.parse(timer).launchNext);
+    _currentSiteLocation.currentSiteLocation(JSON.parse(timer).launchNext);
   }
 };
 
-},{"./utils/fetchData":"5KJHN","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./currentSiteLocation":"7zJAJ","./utils/constants":"5StmA"}],"5KJHN":[function(require,module,exports) {
+},{"./utils/fetchData":"5KJHN","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./currentSiteLocation":"7zJAJ","./utils/constants":"5StmA","./utils/query":"58FSQ"}],"5KJHN":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "fetchData", function () {
   return fetchData;
 });
 var _utilsClient = require("../utils/client");
-var _query = require("./query");
-const fetchData = async key => {
+const fetchData = async (key, query) => {
   const result = await _utilsClient.client.query({
-    query: _query.query
+    query: query
   });
   if (result.errors) throw new Error(`HTTP error! status: ${result.errors}`);
-  if (key) sessionStorage.setItem(key, JSON.stringify(result.data.launchNext));
+  if (key) sessionStorage.setItem(key, JSON.stringify(result.data));
   return result;
 };
 
-},{"../utils/client":"66iMc","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./query":"58FSQ"}],"66iMc":[function(require,module,exports) {
+},{"../utils/client":"66iMc","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"66iMc":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "client", function () {
@@ -8851,15 +8850,67 @@ exports.noContext = noContext;
 exports.setTimeout = setTimeoutWithContext;
 exports.wrapYieldingFiberMethods = wrapYieldingFiberMethods;
 
-},{}],"58FSQ":[function(require,module,exports) {
+},{}],"7zJAJ":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
-_parcelHelpers.export(exports, "query", function () {
-  return query;
+_parcelHelpers.export(exports, "currentSiteLocation", function () {
+  return currentSiteLocation;
+});
+function currentSiteLocation(data) {
+  const siteLocationFromApi = data.launch_site.site_id;
+  const area = document.querySelectorAll(".area");
+  area.forEach(location => {
+    if (location.parentElement) {
+      const title = location.parentElement.previousElementSibling;
+      if (siteLocationFromApi === location.id) {
+        if (title) {
+          title.children[0].classList.add("active-location");
+        }
+      }
+    }
+  });
+}
+
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"5StmA":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+_parcelHelpers.export(exports, "storage", function () {
+  return storage;
+});
+const endpoints = {
+  NEXT_LAUNCH: "https://api.spacexdata.com/v3/launches/next",
+  UPCOMING_LAUNCH: "https://api.spacexdata.com/v3/launches/upcoming",
+  PREVIOUS_LAUNCH: "https://api.spacexdata.com/v3/launches/past",
+  PAD_LOCATIONS: "https://api.spacexdata.com/v3/launchpads",
+  ROCKETS: "https://api.spacexdata.com/v3/rockets"
+};
+exports.default = endpoints;
+const storage = {
+  NEXT_LAUNCH: "NEXT_LAUNCH",
+  UPCOMING_LAUNCH: "UPCOMING_LAUNCH",
+  PREVIOUS_LAUNCH: "PREVIOUS_LAUNCH",
+  PAD_LOCATIONS: "PAD_LOCATIONS",
+  ROCKETS: "ROCKETS"
+};
+
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"58FSQ":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+_parcelHelpers.export(exports, "launchNext", function () {
+  return launchNext;
+});
+_parcelHelpers.export(exports, "launchesPast", function () {
+  return launchesPast;
+});
+_parcelHelpers.export(exports, "launchesUpcoming", function () {
+  return launchesUpcoming;
+});
+_parcelHelpers.export(exports, "launchpads", function () {
+  return launchpads;
 });
 var _graphqlTag = require("graphql-tag");
 var _graphqlTagDefault = _parcelHelpers.interopDefault(_graphqlTag);
-const query = _graphqlTagDefault.default`
+const launchNext = _graphqlTagDefault.default`
   query {
     launchNext {
       launch_site {
@@ -8873,6 +8924,52 @@ const query = _graphqlTagDefault.default`
       mission_name
       details
       launch_date_local
+    }
+  }
+`;
+const launchesPast = _graphqlTagDefault.default`
+  query {
+    launchesPast(limit: 10) {
+      launch_date_local
+      launch_site {
+        site_name
+      }
+      links {
+        video_link
+        flickr_images
+      }
+      rocket {
+        rocket_name
+      }
+    }
+  }
+`;
+const launchesUpcoming = _graphqlTagDefault.default`
+  query {
+    launchesUpcoming {
+      launch_date_local
+      launch_site {
+        site_name
+      }
+      links {
+        flickr_images
+      }
+      rocket {
+        rocket_name
+      }
+    }
+  }
+`;
+const launchpads = _graphqlTagDefault.default`
+  query {
+    launchpads {
+      location {
+        name
+        region
+      }
+      details
+      status
+      name
     }
   }
 `;
@@ -27893,49 +27990,6 @@ function findDeprecatedUsages(schema, ast) {
   return (0, _validate.validate)(schema, ast, [_NoDeprecatedCustomRule.NoDeprecatedCustomRule]);
 }
 
-},{"../validation/validate.js":"4pm1K","../validation/rules/custom/NoDeprecatedCustomRule.js":"5roLf"}],"7zJAJ":[function(require,module,exports) {
-var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
-_parcelHelpers.defineInteropFlag(exports);
-_parcelHelpers.export(exports, "currentSiteLocation", function () {
-  return currentSiteLocation;
-});
-function currentSiteLocation(data) {
-  const siteLocationFromApi = data.launch_site.site_id;
-  const area = document.querySelectorAll(".area");
-  area.forEach(location => {
-    if (location.parentElement) {
-      const title = location.parentElement.previousElementSibling;
-      if (siteLocationFromApi === location.id) {
-        if (title) {
-          title.children[0].classList.add("active-location");
-        }
-      }
-    }
-  });
-}
-
-},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"5StmA":[function(require,module,exports) {
-var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
-_parcelHelpers.defineInteropFlag(exports);
-_parcelHelpers.export(exports, "storage", function () {
-  return storage;
-});
-const endpoints = {
-  NEXT_LAUNCH: "https://api.spacexdata.com/v3/launches/next",
-  UPCOMING_LAUNCH: "https://api.spacexdata.com/v3/launches/upcoming",
-  PREVIOUS_LAUNCH: "https://api.spacexdata.com/v3/launches/past",
-  PAD_LOCATIONS: "https://api.spacexdata.com/v3/launchpads",
-  ROCKETS: "https://api.spacexdata.com/v3/rockets"
-};
-exports.default = endpoints;
-const storage = {
-  NEXT_LAUNCH: "NEXT_LAUNCH",
-  UPCOMING_LAUNCH: "UPCOMING_LAUNCH",
-  PREVIOUS_LAUNCH: "PREVIOUS_LAUNCH",
-  PAD_LOCATIONS: "PAD_LOCATIONS",
-  ROCKETS: "ROCKETS"
-};
-
-},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}]},["2SLdx","5oZyh"], "5oZyh", "parcelRequire144b")
+},{"../validation/validate.js":"4pm1K","../validation/rules/custom/NoDeprecatedCustomRule.js":"5roLf"}]},["2SLdx","5oZyh"], "5oZyh", "parcelRequire144b")
 
 //# sourceMappingURL=about.c3c97bed.js.map

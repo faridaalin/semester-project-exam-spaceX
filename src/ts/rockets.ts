@@ -2,6 +2,7 @@ import { menu } from "./script";
 import endpoints, { storage } from "./utils/constants";
 import { countDownTimer } from "./countdown";
 import { fetchData } from "./fetchData";
+import displayComponents from "./lib/displayComponents";
 
 window.addEventListener("load", () => {
   const loader = document.querySelector(".loader-container") as HTMLDivElement;

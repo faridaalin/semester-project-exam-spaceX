@@ -1,4 +1,5 @@
 import { fetchData } from "./utils/fetchData";
+import { launchNext } from "./utils/query";
 import { storage } from "./utils/constants";
 import { currentSiteLocation } from "./currentSiteLocation";
 
@@ -6,7 +7,6 @@ import { currentSiteLocation } from "./currentSiteLocation";
 export const countDownTimer = () => {
   // Typescript generic type
   const updateEverySec = <T extends IObjectFromApiCall>(nextDate: T): void => {
-    console.log("nextDate", nextDate);
     const countDownDate = nextDate.launch_date_local;
     const day = document.querySelectorAll(
       ".days"
@@ -64,7 +64,7 @@ export const countDownTimer = () => {
   if (!timer) {
     (async () => {
       try {
-        const { data } = await fetchData(storage.NEXT_LAUNCH);
+        const { data } = await fetchData(storage.NEXT_LAUNCH, launchNext);
         updateEverySec(data.launchNext);
         currentSiteLocation(data.launchNext);
       } catch (err) {
@@ -72,7 +72,7 @@ export const countDownTimer = () => {
       }
     })();
   } else {
-    updateEverySec(JSON.parse(timer));
-    currentSiteLocation(JSON.parse(timer));
+    updateEverySec(JSON.parse(timer).launchNext);
+    currentSiteLocation(JSON.parse(timer).launchNext);
   }
 };

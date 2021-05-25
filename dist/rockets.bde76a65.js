@@ -538,7 +538,7 @@ scrollToUp.addEventListener("click", () => {
   });
 });
 
-},{"./script":"1aYJp","./countdown":"41IE6","./fetchData":"5HPDR","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./utils/constants":"5StmA"}],"5HPDR":[function(require,module,exports) {
+},{"./script":"1aYJp","./countdown":"41IE6","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./utils/constants":"5StmA","./fetchData":"5HPDR"}],"5HPDR":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "fetchData", function () {

@@ -1,6 +1,7 @@
+import displayComponents from "./lib/displayComponents";
+import { launchNext } from "./utils/query";
+import { storage } from "./utils/constants";
 import { accordion, menu } from "./script";
-import { fetchData } from "./utils/fetchData";
-import endpoints, { storage } from "./utils/constants";
 import { countDownTimer } from "./countdown";
 
 window.addEventListener("load", () => {
@@ -15,27 +16,12 @@ accordion();
 menu();
 
 /*fetch*/
-let nextLaunch: object;
-const dataFromSessionStorage: string | null = sessionStorage.getItem(
-  storage.NEXT_LAUNCH
-);
 
-if (!dataFromSessionStorage) {
-  (async () => {
-    try {
-      const { data } = await fetchData(storage.NEXT_LAUNCH);
-      displayNextLaunch(data.launchNext);
-    } catch (err) {
-      console.log("ERROR🔥", err);
-    }
-  })();
-} else {
-  nextLaunch = JSON.parse(dataFromSessionStorage);
-  displayNextLaunch(nextLaunch);
-}
+displayComponents(storage.NEXT_LAUNCH, displayNextLaunch, launchNext);
 
 // DOM interaction
-function displayNextLaunch<T extends IObjectFromApiCall>(data: T): void {
+function displayNextLaunch<T extends IObjectFromApiCall>(result: T): void {
+  const data = result.launchNext;
   const nextLaunchContainer = document.querySelector(
     ".next-launch"
   ) as HTMLDivElement;

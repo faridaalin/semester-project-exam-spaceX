@@ -17,3 +17,52 @@ enum KeyNames {
 interface IObjectFromApiCall {
   [key: string]: any;
 }
+
+interface IPads {
+  location: {
+    name: string;
+    region: string;
+  };
+  details: string;
+  status: string;
+  name: string;
+}
+
+interface ILaunchPads {
+  launchpads: [IPads];
+}
+
+interface IPrevObject {
+  launch_date_local: date;
+  launch_site: {
+    site_name: string;
+  };
+  links: {
+    video_link: string;
+    flickr_images: string;
+  };
+  rocket: {
+    rocket_name: string;
+  };
+}
+
+interface IPreviousLaunches {
+  launchesPast: [IPrevObject];
+}
+
+interface IUpcomingObject {
+  launch_site: {
+    site_name: string;
+    site_id: string;
+  };
+  launch_year: interger;
+  rocket: {
+    rocket_name: string;
+  };
+  mission_name: string;
+  details: string;
+  launch_date_local: ate;
+}
+interface IUpcomingLaunches {
+  launchesUpcoming: [IUpcomingObject];
+}

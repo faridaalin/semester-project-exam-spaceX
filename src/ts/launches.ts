@@ -1,7 +1,8 @@
+import displayComponents from "./lib/displayComponents";
+import { launchesPast, launchesUpcoming, launchpads } from "./utils/query";
 import { accordion, menu } from "./script";
-import endpoints, { storage } from "./utils/constants";
+import { storage } from "./utils/constants";
 import { countDownTimer } from "./countdown";
-import { fetchData } from "./fetchData";
 
 window.addEventListener("load", () => {
   const loader = document.querySelector(".loader-container") as HTMLDivElement;
@@ -11,53 +12,66 @@ window.addEventListener("load", () => {
 countDownTimer();
 accordion();
 menu();
-
-const getLaunches = (
-  key: string,
-  url: string,
-  callback: (a: object[]) => void
-) => {
-  const dataFromStorage = sessionStorage.getItem(key);
-
-  if (!dataFromStorage) {
-    fetchData(key, url)
-      .then((data) => {
-        callback(data);
-      })
-      .catch((e) => console.log(e));
-  } else {
-    callback(JSON.parse(dataFromStorage));
-  }
-};
-getLaunches(
-  storage.UPCOMING_LAUNCH,
-  endpoints.UPCOMING_LAUNCH,
-  displayLanuches
-);
-getLaunches(
+displayComponents(
   storage.PREVIOUS_LAUNCH,
-  endpoints.PREVIOUS_LAUNCH,
-  displayPreviousLanuches
+  displayPreviousLanuches,
+  launchesPast
 );
-getLaunches(storage.PAD_LOCATIONS, endpoints.PAD_LOCATIONS, displayLanuchPads);
+displayComponents(storage.UPCOMING_LAUNCH, displayLanuches, launchesUpcoming);
+displayComponents(storage.PAD_LOCATIONS, displayLanuchPads, launchpads);
 
-function displayLanuches<T extends IObjectFromApiCall>(
-  upcomingLaunches: T[]
-): void {
+function displayLanuches<T extends IUpcomingLaunches>(data: T): void {
+  console.log("data", data);
+  const upcomingLaunches = data.launchesUpcoming;
+
   const upcomingLaunchesContainer = document.querySelector(
     ".upcoming-launches-container"
   ) as HTMLDivElement;
 
-  upcomingLaunches.forEach((launch) => {
+  upcomingLaunches.forEach((launch: any) => {
+    let date = Intl.DateTimeFormat(navigator.language, {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    }).format(new Date(launch.launch_date_local));
+    upcomingLaunchesContainer.innerHTML += `
+    <div class="container">
+      <div class="launches_container">
+
+          <div class="info-container heading">
+            <p class="info__name">Launch Date</p>
+            <p class="info__name">Rocket Name</p>
+            <p class=" info__name">Launch Pad</p>
+            <p class="info__name">Flight Number</p>
+          </div>
+          <div class="info-container upcoming">
+        <p class="info__text">${date}</p>
+        <p class="info__text">${launch.rocket.rocket_name}</p>
+        <p class="info__text">${launch.launch_site.site_name}</p>
+        <p class="info__text highlighted">9${launch.flight_number}</p>
+           </div>
+
+      </div>
+    <hr class="hr-break">
+  </div>`;
+  });
+}
+
+function displayPreviousLanuches<T extends IPreviousLaunches>(data: T): void {
+  const previousLaunches = data.launchesPast;
+
+  const previousLaunchContainer = document.querySelector(
+    ".previous-launches-container"
+  ) as HTMLDivElement;
+
+  previousLaunches.forEach((launch: any) => {
     let launchDate = new Date(launch.launch_date_local);
     let date: number | string = launchDate.getDate();
     let month: number | string = launchDate.getMonth() + 1;
-
     date = date < 10 ? "0" + date : date;
     month = month < 10 ? "0" + month : month;
 
-    upcomingLaunchesContainer.innerHTML += `
-    <div class="container">
+    previousLaunchContainer.innerHTML += `  <div class="container">
       <div class="launches_container">
 
           <div class="info-container heading">
@@ -79,54 +93,19 @@ function displayLanuches<T extends IObjectFromApiCall>(
   });
 }
 
-function displayPreviousLanuches<T extends IObjectFromApiCall>(
-  previousLaunches: T[]
-): void {
-  const previousLaunchContainer = document.querySelector(
-    ".previous-launches-container"
-  ) as HTMLDivElement;
-  previousLaunches.forEach((launch) => {
-    let launchDate = new Date(launch.launch_date_local);
-    let date: number | string = launchDate.getDate();
-    let month: number | string = launchDate.getMonth() + 1;
-    date = date < 10 ? "0" + date : date;
-    month = month < 10 ? "0" + month : month;
+function displayLanuchPads<T extends ILaunchPads>(data: T): void {
+  const locationPads = data.launchpads;
 
-    previousLaunchContainer.innerHTML += `  <div class="container">
-    <div class="launches_container">
-
-        <div class="info-container heading">
-          <p class="info__name">Launch Date</p>
-          <p class="info__name">Rocket Name</p>
-          <p class=" info__name">Launch Pad</p>
-          <p class="info__name">Flight Number</p>
-        </div>
-        <div class="info-container upcoming">
-      <p class="info__text">${launch.launch_year}-${month}-${date}</p>
-      <p class="info__text">${launch.rocket.rocket_name}</p>
-      <p class="info__text">${launch.launch_site.site_name}</p>
-      <p class="info__text highlighted">9${launch.flight_number}</p>
-         </div>
-
-    </div>
-  <hr class="hr-break">
-</div>`;
-  });
-}
-
-function displayLanuchPads<T extends IObjectFromApiCall>(
-  locationPads: T[]
-): void {
-  const californiaLocations = locationPads.filter(function (pad) {
+  const californiaLocations = locationPads.filter(function (pad: IPads) {
     return pad.location.region === "California";
   });
-  const floridaaLocations = locationPads.filter(function (pad) {
+  const floridaaLocations = locationPads.filter(function (pad: IPads) {
     return pad.location.region === "Florida";
   });
-  const texasLocations = locationPads.filter(function (pad) {
+  const texasLocations = locationPads.filter(function (pad: IPads) {
     return pad.location.region === "Texas";
   });
-  const mIslandLocations = locationPads.filter(function (pad) {
+  const mIslandLocations = locationPads.filter(function (pad: IPads) {
     return pad.location.region === "Marshall Islands";
   });
 
@@ -159,8 +138,8 @@ function createLocationPads<
     container.innerHTML += `
     <div class="launches_container location_container locations-pads">
     <div class="info-container">
-      <p class="info__name">${item.name}:</p>
-      <p class="info__text">${item.site_name_long}</p>
+      <p class="info__name">${item.location.name}:</p>
+      <p class="info__text">${item.name}</p>
     </div>
 
     <div class="info-container">
