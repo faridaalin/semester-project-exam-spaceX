@@ -267,7 +267,7 @@
 
         .circle-short-line,
         .circle-long-line {
-          content: '';
+          content: "";
           position: absolute;
           background: #acadafc7;
           width: 0.188rem;
@@ -285,7 +285,7 @@
           top: 73%;
         }
 
-        [class~='circle-short-line']:last-of-type {
+        [class~="circle-short-line"]:last-of-type {
           top: 71%;
         }
 
@@ -412,7 +412,8 @@
   }
 
   .month {
-    margin-left: 95%;
+    margin-left: auto;
+    text-align: right;
   }
 
   .next-launch,

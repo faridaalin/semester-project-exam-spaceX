@@ -1343,9 +1343,9 @@ span {
   font-size: 1.3rem;
   text-align: right;
   font-weight: 400;
-  -webkit-transform: translateY(-12.063px);
-  -ms-transform: translateY(-12.063px);
-  transform: translateY(-12.063px);
+}
+.month {
+  min-width: 100px;
 }
 .next-launch-info {
   padding-bottom: 2.313rem;
@@ -1771,7 +1771,8 @@ span {
   }
 
   .month {
-    margin-left: 95%;
+    margin-left: auto;
+    text-align: right;
   }
 
   .next-launch,
@@ -1903,4 +1904,4 @@ span {
     right: 25%;
   }
 }
-/*# sourceMappingURL=index.ec8548c3.css.map */
+/*# sourceMappingURL=launches.ec8548c3.css.map */

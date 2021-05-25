@@ -1,7 +1,6 @@
-import { DateTime } from "luxon";
 import { accordion, menu } from "./script";
 import { fetchData } from "./utils/fetchData";
-import endpoints, { storage } from "./config";
+import endpoints, { storage } from "./utils/constants";
 import { countDownTimer } from "./countdown";
 
 window.addEventListener("load", () => {
@@ -11,7 +10,7 @@ window.addEventListener("load", () => {
   }
 });
 
-countDownTimer(storage.NEXT_LAUNCH, endpoints.NEXT_LAUNCH);
+countDownTimer();
 accordion();
 menu();
 
@@ -43,11 +42,10 @@ function displayNextLaunch<T extends IObjectFromApiCall>(data: T): void {
   const nextLaunchInfo = document.querySelector(
     ".next-launch-info__first-part"
   ) as HTMLDivElement;
-  console.log("HOME DATA", data);
 
   let launchDate = new Date(data.launch_date_local);
   let date = Intl.DateTimeFormat(navigator.language, {
-    month: "long",
+    month: "short",
     day: "numeric",
   }).format(new Date(data.launch_date_local));
 

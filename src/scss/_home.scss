@@ -6,7 +6,7 @@
 */
 
 .bg-home {
-  background-image: url('../img/lea-castanie-irQ74aUdmjY-unsplash.jpg');
+  background-image: url("../img/lea-castanie-irQ74aUdmjY-unsplash.jpg");
   background-color: $color-black;
 }
 
@@ -61,9 +61,12 @@ span {
   font-size: 1.3rem;
   text-align: right;
   font-weight: $regular;
-  -webkit-transform: translateY(-12.063px);
-  -ms-transform: translateY(-12.063px);
-  transform: translateY(-12.063px);
+  // -webkit-transform: translateY(-12.063px);
+  // -ms-transform: translateY(-12.063px);
+  // transform: translateY(-12.063px);
+}
+.month {
+  min-width: 100px;
 }
 
 .next-launch-info {

@@ -442,31 +442,31 @@ id) /*: string*/
 }
 
 },{}],"5PQGD":[function(require,module,exports) {
-var _script = require('./script');
-var _config = require('./config');
+var _script = require("./script");
+var _utilsConstants = require("./utils/constants");
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
-var _configDefault = _parcelHelpers.interopDefault(_config);
-var _countdown = require('./countdown');
-var _fetchData = require('./fetchData');
-window.addEventListener('load', () => {
-  const loader = document.querySelector('.loader-container');
-  loader.className += ' hidden';
-  const scrollIndicator = document.querySelector('.scroll-indicator');
+var _utilsConstantsDefault = _parcelHelpers.interopDefault(_utilsConstants);
+var _countdown = require("./countdown");
+var _fetchData = require("./fetchData");
+window.addEventListener("load", () => {
+  const loader = document.querySelector(".loader-container");
+  loader.className += " hidden";
+  const scrollIndicator = document.querySelector(".scroll-indicator");
   const scrollPositionTop = window.scrollY;
-  if (scrollPositionTop < 200) scrollIndicator.classList.add('show');
+  if (scrollPositionTop < 200) scrollIndicator.classList.add("show");
 });
-_countdown.countDownTimer(_config.storage.NEXT_LAUNCH, _configDefault.default.NEXT_LAUNCH);
+_countdown.countDownTimer();
 _script.menu();
-const dataFromSessionStorage = sessionStorage.getItem(_config.storage.ROCKETS);
+const dataFromSessionStorage = sessionStorage.getItem(_utilsConstants.storage.ROCKETS);
 if (!dataFromSessionStorage) {
-  _fetchData.fetchData(_config.storage.ROCKETS, _configDefault.default.ROCKETS).then(data => {
+  _fetchData.fetchData(_utilsConstants.storage.ROCKETS, _utilsConstantsDefault.default.ROCKETS).then(data => {
     createRocketCards(data);
   }).catch(e => console.log(e));
 } else {
   createRocketCards(JSON.parse(dataFromSessionStorage));
 }
 function createRocketCards(rockets) {
-  const cardsContainer = document.querySelector('.cards');
+  const cardsContainer = document.querySelector(".cards");
   rockets.forEach(rocket => {
     cardsContainer.innerHTML += `
       <div class="card">
@@ -522,45 +522,23 @@ function createRocketCards(rockets) {
     </div>`;
   });
 }
-const scrollToUp = document.querySelector('.scroll-up');
-window.addEventListener('scroll', () => {
+const scrollToUp = document.querySelector(".scroll-up");
+window.addEventListener("scroll", () => {
   if (window.pageYOffset > 100) {
-    scrollToUp.classList.add('active');
+    scrollToUp.classList.add("active");
   } else {
-    scrollToUp.classList.remove('active');
+    scrollToUp.classList.remove("active");
   }
 });
-scrollToUp.addEventListener('click', () => {
+scrollToUp.addEventListener("click", () => {
   window.scrollTo({
     top: 0,
     left: 0,
-    behavior: 'smooth'
+    behavior: "smooth"
   });
 });
 
-},{"./script":"1aYJp","./config":"2UyZw","./countdown":"41IE6","./fetchData":"5HPDR","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"2UyZw":[function(require,module,exports) {
-var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
-_parcelHelpers.defineInteropFlag(exports);
-_parcelHelpers.export(exports, "storage", function () {
-  return storage;
-});
-const endpoints = {
-  NEXT_LAUNCH: 'https://api.spacexdata.com/v3/launches/next',
-  UPCOMING_LAUNCH: 'https://api.spacexdata.com/v3/launches/upcoming',
-  PREVIOUS_LAUNCH: 'https://api.spacexdata.com/v3/launches/past',
-  PAD_LOCATIONS: 'https://api.spacexdata.com/v3/launchpads',
-  ROCKETS: 'https://api.spacexdata.com/v3/rockets'
-};
-exports.default = endpoints;
-const storage = {
-  NEXT_LAUNCH: 'NEXT_LAUNCH',
-  UPCOMING_LAUNCH: 'UPCOMING_LAUNCH',
-  PREVIOUS_LAUNCH: 'PREVIOUS_LAUNCH',
-  PAD_LOCATIONS: 'PAD_LOCATIONS',
-  ROCKETS: 'ROCKETS'
-};
-
-},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"5HPDR":[function(require,module,exports) {
+},{"./script":"1aYJp","./countdown":"41IE6","./fetchData":"5HPDR","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./utils/constants":"5StmA"}],"5HPDR":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "fetchData", function () {

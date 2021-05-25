@@ -7,7 +7,7 @@
 * Browsers: last 4 version
 */
 
-@import './config';
+@import "./config";
 
 /*Page transition*/
 .animatein {
@@ -685,7 +685,7 @@ h1 {
   }
 }
 
-[class~='accordion_btn']:last-of-type {
+[class~="accordion_btn"]:last-of-type {
   margin-bottom: 0;
 }
 
@@ -701,7 +701,7 @@ h1 {
 }
 
 .cross::after {
-  content: '';
+  content: "";
   display: block;
   background: #525050;
   width: 1rem;
@@ -715,7 +715,7 @@ h1 {
   padding: 1rem;
 }
 
-[class~='launches_container']:last-of-type {
+[class~="launches_container"]:last-of-type {
   padding-bottom: 0.313rem;
 }
 
@@ -893,9 +893,9 @@ a {
   }
 }
 
-@import './launches';
-@import './rockets';
-@import './about';
-@import './contact';
-@import './home';
-@import './responsive';
+@import "./launches";
+@import "./rockets";
+@import "./about";
+@import "./contact";
+@import "./home";
+@import "./responsive";

@@ -1,21 +1,21 @@
-import { menu } from './script';
-import endpoints, { storage } from './config';
-import { countDownTimer } from './countdown';
-import { fetchData } from './fetchData';
+import { menu } from "./script";
+import endpoints, { storage } from "./utils/constants";
+import { countDownTimer } from "./countdown";
+import { fetchData } from "./fetchData";
 
-window.addEventListener('load', () => {
-  const loader = document.querySelector('.loader-container') as HTMLDivElement;
-  loader.className += ' hidden';
+window.addEventListener("load", () => {
+  const loader = document.querySelector(".loader-container") as HTMLDivElement;
+  loader.className += " hidden";
 
   const scrollIndicator = document.querySelector(
-    '.scroll-indicator'
+    ".scroll-indicator"
   ) as HTMLDivElement;
 
   const scrollPositionTop = window.scrollY;
-  if (scrollPositionTop < 200) scrollIndicator.classList.add('show');
+  if (scrollPositionTop < 200) scrollIndicator.classList.add("show");
 });
 
-countDownTimer(storage.NEXT_LAUNCH, endpoints.NEXT_LAUNCH);
+countDownTimer();
 menu();
 
 const dataFromSessionStorage = sessionStorage.getItem(storage.ROCKETS);
@@ -30,7 +30,7 @@ if (!dataFromSessionStorage) {
 }
 
 function createRocketCards<T extends IObjectFromApiCall>(rockets: T[]): void {
-  const cardsContainer = document.querySelector('.cards') as HTMLDivElement;
+  const cardsContainer = document.querySelector(".cards") as HTMLDivElement;
 
   rockets.forEach((rocket) => {
     cardsContainer.innerHTML += `
@@ -88,20 +88,20 @@ function createRocketCards<T extends IObjectFromApiCall>(rockets: T[]): void {
   });
 }
 
-const scrollToUp = document.querySelector('.scroll-up') as HTMLDivElement;
+const scrollToUp = document.querySelector(".scroll-up") as HTMLDivElement;
 
-window.addEventListener('scroll', () => {
+window.addEventListener("scroll", () => {
   if (window.pageYOffset > 100) {
-    scrollToUp.classList.add('active');
+    scrollToUp.classList.add("active");
   } else {
-    scrollToUp.classList.remove('active');
+    scrollToUp.classList.remove("active");
   }
 });
 
-scrollToUp.addEventListener('click', () => {
+scrollToUp.addEventListener("click", () => {
   window.scrollTo({
     top: 0,
     left: 0,
-    behavior: 'smooth',
+    behavior: "smooth",
   });
 });

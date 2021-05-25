@@ -15,8 +15,8 @@ ul {
   list-style: none;
 }
 
-$font-heading: 'Oswald', sans-serif;
-$font-text: 'Open Sans', sans-serif;
+$font-heading: "Oswald", sans-serif;
+$font-text: "Open Sans", sans-serif;
 
 @mixin primary-font {
   font-family: $font-heading;

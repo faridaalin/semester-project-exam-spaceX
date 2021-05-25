@@ -1,8 +1,9 @@
 import { fetchData } from "./utils/fetchData";
+import { storage } from "./utils/constants";
 import { currentSiteLocation } from "./currentSiteLocation";
 
 // Writes to the DOM
-export const countDownTimer = (key: string, url: string) => {
+export const countDownTimer = () => {
   // Typescript generic type
   const updateEverySec = <T extends IObjectFromApiCall>(nextDate: T): void => {
     console.log("nextDate", nextDate);
@@ -58,13 +59,12 @@ export const countDownTimer = (key: string, url: string) => {
     }, 1000);
   };
 
-  const timer = sessionStorage.getItem(key);
+  const timer = sessionStorage.getItem(storage.NEXT_LAUNCH);
 
   if (!timer) {
     (async () => {
       try {
-        const { data } = await fetchData(key);
-
+        const { data } = await fetchData(storage.NEXT_LAUNCH);
         updateEverySec(data.launchNext);
         currentSiteLocation(data.launchNext);
       } catch (err) {

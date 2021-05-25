@@ -13,7 +13,6 @@ export const query = gql`
       }
       mission_name
       details
-      launch_date_unix
       launch_date_local
     }
   }

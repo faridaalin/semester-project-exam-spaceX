@@ -1,5 +1,5 @@
 import { client } from "../utils/client";
-import { query } from "../query";
+import { query } from "./query";
 
 export const fetchData = async (key: string) => {
   const result = await client.query({ query });

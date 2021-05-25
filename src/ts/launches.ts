@@ -1,14 +1,14 @@
-import { accordion, menu } from './script';
-import endpoints, { storage } from './config';
-import { countDownTimer } from './countdown';
-import { fetchData } from './fetchData';
+import { accordion, menu } from "./script";
+import endpoints, { storage } from "./utils/constants";
+import { countDownTimer } from "./countdown";
+import { fetchData } from "./fetchData";
 
-window.addEventListener('load', () => {
-  const loader = document.querySelector('.loader-container') as HTMLDivElement;
-  loader.className += ' hidden';
+window.addEventListener("load", () => {
+  const loader = document.querySelector(".loader-container") as HTMLDivElement;
+  loader.className += " hidden";
 });
 
-countDownTimer(storage.NEXT_LAUNCH, endpoints.NEXT_LAUNCH);
+countDownTimer();
 accordion();
 menu();
 
@@ -45,7 +45,7 @@ function displayLanuches<T extends IObjectFromApiCall>(
   upcomingLaunches: T[]
 ): void {
   const upcomingLaunchesContainer = document.querySelector(
-    '.upcoming-launches-container'
+    ".upcoming-launches-container"
   ) as HTMLDivElement;
 
   upcomingLaunches.forEach((launch) => {
@@ -53,8 +53,8 @@ function displayLanuches<T extends IObjectFromApiCall>(
     let date: number | string = launchDate.getDate();
     let month: number | string = launchDate.getMonth() + 1;
 
-    date = date < 10 ? '0' + date : date;
-    month = month < 10 ? '0' + month : month;
+    date = date < 10 ? "0" + date : date;
+    month = month < 10 ? "0" + month : month;
 
     upcomingLaunchesContainer.innerHTML += `
     <div class="container">
@@ -83,14 +83,14 @@ function displayPreviousLanuches<T extends IObjectFromApiCall>(
   previousLaunches: T[]
 ): void {
   const previousLaunchContainer = document.querySelector(
-    '.previous-launches-container'
+    ".previous-launches-container"
   ) as HTMLDivElement;
   previousLaunches.forEach((launch) => {
     let launchDate = new Date(launch.launch_date_local);
     let date: number | string = launchDate.getDate();
     let month: number | string = launchDate.getMonth() + 1;
-    date = date < 10 ? '0' + date : date;
-    month = month < 10 ? '0' + month : month;
+    date = date < 10 ? "0" + date : date;
+    month = month < 10 ? "0" + month : month;
 
     previousLaunchContainer.innerHTML += `  <div class="container">
     <div class="launches_container">
@@ -118,29 +118,29 @@ function displayLanuchPads<T extends IObjectFromApiCall>(
   locationPads: T[]
 ): void {
   const californiaLocations = locationPads.filter(function (pad) {
-    return pad.location.region === 'California';
+    return pad.location.region === "California";
   });
   const floridaaLocations = locationPads.filter(function (pad) {
-    return pad.location.region === 'Florida';
+    return pad.location.region === "Florida";
   });
   const texasLocations = locationPads.filter(function (pad) {
-    return pad.location.region === 'Texas';
+    return pad.location.region === "Texas";
   });
   const mIslandLocations = locationPads.filter(function (pad) {
-    return pad.location.region === 'Marshall Islands';
+    return pad.location.region === "Marshall Islands";
   });
 
   const californiaLocationsContainer = document.querySelector(
-    '.location-launches__info__ca'
+    ".location-launches__info__ca"
   ) as HTMLElement;
   const floridaLocationsContainer = document.querySelector(
-    '.location-launches__info__fl'
+    ".location-launches__info__fl"
   ) as HTMLElement;
   const texasLocationsContainer = document.querySelector(
-    '.location-launches__info__tx'
+    ".location-launches__info__tx"
   ) as HTMLElement;
   const mIslandsLocationsContainer = document.querySelector(
-    '.location-launches__info__mi'
+    ".location-launches__info__mi"
   ) as HTMLElement;
 
   createLocationPads(californiaLocations, californiaLocationsContainer);
@@ -178,21 +178,21 @@ function createLocationPads<
   });
 }
 
-const scrollToUp = document.querySelector('.scroll-up') as HTMLDivElement;
+const scrollToUp = document.querySelector(".scroll-up") as HTMLDivElement;
 
-window.addEventListener('scroll', () => {
+window.addEventListener("scroll", () => {
   if (window.pageYOffset > 100) {
-    scrollToUp.classList.add('active');
+    scrollToUp.classList.add("active");
   } else {
-    scrollToUp.classList.remove('active');
+    scrollToUp.classList.remove("active");
   }
 });
 
-scrollToUp.addEventListener('click', scrollToTop);
+scrollToUp.addEventListener("click", scrollToTop);
 function scrollToTop() {
   window.scrollTo({
     top: 0,
     left: 0,
-    behavior: 'smooth',
+    behavior: "smooth",
   });
 }
