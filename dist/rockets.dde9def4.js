@@ -8830,6 +8830,9 @@ _parcelHelpers.export(exports, "launchesUpcoming", function () {
 _parcelHelpers.export(exports, "launchpads", function () {
   return launchpads;
 });
+_parcelHelpers.export(exports, "rockets", function () {
+  return rockets;
+});
 var _graphqlTag = require("graphql-tag");
 var _graphqlTagDefault = _parcelHelpers.interopDefault(_graphqlTag);
 const launchNext = _graphqlTagDefault.default`
@@ -8892,6 +8895,31 @@ const launchpads = _graphqlTagDefault.default`
       details
       status
       name
+    }
+  }
+`;
+const rockets = _graphqlTagDefault.default`
+  query {
+    rockets {
+      name
+      height {
+        meters
+      }
+      diameter {
+        meters
+      }
+      mass {
+        kg
+      }
+      engines {
+        number
+      }
+      description
+      landing_legs {
+        number
+      }
+      type
+      stages
     }
   }
 `;

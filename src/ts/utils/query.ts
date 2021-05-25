@@ -63,3 +63,28 @@ export const launchpads = gql`
     }
   }
 `;
+export const rockets = gql`
+  query {
+    rockets {
+      name
+      height {
+        meters
+      }
+      diameter {
+        meters
+      }
+      mass {
+        kg
+      }
+      engines {
+        number
+      }
+      description
+      landing_legs {
+        number
+      }
+      type
+      stages
+    }
+  }
+`;

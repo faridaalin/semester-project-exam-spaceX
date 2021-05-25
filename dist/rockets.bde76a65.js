@@ -442,12 +442,13 @@ id) /*: string*/
 }
 
 },{}],"5PQGD":[function(require,module,exports) {
+var _libDisplayComponents = require("./lib/displayComponents");
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+var _libDisplayComponentsDefault = _parcelHelpers.interopDefault(_libDisplayComponents);
+var _utilsQuery = require("./utils/query");
 var _script = require("./script");
 var _utilsConstants = require("./utils/constants");
-var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
-var _utilsConstantsDefault = _parcelHelpers.interopDefault(_utilsConstants);
 var _countdown = require("./countdown");
-var _fetchData = require("./fetchData");
 window.addEventListener("load", () => {
   const loader = document.querySelector(".loader-container");
   loader.className += " hidden";
@@ -457,21 +458,25 @@ window.addEventListener("load", () => {
 });
 _countdown.countDownTimer();
 _script.menu();
-const dataFromSessionStorage = sessionStorage.getItem(_utilsConstants.storage.ROCKETS);
-if (!dataFromSessionStorage) {
-  _fetchData.fetchData(_utilsConstants.storage.ROCKETS, _utilsConstantsDefault.default.ROCKETS).then(data => {
-    createRocketCards(data);
-  }).catch(e => console.log(e));
-} else {
-  createRocketCards(JSON.parse(dataFromSessionStorage));
-}
-function createRocketCards(rockets) {
+_libDisplayComponentsDefault.default(_utilsConstants.storage.ROCKETS, createRocketCards, _utilsQuery.rockets);
+// const dataFromSessionStorage = sessionStorage.getItem(storage.ROCKETS);
+// if (!dataFromSessionStorage) {
+// fetchData(storage.ROCKETS, endpoints.ROCKETS)
+// .then((data) => {
+// createRocketCards(data);
+// })
+// .catch((e) => console.log(e));
+// } else {
+// createRocketCards(JSON.parse(dataFromSessionStorage));
+// }
+function createRocketCards(data) {
   const cardsContainer = document.querySelector(".cards");
+  const rockets = data.rockets;
   rockets.forEach(rocket => {
     cardsContainer.innerHTML += `
       <div class="card">
 
-      <h2 class="card__title">${rocket.rocket_name}</h2>
+      <h2 class="card__title">${rocket.name}</h2>
       <div class="card__info">
         <div class="devider">
           <div class="devider-container">
@@ -538,23 +543,27 @@ scrollToUp.addEventListener("click", () => {
   });
 });
 
-},{"./script":"1aYJp","./countdown":"41IE6","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./utils/constants":"5StmA","./fetchData":"5HPDR"}],"5HPDR":[function(require,module,exports) {
+},{"./lib/displayComponents":"7rOp6","./utils/query":"58FSQ","./script":"1aYJp","./utils/constants":"5StmA","./countdown":"41IE6","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"7rOp6":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
-_parcelHelpers.export(exports, "fetchData", function () {
-  return fetchData;
-});
-async function fetchData(key, url) {
-  let response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
+var _utilsFetchData = require("../utils/fetchData");
+const displayComponents = (key, fc, query) => {
+  const dataFromSessionStorage = sessionStorage.getItem(key);
+  if (!dataFromSessionStorage) {
+    (async () => {
+      try {
+        const {data} = await _utilsFetchData.fetchData(key, query);
+        fc(data);
+      } catch (err) {
+        console.log("ERROR🔥", err);
+      }
+    })();
   } else {
-    const data = await response.json();
-    // sessionStorage.setItem(key, JSON.stringify(data));
-    return data;
+    fc(JSON.parse(dataFromSessionStorage));
   }
-}
+};
+exports.default = displayComponents;
 
-},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}]},["4SMmp","5PQGD"], "5PQGD", "parcelRequire144b")
+},{"../utils/fetchData":"5KJHN","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}]},["4SMmp","5PQGD"], "5PQGD", "parcelRequire144b")
 
 //# sourceMappingURL=rockets.bde76a65.js.map

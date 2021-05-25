@@ -66,3 +66,29 @@ interface IUpcomingObject {
 interface IUpcomingLaunches {
   launchesUpcoming: [IUpcomingObject];
 }
+
+interface IRocketTypes {
+  name: string;
+  height: {
+    meters: interger;
+  };
+  diameter: {
+    meters: interger;
+  };
+  mass: {
+    kg: interger;
+  };
+  engines: {
+    number: interger;
+  };
+  description: string;
+  landing_legs: {
+    number: interger;
+  };
+  type: string;
+  stages: interger;
+}
+
+interface IRockets {
+  rockets: [IRocketTypes];
+}

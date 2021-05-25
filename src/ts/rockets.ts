@@ -1,8 +1,9 @@
+import displayComponents from "./lib/displayComponents";
+import { rockets } from "./utils/query";
 import { menu } from "./script";
 import endpoints, { storage } from "./utils/constants";
 import { countDownTimer } from "./countdown";
 import { fetchData } from "./fetchData";
-import displayComponents from "./lib/displayComponents";
 
 window.addEventListener("load", () => {
   const loader = document.querySelector(".loader-container") as HTMLDivElement;
@@ -19,25 +20,28 @@ window.addEventListener("load", () => {
 countDownTimer();
 menu();
 
-const dataFromSessionStorage = sessionStorage.getItem(storage.ROCKETS);
-if (!dataFromSessionStorage) {
-  fetchData(storage.ROCKETS, endpoints.ROCKETS)
-    .then((data) => {
-      createRocketCards(data);
-    })
-    .catch((e) => console.log(e));
-} else {
-  createRocketCards(JSON.parse(dataFromSessionStorage));
-}
+displayComponents(storage.ROCKETS, createRocketCards, rockets);
 
-function createRocketCards<T extends IObjectFromApiCall>(rockets: T[]): void {
+// const dataFromSessionStorage = sessionStorage.getItem(storage.ROCKETS);
+// if (!dataFromSessionStorage) {
+//   fetchData(storage.ROCKETS, endpoints.ROCKETS)
+//     .then((data) => {
+//       createRocketCards(data);
+//     })
+//     .catch((e) => console.log(e));
+// } else {
+//   createRocketCards(JSON.parse(dataFromSessionStorage));
+// }
+
+function createRocketCards<T extends IRockets>(data: T): void {
   const cardsContainer = document.querySelector(".cards") as HTMLDivElement;
+  const rockets = data.rockets;
 
   rockets.forEach((rocket) => {
     cardsContainer.innerHTML += `
       <div class="card">
 
-      <h2 class="card__title">${rocket.rocket_name}</h2>
+      <h2 class="card__title">${rocket.name}</h2>
       <div class="card__info">
         <div class="devider">
           <div class="devider-container">
