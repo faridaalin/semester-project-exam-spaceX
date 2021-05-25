@@ -1,25 +1,26 @@
-import { fetchData } from './fetchData';
-import { currentSiteLocation } from './currentSiteLocation';
+import { fetchData } from "./utils/fetchData";
+import { currentSiteLocation } from "./currentSiteLocation";
 
 // Writes to the DOM
 export const countDownTimer = (key: string, url: string) => {
   // Typescript generic type
   const updateEverySec = <T extends IObjectFromApiCall>(nextDate: T): void => {
-    const countDownDate = nextDate.launch_date_unix;
+    console.log("nextDate", nextDate);
+    const countDownDate = nextDate.launch_date_local;
     const day = document.querySelectorAll(
-      '.days'
+      ".days"
     ) as NodeListOf<HTMLSpanElement>;
     const hrs = document.querySelectorAll(
-      '.hours'
+      ".hours"
     ) as NodeListOf<HTMLSpanElement>;
     const minutes = document.querySelectorAll(
-      '.min'
+      ".min"
     ) as NodeListOf<HTMLSpanElement>;
     const seconds = document.querySelectorAll(
-      '.sec'
+      ".sec"
     ) as NodeListOf<HTMLSpanElement>;
     const nextLanunchText = document.querySelector(
-      '.inner-counter p'
+      ".inner-counter p"
     ) as HTMLParagraphElement;
 
     setInterval(() => {
@@ -39,31 +40,37 @@ export const countDownTimer = (key: string, url: string) => {
 
         day.forEach((el) => (el.innerHTML = `${days}`));
         hrs.forEach(
-          (el) => (el.innerHTML = `${hours < 10 ? '0' : ''} ${hours}`)
+          (el) => (el.innerHTML = `${hours < 10 ? "0" : ""} ${hours}`)
         );
         minutes.forEach(
-          (el) => (el.innerHTML = `${min < 10 ? '0' : ''} ${min}`)
+          (el) => (el.innerHTML = `${min < 10 ? "0" : ""} ${min}`)
         );
         seconds.forEach(
-          (el) => (el.innerHTML = `${sec < 10 ? '0' : ''} ${sec}`)
+          (el) => (el.innerHTML = `${sec < 10 ? "0" : ""} ${sec}`)
         );
       } else {
-        day.forEach((el) => (el.textContent = '00'));
-        hrs.forEach((el) => (el.textContent = '00'));
-        minutes.forEach((el) => (el.textContent = '00'));
-        seconds.forEach((el) => (el.textContent = '00'));
-        nextLanunchText.textContent = 'Launch has ended';
+        day.forEach((el) => (el.textContent = "00"));
+        hrs.forEach((el) => (el.textContent = "00"));
+        minutes.forEach((el) => (el.textContent = "00"));
+        seconds.forEach((el) => (el.textContent = "00"));
+        nextLanunchText.textContent = "Launch has ended";
       }
     }, 1000);
   };
+
   const timer = sessionStorage.getItem(key);
+
   if (!timer) {
-    fetchData(key, url)
-      .then((data) => {
-        updateEverySec(data);
-        currentSiteLocation(data);
-      })
-      .catch((e) => console.log(e));
+    (async () => {
+      try {
+        const { data } = await fetchData(key);
+
+        updateEverySec(data.launchNext);
+        currentSiteLocation(data.launchNext);
+      } catch (err) {
+        console.log("ERROR🔥", err);
+      }
+    })();
   } else {
     updateEverySec(JSON.parse(timer));
     currentSiteLocation(JSON.parse(timer));

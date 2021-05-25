@@ -1,12 +1,13 @@
-import { accordion, menu } from './script';
-import endpoints, { storage } from './config';
-import { countDownTimer } from './countdown';
-import { fetchData } from './fetchData';
+import { DateTime } from "luxon";
+import { accordion, menu } from "./script";
+import { fetchData } from "./utils/fetchData";
+import endpoints, { storage } from "./config";
+import { countDownTimer } from "./countdown";
 
-window.addEventListener('load', () => {
-  const loader = document.querySelector('.loader-container');
+window.addEventListener("load", () => {
+  const loader = document.querySelector(".loader-container");
   if (loader) {
-    loader.className += ' hidden';
+    loader.className += " hidden";
   }
 });
 
@@ -21,11 +22,14 @@ const dataFromSessionStorage: string | null = sessionStorage.getItem(
 );
 
 if (!dataFromSessionStorage) {
-  fetchData(storage.NEXT_LAUNCH, endpoints.NEXT_LAUNCH)
-    .then((data) => {
-      displayNextLaunch(data);
-    })
-    .catch((e) => console.log(e));
+  (async () => {
+    try {
+      const { data } = await fetchData(storage.NEXT_LAUNCH);
+      displayNextLaunch(data.launchNext);
+    } catch (err) {
+      console.log("ERROR🔥", err);
+    }
+  })();
 } else {
   nextLaunch = JSON.parse(dataFromSessionStorage);
   displayNextLaunch(nextLaunch);
@@ -34,24 +38,26 @@ if (!dataFromSessionStorage) {
 // DOM interaction
 function displayNextLaunch<T extends IObjectFromApiCall>(data: T): void {
   const nextLaunchContainer = document.querySelector(
-    '.next-launch'
+    ".next-launch"
   ) as HTMLDivElement;
   const nextLaunchInfo = document.querySelector(
-    '.next-launch-info__first-part'
+    ".next-launch-info__first-part"
   ) as HTMLDivElement;
+  console.log("HOME DATA", data);
 
   let launchDate = new Date(data.launch_date_local);
-  let date = launchDate.getDate();
-  let month: number | string = launchDate.getMonth() + 1;
-  month = month < 10 ? month.toString() + '0' : month;
+  let date = Intl.DateTimeFormat(navigator.language, {
+    month: "long",
+    day: "numeric",
+  }).format(new Date(data.launch_date_local));
 
   const today = new Date().getTime();
 
   nextLaunchContainer.innerHTML = `<div>
-  <p>${today > launchDate.getTime() ? 'Last Launch Was:' : 'Next Launch'}</p>
-  <span class="year">${data.launch_year}</span>
-  <span class="month">${month}/${date}</span>
-</div>`;
+    <p>${today > launchDate.getTime() ? "Latest Launch" : "Next Launch"}</p>
+    <span class="year">${data.launch_year}</span>
+    <span class="month">${date}</span>
+  </div>`;
 
   nextLaunchInfo.innerHTML = `
 <div class="info-container">
@@ -69,7 +75,7 @@ function displayNextLaunch<T extends IObjectFromApiCall>(data: T): void {
   <p class="info__text highlighted">${data.mission_name}</p>
 </div>`;
 
-  const nextLaunchDetails = <HTMLElement>document.querySelector('.details');
+  const nextLaunchDetails = <HTMLElement>document.querySelector(".details");
   if (nextLaunchDetails) {
     nextLaunchDetails.innerHTML = ` <div class="accordion-item-content"><p class="info__text"></p>${data.details}</div`;
   }

@@ -4,7 +4,7 @@
   "description": "> Space X / NASA Microsite",
   "scripts": {
     "serve": "parcel serve src/**/*.html",
-    "develop": "parcel src/index.html /src/about.html /src/contact.html src/launches.html src/rockets.html",
+    "develop": "parcel src/index.html src/about.html src/contact.html src/launches.html src/rockets.html",
     "build": "parcel build src/index.html",
     "test": "jest"
   },
@@ -25,6 +25,7 @@
   "devDependencies": {
     "@parcel/transformer-sass": "^2.0.0-nightly.628",
     "@types/jest": "^26.0.20",
+    "@types/luxon": "^1.26.5",
     "jest": "^26.6.3",
     "package-lock.json": "^1.0.0",
     "parcel": "^2.0.0-beta.1",
@@ -33,6 +34,12 @@
     "typescript": "^4.1.5"
   },
   "dependencies": {
+    "apollo-cache-inmemory": "^1.6.6",
+    "apollo-client": "^2.6.10",
+    "apollo-link-http": "^1.5.17",
+    "graphql": "^15.5.0",
+    "graphql-tag": "^2.12.4",
+    "luxon": "^1.27.0",
     "parcel": "^2.0.0-beta.1"
   },
   "resolutions": {

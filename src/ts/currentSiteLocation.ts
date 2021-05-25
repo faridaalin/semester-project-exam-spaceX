@@ -2,9 +2,9 @@ export function currentSiteLocation<T extends IObjectFromApiCall>(
   data: T
 ): void {
   const siteLocationFromApi = data.launch_site.site_id;
-  const area: NodeListOf<HTMLParagraphElement> = document.querySelectorAll(
-    '.area'
-  );
+
+  const area: NodeListOf<HTMLParagraphElement> =
+    document.querySelectorAll(".area");
 
   area.forEach((location) => {
     if (location.parentElement) {
@@ -12,7 +12,7 @@ export function currentSiteLocation<T extends IObjectFromApiCall>(
 
       if (siteLocationFromApi === location.id) {
         if (title) {
-          title.children[0].classList.add('active-location');
+          title.children[0].classList.add("active-location");
         }
       }
     }
