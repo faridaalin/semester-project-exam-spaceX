@@ -462,7 +462,6 @@ _script.menu();
 _libDisplayComponentsDefault.default(_utilsConstants.storage.NEXT_LAUNCH, displayNextLaunch, _utilsQuery.launchNext);
 // DOM interaction
 function displayNextLaunch(result) {
-  console.log("displayNextLaunch", result);
   const data = result.launchNext;
   const nextLaunchContainer = document.querySelector(".next-launch");
   const nextLaunchInfo = document.querySelector(".next-launch-info__first-part");

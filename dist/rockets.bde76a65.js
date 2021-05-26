@@ -462,7 +462,6 @@ _libDisplayComponentsDefault.default(_utilsConstants.storage.ROCKETS, createRock
 function createRocketCards(data) {
   const cardsContainer = document.querySelector(".cards");
   const rockets = data.rockets;
-  console.log("ROCKETS:", data);
   rockets.forEach(rocket => {
     cardsContainer.innerHTML += `
       <div class="card">
