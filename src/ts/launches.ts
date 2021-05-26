@@ -1,7 +1,7 @@
 import displayComponents from "./lib/displayComponents";
 import { launchesPast, launchesUpcoming, launchpads } from "./utils/query";
 import { accordion, menu } from "./script";
-import { storage } from "./utils/constants";
+import { storage, locations } from "./utils/constants";
 import { countDownTimer } from "./countdown";
 
 window.addEventListener("load", () => {
@@ -21,7 +21,6 @@ displayComponents(storage.UPCOMING_LAUNCH, displayLanuches, launchesUpcoming);
 displayComponents(storage.PAD_LOCATIONS, displayLanuchPads, launchpads);
 
 function displayLanuches<T extends IUpcomingLaunches>(data: T): void {
-  console.log("data", data);
   const upcomingLaunches = data.launchesUpcoming;
 
   const upcomingLaunchesContainer = document.querySelector(
@@ -96,18 +95,18 @@ function displayPreviousLanuches<T extends IPreviousLaunches>(data: T): void {
 function displayLanuchPads<T extends ILaunchPads>(data: T): void {
   const locationPads = data.launchpads;
 
-  const californiaLocations = locationPads.filter(function (pad: IPads) {
-    return pad.location.region === "California";
-  });
-  const floridaaLocations = locationPads.filter(function (pad: IPads) {
-    return pad.location.region === "Florida";
-  });
-  const texasLocations = locationPads.filter(function (pad: IPads) {
-    return pad.location.region === "Texas";
-  });
-  const mIslandLocations = locationPads.filter(function (pad: IPads) {
-    return pad.location.region === "Marshall Islands";
-  });
+  const californiaLocations = locationPads.filter(
+    (pad: Pads) => pad.location.region === locations.CALIFORNIA
+  );
+  const floridaaLocations = locationPads.filter(
+    (pad: Pads) => pad.location.region === locations.FLORIDA
+  );
+  const texasLocations = locationPads.filter(
+    (pad: Pads) => pad.location.region === locations.TEXAS
+  );
+  const mIslandLocations = locationPads.filter(
+    (pad: Pads) => pad.location.region === locations.MI
+  );
 
   const californiaLocationsContainer = document.querySelector(
     ".location-launches__info__ca"
@@ -128,10 +127,10 @@ function displayLanuchPads<T extends ILaunchPads>(data: T): void {
   createLocationPads(mIslandLocations, mIslandsLocationsContainer);
 }
 
-function createLocationPads<
-  T extends IObjectFromApiCall,
-  U extends HTMLElement
->(array: T[], container: U): void {
+function createLocationPads<T extends Pads, U extends HTMLElement>(
+  array: T[],
+  container: U
+): void {
   array.forEach((item) => {
     let status = item.status[0].toUpperCase() + item.status.slice(1);
 

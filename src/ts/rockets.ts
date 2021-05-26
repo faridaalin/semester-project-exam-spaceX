@@ -22,20 +22,10 @@ menu();
 
 displayComponents(storage.ROCKETS, createRocketCards, rockets);
 
-// const dataFromSessionStorage = sessionStorage.getItem(storage.ROCKETS);
-// if (!dataFromSessionStorage) {
-//   fetchData(storage.ROCKETS, endpoints.ROCKETS)
-//     .then((data) => {
-//       createRocketCards(data);
-//     })
-//     .catch((e) => console.log(e));
-// } else {
-//   createRocketCards(JSON.parse(dataFromSessionStorage));
-// }
-
 function createRocketCards<T extends IRockets>(data: T): void {
   const cardsContainer = document.querySelector(".cards") as HTMLDivElement;
   const rockets = data.rockets;
+  console.log("ROCKETS:", data);
 
   rockets.forEach((rocket) => {
     cardsContainer.innerHTML += `

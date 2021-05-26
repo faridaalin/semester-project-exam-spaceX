@@ -459,19 +459,10 @@ window.addEventListener("load", () => {
 _countdown.countDownTimer();
 _script.menu();
 _libDisplayComponentsDefault.default(_utilsConstants.storage.ROCKETS, createRocketCards, _utilsQuery.rockets);
-// const dataFromSessionStorage = sessionStorage.getItem(storage.ROCKETS);
-// if (!dataFromSessionStorage) {
-// fetchData(storage.ROCKETS, endpoints.ROCKETS)
-// .then((data) => {
-// createRocketCards(data);
-// })
-// .catch((e) => console.log(e));
-// } else {
-// createRocketCards(JSON.parse(dataFromSessionStorage));
-// }
 function createRocketCards(data) {
   const cardsContainer = document.querySelector(".cards");
   const rockets = data.rockets;
+  console.log("ROCKETS:", data);
   rockets.forEach(rocket => {
     cardsContainer.innerHTML += `
       <div class="card">
@@ -547,19 +538,19 @@ scrollToUp.addEventListener("click", () => {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 var _utilsFetchData = require("../utils/fetchData");
-const displayComponents = (key, fc, query) => {
+const displayComponents = (key, callback, query) => {
   const dataFromSessionStorage = sessionStorage.getItem(key);
   if (!dataFromSessionStorage) {
     (async () => {
       try {
         const {data} = await _utilsFetchData.fetchData(key, query);
-        fc(data);
+        callback(data);
       } catch (err) {
         console.log("ERROR🔥", err);
       }
     })();
   } else {
-    fc(JSON.parse(dataFromSessionStorage));
+    callback(JSON.parse(dataFromSessionStorage));
   }
 };
 exports.default = displayComponents;

@@ -15,3 +15,10 @@ export const storage: IEndpoints = {
   PAD_LOCATIONS: "PAD_LOCATIONS",
   ROCKETS: "ROCKETS",
 };
+
+export const locations: IRegions = {
+  MI: "Marshall Islands",
+  TEXAS: "Texas",
+  FLORIDA: "Florida",
+  CALIFORNIA: "California",
+};

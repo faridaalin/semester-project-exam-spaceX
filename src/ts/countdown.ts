@@ -6,8 +6,8 @@ import { currentSiteLocation } from "./currentSiteLocation";
 // Writes to the DOM
 export const countDownTimer = () => {
   // Typescript generic type
-  const updateEverySec = <T extends IObjectFromApiCall>(nextDate: T): void => {
-    const countDownDate = nextDate.launch_date_local;
+  const updateEverySec = <T extends INextDate>(nextDate: T): void => {
+    const countDownDate = Date.parse(nextDate.launch_date_local);
     const day = document.querySelectorAll(
       ".days"
     ) as NodeListOf<HTMLSpanElement>;

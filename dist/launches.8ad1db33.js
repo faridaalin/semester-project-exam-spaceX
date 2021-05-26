@@ -460,7 +460,6 @@ _libDisplayComponentsDefault.default(_utilsConstants.storage.PREVIOUS_LAUNCH, di
 _libDisplayComponentsDefault.default(_utilsConstants.storage.UPCOMING_LAUNCH, displayLanuches, _utilsQuery.launchesUpcoming);
 _libDisplayComponentsDefault.default(_utilsConstants.storage.PAD_LOCATIONS, displayLanuchPads, _utilsQuery.launchpads);
 function displayLanuches(data) {
-  console.log("data", data);
   const upcomingLaunches = data.launchesUpcoming;
   const upcomingLaunchesContainer = document.querySelector(".upcoming-launches-container");
   upcomingLaunches.forEach(launch => {
@@ -523,18 +522,10 @@ function displayPreviousLanuches(data) {
 }
 function displayLanuchPads(data) {
   const locationPads = data.launchpads;
-  const californiaLocations = locationPads.filter(function (pad) {
-    return pad.location.region === "California";
-  });
-  const floridaaLocations = locationPads.filter(function (pad) {
-    return pad.location.region === "Florida";
-  });
-  const texasLocations = locationPads.filter(function (pad) {
-    return pad.location.region === "Texas";
-  });
-  const mIslandLocations = locationPads.filter(function (pad) {
-    return pad.location.region === "Marshall Islands";
-  });
+  const californiaLocations = locationPads.filter(pad => pad.location.region === _utilsConstants.locations.CALIFORNIA);
+  const floridaaLocations = locationPads.filter(pad => pad.location.region === _utilsConstants.locations.FLORIDA);
+  const texasLocations = locationPads.filter(pad => pad.location.region === _utilsConstants.locations.TEXAS);
+  const mIslandLocations = locationPads.filter(pad => pad.location.region === _utilsConstants.locations.MI);
   const californiaLocationsContainer = document.querySelector(".location-launches__info__ca");
   const floridaLocationsContainer = document.querySelector(".location-launches__info__fl");
   const texasLocationsContainer = document.querySelector(".location-launches__info__tx");
@@ -589,19 +580,19 @@ function scrollToTop() {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 var _utilsFetchData = require("../utils/fetchData");
-const displayComponents = (key, fc, query) => {
+const displayComponents = (key, callback, query) => {
   const dataFromSessionStorage = sessionStorage.getItem(key);
   if (!dataFromSessionStorage) {
     (async () => {
       try {
         const {data} = await _utilsFetchData.fetchData(key, query);
-        fc(data);
+        callback(data);
       } catch (err) {
         console.log("ERROR🔥", err);
       }
     })();
   } else {
-    fc(JSON.parse(dataFromSessionStorage));
+    callback(JSON.parse(dataFromSessionStorage));
   }
 };
 exports.default = displayComponents;
@@ -28080,6 +28071,9 @@ _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "storage", function () {
   return storage;
 });
+_parcelHelpers.export(exports, "locations", function () {
+  return locations;
+});
 const endpoints = {
   NEXT_LAUNCH: "https://api.spacexdata.com/v3/launches/next",
   UPCOMING_LAUNCH: "https://api.spacexdata.com/v3/launches/upcoming",
@@ -28095,6 +28089,12 @@ const storage = {
   PAD_LOCATIONS: "PAD_LOCATIONS",
   ROCKETS: "ROCKETS"
 };
+const locations = {
+  MI: "Marshall Islands",
+  TEXAS: "Texas",
+  FLORIDA: "Florida",
+  CALIFORNIA: "California"
+};
 
 },{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"41IE6":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
@@ -28109,7 +28109,7 @@ var _currentSiteLocation = require("./currentSiteLocation");
 const countDownTimer = () => {
   // Typescript generic type
   const updateEverySec = nextDate => {
-    const countDownDate = nextDate.launch_date_local;
+    const countDownDate = Date.parse(nextDate.launch_date_local);
     const day = document.querySelectorAll(".days");
     const hrs = document.querySelectorAll(".hours");
     const minutes = document.querySelectorAll(".min");
@@ -28156,7 +28156,7 @@ const countDownTimer = () => {
   }
 };
 
-},{"./utils/fetchData":"5KJHN","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./currentSiteLocation":"7zJAJ","./utils/constants":"5StmA","./utils/query":"58FSQ"}],"7zJAJ":[function(require,module,exports) {
+},{"./utils/fetchData":"5KJHN","./utils/query":"58FSQ","./utils/constants":"5StmA","./currentSiteLocation":"7zJAJ","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"7zJAJ":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "currentSiteLocation", function () {

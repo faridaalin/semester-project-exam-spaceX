@@ -20,7 +20,8 @@ menu();
 displayComponents(storage.NEXT_LAUNCH, displayNextLaunch, launchNext);
 
 // DOM interaction
-function displayNextLaunch<T extends IObjectFromApiCall>(result: T): void {
+function displayNextLaunch<T extends INextLaunch>(result: T): void {
+  console.log("displayNextLaunch", result);
   const data = result.launchNext;
   const nextLaunchContainer = document.querySelector(
     ".next-launch"

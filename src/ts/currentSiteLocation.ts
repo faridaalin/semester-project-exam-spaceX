@@ -1,6 +1,4 @@
-export function currentSiteLocation<T extends IObjectFromApiCall>(
-  data: T
-): void {
+export function currentSiteLocation<T extends SiteLocation>(data: T): void {
   const siteLocationFromApi = data.launch_site.site_id;
 
   const area: NodeListOf<HTMLParagraphElement> =
