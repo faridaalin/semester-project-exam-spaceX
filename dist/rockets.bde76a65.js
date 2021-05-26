@@ -537,6 +537,8 @@ scrollToUp.addEventListener("click", () => {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 var _utilsFetchData = require("../utils/fetchData");
+var _utilsErrorMessage = require("../utils/errorMessage");
+var _utilsErrorMessageDefault = _parcelHelpers.interopDefault(_utilsErrorMessage);
 const displayComponents = (key, callback, query) => {
   const dataFromSessionStorage = sessionStorage.getItem(key);
   if (!dataFromSessionStorage) {
@@ -545,7 +547,8 @@ const displayComponents = (key, callback, query) => {
         const {data} = await _utilsFetchData.fetchData(key, query);
         callback(data);
       } catch (err) {
-        console.log("ERROR🔥", err);
+        _utilsErrorMessageDefault.default(err);
+        if (err) throw new Error(`HTTP error! ${err}`);
       }
     })();
   } else {
@@ -554,6 +557,6 @@ const displayComponents = (key, callback, query) => {
 };
 exports.default = displayComponents;
 
-},{"../utils/fetchData":"5KJHN","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}]},["4SMmp","5PQGD"], "5PQGD", "parcelRequire144b")
+},{"../utils/fetchData":"5KJHN","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../utils/errorMessage":"2gQf4"}]},["4SMmp","5PQGD"], "5PQGD", "parcelRequire144b")
 
 //# sourceMappingURL=rockets.bde76a65.js.map

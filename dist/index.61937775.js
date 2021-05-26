@@ -501,6 +501,8 @@ function displayNextLaunch(result) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 var _utilsFetchData = require("../utils/fetchData");
+var _utilsErrorMessage = require("../utils/errorMessage");
+var _utilsErrorMessageDefault = _parcelHelpers.interopDefault(_utilsErrorMessage);
 const displayComponents = (key, callback, query) => {
   const dataFromSessionStorage = sessionStorage.getItem(key);
   if (!dataFromSessionStorage) {
@@ -509,7 +511,8 @@ const displayComponents = (key, callback, query) => {
         const {data} = await _utilsFetchData.fetchData(key, query);
         callback(data);
       } catch (err) {
-        console.log("ERROR🔥", err);
+        _utilsErrorMessageDefault.default(err);
+        if (err) throw new Error(`HTTP error! ${err}`);
       }
     })();
   } else {
@@ -518,7 +521,7 @@ const displayComponents = (key, callback, query) => {
 };
 exports.default = displayComponents;
 
-},{"../utils/fetchData":"5KJHN","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"5KJHN":[function(require,module,exports) {
+},{"../utils/fetchData":"5KJHN","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../utils/errorMessage":"2gQf4"}],"5KJHN":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "fetchData", function () {
@@ -8831,7 +8834,20 @@ exports.export = function (dest, destName, get) {
     get: get
   });
 };
-},{}],"58FSQ":[function(require,module,exports) {
+},{}],"2gQf4":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+const errorMessage = msg => {
+  const main = document.querySelector("  main");
+  main.innerHTML = "";
+  let messageContainer = document.createElement("div");
+  messageContainer.innerText = msg;
+  messageContainer.classList.add("message");
+  main.appendChild(messageContainer);
+};
+exports.default = errorMessage;
+
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"58FSQ":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "launchNext", function () {
@@ -28027,6 +28043,8 @@ var _utilsFetchData = require("./utils/fetchData");
 var _utilsQuery = require("./utils/query");
 var _utilsConstants = require("./utils/constants");
 var _currentSiteLocation = require("./currentSiteLocation");
+var _utilsErrorMessage = require("./utils/errorMessage");
+var _utilsErrorMessageDefault = _parcelHelpers.interopDefault(_utilsErrorMessage);
 const countDownTimer = () => {
   // Typescript generic type
   const updateEverySec = nextDate => {
@@ -28068,7 +28086,8 @@ const countDownTimer = () => {
         updateEverySec(data.launchNext);
         _currentSiteLocation.currentSiteLocation(data.launchNext);
       } catch (err) {
-        console.log("ERROR🔥", err);
+        _utilsErrorMessageDefault.default(err);
+        if (err) throw new Error(err);
       }
     })();
   } else {
@@ -28077,7 +28096,7 @@ const countDownTimer = () => {
   }
 };
 
-},{"./utils/fetchData":"5KJHN","./utils/query":"58FSQ","./utils/constants":"5StmA","./currentSiteLocation":"7zJAJ","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"7zJAJ":[function(require,module,exports) {
+},{"./utils/fetchData":"5KJHN","./utils/query":"58FSQ","./utils/constants":"5StmA","./currentSiteLocation":"7zJAJ","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./utils/errorMessage":"2gQf4"}],"7zJAJ":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "currentSiteLocation", function () {

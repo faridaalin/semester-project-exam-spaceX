@@ -577,6 +577,8 @@ var _utilsFetchData = require("./utils/fetchData");
 var _utilsQuery = require("./utils/query");
 var _utilsConstants = require("./utils/constants");
 var _currentSiteLocation = require("./currentSiteLocation");
+var _utilsErrorMessage = require("./utils/errorMessage");
+var _utilsErrorMessageDefault = _parcelHelpers.interopDefault(_utilsErrorMessage);
 const countDownTimer = () => {
   // Typescript generic type
   const updateEverySec = nextDate => {
@@ -618,7 +620,8 @@ const countDownTimer = () => {
         updateEverySec(data.launchNext);
         _currentSiteLocation.currentSiteLocation(data.launchNext);
       } catch (err) {
-        console.log("ERROR🔥", err);
+        _utilsErrorMessageDefault.default(err);
+        if (err) throw new Error(err);
       }
     })();
   } else {
@@ -627,7 +630,7 @@ const countDownTimer = () => {
   }
 };
 
-},{"./utils/fetchData":"5KJHN","./utils/query":"58FSQ","./utils/constants":"5StmA","./currentSiteLocation":"7zJAJ","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"5KJHN":[function(require,module,exports) {
+},{"./utils/fetchData":"5KJHN","./utils/query":"58FSQ","./utils/constants":"5StmA","./currentSiteLocation":"7zJAJ","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./utils/errorMessage":"2gQf4"}],"5KJHN":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "fetchData", function () {
@@ -28074,6 +28077,19 @@ function currentSiteLocation(data) {
     }
   });
 }
+
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"2gQf4":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+const errorMessage = msg => {
+  const main = document.querySelector("  main");
+  main.innerHTML = "";
+  let messageContainer = document.createElement("div");
+  messageContainer.innerText = msg;
+  messageContainer.classList.add("message");
+  main.appendChild(messageContainer);
+};
+exports.default = errorMessage;
 
 },{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"6zf8h":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");

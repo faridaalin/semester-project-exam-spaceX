@@ -18,6 +18,17 @@ ul {
   text-decoration: none;
   list-style: none;
 }
+.main .message {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  color: #fffafa;
+  background: #d2220012;
+  border: 2px solid #a22917;
+  padding: 32px;
+  font-weight: 200;
+  line-height: 2;
+  margin-top: 32px;
+}
 /*Page transition*/
 .animatein {
   -webkit-animation: transitionIn 0.75s;
@@ -1343,6 +1354,9 @@ span {
   font-size: 1.3rem;
   text-align: right;
   font-weight: 400;
+  -webkit-transform: translateY(-12.063px);
+  -ms-transform: translateY(-12.063px);
+  transform: translateY(-12.063px);
 }
 .month {
   min-width: 100px;

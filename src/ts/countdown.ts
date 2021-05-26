@@ -2,6 +2,7 @@ import { fetchData } from "./utils/fetchData";
 import { launchNext } from "./utils/query";
 import { storage } from "./utils/constants";
 import { currentSiteLocation } from "./currentSiteLocation";
+import errorMessage from "./utils/errorMessage";
 
 // Writes to the DOM
 export const countDownTimer = () => {
@@ -68,7 +69,8 @@ export const countDownTimer = () => {
         updateEverySec(data.launchNext);
         currentSiteLocation(data.launchNext);
       } catch (err) {
-        console.log("ERROR🔥", err);
+        errorMessage(err);
+        if (err) throw new Error(err);
       }
     })();
   } else {

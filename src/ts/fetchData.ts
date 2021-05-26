@@ -4,7 +4,7 @@ export async function fetchData(key: string, url: string): Promise<object[]> {
     throw new Error(`HTTP error! status: ${response.status}`);
   } else {
     const data = await response.json();
-    // sessionStorage.setItem(key, JSON.stringify(data));
+    sessionStorage.setItem(key, JSON.stringify(data));
     return data;
   }
 }
