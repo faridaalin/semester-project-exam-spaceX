@@ -42,7 +42,7 @@ interface Details {
   [key: string]: string;
 }
 
-type LaunchObj = {
+type Launch = {
   launch_site: LaunchSiteObj;
   launch_year: LaunchYear;
   rocket: Rocket;
@@ -52,12 +52,12 @@ type LaunchObj = {
 };
 
 interface INextLaunch {
-  launchNext: LaunchObj;
+  launchNext: Launch;
 }
 
-type INextDate = LaunchObj;
+type INextDate = Launch;
 
-type SiteLocation = LaunchObj;
+type SiteLocation = Launch;
 
 type Pads = {
   location: ILocations;
@@ -70,7 +70,7 @@ interface ILaunchPads {
   launchpads: [Pads];
 }
 
-type PrevObject = {
+type Prev = {
   launch_date_local: string;
   launch_site: LaunchSiteObj;
   rocket: Rocket;
@@ -81,12 +81,11 @@ type PrevObject = {
 };
 
 interface IPreviousLaunches {
-  launchesPast: [PrevObject];
+  launchesPast: [Prev];
 }
 
-type UpcomingObject = LaunchObj;
 interface IUpcomingLaunches {
-  launchesUpcoming: [UpcomingObject];
+  launchesUpcoming: [Prev];
 }
 
 type RocketTypes = {

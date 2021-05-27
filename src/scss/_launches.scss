@@ -11,7 +11,6 @@
     background-color: $color-black;
     background-size: cover;
     background-position: 25% 31%;
-
   }
 
   .overlay {
@@ -27,6 +26,16 @@
       color: $color-light-grey;
       font-family: $font-text;
       font-size: 0.75rem;
+    }
+
+    .info__link {
+      color: #44b9b0f0;
+      font-family: $font-text;
+      font-size: 0.75rem;
+
+      &:hover {
+        color: #51b9b2f0;
+      }
     }
 
     .hr-break {
@@ -54,9 +63,9 @@
     .accordion_btn:hover {
       background: rgba(64, 63, 63, 0.7);
       border-radius: 0;
-      -webkit-transition: all .3s ease-in-out;
-      -o-transition: all .3s ease-in-out;
-      transition: all .3s ease-in-out;
+      -webkit-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
     }
 
     .accordion_btn:hover .cross {
@@ -137,8 +146,6 @@
         width: 94%;
       }
     }
-
-
   }
 
   .container {
@@ -166,7 +173,6 @@
         font-family: $font-text;
         text-transform: uppercase;
         color: $color-dark-grey;
-
       }
     }
   }

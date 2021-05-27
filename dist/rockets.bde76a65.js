@@ -449,39 +449,43 @@ var _utilsQuery = require("./utils/query");
 var _script = require("./script");
 var _utilsConstants = require("./utils/constants");
 var _countdown = require("./countdown");
-window.addEventListener("load", () => {
-  const loader = document.querySelector(".loader-container");
-  loader.className += " hidden";
-  const scrollIndicator = document.querySelector(".scroll-indicator");
-  const scrollPositionTop = window.scrollY;
-  if (scrollPositionTop < 200) scrollIndicator.classList.add("show");
-});
+var _componentsCard = require("./components/card");
+var _libScrollHandler = require("./lib/scrollHandler");
+var _libLoader = require("./lib/loader");
+var _libLoaderDefault = _parcelHelpers.interopDefault(_libLoader);
+_libLoaderDefault.default();
 _countdown.countDownTimer();
 _script.menu();
-_libDisplayComponentsDefault.default(_utilsConstants.storage.ROCKETS, createRocketCards, _utilsQuery.rockets);
-function createRocketCards(data) {
+_libScrollHandler.scrollToUp();
+_libDisplayComponentsDefault.default(_utilsConstants.storage.ROCKETS, _componentsCard.createRocketCards, _utilsQuery.rockets);
+
+},{"./script":"1aYJp","./countdown":"41IE6","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./components/card":"3IHQF","./lib/loader":"7ndI1","./lib/displayComponents":"7rOp6","./utils/query":"58FSQ","./utils/constants":"5StmA","./lib/scrollHandler":"1kM1w"}],"3IHQF":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+_parcelHelpers.export(exports, "createRocketCards", function () {
+  return createRocketCards;
+});
+const card = item => {
   const cardsContainer = document.querySelector(".cards");
-  const rockets = data.rockets;
-  rockets.forEach(rocket => {
-    cardsContainer.innerHTML += `
+  cardsContainer.innerHTML += `
       <div class="card">
 
-      <h2 class="card__title">${rocket.name}</h2>
+      <h2 class="card__title">${item.name}</h2>
       <div class="card__info">
         <div class="devider">
           <div class="devider-container">
             <div class="devider-1">
               <div class="info-container">
                 <p class="info__name">Diameter</p>
-                <p class="info__text">${rocket.diameter.meters} m</p>
+                <p class="info__text">${item.diameter.meters} m</p>
               </div>
               <div class="info-container">
                 <p class="info__name">Height</p>
-                <p class="info__text">${rocket.height.meters} m</p>
+                <p class="info__text">${item.height.meters} m</p>
               </div>
               <div class="info-container">
                 <p class="info__name">Mass</p>
-                <p class="info__text">${rocket.mass.kg} kg</p>
+                <p class="info__text">${item.mass.kg} kg</p>
               </div>
             </div>
 
@@ -491,17 +495,17 @@ function createRocketCards(data) {
             <div class="devider-2">
               <div class="info-container">
                 <p class="info__name">Landing Legs</p>
-                <p class="info__text">${rocket.landing_legs.number}</p>
+                <p class="info__text">${item.landing_legs.number}</p>
               </div>
 
               <div class="info-container">
                 <p class="info__name">Engines</p>
-                <p class="info__text">${rocket.engines.number}</p>
+                <p class="info__text">${item.engines.number}</p>
               </div>
 
               <div class="info-container">
                 <p class="info__name">Stages</p>
-                <p class="info__text">${rocket.stages}</p>
+                <p class="info__text">${item.stages}</p>
               </div>
             </div>
           </div>
@@ -511,29 +515,30 @@ function createRocketCards(data) {
       </hr>
       <div class="card__description">
       <div class="accordion-item-content">
-        <p>${rocket.description}</p>
+        <p>${item.description}</p>
         </div>
       </div>
     </div>`;
+};
+exports.default = card;
+function createRocketCards(data) {
+  data.rockets.forEach(rocket => {
+    card(rocket);
   });
 }
-const scrollToUp = document.querySelector(".scroll-up");
-window.addEventListener("scroll", () => {
-  if (window.pageYOffset > 100) {
-    scrollToUp.classList.add("active");
-  } else {
-    scrollToUp.classList.remove("active");
-  }
-});
-scrollToUp.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: "smooth"
-  });
-});
 
-},{"./lib/displayComponents":"7rOp6","./utils/query":"58FSQ","./script":"1aYJp","./utils/constants":"5StmA","./countdown":"41IE6","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"7rOp6":[function(require,module,exports) {
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"7ndI1":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+const loader = () => {
+  window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader-container");
+    loader.className += " hidden";
+  });
+};
+exports.default = loader;
+
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"7rOp6":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 var _utilsFetchData = require("../utils/fetchData");
@@ -545,7 +550,11 @@ const displayComponents = (key, callback, query) => {
     (async () => {
       try {
         const {data} = await _utilsFetchData.fetchData(key, query);
-        callback(data);
+        if (data) {
+          callback(data);
+        } else {
+          _utilsErrorMessageDefault.default("We have an error, please try again later.");
+        }
       } catch (err) {
         _utilsErrorMessageDefault.default(err);
         if (err) throw new Error(`HTTP error! ${err}`);
@@ -557,6 +566,38 @@ const displayComponents = (key, callback, query) => {
 };
 exports.default = displayComponents;
 
-},{"../utils/fetchData":"5KJHN","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../utils/errorMessage":"2gQf4"}]},["4SMmp","5PQGD"], "5PQGD", "parcelRequire144b")
+},{"../utils/fetchData":"5KJHN","../utils/errorMessage":"2gQf4","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"1kM1w":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+_parcelHelpers.export(exports, "scrollToUp", function () {
+  return scrollToUp;
+});
+const scrollIndicator = () => {
+  const scrollIndicator = document.querySelector(".scroll-indicator");
+  if (scrollIndicator) {
+    const scrollPositionTop = window.scrollY;
+    if (scrollPositionTop < 200) scrollIndicator.classList.add("show");
+  }
+};
+const scrollToUp = () => {
+  const scrollToUp = document.querySelector(".scroll-up");
+  window.addEventListener("scroll", () => {
+    if (window.pageYOffset > 100) {
+      scrollToUp.classList.add("active");
+    } else {
+      scrollToUp.classList.remove("active");
+    }
+  });
+  scrollToUp.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  });
+  scrollIndicator();
+};
+
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}]},["4SMmp","5PQGD"], "5PQGD", "parcelRequire144b")
 
 //# sourceMappingURL=rockets.bde76a65.js.map

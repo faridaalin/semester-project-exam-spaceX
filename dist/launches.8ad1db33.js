@@ -449,77 +449,19 @@ var _utilsQuery = require("./utils/query");
 var _script = require("./script");
 var _utilsConstants = require("./utils/constants");
 var _countdown = require("./countdown");
-window.addEventListener("load", () => {
-  const loader = document.querySelector(".loader-container");
-  loader.className += " hidden";
-});
+var _componentsAccordion = require("./components/accordion");
+var _libLoader = require("./lib/loader");
+var _libLoaderDefault = _parcelHelpers.interopDefault(_libLoader);
+_libLoaderDefault.default();
 _countdown.countDownTimer();
-_script.accordion();
+_script.toggleAccordion();
 _script.menu();
-_libDisplayComponentsDefault.default(_utilsConstants.storage.PREVIOUS_LAUNCH, displayPreviousLanuches, _utilsQuery.launchesPast);
-_libDisplayComponentsDefault.default(_utilsConstants.storage.UPCOMING_LAUNCH, displayLanuches, _utilsQuery.launchesUpcoming);
+// PREVIOUS_LAUNCH
+_libDisplayComponentsDefault.default(_utilsConstants.storage.PREVIOUS_LAUNCH, _componentsAccordion.createPreviousLanuches, _utilsQuery.launchesPast);
+// UPCOMING_LAUNCH
+_libDisplayComponentsDefault.default(_utilsConstants.storage.UPCOMING_LAUNCH, _componentsAccordion.createUpcomingLaunches, _utilsQuery.launchesUpcoming);
+// PAD_LOCATIONS
 _libDisplayComponentsDefault.default(_utilsConstants.storage.PAD_LOCATIONS, displayLanuchPads, _utilsQuery.launchpads);
-function displayLanuches(data) {
-  const upcomingLaunches = data.launchesUpcoming;
-  const upcomingLaunchesContainer = document.querySelector(".upcoming-launches-container");
-  upcomingLaunches.forEach(launch => {
-    let date = Intl.DateTimeFormat(navigator.language, {
-      year: "numeric",
-      month: "short",
-      day: "numeric"
-    }).format(new Date(launch.launch_date_local));
-    upcomingLaunchesContainer.innerHTML += `
-    <div class="container">
-      <div class="launches_container">
-
-          <div class="info-container heading">
-            <p class="info__name">Launch Date</p>
-            <p class="info__name">Rocket Name</p>
-            <p class=" info__name">Launch Pad</p>
-            <p class="info__name">Flight Number</p>
-          </div>
-          <div class="info-container upcoming">
-        <p class="info__text">${date}</p>
-        <p class="info__text">${launch.rocket.rocket_name}</p>
-        <p class="info__text">${launch.launch_site.site_name}</p>
-        <p class="info__text highlighted">9${launch.flight_number}</p>
-           </div>
-
-      </div>
-    <hr class="hr-break">
-  </div>`;
-  });
-}
-function displayPreviousLanuches(data) {
-  const previousLaunches = data.launchesPast;
-  const previousLaunchContainer = document.querySelector(".previous-launches-container");
-  previousLaunches.forEach(launch => {
-    let launchDate = new Date(launch.launch_date_local);
-    let date = launchDate.getDate();
-    let month = launchDate.getMonth() + 1;
-    date = date < 10 ? "0" + date : date;
-    month = month < 10 ? "0" + month : month;
-    previousLaunchContainer.innerHTML += `  <div class="container">
-      <div class="launches_container">
-
-          <div class="info-container heading">
-            <p class="info__name">Launch Date</p>
-            <p class="info__name">Rocket Name</p>
-            <p class=" info__name">Launch Pad</p>
-            <p class="info__name">Flight Number</p>
-          </div>
-          <div class="info-container upcoming">
-        <p class="info__text">${launch.launch_year}-${month}-${date}</p>
-        <p class="info__text">${launch.rocket.rocket_name}</p>
-        <p class="info__text">${launch.launch_site.site_name}</p>
-        <p class="info__text highlighted">9${launch.flight_number}</p>
-           </div>
-
-      </div>
-    <hr class="hr-break">
-  </div>`;
-  });
-}
 function displayLanuchPads(data) {
   const locationPads = data.launchpads;
   const californiaLocations = locationPads.filter(pad => pad.location.region === _utilsConstants.locations.CALIFORNIA);
@@ -576,7 +518,7 @@ function scrollToTop() {
   });
 }
 
-},{"./lib/displayComponents":"7rOp6","./utils/query":"58FSQ","./script":"1aYJp","./utils/constants":"5StmA","./countdown":"41IE6","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"7rOp6":[function(require,module,exports) {
+},{"./lib/displayComponents":"7rOp6","./utils/query":"58FSQ","./script":"1aYJp","./utils/constants":"5StmA","./countdown":"41IE6","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./lib/loader":"7ndI1","./components/accordion":"1SspD"}],"7rOp6":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 var _utilsFetchData = require("../utils/fetchData");
@@ -588,7 +530,11 @@ const displayComponents = (key, callback, query) => {
     (async () => {
       try {
         const {data} = await _utilsFetchData.fetchData(key, query);
-        callback(data);
+        if (data) {
+          callback(data);
+        } else {
+          _utilsErrorMessageDefault.default("We have an error, please try again later.");
+        }
       } catch (err) {
         _utilsErrorMessageDefault.default(err);
         if (err) throw new Error(`HTTP error! ${err}`);
@@ -600,7 +546,7 @@ const displayComponents = (key, callback, query) => {
 };
 exports.default = displayComponents;
 
-},{"../utils/fetchData":"5KJHN","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../utils/errorMessage":"2gQf4"}],"5KJHN":[function(require,module,exports) {
+},{"../utils/fetchData":"5KJHN","../utils/errorMessage":"2gQf4","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"5KJHN":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "fetchData", function () {
@@ -28057,27 +28003,27 @@ _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "menu", function () {
   return menu;
 });
-_parcelHelpers.export(exports, "accordion", function () {
-  return accordion;
+_parcelHelpers.export(exports, "toggleAccordion", function () {
+  return toggleAccordion;
 });
 const menu = () => {
-  const hamburger = document.querySelector('.hamburger');
-  const menu = document.querySelector('.menu');
-  hamburger.addEventListener('click', toggleMenu);
+  const hamburger = document.querySelector(".hamburger");
+  const menu = document.querySelector(".menu");
+  hamburger.addEventListener("click", toggleMenu);
   function toggleMenu(event) {
     const target = event.currentTarget;
-    target.classList.toggle('open');
-    menu.classList.toggle('dropdown');
+    target.classList.toggle("open");
+    menu.classList.toggle("dropdown");
   }
 };
-const accordion = () => {
-  const accordionBtn = document.querySelectorAll('.accordion_btn');
+const toggleAccordion = () => {
+  const accordionBtn = document.querySelectorAll(".accordion_btn");
   accordionBtn.forEach(button => {
-    button.addEventListener('click', openTab);
+    button.addEventListener("click", openTab);
   });
   function openTab(event) {
     const target = event.currentTarget;
-    target.classList.toggle('active');
+    target.classList.toggle("active");
   }
 };
 
@@ -28175,7 +28121,7 @@ const countDownTimer = () => {
   }
 };
 
-},{"./utils/fetchData":"5KJHN","./utils/query":"58FSQ","./utils/constants":"5StmA","./currentSiteLocation":"7zJAJ","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./utils/errorMessage":"2gQf4"}],"7zJAJ":[function(require,module,exports) {
+},{"./utils/fetchData":"5KJHN","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./currentSiteLocation":"7zJAJ","./utils/constants":"5StmA","./utils/query":"58FSQ","./utils/errorMessage":"2gQf4"}],"7zJAJ":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "currentSiteLocation", function () {
@@ -28193,6 +28139,68 @@ function currentSiteLocation(data) {
         }
       }
     }
+  });
+}
+
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"7ndI1":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+const loader = () => {
+  window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader-container");
+    loader.className += " hidden";
+  });
+};
+exports.default = loader;
+
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"1SspD":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+_parcelHelpers.export(exports, "createUpcomingLaunches", function () {
+  return createUpcomingLaunches;
+});
+_parcelHelpers.export(exports, "createPreviousLanuches", function () {
+  return createPreviousLanuches;
+});
+const accordion = (launch, container) => {
+  console.log("launch", launch);
+  console.log("container", container);
+  const element = document.querySelector(container);
+  let date = Intl.DateTimeFormat(navigator.language, {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  }).format(new Date(launch.launch_date_local));
+  element.innerHTML += `
+
+    <div class="container">
+      <div class="launches_container">
+
+          <div class="info-container heading">
+            <p class="info__name">Launch Date</p>
+            <p class="info__name">Rocket Name</p>
+            <p class=" info__name">Launch Pad</p>
+            <p class="info__name">Video</p>
+          </div>
+          <div class="info-container upcoming">
+        <p class="info__text">${date}</p>
+        <p class="info__text">${launch.rocket.rocket_name}</p>
+        <p class="info__text">${launch.launch_site.site_name}</p>
+        <a class="info__link" href=${launch.links.video_link} >Youtube</a>
+           </div>
+
+      </div>
+    <hr class="hr-break">
+  </div>`;
+};
+function createUpcomingLaunches(data) {
+  data.launchesUpcoming.forEach(launch => {
+    accordion(launch, ".upcoming-launches-container");
+  });
+}
+function createPreviousLanuches(data) {
+  data.launchesPast.forEach(launch => {
+    accordion(launch, ".previous-launches-container");
   });
 }
 

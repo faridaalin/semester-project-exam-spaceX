@@ -447,27 +447,27 @@ _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "menu", function () {
   return menu;
 });
-_parcelHelpers.export(exports, "accordion", function () {
-  return accordion;
+_parcelHelpers.export(exports, "toggleAccordion", function () {
+  return toggleAccordion;
 });
 const menu = () => {
-  const hamburger = document.querySelector('.hamburger');
-  const menu = document.querySelector('.menu');
-  hamburger.addEventListener('click', toggleMenu);
+  const hamburger = document.querySelector(".hamburger");
+  const menu = document.querySelector(".menu");
+  hamburger.addEventListener("click", toggleMenu);
   function toggleMenu(event) {
     const target = event.currentTarget;
-    target.classList.toggle('open');
-    menu.classList.toggle('dropdown');
+    target.classList.toggle("open");
+    menu.classList.toggle("dropdown");
   }
 };
-const accordion = () => {
-  const accordionBtn = document.querySelectorAll('.accordion_btn');
+const toggleAccordion = () => {
+  const accordionBtn = document.querySelectorAll(".accordion_btn");
   accordionBtn.forEach(button => {
-    button.addEventListener('click', openTab);
+    button.addEventListener("click", openTab);
   });
   function openTab(event) {
     const target = event.currentTarget;
-    target.classList.toggle('active');
+    target.classList.toggle("active");
   }
 };
 
