@@ -74,10 +74,7 @@ type Prev = {
   launch_date_local: string;
   launch_site: LaunchSiteObj;
   rocket: Rocket;
-  links: {
-    video_link: string;
-    flickr_images: string;
-  };
+  mission_name: MissionName;
 };
 
 interface IPreviousLaunches {

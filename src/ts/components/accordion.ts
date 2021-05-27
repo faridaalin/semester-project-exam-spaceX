@@ -1,5 +1,4 @@
-import { locations } from "../utils/constants";
-const accordion = (launch: any, container: string) => {
+export const accordion = (launch: any, container: string) => {
   const element = document.querySelector(container) as HTMLDivElement;
 
   let date = Intl.DateTimeFormat(navigator.language, {
@@ -17,13 +16,13 @@ const accordion = (launch: any, container: string) => {
             <p class="info__name">Launch Date</p>
             <p class="info__name">Rocket Name</p>
             <p class=" info__name">Launch Pad</p>
-            <p class="info__name">Video</p>
+            <p class="info__name">Mission Name</p>
           </div>
           <div class="info-container upcoming">
         <p class="info__text">${date}</p>
         <p class="info__text">${launch.rocket.rocket_name}</p>
         <p class="info__text">${launch.launch_site.site_name}</p>
-        <a class="info__link" href=${launch.links.video_link} >Youtube</a>
+        <a class="info__text">${launch.mission_name}</a>
            </div>
 
       </div>
@@ -31,21 +30,7 @@ const accordion = (launch: any, container: string) => {
   </div>`;
 };
 
-export function createUpcomingLaunches<T extends IUpcomingLaunches>(
-  data: T
-): void {
-  data.launchesUpcoming.forEach((launch: Prev) => {
-    accordion(launch, ".upcoming-launches-container");
-  });
-}
-export function createPreviousLanuches<T extends IPreviousLaunches>(
-  data: T
-): void {
-  data.launchesPast.forEach((launch: Prev) => {
-    accordion(launch, ".previous-launches-container");
-  });
-}
-function locationAccordion<T extends Pads>(
+export function locationAccordion<T extends Pads>(
   locations: T[],
   locationToMatch: string,
   container: string
@@ -78,27 +63,4 @@ function locationAccordion<T extends Pads>(
     <hr class="hr-break">
   </div>`;
   });
-}
-
-export function createLanuchPads<T extends ILaunchPads>(data: T): void {
-  locationAccordion(
-    data.launchpads,
-    locations.CALIFORNIA,
-    ".location-launches__info__ca"
-  );
-  locationAccordion(
-    data.launchpads,
-    locations.FLORIDA,
-    ".location-launches__info__fl"
-  );
-  locationAccordion(
-    data.launchpads,
-    locations.TEXAS,
-    ".location-launches__info__tx"
-  );
-  locationAccordion(
-    data.launchpads,
-    locations.MI,
-    ".location-launches__info__mi"
-  );
 }

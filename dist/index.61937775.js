@@ -449,55 +449,16 @@ var _utilsQuery = require("./utils/query");
 var _utilsConstants = require("./utils/constants");
 var _script = require("./script");
 var _countdown = require("./countdown");
-window.addEventListener("load", () => {
-  const loader = document.querySelector(".loader-container");
-  if (loader) {
-    loader.className += " hidden";
-  }
-});
+var _libLoader = require("./lib/loader");
+var _libLoaderDefault = _parcelHelpers.interopDefault(_libLoader);
+var _libLaunches = require("./lib/launches");
+_libLoaderDefault.default();
 _countdown.countDownTimer();
-_script.accordion();
+_script.toggleAccordion();
 _script.menu();
-/*fetch*/
-_libDisplayComponentsDefault.default(_utilsConstants.storage.NEXT_LAUNCH, displayNextLaunch, _utilsQuery.launchNext);
-// DOM interaction
-function displayNextLaunch(result) {
-  const data = result.launchNext;
-  const nextLaunchContainer = document.querySelector(".next-launch");
-  const nextLaunchInfo = document.querySelector(".next-launch-info__first-part");
-  let launchDate = new Date(data.launch_date_local);
-  let date = Intl.DateTimeFormat(navigator.language, {
-    month: "short",
-    day: "numeric"
-  }).format(new Date(data.launch_date_local));
-  const today = new Date().getTime();
-  nextLaunchContainer.innerHTML = `<div>
-    <p>${today > launchDate.getTime() ? "Latest Launch" : "Next Launch"}</p>
-    <span class="year">${data.launch_year}</span>
-    <span class="month">${date}</span>
-  </div>`;
-  nextLaunchInfo.innerHTML = `
-<div class="info-container">
-  <p class="info__name">Rocket</p>
-  <p class="info__text">${data.rocket.rocket_name}</p>
-</div>
+_libDisplayComponentsDefault.default(_utilsConstants.storage.NEXT_LAUNCH, _libLaunches.displayNextLaunch, _utilsQuery.launchNext);
 
-<div class="info-container">
-  <p class="info__name">Location</p>
-  <p class="info__text">${data.launch_site.site_name}</p>
-</div>
-
-<div class="info-container">
-  <p class=" info__name">Mission</p>
-  <p class="info__text highlighted">${data.mission_name}</p>
-</div>`;
-  const nextLaunchDetails = document.querySelector(".details");
-  if (nextLaunchDetails) {
-    nextLaunchDetails.innerHTML = ` <div class="accordion-item-content"><p class="info__text"></p>${data.details}</div`;
-  }
-}
-
-},{"./lib/displayComponents":"7rOp6","./script":"1aYJp","./countdown":"41IE6","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./utils/constants":"5StmA","./utils/query":"58FSQ"}],"7rOp6":[function(require,module,exports) {
+},{"./lib/displayComponents":"7rOp6","./script":"1aYJp","./countdown":"41IE6","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./utils/constants":"5StmA","./utils/query":"58FSQ","./lib/loader":"7ndI1","./lib/launches":"4mV6D"}],"7rOp6":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 var _utilsFetchData = require("../utils/fetchData");
@@ -9040,10 +9001,7 @@ const launchesPast = _graphqlTagDefault.default`
       launch_site {
         site_name
       }
-      links {
-        video_link
-        flickr_images
-      }
+      mission_name
       rocket {
         rocket_name
       }
@@ -9057,9 +9015,7 @@ const launchesUpcoming = _graphqlTagDefault.default`
       launch_site {
         site_name
       }
-      links {
-        flickr_images
-      }
+      mission_name
       rocket {
         rocket_name
       }
@@ -28121,6 +28077,160 @@ function findDeprecatedUsages(schema, ast) {
   return (0, _validate.validate)(schema, ast, [_NoDeprecatedCustomRule.NoDeprecatedCustomRule]);
 }
 
-},{"../validation/validate.js":"4pm1K","../validation/rules/custom/NoDeprecatedCustomRule.js":"5roLf"}]},["4J6fY","5RbH5"], "5RbH5", "parcelRequire144b")
+},{"../validation/validate.js":"4pm1K","../validation/rules/custom/NoDeprecatedCustomRule.js":"5roLf"}],"7ndI1":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+const loader = () => {
+  window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader-container");
+    loader.className += " hidden";
+  });
+};
+exports.default = loader;
+
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"4mV6D":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+_parcelHelpers.export(exports, "createUpcomingLaunches", function () {
+  return createUpcomingLaunches;
+});
+_parcelHelpers.export(exports, "createPreviousLanuches", function () {
+  return createPreviousLanuches;
+});
+_parcelHelpers.export(exports, "createLanuchPads", function () {
+  return createLanuchPads;
+});
+_parcelHelpers.export(exports, "displayNextLaunch", function () {
+  return displayNextLaunch;
+});
+var _utilsConstants = require("../utils/constants");
+var _componentsAccordion = require("../components/accordion");
+var _componentsBanner = require("../components/banner");
+var _componentsBannerDefault = _parcelHelpers.interopDefault(_componentsBanner);
+function createUpcomingLaunches(data) {
+  data.launchesUpcoming.forEach(launch => {
+    _componentsAccordion.accordion(launch, ".upcoming-launches-container");
+  });
+}
+function createPreviousLanuches(data) {
+  data.launchesPast.forEach(launch => {
+    _componentsAccordion.accordion(launch, ".previous-launches-container");
+  });
+}
+function createLanuchPads(data) {
+  _componentsAccordion.locationAccordion(data.launchpads, _utilsConstants.locations.CALIFORNIA, ".location-launches__info__ca");
+  _componentsAccordion.locationAccordion(data.launchpads, _utilsConstants.locations.FLORIDA, ".location-launches__info__fl");
+  _componentsAccordion.locationAccordion(data.launchpads, _utilsConstants.locations.TEXAS, ".location-launches__info__tx");
+  _componentsAccordion.locationAccordion(data.launchpads, _utilsConstants.locations.MI, ".location-launches__info__mi");
+}
+function displayNextLaunch(result) {
+  _componentsBannerDefault.default(result.launchNext);
+}
+
+},{"../utils/constants":"5StmA","../components/accordion":"1SspD","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../components/banner":"6rFBI"}],"1SspD":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+_parcelHelpers.export(exports, "accordion", function () {
+  return accordion;
+});
+_parcelHelpers.export(exports, "locationAccordion", function () {
+  return locationAccordion;
+});
+const accordion = (launch, container) => {
+  const element = document.querySelector(container);
+  let date = Intl.DateTimeFormat(navigator.language, {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  }).format(new Date(launch.launch_date_local));
+  element.innerHTML += `
+
+    <div class="container">
+      <div class="launches_container">
+
+          <div class="info-container heading">
+            <p class="info__name">Launch Date</p>
+            <p class="info__name">Rocket Name</p>
+            <p class=" info__name">Launch Pad</p>
+            <p class="info__name">Mission Name</p>
+          </div>
+          <div class="info-container upcoming">
+        <p class="info__text">${date}</p>
+        <p class="info__text">${launch.rocket.rocket_name}</p>
+        <p class="info__text">${launch.launch_site.site_name}</p>
+        <a class="info__text">${launch.mission_name}</a>
+           </div>
+
+      </div>
+    <hr class="hr-break">
+  </div>`;
+};
+function locationAccordion(locations, locationToMatch, container) {
+  const location = locations.filter(pad => pad.location.region === locationToMatch);
+  const element = document.querySelector(container);
+  locations.forEach(item => {
+    let status = item.status[0].toUpperCase() + item.status.slice(1);
+    element.innerHTML += `
+    <div class="launches_container location_container locations-pads">
+    <div class="info-container">
+      <p class="info__name">${item.location.name}:</p>
+      <p class="info__text">${item.name}</p>
+    </div>
+
+    <div class="info-container">
+      <p class="info__name">Status:</p>
+      <p class="info__text">${status}</p>
+    </div>
+
+    <div class="info-container">
+      <p class="info__name">Location Description:</p>
+      <p class="info__text">${item.details}</p>
+    </div>
+
+    <hr class="hr-break">
+  </div>`;
+  });
+}
+
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"6rFBI":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+function banner(data) {
+  const nextLaunchContainer = document.querySelector(".next-launch");
+  const nextLaunchInfo = document.querySelector(".next-launch-info__first-part");
+  let launchDate = new Date(data.launch_date_local);
+  let date = Intl.DateTimeFormat(navigator.language, {
+    month: "short",
+    day: "numeric"
+  }).format(new Date(data.launch_date_local));
+  const today = new Date().getTime();
+  nextLaunchContainer.innerHTML = `<div>
+    <p>${today > launchDate.getTime() ? "Latest Launch" : "Next Launch"}</p>
+    <span class="year">${data.launch_year}</span>
+    <span class="month">${date}</span>
+  </div>`;
+  nextLaunchInfo.innerHTML = `
+<div class="info-container">
+  <p class="info__name">Rocket</p>
+  <p class="info__text">${data.rocket.rocket_name}</p>
+</div>
+
+<div class="info-container">
+  <p class="info__name">Location</p>
+  <p class="info__text">${data.launch_site.site_name}</p>
+</div>
+
+<div class="info-container">
+  <p class=" info__name">Mission</p>
+  <p class="info__text highlighted">${data.mission_name}</p>
+</div>`;
+  const nextLaunchDetails = document.querySelector(".details");
+  if (nextLaunchDetails) {
+    nextLaunchDetails.innerHTML = ` <div class="accordion-item-content"><p class="info__text"></p>${data.details}</div`;
+  }
+}
+exports.default = banner;
+
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}]},["4J6fY","5RbH5"], "5RbH5", "parcelRequire144b")
 
 //# sourceMappingURL=index.61937775.js.map

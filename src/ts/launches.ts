@@ -8,7 +8,7 @@ import {
   createPreviousLanuches,
   createUpcomingLaunches,
   createLanuchPads,
-} from "./components/accordion";
+} from "./lib/launches";
 import loader from "./lib/loader";
 
 loader();

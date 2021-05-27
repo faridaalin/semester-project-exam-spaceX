@@ -8871,10 +8871,7 @@ const launchesPast = _graphqlTagDefault.default`
       launch_site {
         site_name
       }
-      links {
-        video_link
-        flickr_images
-      }
+      mission_name
       rocket {
         rocket_name
       }
@@ -8888,9 +8885,7 @@ const launchesUpcoming = _graphqlTagDefault.default`
       launch_site {
         site_name
       }
-      links {
-        flickr_images
-      }
+      mission_name
       rocket {
         rocket_name
       }

@@ -24,10 +24,7 @@ export const launchesPast = gql`
       launch_site {
         site_name
       }
-      links {
-        video_link
-        flickr_images
-      }
+      mission_name
       rocket {
         rocket_name
       }
@@ -41,9 +38,7 @@ export const launchesUpcoming = gql`
       launch_site {
         site_name
       }
-      links {
-        flickr_images
-      }
+      mission_name
       rocket {
         rocket_name
       }
