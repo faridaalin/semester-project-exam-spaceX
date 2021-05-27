@@ -449,6 +449,7 @@ var _utilsQuery = require("./utils/query");
 var _script = require("./script");
 var _utilsConstants = require("./utils/constants");
 var _countdown = require("./countdown");
+var _libScrollHandler = require("./lib/scrollHandler");
 var _componentsAccordion = require("./components/accordion");
 var _libLoader = require("./lib/loader");
 var _libLoaderDefault = _parcelHelpers.interopDefault(_libLoader);
@@ -456,69 +457,15 @@ _libLoaderDefault.default();
 _countdown.countDownTimer();
 _script.toggleAccordion();
 _script.menu();
+_libScrollHandler.scrollToUp();
 // PREVIOUS_LAUNCH
 _libDisplayComponentsDefault.default(_utilsConstants.storage.PREVIOUS_LAUNCH, _componentsAccordion.createPreviousLanuches, _utilsQuery.launchesPast);
 // UPCOMING_LAUNCH
 _libDisplayComponentsDefault.default(_utilsConstants.storage.UPCOMING_LAUNCH, _componentsAccordion.createUpcomingLaunches, _utilsQuery.launchesUpcoming);
 // PAD_LOCATIONS
-_libDisplayComponentsDefault.default(_utilsConstants.storage.PAD_LOCATIONS, displayLanuchPads, _utilsQuery.launchpads);
-function displayLanuchPads(data) {
-  const locationPads = data.launchpads;
-  const californiaLocations = locationPads.filter(pad => pad.location.region === _utilsConstants.locations.CALIFORNIA);
-  const floridaaLocations = locationPads.filter(pad => pad.location.region === _utilsConstants.locations.FLORIDA);
-  const texasLocations = locationPads.filter(pad => pad.location.region === _utilsConstants.locations.TEXAS);
-  const mIslandLocations = locationPads.filter(pad => pad.location.region === _utilsConstants.locations.MI);
-  const californiaLocationsContainer = document.querySelector(".location-launches__info__ca");
-  const floridaLocationsContainer = document.querySelector(".location-launches__info__fl");
-  const texasLocationsContainer = document.querySelector(".location-launches__info__tx");
-  const mIslandsLocationsContainer = document.querySelector(".location-launches__info__mi");
-  createLocationPads(californiaLocations, californiaLocationsContainer);
-  createLocationPads(floridaaLocations, floridaLocationsContainer);
-  createLocationPads(texasLocations, texasLocationsContainer);
-  createLocationPads(mIslandLocations, mIslandsLocationsContainer);
-}
-function createLocationPads(array, container) {
-  array.forEach(item => {
-    let status = item.status[0].toUpperCase() + item.status.slice(1);
-    container.innerHTML += `
-    <div class="launches_container location_container locations-pads">
-    <div class="info-container">
-      <p class="info__name">${item.location.name}:</p>
-      <p class="info__text">${item.name}</p>
-    </div>
+_libDisplayComponentsDefault.default(_utilsConstants.storage.PAD_LOCATIONS, _componentsAccordion.createLanuchPads, _utilsQuery.launchpads);
 
-    <div class="info-container">
-      <p class="info__name">Status:</p>
-      <p class="info__text">${status}</p>
-    </div>
-
-    <div class="info-container">
-      <p class="info__name">Location Description:</p>
-      <p class="info__text">${item.details}</p>
-    </div>
-
-    <hr class="hr-break">
-  </div>`;
-  });
-}
-const scrollToUp = document.querySelector(".scroll-up");
-window.addEventListener("scroll", () => {
-  if (window.pageYOffset > 100) {
-    scrollToUp.classList.add("active");
-  } else {
-    scrollToUp.classList.remove("active");
-  }
-});
-scrollToUp.addEventListener("click", scrollToTop);
-function scrollToTop() {
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: "smooth"
-  });
-}
-
-},{"./lib/displayComponents":"7rOp6","./utils/query":"58FSQ","./script":"1aYJp","./utils/constants":"5StmA","./countdown":"41IE6","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./lib/loader":"7ndI1","./components/accordion":"1SspD"}],"7rOp6":[function(require,module,exports) {
+},{"./lib/displayComponents":"7rOp6","./utils/query":"58FSQ","./script":"1aYJp","./utils/constants":"5StmA","./countdown":"41IE6","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./lib/loader":"7ndI1","./components/accordion":"1SspD","./lib/scrollHandler":"1kM1w"}],"7rOp6":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 var _utilsFetchData = require("../utils/fetchData");
@@ -28162,9 +28109,11 @@ _parcelHelpers.export(exports, "createUpcomingLaunches", function () {
 _parcelHelpers.export(exports, "createPreviousLanuches", function () {
   return createPreviousLanuches;
 });
+_parcelHelpers.export(exports, "createLanuchPads", function () {
+  return createLanuchPads;
+});
+var _utilsConstants = require("../utils/constants");
 const accordion = (launch, container) => {
-  console.log("launch", launch);
-  console.log("container", container);
   const element = document.querySelector(container);
   let date = Intl.DateTimeFormat(navigator.language, {
     year: "numeric",
@@ -28203,6 +28152,70 @@ function createPreviousLanuches(data) {
     accordion(launch, ".previous-launches-container");
   });
 }
+function locationAccordion(locations, locationToMatch, container) {
+  const location = locations.filter(pad => pad.location.region === locationToMatch);
+  const element = document.querySelector(container);
+  locations.forEach(item => {
+    let status = item.status[0].toUpperCase() + item.status.slice(1);
+    element.innerHTML += `
+    <div class="launches_container location_container locations-pads">
+    <div class="info-container">
+      <p class="info__name">${item.location.name}:</p>
+      <p class="info__text">${item.name}</p>
+    </div>
+
+    <div class="info-container">
+      <p class="info__name">Status:</p>
+      <p class="info__text">${status}</p>
+    </div>
+
+    <div class="info-container">
+      <p class="info__name">Location Description:</p>
+      <p class="info__text">${item.details}</p>
+    </div>
+
+    <hr class="hr-break">
+  </div>`;
+  });
+}
+function createLanuchPads(data) {
+  locationAccordion(data.launchpads, _utilsConstants.locations.CALIFORNIA, ".location-launches__info__ca");
+  locationAccordion(data.launchpads, _utilsConstants.locations.FLORIDA, ".location-launches__info__fl");
+  locationAccordion(data.launchpads, _utilsConstants.locations.TEXAS, ".location-launches__info__tx");
+  locationAccordion(data.launchpads, _utilsConstants.locations.MI, ".location-launches__info__mi");
+}
+
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../utils/constants":"5StmA"}],"1kM1w":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+_parcelHelpers.export(exports, "scrollToUp", function () {
+  return scrollToUp;
+});
+const scrollIndicator = () => {
+  const scrollIndicator = document.querySelector(".scroll-indicator");
+  if (scrollIndicator) {
+    const scrollPositionTop = window.scrollY;
+    if (scrollPositionTop < 200) scrollIndicator.classList.add("show");
+  }
+};
+const scrollToUp = () => {
+  const scrollToUp = document.querySelector(".scroll-up");
+  window.addEventListener("scroll", () => {
+    if (window.pageYOffset > 100) {
+      scrollToUp.classList.add("active");
+    } else {
+      scrollToUp.classList.remove("active");
+    }
+  });
+  scrollToUp.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  });
+  scrollIndicator();
+};
 
 },{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}]},["7CfR8","4OSwq"], "4OSwq", "parcelRequire144b")
 
