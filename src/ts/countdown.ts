@@ -1,12 +1,10 @@
 import { fetchData } from "./utils/fetchData";
-import { launchNext } from "./utils/query";
+import { launch } from "./utils/query";
 import { storage } from "./utils/constants";
 import { currentSiteLocation } from "./currentSiteLocation";
 import errorMessage from "./utils/errorMessage";
 
-// Writes to the DOM
 export const countDownTimer = () => {
-  // Typescript generic type
   const updateEverySec = <T extends INextDate>(nextDate: T): void => {
     const countDownDate = Date.parse(nextDate.launch_date_local);
     const day = document.querySelectorAll(
@@ -65,7 +63,8 @@ export const countDownTimer = () => {
   if (!timer) {
     (async () => {
       try {
-        const { data } = await fetchData(storage.NEXT_LAUNCH, launchNext);
+        const { data } = await fetchData(storage.NEXT_LAUNCH, launch);
+
         updateEverySec(data.launchNext);
         currentSiteLocation(data.launchNext);
       } catch (err) {

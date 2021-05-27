@@ -13,6 +13,7 @@ const displayComponents = (
     (async () => {
       try {
         const { data } = await fetchData(key, query);
+
         if (data) {
           callback(data);
         } else {

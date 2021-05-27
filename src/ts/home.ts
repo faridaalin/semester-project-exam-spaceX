@@ -1,5 +1,5 @@
 import displayComponents from "./lib/displayComponents";
-import { launchNext } from "./utils/query";
+import { launch } from "./utils/query";
 import { storage } from "./utils/constants";
 import { toggleAccordion, menu } from "./script";
 import { countDownTimer } from "./countdown";
@@ -11,4 +11,4 @@ countDownTimer();
 toggleAccordion();
 menu();
 
-displayComponents(storage.NEXT_LAUNCH, displayNextLaunch, launchNext);
+displayComponents(storage.NEXT_LAUNCH, displayNextLaunch, launch);

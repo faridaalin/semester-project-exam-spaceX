@@ -459,9 +459,9 @@ _script.toggleAccordion();
 _script.menu();
 _libScrollHandler.scrollToUp();
 // PREVIOUS_LAUNCH
-_libDisplayComponentsDefault.default(_utilsConstants.storage.PREVIOUS_LAUNCH, _libLaunches.createPreviousLanuches, _utilsQuery.launchesPast);
+_libDisplayComponentsDefault.default(_utilsConstants.storage.PREVIOUS_LAUNCH, _libLaunches.createPreviousLanuches, _utilsQuery.launch);
 // UPCOMING_LAUNCH
-_libDisplayComponentsDefault.default(_utilsConstants.storage.UPCOMING_LAUNCH, _libLaunches.createUpcomingLaunches, _utilsQuery.launchesUpcoming);
+_libDisplayComponentsDefault.default(_utilsConstants.storage.UPCOMING_LAUNCH, _libLaunches.createUpcomingLaunches, _utilsQuery.launch);
 // PAD_LOCATIONS
 _libDisplayComponentsDefault.default(_utilsConstants.storage.PAD_LOCATIONS, _libLaunches.createLanuchPads, _utilsQuery.launchpads);
 
@@ -8822,14 +8822,8 @@ exports.default = errorMessage;
 },{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"58FSQ":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
-_parcelHelpers.export(exports, "launchNext", function () {
-  return launchNext;
-});
-_parcelHelpers.export(exports, "launchesPast", function () {
-  return launchesPast;
-});
-_parcelHelpers.export(exports, "launchesUpcoming", function () {
-  return launchesUpcoming;
+_parcelHelpers.export(exports, "launch", function () {
+  return launch;
 });
 _parcelHelpers.export(exports, "launchpads", function () {
   return launchpads;
@@ -8839,24 +8833,7 @@ _parcelHelpers.export(exports, "rockets", function () {
 });
 var _graphqlTag = require("graphql-tag");
 var _graphqlTagDefault = _parcelHelpers.interopDefault(_graphqlTag);
-const launchNext = _graphqlTagDefault.default`
-  query {
-    launchNext {
-      launch_site {
-        site_name
-        site_id
-      }
-      launch_year
-      rocket {
-        rocket_name
-      }
-      mission_name
-      details
-      launch_date_local
-    }
-  }
-`;
-const launchesPast = _graphqlTagDefault.default`
+const launch = _graphqlTagDefault.default`
   query {
     launchesPast(limit: 10) {
       launch_date_local
@@ -8868,10 +8845,6 @@ const launchesPast = _graphqlTagDefault.default`
         rocket_name
       }
     }
-  }
-`;
-const launchesUpcoming = _graphqlTagDefault.default`
-  query {
     launchesUpcoming {
       launch_date_local
       launch_site {
@@ -8881,6 +8854,19 @@ const launchesUpcoming = _graphqlTagDefault.default`
       rocket {
         rocket_name
       }
+    }
+    launchNext {
+      launch_site {
+        site_name
+        site_id
+      }
+      rocket {
+        rocket_name
+      }
+      mission_name
+      details
+      launch_date_local
+      launch_year
     }
   }
 `;
@@ -28013,7 +27999,6 @@ var _currentSiteLocation = require("./currentSiteLocation");
 var _utilsErrorMessage = require("./utils/errorMessage");
 var _utilsErrorMessageDefault = _parcelHelpers.interopDefault(_utilsErrorMessage);
 const countDownTimer = () => {
-  // Typescript generic type
   const updateEverySec = nextDate => {
     const countDownDate = Date.parse(nextDate.launch_date_local);
     const day = document.querySelectorAll(".days");
@@ -28049,7 +28034,7 @@ const countDownTimer = () => {
   if (!timer) {
     (async () => {
       try {
-        const {data} = await _utilsFetchData.fetchData(_utilsConstants.storage.NEXT_LAUNCH, _utilsQuery.launchNext);
+        const {data} = await _utilsFetchData.fetchData(_utilsConstants.storage.NEXT_LAUNCH, _utilsQuery.launch);
         updateEverySec(data.launchNext);
         _currentSiteLocation.currentSiteLocation(data.launchNext);
       } catch (err) {
@@ -28063,7 +28048,7 @@ const countDownTimer = () => {
   }
 };
 
-},{"./utils/fetchData":"5KJHN","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./currentSiteLocation":"7zJAJ","./utils/constants":"5StmA","./utils/query":"58FSQ","./utils/errorMessage":"2gQf4"}],"7zJAJ":[function(require,module,exports) {
+},{"./utils/fetchData":"5KJHN","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./currentSiteLocation":"7zJAJ","./utils/constants":"5StmA","./utils/errorMessage":"2gQf4","./utils/query":"58FSQ"}],"7zJAJ":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "currentSiteLocation", function () {
@@ -28166,7 +28151,7 @@ function displayNextLaunch(result) {
   _componentsBannerDefault.default(result.launchNext);
 }
 
-},{"../utils/constants":"5StmA","../components/accordion":"1SspD","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../components/banner":"6rFBI"}],"1SspD":[function(require,module,exports) {
+},{"../utils/constants":"5StmA","../components/accordion":"1SspD","../components/banner":"6rFBI","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"1SspD":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "accordion", function () {
@@ -28207,7 +28192,7 @@ const accordion = (launch, container) => {
 function locationAccordion(locations, locationToMatch, container) {
   const location = locations.filter(pad => pad.location.region === locationToMatch);
   const element = document.querySelector(container);
-  locations.forEach(item => {
+  location.forEach(item => {
     let status = item.status[0].toUpperCase() + item.status.slice(1);
     element.innerHTML += `
     <div class="launches_container location_container locations-pads">

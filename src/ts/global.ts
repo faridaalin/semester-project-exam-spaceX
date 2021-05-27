@@ -28,16 +28,20 @@ type LaunchSiteObj = {
 type Rocket = {
   rocket_name: string;
 };
+
 interface ILocations {
   name: string;
   region: string;
 }
+
 interface LaunchYear {
   [key: string]: string;
 }
+
 interface MissionName {
   [key: string]: string;
 }
+
 interface Details {
   [key: string]: string;
 }
@@ -51,14 +55,6 @@ type Launch = {
   launch_date_local: string;
 };
 
-interface INextLaunch {
-  launchNext: Launch;
-}
-
-type INextDate = Launch;
-
-type SiteLocation = Launch;
-
 type Pads = {
   location: ILocations;
   details: Details;
@@ -70,19 +66,15 @@ interface ILaunchPads {
   launchpads: [Pads];
 }
 
-type Prev = {
-  launch_date_local: string;
-  launch_site: LaunchSiteObj;
-  rocket: Rocket;
-  mission_name: MissionName;
-};
-
+interface INextLaunch {
+  launchNext: Launch;
+}
 interface IPreviousLaunches {
-  launchesPast: [Prev];
+  launchesPast: [Launch];
 }
 
 interface IUpcomingLaunches {
-  launchesUpcoming: [Prev];
+  launchesUpcoming: [Launch];
 }
 
 type RocketTypes = {

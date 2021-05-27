@@ -40,7 +40,7 @@ export function locationAccordion<T extends Pads>(
   );
 
   const element = document.querySelector(container) as HTMLElement;
-  locations.forEach((item: any) => {
+  location.forEach((item: any) => {
     let status = item.status[0].toUpperCase() + item.status.slice(1);
 
     element.innerHTML += `

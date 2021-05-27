@@ -1,23 +1,6 @@
 import gql from "graphql-tag";
 
-export const launchNext = gql`
-  query {
-    launchNext {
-      launch_site {
-        site_name
-        site_id
-      }
-      launch_year
-      rocket {
-        rocket_name
-      }
-      mission_name
-      details
-      launch_date_local
-    }
-  }
-`;
-export const launchesPast = gql`
+export const launch = gql`
   query {
     launchesPast(limit: 10) {
       launch_date_local
@@ -29,10 +12,6 @@ export const launchesPast = gql`
         rocket_name
       }
     }
-  }
-`;
-export const launchesUpcoming = gql`
-  query {
     launchesUpcoming {
       launch_date_local
       launch_site {
@@ -43,8 +22,22 @@ export const launchesUpcoming = gql`
         rocket_name
       }
     }
+    launchNext {
+      launch_site {
+        site_name
+        site_id
+      }
+      rocket {
+        rocket_name
+      }
+      mission_name
+      details
+      launch_date_local
+      launch_year
+    }
   }
 `;
+
 export const launchpads = gql`
   query {
     launchpads {

@@ -5,14 +5,14 @@ import banner from "../components/banner";
 export function createUpcomingLaunches<T extends IUpcomingLaunches>(
   data: T
 ): void {
-  data.launchesUpcoming.forEach((launch: Prev) => {
+  data.launchesUpcoming.forEach((launch: Launch) => {
     accordion(launch, ".upcoming-launches-container");
   });
 }
 export function createPreviousLanuches<T extends IPreviousLaunches>(
   data: T
 ): void {
-  data.launchesPast.forEach((launch: Prev) => {
+  data.launchesPast.forEach((launch: Launch) => {
     accordion(launch, ".previous-launches-container");
   });
 }
