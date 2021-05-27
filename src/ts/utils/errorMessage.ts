@@ -3,7 +3,7 @@ const errorMessage = (msg: string) => {
   main.innerHTML = "";
   let messageContainer = document.createElement("div");
   messageContainer.innerText = msg;
-  messageContainer.classList.add("message");
+  messageContainer.classList.add("messageErrorr");
 
   main.appendChild(messageContainer);
 };

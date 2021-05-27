@@ -28033,7 +28033,7 @@ const errorMessage = msg => {
   main.innerHTML = "";
   let messageContainer = document.createElement("div");
   messageContainer.innerText = msg;
-  messageContainer.classList.add("message");
+  messageContainer.classList.add("messageErrorr");
   main.appendChild(messageContainer);
 };
 exports.default = errorMessage;

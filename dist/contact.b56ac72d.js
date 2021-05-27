@@ -444,58 +444,14 @@ id) /*: string*/
 },{}],"9c5OD":[function(require,module,exports) {
 var _script = require("./script");
 var _countdown = require("./countdown");
-var _checkInputLength = require("./checkInputLength");
-var _utilsValidateEmail = require("./utils/validateEmail");
+var _libFormHandler = require("./lib/formHandler");
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+var _libFormHandlerDefault = _parcelHelpers.interopDefault(_libFormHandler);
 _countdown.countDownTimer();
 _script.menu();
-/*Form Validation*/
-const form = document.querySelector(".contact-form");
-form.addEventListener("submit", submitContactForm);
-// DOM interaction
-function submitContactForm(event) {
-  event.preventDefault();
-  let isValid = true;
-  const inputName = document.querySelector("#name");
-  const nameValue = inputName.value.trim().length;
-  if (_checkInputLength.checkInputLength(nameValue)) {
-    document.querySelector(".error-name").style.display = "block";
-    isValid = false;
-  } else {
-    document.querySelector(".error-name").style.display = "none";
-  }
-  const inputEmail = document.querySelector("#email");
-  const emailValue = inputEmail.value.trim().length;
-  if (_checkInputLength.checkInputLength(emailValue)) {
-    document.querySelector(".error-email").style.display = "block";
-    isValid = false;
-  } else {
-    document.querySelector(".error-email").style.display = "none";
-  }
-  const inputMessage = document.querySelector("#message");
-  const messageValue = inputMessage.value.trim().length;
-  if (_checkInputLength.checkInputLength(messageValue)) {
-    document.querySelector(".error-name-message").style.display = "block";
-    isValid = false;
-  } else {
-    document.querySelector(".error-name-message").style.display = "none";
-  }
-  if (_utilsValidateEmail.validateEmail(inputEmail.value)) {
-    document.querySelector(".error-invalid-email").style.display = "none";
-  } else {
-    document.querySelector(".error-invalid-email").style.display = "block";
-    isValid = false;
-  }
-  showSuccessMessage(isValid);
-}
-function showSuccessMessage(validation) {
-  if (validation) {
-    const msg = document.querySelector(".success-message");
-    form.style.display = "none";
-    msg.style.display = "block";
-  }
-}
+_libFormHandlerDefault.default();
 
-},{"./script":"1aYJp","./countdown":"41IE6","./checkInputLength":"6zf8h","./utils/validateEmail":"5ztN5"}],"1aYJp":[function(require,module,exports) {
+},{"./script":"1aYJp","./countdown":"41IE6","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./lib/formHandler":"6nsas"}],"1aYJp":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "menu", function () {
@@ -28081,12 +28037,41 @@ const errorMessage = msg => {
   main.innerHTML = "";
   let messageContainer = document.createElement("div");
   messageContainer.innerText = msg;
-  messageContainer.classList.add("message");
+  messageContainer.classList.add("messageErrorr");
   main.appendChild(messageContainer);
 };
 exports.default = errorMessage;
 
-},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"6zf8h":[function(require,module,exports) {
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"6nsas":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+var _validationCheckInputLength = require("../validation/checkInputLength");
+var _validationValidateEmail = require("../validation/validateEmail");
+var _validationInputError = require("../validation/inputError");
+var _validationInputErrorDefault = _parcelHelpers.interopDefault(_validationInputError);
+var _libSuccessMessage = require("../lib/successMessage");
+var _libSuccessMessageDefault = _parcelHelpers.interopDefault(_libSuccessMessage);
+const formHandler = () => {
+  const form = document.querySelector(".contact-form");
+  form.addEventListener("submit", submitContactForm);
+  function submitContactForm(event) {
+    event.preventDefault();
+    const inputName = document.querySelector("#name");
+    const inputEmail = document.querySelector("#email");
+    const inputMessage = document.querySelector("#message");
+    const nameLength = inputName.value.trim().length;
+    const emailLength = inputEmail.value.trim().length;
+    const messageLength = inputMessage.value.trim().length;
+    const nameValidation = _validationInputErrorDefault.default("name", nameLength, _validationCheckInputLength.checkInputLength);
+    const emailLengthValidation = _validationInputErrorDefault.default("email", emailLength, _validationCheckInputLength.checkInputLength);
+    const emailValidation = _validationInputErrorDefault.default("invalid email", inputEmail.value, _validationValidateEmail.validateEmail);
+    const messageValidation = _validationInputErrorDefault.default("message", messageLength, _validationCheckInputLength.checkInputLength);
+    if (nameValidation && emailLengthValidation && emailValidation && messageValidation) _libSuccessMessageDefault.default();
+  }
+};
+exports.default = formHandler;
+
+},{"../validation/checkInputLength":"4PaVN","../validation/validateEmail":"2JdYJ","../validation/inputError":"5jNDB","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../lib/successMessage":"ACak3"}],"4PaVN":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "checkInputLength", function () {
@@ -28096,7 +28081,7 @@ const checkInputLength = input => {
   return input === 0 ? true : false;
 };
 
-},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"5ztN5":[function(require,module,exports) {
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"2JdYJ":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "validateEmail", function () {
@@ -28106,6 +28091,45 @@ const validateEmail = email => {
   let regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return regEx.test(email);
 };
+
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"5jNDB":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+const inputError = (field, value, calcback) => {
+  let isValid = false;
+  const container = field === "name" ? ".error-name" : field === "email" ? ".error-email" : field === "invalid email" ? ".error-invalid-email" : ".error-name-message";
+  const element = document.querySelector(container);
+  if (typeof value === "string") {
+    if (!calcback(value)) {
+      element.style.display = "block";
+      isValid = false;
+    } else {
+      element.style.display = "none";
+      isValid = true;
+    }
+  } else {
+    if (calcback(value)) {
+      element.style.display = "block";
+      isValid = false;
+    } else {
+      element.style.display = "none";
+      isValid = true;
+    }
+  }
+  return isValid;
+};
+exports.default = inputError;
+
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"ACak3":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+function showSuccessMessage() {
+  const form = document.querySelector(".contact-form");
+  const msg = document.querySelector(".success-message");
+  form.style.display = "none";
+  msg.style.display = "block";
+}
+exports.default = showSuccessMessage;
 
 },{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}]},["4l4eK","9c5OD"], "9c5OD", "parcelRequire144b")
 
