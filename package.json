@@ -4,8 +4,8 @@
   "description": "> Space X / NASA Microsite",
   "scripts": {
     "serve": "parcel serve src/**/*.html",
-    "develop": "parcel src/index.html src/about.html src/contact.html src/launches.html src/rockets.html",
-    "build": "parcel build src/index.html",
+    "develop": "rm -rf ./.parcel-cache ./dist &&  parcel ./src/*.html",
+    "build": "rm -rf ./.parcel-cache ./dist && parcel build ./src/*.html",
     "test": "jest"
   },
   "repository": {
