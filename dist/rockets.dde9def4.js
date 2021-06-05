@@ -503,7 +503,7 @@ const countDownTimer = () => {
   }
 };
 
-},{"./utils/fetchData":"5KJHN","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./currentSiteLocation":"7zJAJ","./utils/constants":"5StmA","./utils/errorMessage":"2gQf4","./utils/query":"58FSQ"}],"5KJHN":[function(require,module,exports) {
+},{"./utils/fetchData":"5KJHN","./utils/query":"58FSQ","./utils/constants":"5StmA","./currentSiteLocation":"7zJAJ","./utils/errorMessage":"2gQf4","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"5KJHN":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "fetchData", function () {
@@ -8774,72 +8774,7 @@ exports.noContext = noContext;
 exports.setTimeout = setTimeoutWithContext;
 exports.wrapYieldingFiberMethods = wrapYieldingFiberMethods;
 
-},{}],"7zJAJ":[function(require,module,exports) {
-var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
-_parcelHelpers.defineInteropFlag(exports);
-_parcelHelpers.export(exports, "currentSiteLocation", function () {
-  return currentSiteLocation;
-});
-function currentSiteLocation(data) {
-  const siteLocationFromApi = data.launch_site.site_id;
-  const area = document.querySelectorAll(".area");
-  area.forEach(location => {
-    if (location.parentElement) {
-      const title = location.parentElement.previousElementSibling;
-      if (siteLocationFromApi === location.id) {
-        if (title) {
-          title.children[0].classList.add("active-location");
-        }
-      }
-    }
-  });
-}
-
-},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"5StmA":[function(require,module,exports) {
-var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
-_parcelHelpers.defineInteropFlag(exports);
-_parcelHelpers.export(exports, "storage", function () {
-  return storage;
-});
-_parcelHelpers.export(exports, "locations", function () {
-  return locations;
-});
-const endpoints = {
-  NEXT_LAUNCH: "https://api.spacexdata.com/v3/launches/next",
-  UPCOMING_LAUNCH: "https://api.spacexdata.com/v3/launches/upcoming",
-  PREVIOUS_LAUNCH: "https://api.spacexdata.com/v3/launches/past",
-  PAD_LOCATIONS: "https://api.spacexdata.com/v3/launchpads",
-  ROCKETS: "https://api.spacexdata.com/v3/rockets"
-};
-exports.default = endpoints;
-const storage = {
-  NEXT_LAUNCH: "NEXT_LAUNCH",
-  UPCOMING_LAUNCH: "UPCOMING_LAUNCH",
-  PREVIOUS_LAUNCH: "PREVIOUS_LAUNCH",
-  PAD_LOCATIONS: "PAD_LOCATIONS",
-  ROCKETS: "ROCKETS"
-};
-const locations = {
-  MI: "Marshall Islands",
-  TEXAS: "Texas",
-  FLORIDA: "Florida",
-  CALIFORNIA: "California"
-};
-
-},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"2gQf4":[function(require,module,exports) {
-var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
-_parcelHelpers.defineInteropFlag(exports);
-const errorMessage = msg => {
-  const main = document.querySelector("  main");
-  main.innerHTML = "";
-  let messageContainer = document.createElement("div");
-  messageContainer.innerText = msg;
-  messageContainer.classList.add("messageErrorr");
-  main.appendChild(messageContainer);
-};
-exports.default = errorMessage;
-
-},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"58FSQ":[function(require,module,exports) {
+},{}],"58FSQ":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "launch", function () {
@@ -27945,6 +27880,71 @@ function findDeprecatedUsages(schema, ast) {
   return (0, _validate.validate)(schema, ast, [_NoDeprecatedCustomRule.NoDeprecatedCustomRule]);
 }
 
-},{"../validation/validate.js":"4pm1K","../validation/rules/custom/NoDeprecatedCustomRule.js":"5roLf"}]},["7iSgT","41IE6"], "41IE6", "parcelRequire144b")
+},{"../validation/validate.js":"4pm1K","../validation/rules/custom/NoDeprecatedCustomRule.js":"5roLf"}],"5StmA":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+_parcelHelpers.export(exports, "storage", function () {
+  return storage;
+});
+_parcelHelpers.export(exports, "locations", function () {
+  return locations;
+});
+const endpoints = {
+  NEXT_LAUNCH: "https://api.spacexdata.com/v3/launches/next",
+  UPCOMING_LAUNCH: "https://api.spacexdata.com/v3/launches/upcoming",
+  PREVIOUS_LAUNCH: "https://api.spacexdata.com/v3/launches/past",
+  PAD_LOCATIONS: "https://api.spacexdata.com/v3/launchpads",
+  ROCKETS: "https://api.spacexdata.com/v3/rockets"
+};
+exports.default = endpoints;
+const storage = {
+  NEXT_LAUNCH: "NEXT_LAUNCH",
+  UPCOMING_LAUNCH: "UPCOMING_LAUNCH",
+  PREVIOUS_LAUNCH: "PREVIOUS_LAUNCH",
+  PAD_LOCATIONS: "PAD_LOCATIONS",
+  ROCKETS: "ROCKETS"
+};
+const locations = {
+  MI: "Marshall Islands",
+  TEXAS: "Texas",
+  FLORIDA: "Florida",
+  CALIFORNIA: "California"
+};
+
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"7zJAJ":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+_parcelHelpers.export(exports, "currentSiteLocation", function () {
+  return currentSiteLocation;
+});
+function currentSiteLocation(data) {
+  const siteLocationFromApi = data.launch_site.site_id;
+  const area = document.querySelectorAll(".area");
+  area.forEach(location => {
+    if (location.parentElement) {
+      const title = location.parentElement.previousElementSibling;
+      if (siteLocationFromApi === location.id) {
+        if (title) {
+          title.children[0].classList.add("active-location");
+        }
+      }
+    }
+  });
+}
+
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"2gQf4":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+const errorMessage = msg => {
+  const main = document.querySelector("  main");
+  main.innerHTML = "";
+  let messageContainer = document.createElement("div");
+  messageContainer.innerText = msg;
+  messageContainer.classList.add("messageErrorr");
+  main.appendChild(messageContainer);
+};
+exports.default = errorMessage;
+
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}]},["7iSgT","41IE6"], "41IE6", "parcelRequire144b")
 
 //# sourceMappingURL=rockets.dde9def4.js.map

@@ -459,7 +459,35 @@ _script.menu();
 _libScrollHandler.scrollToUp();
 _libDisplayComponentsDefault.default(_utilsConstants.storage.ROCKETS, _componentsCard.createRocketCards, _utilsQuery.rockets);
 
-},{"./script":"1aYJp","./countdown":"41IE6","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./components/card":"3IHQF","./lib/loader":"7ndI1","./lib/displayComponents":"7rOp6","./utils/query":"58FSQ","./utils/constants":"5StmA","./lib/scrollHandler":"1kM1w"}],"3IHQF":[function(require,module,exports) {
+},{"./lib/displayComponents":"7rOp6","./utils/query":"58FSQ","./script":"1aYJp","./utils/constants":"5StmA","./countdown":"41IE6","./components/card":"3IHQF","./lib/scrollHandler":"1kM1w","./lib/loader":"7ndI1","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"7rOp6":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+var _utilsFetchData = require("../utils/fetchData");
+var _utilsErrorMessage = require("../utils/errorMessage");
+var _utilsErrorMessageDefault = _parcelHelpers.interopDefault(_utilsErrorMessage);
+const displayComponents = (key, callback, query) => {
+  const dataFromSessionStorage = sessionStorage.getItem(key);
+  if (!dataFromSessionStorage) {
+    (async () => {
+      try {
+        const {data} = await _utilsFetchData.fetchData(key, query);
+        if (data) {
+          callback(data);
+        } else {
+          _utilsErrorMessageDefault.default("We have an error, please try again later.");
+        }
+      } catch (err) {
+        _utilsErrorMessageDefault.default(err);
+        if (err) throw new Error(`HTTP error! ${err}`);
+      }
+    })();
+  } else {
+    callback(JSON.parse(dataFromSessionStorage));
+  }
+};
+exports.default = displayComponents;
+
+},{"../utils/fetchData":"5KJHN","../utils/errorMessage":"2gQf4","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"3IHQF":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "createRocketCards", function () {
@@ -527,46 +555,7 @@ function createRocketCards(data) {
   });
 }
 
-},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"7ndI1":[function(require,module,exports) {
-var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
-_parcelHelpers.defineInteropFlag(exports);
-const loader = () => {
-  window.addEventListener("load", () => {
-    const loader = document.querySelector(".loader-container");
-    loader.className += " hidden";
-  });
-};
-exports.default = loader;
-
-},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"7rOp6":[function(require,module,exports) {
-var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
-_parcelHelpers.defineInteropFlag(exports);
-var _utilsFetchData = require("../utils/fetchData");
-var _utilsErrorMessage = require("../utils/errorMessage");
-var _utilsErrorMessageDefault = _parcelHelpers.interopDefault(_utilsErrorMessage);
-const displayComponents = (key, callback, query) => {
-  const dataFromSessionStorage = sessionStorage.getItem(key);
-  if (!dataFromSessionStorage) {
-    (async () => {
-      try {
-        const {data} = await _utilsFetchData.fetchData(key, query);
-        if (data) {
-          callback(data);
-        } else {
-          _utilsErrorMessageDefault.default("We have an error, please try again later.");
-        }
-      } catch (err) {
-        _utilsErrorMessageDefault.default(err);
-        if (err) throw new Error(`HTTP error! ${err}`);
-      }
-    })();
-  } else {
-    callback(JSON.parse(dataFromSessionStorage));
-  }
-};
-exports.default = displayComponents;
-
-},{"../utils/fetchData":"5KJHN","../utils/errorMessage":"2gQf4","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"1kM1w":[function(require,module,exports) {
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"1kM1w":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "scrollToUp", function () {
@@ -597,6 +586,17 @@ const scrollToUp = () => {
   });
   scrollIndicator();
 };
+
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"7ndI1":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+const loader = () => {
+  window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader-container");
+    loader.className += " hidden";
+  });
+};
+exports.default = loader;
 
 },{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}]},["4SMmp","5PQGD"], "5PQGD", "parcelRequire144b")
 
